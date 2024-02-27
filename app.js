@@ -12,12 +12,16 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 
-app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/about.html'));
+app.get('/perceivable', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/perceivable.html'));
 })
 
-app.get('/tests', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/tests.html'));
+app.get('/operable', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/operable.html'));
+})
+
+app.get('/understandable', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/understandable.html'));
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -1,8 +1,12 @@
 
 
 /** HEADER **/
-header {
-    font-family: Arial, Helvetica, sans-serif;
+header,
+h2,
+h3,
+strong {
+    font-family: "Open Sans", sans-serif;
+    color: #333;
 }
 
 h1 {
@@ -20,6 +24,36 @@ main {
     margin: 0 auto;
     max-width: 70rem;
     min-height: 80vh;
+}
+
+img {
+    width: 100%;
+    border: 1px solid black;
+}
+
+/** EXAMPLE BOXES **/
+.example-box {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 2rem;
+}
+
+/* pass flex:1 to direct children on example-box. */
+.example-box > * {
+    flex: 1;
+    padding: 1em;
+}
+
+.correct {
+    background-color: #88c98280;
+    border: 1px solid darkgreen;
+    border-radius: 0.5em;
+}
+
+.wrong {
+    background-color: #e5767680;
+    border: 1px solid darkred;
+    border-radius: 0.5em;
 }
 
 /** FOOTER **/

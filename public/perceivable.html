@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="EN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style/style.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        <title>Web Accessibility Testing Page</title>
+    </head>
+    <body>
+        <header>
+            <h1>Evaluation Webpage for Web Accessibility Testing Tools!</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/perceivable">Perceivable</a></li>
+                    <li><a href="/operable">Operable</a></li>
+                    <li><a href="/understandable">Understandable</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>Perceivable</h2>
+            <p>Information and user interface components must be presentable to users in ways they can perceive.</p>
+
+            <h2>Guideline 1.1: Text Alternatives</h2>
+            <p>
+                Provide text alternatives for any non-text content so that it can be changed into other forms people need,
+                such as large print, braille, speech, symbols or simpler language.
+            </p>
+            <p><strong>non-text content</strong></p>
+            <p>
+                non-text contents is explained by w3c as: any content that is not a sequence of characters that can be
+                programmatically determined orwhere the sequence is not expressing something in human language.
+                This includes ASCII Art (which is a pattern of characters), emoticons, leetspeak (which uses character substitution), and images representing text
+            </p>
+            <h3>Examples:</h3>
+            <p><strong>1. Missing alt attribute</strong></p>
+            <div class="example-box">
+                <div class="correct">
+                    <h3>Correct</h3>
+                    <p>This image has an alt attribute that explains the content of the image.</p>
+                    <img src="images/Sticky.png" alt="A stick figure pondering about accessibility guidelines">
+                </div>
+                <div class="wrong">
+                    <h3>Wrong</h3>
+                    <p>This image does not have an alt attribute.</p>
+                    <img src="images/Sticky.png">
+                </div>
+            </div>
+            <!-- This example might give a false negative. -->
+            <p><strong>2. Decorative image containing alt with non-related text.</strong></p>
+            <div class="example-box">
+                <div class="correct">
+                    <h3>Correct</h3>
+                    <p>This image is decorative and should therefore contain an empty alt attribute.</p>
+                    <img src="images/decoration.png" alt="">
+                </div>
+                <div class="wrong">
+                    <h3>Wrong</h3>
+                    <p>
+                        This image is decorative but contains an alt attribute that says "This tag is not necessary".
+                    </p>
+                    <img src="images/decoration.png" alt="This tag is not necessary.">
+                </div>
+            </div>
+            <!-- This example might give a false negative. -->
+            <p><strong>3. Image containing text that is important for the reader.</strong></p>
+            <div class="example-box">
+                <div class="correct">
+                    <h3>Correct</h3>
+                    <p>This image contains important text that should be conveyed in the alt attribute.</p>
+                    <img src="images/important_text.png" alt="This text is important!">
+                </div>
+                <div class="wrong">
+                    <h3>Wrong</h3>
+                    <p>
+                        This image contains important text but the text is not conveyed in the alt attribute.
+                    </p>
+                    <img src="images/important_text.png" alt="It wasn't that important after all">
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>Made by <a href="https://github.com/Ylih">Ylih</a> and <a href="https://github.com/elemoser">elemoser</a></p>
+        </footer>
+    </body>
+</html>

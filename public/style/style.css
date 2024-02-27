@@ -1,0 +1,28 @@
+
+
+/** HEADER **/
+header {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+
+/** MAIN **/
+main {
+    margin: 0 auto;
+    max-width: 70rem;
+    min-height: 80vh;
+}
+
+/** FOOTER **/
+footer {
+    text-align: center;
+}

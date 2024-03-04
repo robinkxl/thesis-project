@@ -70,6 +70,12 @@ table {
     border-radius: 0.5em;
 }
 
+.disclaimer {
+    background-color: #ffdd1b80;
+    border: 1px solid darkgoldenrod;
+    border-radius: 0.5em;
+}
+
 .color-example {
     width: 95%;
     padding: 2.5% 2.5%;
@@ -154,7 +160,63 @@ table {
     font-weight: bold;
 }
 
+/* 2.1.1 Keyboard */
+.faked-link {
+    color: blue;
+    text-decoration: underline;
+}
+
+.faked-link:hover {
+    cursor: pointer;
+}
+
+.faked-link:active {
+    color: red;
+}
+
+/* gl-2-2-2-flash */
+.gl-2-2-2-flash {
+    width: 25%;
+    margin: 0 auto 2em auto;
+    text-align: center;
+    background-color: #faf732;
+    border: 1px solid black;
+}
+
+.gl-2-2-2-controller {
+    width: 25%;
+    margin: 0 auto;
+}
+
 /** FOOTER **/
 footer {
     text-align: center;
 }
+
+/** GENERAL USE **/
+.hidden {
+    display: none;
+}
+
+.visible {
+    opacity: 100;
+}
+
+/** ANIMATIONS **/
+@keyframes flash {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.flashing {
+    animation: flash 1s infinite alternate;
+}
+
+.moderate-flashing {
+    animation: flash 0.25s infinite alternate;
+}
+
+.quick-flashing {
+    animation: flash 0.1s infinite alternate;
+}
+

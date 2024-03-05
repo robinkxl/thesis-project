@@ -1,0 +1,77 @@
+@import './base.css';
+
+/* 1.3.2 white space example */
+.column-example {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1em;
+}
+
+.column-example > * {
+    flex: 1;
+}
+
+.column-example-corr {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.column-example-corr > * {
+    flex: 1;
+}
+
+.white-spacing {
+    letter-spacing: 0.3em;
+}
+
+/* 1.3.3 sensory characteristics example */
+.nav-menu {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.nav-menu > * {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 1.4.1 use of color */
+.gl-1-4-1 {
+    text-decoration: none;
+    color: rgb(185, 0, 0);
+}
+
+.gl-1-4-1-labels {
+    display: block;
+    margin-bottom: 0.2em;
+}
+
+.gl-1-4-1-error-msg {
+    color: rgb(185, 0, 0);
+    margin: 0.3em 0;
+}
+
+.gl-1-4-1-input-error {
+    border-color: rgb(185, 0, 0);
+}
+
+/* 1.4.3 contrast (minimum) */
+.gl-1-4-3-normal-text-insufficient {
+    color: slategray;
+}
+
+.gl-1-4-3-large-text-insufficient {
+    color: #a9bdd1;
+}
+
+.gl-1-4-3-large-text {
+    font-size: 24px;
+}
+
+.gl-1-4-3-large-text-bold {
+    font-size: 19px;
+    font-weight: bold;
+}

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <link rel="stylesheet" type="text/css" href="style/operable.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -23,190 +23,188 @@
             </nav>
         </header>
         <main>
-            <h1>Operable</h1>
-            <p>Information and user interface components must be presentable to users in ways they can perceive.</p>
+            <article>
+                <h1>Operable</h1>
+                <p>Information and user interface components must be presentable to users in ways they can perceive.</p>
 
-            <h2 id="guideline-2-1">Guideline 2.1: Keyboard Accessible</h2>
-            <p>
-                Make all functionality available from a keyboard.
-            </p>
-
-            <h3>2.1.1: Keyboard</h3>
-            <p>
-                All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes,
-                except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
-            </p>
-            <h3>Examples:</h3>
-
-            <h4>1. Focus not visible</h4>
-            <!-- https://www.w3.org/WAI/WCAG21/Techniques/failures/F55 -->
-            <div class="example-box">
-                <div class="correct">
-                    <h3>Correct</h3>
-                    <p>A link that can be focused by using tab. The focus wont move until the user presses tab again.</p>
-                    <a href="#">Link</a>
-                </div>
-                <div class="wrong">
-                    <h3>Wrong</h3>
-                    <p>Once this link is focused it will display some text below but the focus will be removed.</p>
-                    <a id="gl-2-1-1-link" href="#">Link</a>
-                    <h4 id="hidden-example" class="hidden">The link above has been focused but is not possible to interact with. This text will disappear in 10 seconds.</h4>
-                </div>
-            </div>
-            <h4>2. Focus moving after a certain time</h4>
-            <div class="example-box">
-                <div class="correct">
-                    <h3>Correct</h3>
-                    <p>A link that can be focused by using tab. The focus wont move until the user presses tab again.</p>
-                    <a href="#">Link</a>
-                </div>
-                <div class="wrong">
-                    <h3>Wrong</h3>
-                    <p>The focus will move after the counter reaches 0.</p>
-                    <h4 id="gl-2-1-1-countdown">Countdown: 3</h4>
-                    <a id="gl-2-1-1-link-from" href="#gl-2-1-1-link-from">Link</a>
-                    <a id="gl-2-1-1-link-to" href="#gl-2-1-1-link-to">Link</a>
-                </div>
-            </div>
-            <h4>3. Event handling on another element to act as link</h4>
-            <!-- https://www.w3.org/WAI/WCAG21/Techniques/failures/F42 -->
-            <div class="example-box">
-                <div class="correct">
-                    <h3>Correct</h3>
-                    <p>The link below is a normal link that uses the anchor element.</p>
-                    <a href="#">Link</a>
-                </div>
-                <div class="wrong">
-                    <h3>Wrong</h3>
+                <section id="guideline-2-1">
+                    <h2>Guideline 2.1: Keyboard Accessible</h2>
                     <p>
-                        The "link" below is in fact a span element disguising as an anchor element.
-                        This link wont be recognized by assistive technology.
+                        Make all functionality available from a keyboard.
                     </p>
-                    <span id="fake-link" class="faked-link">This link is fake!</span>
-                </div>
-            </div>
 
-            <h2 id="guideline-2-2">Guideline 2.2: Enough Time</h2>
-            <p>
-                Provide users enough time to read and use content.
-            </p>
+                    <h3>2.1.1: Keyboard</h3>
+                    <p>
+                        All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes,
+                        except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
+                    </p>
+                    <h3>Examples:</h3>
 
-            <h3>2.2.2: Pause, Stop, Hide</h3>
-            <p>For moving, blinking, scrolling, or auto-updating information, all of the following are true:</p>
-            <ul>
-                <li>
-                    Moving, blinking, scrolling - For any moving, blinking or scrolling information that (1) starts automatically,
-                    (2) lasts more than five seconds, and (3) is presented in parallel with other content, there is a mechanism for the user to pause, stop,
-                    or hide it unless the movement, blinking, or scrolling is part of an activity where it is essential;
-                </li>
-                <li>
-                    Auto-updating - For any auto-updating information that (1) starts automatically and (2) is presented in parallel with other content,
-                    there is a mechanism for the user to pause, stop, or hide it or to control the frequency of the update unless the auto-updating
-                    is part of an activity where it is essential.
-                </li>
-            </ul>
-            <h3>Examples:</h3>
-            <h4>1. Flashing sign</h4>
-            <div class="example-box">
-                <div class="correct">
-                    <h3>Correct</h3>
-                    <p>A flashing sale sign that can be paused and resumed.</p>
-                    <div id="gl-2-2-2-sign-c" class="gl-2-2-2-flash flashing">
-                        <h4>SALE</h4>
+                    <h4>1. Focus not visible</h4>
+                    <!-- https://www.w3.org/WAI/WCAG21/Techniques/failures/F55 -->
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>A link that can be focused by using tab. The focus wont move until the user presses tab again.</p>
+                            <a href="#">Link</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>Once this link is focused it will display some text below but the focus will be removed.</p>
+                            <a id="gl-2-1-1-link" href="#">Link</a>
+                            <h4 id="hidden-example" class="hidden">The link above has been focused but is not possible to interact with. This text will disappear in 10 seconds.</h4>
+                        </div>
                     </div>
-                    <div class="gl-2-2-2-controller">
-                        <button id="gl-2-2-2-start">Resume</button>
-                        <button id="gl-2-2-2-pause">Pause</button>
+                    <h4>2. Focus moving after a certain time</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>A link that can be focused by using tab. The focus wont move until the user presses tab again.</p>
+                            <a href="#">Link</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The focus will move after the counter reaches 0.</p>
+                            <h4 id="gl-2-1-1-countdown">Countdown: 3</h4>
+                            <a id="gl-2-1-1-link-from" href="#gl-2-1-1-link-from">Link</a>
+                            <a id="gl-2-1-1-link-to" href="#gl-2-1-1-link-to">Link</a>
+                        </div>
                     </div>
-                </div>
-                <div class="wrong">
-                    <h3>Wrong</h3>
-                    <p>A flashing sale sign that can't be paused in anyway.</p>
-                    <div id="gl-2-2-2-sign-w" class="gl-2-2-2-flash flashing">
-                        <h4>SALE</h4>
+                    <h4>3. Event handling on another element to act as link</h4>
+                    <!-- https://www.w3.org/WAI/WCAG21/Techniques/failures/F42 -->
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The link below is a normal link that uses the anchor element.</p>
+                            <a href="#">Link</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>
+                                The "link" below is in fact a span element disguising as an anchor element.
+                                This link wont be recognized by assistive technology.
+                            </p>
+                            <span id="fake-link" class="faked-link">This link is fake!</span>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </section>
 
-            <h2 id="guideline-2-3">Guideline 2.3: Seizures and Physical Reactions</h2>
-            <p>
-                Do not design content in a way that is known to cause seizures or physical reactions.
-            </p>
-            <h3>2.3.1: Three Flashes or Below Threshold (Level A)</h3>
-            <p>
-                Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.
-            </p>
-            <h3>Example:</h3>
-            <h4>1. Flashing elements</h4>
-            <div class="example-box">
-                <div class="correct">
-                    <h3>Correct</h3>
-                    <p>A flashing text that flashes a total of twice per second.</p>
-                    <div id="gl-2-3-1-sign-c" class="moderate-flashing">
-                        <h4>2 flashes per second.</h4>
-                    </div>
-                </div>
-                <div class="wrong">
-                    <h3>Wrong</h3>
-                    <p>A flashing text that flashes a total of five times per second.</p>
-                    <div id="gl-2-3-1-sign-w" class="quick-flashing">
-                        <h4>5 flashes per second.</h4>
-                    </div>
-                </div>
-            </div>
-            <h3>2.3.2: Three Flashes (Level AAA)</h3>
-            <p>
-                Web pages do not contain anything that flashes more than three times in any one second period.
-            </p>
-            <div class="example-box">
-                <div class="disclaimer">
-                    <p>Because of the flashing sign in the "wrong" example above this rule automatically fails.</p>
-                </div>
-            </div>
+                <section id="guideline-2-2">
+                    <h2>Guideline 2.2: Enough Time</h2>
+                    <p>
+                        Provide users enough time to read and use content.
+                    </p>
 
-            <h2 id="guideline-2-4">Guideline 2.4: Navigable</h2>
-            <p>
-                Provide ways to help users navigate, find content, and determine where they are.
-            </p>
-            <h3>2.4.2: Page Titled (Level A)</h3>
-            <p>
-                Web pages have titles that describe topic or purpose.
-            </p>
-            <div class="example-box">
-                <div class="disclaimer">
+                    <h3>2.2.2: Pause, Stop, Hide</h3>
+                    <p>For moving, blinking, scrolling, or auto-updating information, all of the following are true:</p>
+                    <ul>
+                        <li>
+                            Moving, blinking, scrolling - For any moving, blinking or scrolling information that (1) starts automatically,
+                            (2) lasts more than five seconds, and (3) is presented in parallel with other content, there is a mechanism for the user to pause, stop,
+                            or hide it unless the movement, blinking, or scrolling is part of an activity where it is essential;
+                        </li>
+                        <li>
+                            Auto-updating - For any auto-updating information that (1) starts automatically and (2) is presented in parallel with other content,
+                            there is a mechanism for the user to pause, stop, or hide it or to control the frequency of the update unless the auto-updating
+                            is part of an activity where it is essential.
+                        </li>
+                    </ul>
+                    <h3>Examples:</h3>
+                    <h4>1. Flashing sign</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>A flashing sale sign that can be paused and resumed.</p>
+                            <div id="gl-2-2-2-sign-c" class="gl-2-2-2-flash flashing">
+                                <h4>SALE</h4>
+                            </div>
+                            <div class="gl-2-2-2-controller">
+                                <button id="gl-2-2-2-start">Resume</button>
+                                <button id="gl-2-2-2-pause">Pause</button>
+                            </div>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>A flashing sale sign that can't be paused in anyway.</p>
+                            <div id="gl-2-2-2-sign-w" class="gl-2-2-2-flash flashing">
+                                <h4>SALE</h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="guideline-2-3">
+                    <h2>Guideline 2.3: Seizures and Physical Reactions</h2>
                     <p>
-                        To demonstrate this violation, the web page lacks a descriptive title that identifies its content or purpose.
+                        Do not design content in a way that is known to cause seizures or physical reactions.
                     </p>
-                </div>
-            </div>
-            <h3>2.4.3: Focus Order (Level A)</h3>
-            <p>
-                If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation,
-                focusable components receive focus in an order that preserves meaning and operability.
-            </p>
-            <div class="example-box">
-                <div class="disclaimer">
+                    <h3>2.3.1: Three Flashes or Below Threshold (Level A)</h3>
                     <p>
-                        The navigation menu at the start of this page uses tabindex in an order that does not preserve meaning.
-                        When using tab the focus will start at "Home" then move to "Understandable" then "Perceivable" and lastly "Operable".
+                        Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.
                     </p>
+                    <h3>Example:</h3>
+                    <h4>1. Flashing elements</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>A flashing text that flashes a total of twice per second.</p>
+                            <div id="gl-2-3-1-sign-c" class="moderate-flashing">
+                                <h4>2 flashes per second.</h4>
+                            </div>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>A flashing text that flashes a total of five times per second.</p>
+                            <div id="gl-2-3-1-sign-w" class="quick-flashing">
+                                <h4>5 flashes per second.</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>2.3.2: Three Flashes (Level AAA)</h3>
                     <p>
-                        Preferably tabindex should never have a higher value than 0 since it can disrupt the logical order of tabbable elements.
+                        Web pages do not contain anything that flashes more than three times in any one second period.
                     </p>
-                </div>
-            </div>
-            <h3>2.4.6: Headings and Labels (Level AA)</h3>
-            <p>
-                Headings and labels describe topic or purpose.
-            </p>
-            <div class="example-box">
-                <div class="disclaimer">
+                    <div class="example-box">
+                        <div class="disclaimer">
+                            <p>Because of the flashing text in the "wrong" example above this rule automatically fails.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="guideline-2-4">
+                    <h2>Guideline 2.4: Navigable</h2>
                     <p>
-                        <!-- Check if disclaimer is enough or if you need to create actual test case. -->
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, dolor.
+                        Provide ways to help users navigate, find content, and determine where they are.
                     </p>
-                </div>
-            </div>
+                    <h3>2.4.2: Page Titled (Level A)</h3>
+                    <p>
+                        Web pages have titles that describe topic or purpose.
+                    </p>
+                    <div class="example-box">
+                        <div class="disclaimer">
+                            <p>
+                                To demonstrate this violation, the web page lacks a descriptive title that identifies its content or purpose.
+                            </p>
+                        </div>
+                    </div>
+                    <h3>2.4.3: Focus Order (Level A)</h3>
+                    <p>
+                        If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation,
+                        focusable components receive focus in an order that preserves meaning and operability.
+                    </p>
+                    <div class="example-box">
+                        <div class="disclaimer">
+                            <p>
+                                The navigation menu at the start of this page uses tabindex in an order that does not preserve meaning.
+                                When using tab the focus will start at "Home" then move to "Understandable" then "Perceivable" and lastly "Operable".
+                            </p>
+                            <p>
+                                Preferably tabindex should never have a higher value than 0 since it can disrupt the logical order of tabbable elements.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </article>
         </main>
         <footer>
             <p>Made by <a href="https://github.com/Ylih">Ylih</a> and <a href="https://github.com/elemoser">elemoser</a></p>

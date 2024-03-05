@@ -1,0 +1,113 @@
+/** HEADER **/
+header,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+    font-family: "Open Sans", sans-serif;
+    color: #333;
+}
+
+header h1 {
+    text-align: center;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+
+/** CONTENT **/
+main {
+    margin: 0 auto;
+    max-width: 70rem;
+    min-height: 80vh;
+}
+
+img {
+    width: 100%;
+    border: 1px solid black;
+}
+
+table,
+th,
+td {
+    border: 1px solid #333;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+}
+
+/** EXAMPLE BOXES **/
+.example-box {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 2rem;
+}
+
+/* pass flex:1 to direct children on example-box. */
+.example-box > * {
+    flex: 1;
+    padding: 1em;
+}
+
+.correct {
+    background-color: #88c98280;
+    border: 1px solid darkgreen;
+    border-radius: 0.5em;
+}
+
+.wrong {
+    background-color: #e5767680;
+    border: 1px solid darkred;
+    border-radius: 0.5em;
+}
+
+.disclaimer {
+    background-color: #ffdd1b80;
+    border: 1px solid darkgoldenrod;
+    border-radius: 0.5em;
+}
+
+.color-example {
+    width: 95%;
+    padding: 2.5% 2.5%;
+    background-color: white;
+    border-radius: 0.5em;
+    border: 1px solid gray;
+}
+
+/** FOOTER **/
+footer {
+    text-align: center;
+}
+
+/** GENERAL USE **/
+.hidden {
+    display: none;
+}
+
+/** ANIMATIONS **/
+@keyframes flash {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.flashing {
+    animation: flash 1s infinite alternate;
+}
+
+.moderate-flashing {
+    animation: flash 0.25s infinite alternate;
+}
+
+.quick-flashing {
+    animation: flash 0.1s infinite alternate;
+}

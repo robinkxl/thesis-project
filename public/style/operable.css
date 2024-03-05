@@ -1,0 +1,29 @@
+@import './base.css';
+
+/* 2.1.1 Keyboard */
+.faked-link {
+    color: blue;
+    text-decoration: underline;
+}
+
+.faked-link:hover {
+    cursor: pointer;
+}
+
+.faked-link:active {
+    color: red;
+}
+
+/* gl-2-2-2-flash */
+.gl-2-2-2-flash {
+    width: 25%;
+    margin: 0 auto 2em auto;
+    text-align: center;
+    background-color: #faf732;
+    border: 1px solid black;
+}
+
+.gl-2-2-2-controller {
+    width: 25%;
+    margin: 0 auto;
+}

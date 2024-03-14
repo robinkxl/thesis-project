@@ -9,14 +9,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 12.x
+      - name: Use Node.js 18
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 18.x
+      - name: Setup Chrome
+        run: |
+          set -ex
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt update && sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get -f install -y
       - run: npm ci
       - run: npm run build --if-present
       - run: npm start & npx wait-on http://localhost:1338
       - name: Run axe
         run: |
           npm install -g @axe-core/cli
-          axe http://localhost:1338 --exit
+          axe --chrome-options="no-sandbox" http://localhost:1338 http://localhost:1338/operable http://localhost:1338/perceivable --exit

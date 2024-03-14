@@ -1,0 +1,19 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+      branches: [test, master]
+    pull_request:
+      branches: [test, master]
+  jobs:
+    axe:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Use Node.js 18
+          uses: actions/setup-node@v1
+          with:
+            node-version: 18.x
+        - name: Chrome browser-action
+          uses: browser-actions/setup-chrome@v1
+          run: chrome --version

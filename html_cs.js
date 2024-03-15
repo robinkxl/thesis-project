@@ -4,12 +4,12 @@ const puppeteer = require('puppeteer');
 // const url = 'http://localhost:1338/';
 var url = process.argv[2];
 
-// Replace with the path to the chrome executable in your file system. This one assumes MacOSX.
-const executablePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+// Replace with the path to the chrome executable in your file system.
+// const executablePath = '/usr/bin/google-chrome-stable';
 
 (async () => {
   const browser = await puppeteer.launch({
-    executablePath
+    // executablePath
   });
 
   const page = await browser.newPage();

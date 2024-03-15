@@ -15,7 +15,14 @@ var url = process.argv[2];
   const page = await browser.newPage();
 
   page.on('console', msg => {
-    console.log(msg.text())
+    const output = msg.text();
+    
+    if (output.includes('Warning') || output.includes('Error')) {
+        console.log(output);
+        throw new Error("Violations found!");
+    } else {
+        console.log("No violations.");
+    }
   });
 
   await page.goto(url);

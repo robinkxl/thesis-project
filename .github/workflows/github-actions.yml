@@ -57,7 +57,7 @@ jobs:
           npm i --save html_codesniffer
           cd node_modules/html_codesniffer
           npm install
-          cd ..
+          cd ../..
           npm i puppeteer
           cp html_cs.js node_modules/html_codesniffer/html_cs.js
           node node_modules/html_codesniffer/html_cs.js "http://localhost:1338"

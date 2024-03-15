@@ -59,3 +59,4 @@ jobs:
           npm install
           cd ..
           npm i puppeteer
+          node html_cs.js "http://localhost:1338"

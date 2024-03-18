@@ -64,7 +64,7 @@ function set-up-htmlcs {
     cd node_modules/html_codesniffer
     npm install
     # grunt build
-    cd ..
+    cd ../..
     npm i puppeteer
 }
 
@@ -79,7 +79,8 @@ function run-htmlcs {
     results=$(node html_cs.js "$@" | sed 's/;/,/g')
     formatted_results=$(echo "$results" | sed 's/|/;/g')
     mkdir -p results/HTML_CodeSniffer
-    echo "$results" > "results/HTML_CodeSniffer/output.txt"
+    echo "Url: $@" > "results/HTML_CodeSniffer/output.txt"
+    echo "$results" >> "results/HTML_CodeSniffer/output.txt"
     echo "Message;WCAG;DOM_object;Unknown;Description;HTML_tag" > "results/HTML_CodeSniffer/output.csv"
     echo -e "$formatted_results" >> "results/HTML_CodeSniffer/output.csv"
     echo "HTML_CodeSniffer audit generated and saved at results/HTML_CodeSniffer."
@@ -171,5 +172,5 @@ function main {
    
 }
 
-# http://localhost:1338/
+# ./test.bash run axe http://localhost:1338/
 main "$@"

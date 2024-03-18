@@ -4,18 +4,27 @@ const puppeteer = require('puppeteer');
 // const url = 'http://localhost:1338/';
 var url = process.argv[2];
 
-// Replace with the path to the chrome executable in your file system. This one assumes MacOSX.
-const executablePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+// Replace with the path to the chrome executable in your file system.
+// const executablePath = '/usr/bin/google-chrome-stable';
 
 (async () => {
   const browser = await puppeteer.launch({
-    executablePath
+    // executablePath
   });
 
   const page = await browser.newPage();
 
   page.on('console', msg => {
-    console.log(msg.text())
+    const output = msg.text();
+    
+    // Warnings pass but are printed
+    // Errors result in exit 1 and are printed
+    if (output.includes('Error')) {
+        console.log(output);
+        process.exit(1);
+    } else if (output.includes('Warning')) {
+      console.log(output);
+    }
   });
 
   await page.goto(url);

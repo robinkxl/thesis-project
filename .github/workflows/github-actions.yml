@@ -53,7 +53,6 @@ jobs:
       - run: npm start & npx wait-on http://localhost:1338
       - name: Run HTML_CodeSniffer
         run: |
-          npm i -g grunt-cli
           npm i --save html_codesniffer
           cd node_modules/html_codesniffer
           npm install

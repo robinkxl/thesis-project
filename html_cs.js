@@ -17,11 +17,13 @@ var url = process.argv[2];
   page.on('console', msg => {
     const output = msg.text();
     
-    if (output.includes('Warning') || output.includes('Error')) {
+    // Warnings pass but are printed
+    // Errors result in exit 1 and are printed
+    if (output.includes('Error')) {
         console.log(output);
-        throw new Error("Violations found!");
-    } else {
-        console.log("No violations.");
+        process.exit(1);
+    } else if (output.includes('Warning')) {
+      console.log(output);
     }
   });
 

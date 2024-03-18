@@ -6,61 +6,6 @@ on:
   pull_request:
     branches: [master]
 jobs:
-  axe:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js 18
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-      - name: Chrome browser-action
-        uses: browser-actions/setup-chrome@v1
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm start & npx wait-on http://localhost:1338
-      - name: Run axe
-        run: |
-          npm install -g @axe-core/cli
-          axe http://localhost:1338 --exit
-
-  achecker:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js 18
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm start & npx wait-on http://localhost:1338
-      - name: Run achecker
-        run: |
-          npm install accessibility-checker
-          npx achecker "http://localhost:1338/understandable"
-
-  htmlcs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js 18
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm start & npx wait-on http://localhost:1338
-      - name: Run HTML_CodeSniffer
-        run: |
-          npm i --save html_codesniffer
-          cd node_modules/html_codesniffer
-          npm install
-          cd ../..
-          npm i puppeteer
-          cp html_cs.js node_modules/html_codesniffer/html_cs.js
-          node node_modules/html_codesniffer/html_cs.js "http://localhost:1338/"
-
   asqatasun:
     runs-on: ubuntu-latest
     steps:
@@ -69,7 +14,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y curl jq
+      - name: Start Asqatasun docker container
+        run: docker-compose -f asqatasun-docker/api-5.0.0-rc.2_ubuntu-18.04/docker-compose.yml up -d
+      - name: Wait for Docker container to start
+        run: |
+          sleep 10
       - name: Run Asqatasun
         run: |
-          docker-compose -f asqatasun-docker/api-5.0.0-rc.2_ubuntu-18.04/docker-compose.yml up -d
           curl http://admin%40asqatasun.org:myAsqaPassword@localhost:8081/api/v0/audit

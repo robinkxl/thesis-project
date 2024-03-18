@@ -60,3 +60,15 @@ jobs:
           npm i puppeteer
           cp html_cs.js node_modules/html_codesniffer/html_cs.js
           node node_modules/html_codesniffer/html_cs.js "http://localhost:1338/"
+
+  asqatasun:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Asqatasun
+        run: |
+          cd asqatasun-docker/api-5.0.0-rc.2_ubuntu-18.04
+          docker-compose rm -fsv
+          docker-compose --build
+          docker-compose up -d
+          cd ../../../../..

@@ -34,7 +34,8 @@ function view-asq-audit {
 
     API_URL="${API_PREFIX_URL}/api/v0/audit/$@"
     results=$(curl -s -X GET "${API_URL}" -H  "accept: */*")
-    echo "$results" > ${FOLDER}/audit.json
+    # echo "$results" > ${FOLDER}/audit.json
+    echo "$results"
     failed=$(echo "$results" |  jq '.subject.repartitionBySolutionType[1].number')
     echo "Failed tests: $failed"
 
@@ -68,7 +69,7 @@ function main {
     echo "Waiting for audit..."
     sleep 10
     view-asq-audit "${AUDIT_ID}"
-    save-asq-audit "${AUDIT_ID}"
+    # save-asq-audit "${AUDIT_ID}"
 }
 
 # http://localhost:1338/

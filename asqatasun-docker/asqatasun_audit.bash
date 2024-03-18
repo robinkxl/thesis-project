@@ -14,7 +14,7 @@ function run-asq {
     LEVEL="AA"
     URL_TO_AUDIT="$@"
 
-    AUDIT_ID=$(curl -s -X POST \
+    curl -s -X POST \
          "${API_URL}"                                               \
          -H  "accept: */*"                                          \
          -H  "Content-Type: application/json"                       \
@@ -24,9 +24,9 @@ function run-asq {
                                \"level\": \"${LEVEL}\",             \
                                \"contractId\": ${PROJECT_ID},       \
                                \"tags\": []                         \
-             }")
+             }"
 
-    echo "$AUDIT_ID"
+    # echo "$AUDIT_ID"
 }
 
 function view-asq-audit {
@@ -63,12 +63,14 @@ function save-asq-audit {
 }
 
 function main {
-    AUDIT_ID=$(run-asq "$@")
+    # AUDIT_ID=$(run-asq "$@")
+    echo "$@"
+    run-asq "$@"
     # AUDIT_ID=$(cat "${FOLDER}/audit.txt")
-    echo "Asqatasun audit ${AUDIT_ID} generated."
-    echo "Waiting for audit..."
-    sleep 10
-    view-asq-audit "${AUDIT_ID}"
+    # echo "Asqatasun audit ${AUDIT_ID} generated."
+    # echo "Waiting for audit..."
+    # sleep 10
+    # view-asq-audit "${AUDIT_ID}"
     # save-asq-audit "${AUDIT_ID}"
 }
 

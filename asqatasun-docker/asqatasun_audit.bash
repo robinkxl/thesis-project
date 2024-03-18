@@ -37,9 +37,20 @@ function view-asq-audit {
     echo "$results" > ${FOLDER}/audit.json
     failed=$(echo "$results" |  jq '.subject.repartitionBySolutionType[1].number')
     echo "Failed tests: $failed"
-    if [[ $failed -gt 0 ]]
-    then
-        exit 1
+
+    if [[ "$failed" =~ ^[0-9]+$ ]]; then
+        # variable is an integer
+        if [[ $failed -gt 0 ]]; then
+            echo "See audit.csv for failed tests."
+            exit 1
+        elif [ $failed -eq 0 ]; then
+            echo "No tests failed."
+        else
+            echo "Something went wrong."
+        fi
+    else
+        # variable is not an integer
+        echo "Audit $@ could not be downloaded; please check status manually."
     fi
 }
 

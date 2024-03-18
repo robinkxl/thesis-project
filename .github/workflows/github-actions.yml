@@ -59,4 +59,4 @@ jobs:
           cd ../..
           npm i puppeteer
           cp html_cs.js node_modules/html_codesniffer/html_cs.js
-          node node_modules/html_codesniffer/html_cs.js "http://localhost:1338/perceivable"
+          node node_modules/html_codesniffer/html_cs.js "http://localhost:1338/"

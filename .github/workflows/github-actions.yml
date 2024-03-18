@@ -67,4 +67,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run Asqatasun
         run: |
-          docker-compose -f asqatasun-docker/api-5.0.0-rc.2_ubuntu-18.04/docker-compose.yml up --build
+          docker-compose -f asqatasun-docker/api-5.0.0-rc.2_ubuntu-18.04/docker-compose.yml up -d

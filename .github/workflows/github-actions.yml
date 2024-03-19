@@ -21,4 +21,4 @@ jobs:
           sleep 20
       - name: Run Asqatasun
         run: |
-          curl http://admin%40asqatasun.org:myAsqaPassword@127.0.0.1:8085/api/v0/audit
+          curl http://admin%40asqatasun.org:myAsqaPassword@localhost:8085/api/v0/audit

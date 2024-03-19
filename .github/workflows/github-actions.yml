@@ -18,7 +18,8 @@ jobs:
         run: docker-compose -f asqatasun-docker/api-5.0.0-rc.2_ubuntu-18.04/docker-compose.yml up -d
       - name: Wait for Docker container to start
         run: |
-          sleep 10
+          sleep 8
       - name: Run Asqatasun
         run: |
+          curl https://doc.asqatasun.org
           curl http://admin%40asqatasun.org:myAsqaPassword@localhost:8081/api/v0/audit

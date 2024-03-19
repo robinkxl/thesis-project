@@ -42,4 +42,4 @@ services:
             DB_DATABASE: "${DB_DATABASE:-asqatasun}"
             DEBUG_DISPLAY_SOFTWARE_VERSIONS: "${DEBUG_DISPLAY_SOFTWARE_VERSIONS:-enabled}"
         ports:
-            - "${API_HOST_IP:-0.0.0.0}:${API_HOST_PORT:-8081}:8080"
+            - "${API_HOST_IP:-0.0.0.0}:${API_HOST_PORT:-8081}:8081"

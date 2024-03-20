@@ -3,9 +3,9 @@ name: Web Accessibility Testing Tools Results
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   axe:

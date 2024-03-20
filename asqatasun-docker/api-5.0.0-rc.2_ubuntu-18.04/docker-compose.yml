@@ -9,6 +9,7 @@ services:
     #         jdbc:mysql://<host_ip>:<port>/asqatasun   If you use the .env configuration file
     ###############################################################################################################
     asqatasun-db:
+        container_name: asqa-db
         image: "${DB_IMAGE:-mariadb:10.6}"
         environment:
             MYSQL_RANDOM_ROOT_PASSWORD: "yes"
@@ -27,6 +28,7 @@ services:
     #         http://<host_ip>:<port>   If you use the .env configuration file
     ##############################################################################################################
     asqatasun-api:
+        container_name: asqa-api
         build:
             context: ./
         links:

@@ -4,9 +4,12 @@
 # Global variables
 ASQA_USER="admin%40asqatasun.org"
 ASQA_PASSWORD="myAsqaPassword"
-PORT="8085"
+PORT="8081"
 API_PREFIX_URL="http://${ASQA_USER}:${ASQA_PASSWORD}@localhost:${PORT}"
 FOLDER="asqatasun-docker"
+
+# Path to script directory
+SCRIPT_DIR=$(dirname "$0")
 
 function run-asq {
     API_URL="${API_PREFIX_URL}/api/v0/audit/page/run"
@@ -36,7 +39,7 @@ function view-asq-audit {
     API_URL="${API_PREFIX_URL}/api/v0/audit/$@"
     results=$(curl -s -X GET "${API_URL}" -H  "accept: */*")
     # Save results
-    echo "$results" > ${FOLDER}/audit.json
+    echo "$results" > ${SCRIPT_DIR}/audit.json
     # Extract number of failed tests
     failed=$(echo "$results" |  jq '.subject.repartitionBySolutionType[1].number')
     echo "Failed tests: $failed"

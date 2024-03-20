@@ -53,6 +53,7 @@ jobs:
           npm install accessibility-checker
           npx achecker $URL
       - name: Archive accessibility-checker test results
+        if: success() || failure()
         uses: actions/upload-artifact@v4
         with:
           name: Accessibility-checker

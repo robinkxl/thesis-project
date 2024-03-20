@@ -79,13 +79,14 @@ function run-htmlcs {
     results=$(node html_cs.js "$@" | sed 's/;/,/g')
     formatted_results=$(echo "$results" | sed 's/|/;/g')
     mkdir -p results/HTML_CodeSniffer
-    echo "Url: $@" > "results/HTML_CodeSniffer/output.txt"
-    echo "$results" >> "results/HTML_CodeSniffer/output.txt"
-    echo "Message;WCAG;DOM_object;Unknown;Description;HTML_tag" > "results/HTML_CodeSniffer/output.csv"
-    echo -e "$formatted_results" >> "results/HTML_CodeSniffer/output.csv"
+    echo "Url: $@" > "results/HTML_CodeSniffer/htmlcs-results.txt"
+    echo "$results" >> "results/HTML_CodeSniffer/htmlcs-results.txt"
+    echo "Message;WCAG;DOM_object;Unknown;Description;HTML_tag" > "results/HTML_CodeSniffer/htmlcs-results.csv"
+    echo -e "$formatted_results" >> "results/HTML_CodeSniffer/htmlcs-results.csv"
     echo "HTML_CodeSniffer audit generated and saved at results/HTML_CodeSniffer."
 }
 
+#TODO update the script for Asqatasun!
 function set-up-asq {
     # Asqatasun
     # Download the tool https://gitlab.com/asqatasun/asqatasun-docker

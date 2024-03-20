@@ -21,14 +21,14 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm start & npx wait-on http://localhost:1338
-      - name: Run axe
+      - name: Run axe-core
         run: |
           npm install -g @axe-core/cli
           axe http://localhost:1338 --dir ./results/axe/ --save axe-results.json
-      - name: Archive code coverage results
+      - name: Archive axe-core test results
         uses: actions/upload-artifact@v4
         with:
-          name: axe-audit-report
+          name: Axe-core
           path: results/axe/axe-results.json
 
   achecker:
@@ -42,10 +42,15 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm start & npx wait-on http://localhost:1338
-      - name: Run achecker
+      - name: Run accessibility-checker
         run: |
           npm install accessibility-checker
           npx achecker "http://localhost:1338/understandable"
+      - name: Archive accessibility-checker test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: Accessibility-checker
+          path: results/achecker/*
 
   htmlcs:
     runs-on: ubuntu-latest
@@ -65,5 +70,9 @@ jobs:
           npm install
           cd ../..
           npm i puppeteer
-          cp html_cs.js node_modules/html_codesniffer/html_cs.js
-          node node_modules/html_codesniffer/html_cs.js "http://localhost:1338/"
+          bash test.bash run htmlcs "http://localhost:1338/"
+      - name: Archive HTML_CodeSniffer test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: HTML_CodeSniffer
+          path: results/HTML_CodeSniffer/*

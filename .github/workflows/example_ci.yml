@@ -9,6 +9,12 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  # Url for the running web app
+  APP: http://localhost:1338
+  # Url to test
+  URL: http://localhost:1338
+
 jobs:
   axe:
     runs-on: ubuntu-latest
@@ -22,11 +28,12 @@ jobs:
         uses: browser-actions/setup-chrome@v1
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm start & npx wait-on http://localhost:1338
+      - run: npm start & npx wait-on $APP
       - name: Run axe
+        if: 
         run: |
           npm install -g @axe-core/cli
-          axe http://localhost:1338 --exit
+          axe $URL --exit
 
   achecker:
     runs-on: ubuntu-latest
@@ -38,11 +45,11 @@ jobs:
           node-version: 18.x
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm start & npx wait-on http://localhost:1338
+      - run: npm start & npx wait-on $APP
       - name: Run achecker
         run: |
           npm install accessibility-checker
-          npx achecker "http://localhost:1338/understandable"
+          npx achecker $URL
 
   htmlcs:
     runs-on: ubuntu-latest
@@ -54,7 +61,7 @@ jobs:
           node-version: 18.x
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm start & npx wait-on http://localhost:1338
+      - run: npm start & npx wait-on $APP
       - name: Run HTML_CodeSniffer
         run: |
           npm i --save html_codesniffer
@@ -63,4 +70,4 @@ jobs:
           cd ../..
           npm i puppeteer
           cp html_cs.js node_modules/html_codesniffer/html_cs.js
-          node node_modules/html_codesniffer/html_cs.js "http://localhost:1338/"
+          node node_modules/html_codesniffer/html_cs.js $URL

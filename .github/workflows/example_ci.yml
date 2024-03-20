@@ -1,11 +1,10 @@
-name: Web Accessibility Testing Tools Results
-# This workflow runs all tools on a given webpage and save the results as github artifacts.
+name: Example Web Accessibility CI
+# This workflow demonstrates how the Web Accessibility tools chosen can be used in a CI pipeline.
+# The jobs below will fail if the webpage tested contains WCAG violations.
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ setup-testing-env ]
 
 jobs:
   axe:
@@ -24,12 +23,7 @@ jobs:
       - name: Run axe
         run: |
           npm install -g @axe-core/cli
-          axe http://localhost:1338 --dir ./results/axe/ --save axe-results.json
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v4
-        with:
-          name: axe-audit-report
-          path: results/axe/axe-results.json
+          axe http://localhost:1338 --exit
 
   achecker:
     runs-on: ubuntu-latest

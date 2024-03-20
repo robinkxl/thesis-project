@@ -40,5 +40,5 @@ In order to test the different tools locally, we created a bash-script (work in 
 ## Testing the tools in github actions 
 
 In order to test the different tools in github actions:
-* go to *.github/workflows/example_ci.yml* and see an example of how to integrate them in a CI pipeline.
-* go to *.github/workflows/test_ci.yml* and view the results from the Web Accessibility testing tools by downloading them from github artifacts.
+* go to *.github/workflows/example_ci.yml* and see an [example](https://github.com/idasm-unibe-ch/unibe-web-accessibility/actions/workflows/example_ci.yml) of how to integrate them in a CI pipeline.
+* go to *.github/workflows/test_ci.yml* and view the [results](https://github.com/idasm-unibe-ch/unibe-web-accessibility/actions/workflows/test_ci.yml) from the Web Accessibility testing tools by downloading them from github artifacts.

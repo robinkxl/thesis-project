@@ -7,6 +7,12 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  # Url for the running web app
+  APP: http://localhost:1338
+  # Url to test
+  URL: http://localhost:1338/perceivable
+
 jobs:
   axe:
     runs-on: ubuntu-latest
@@ -20,11 +26,11 @@ jobs:
         uses: browser-actions/setup-chrome@v1
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm start & npx wait-on http://localhost:1338
+      - run: npm start & npx wait-on $APP
       - name: Run axe-core
         run: |
           npm install -g @axe-core/cli
-          axe http://localhost:1338 --dir ./results/axe/ --save axe-results.json
+          axe $URL --dir ./results/axe/ --save axe-results.json
       - name: Archive axe-core test results
         uses: actions/upload-artifact@v4
         with:
@@ -41,11 +47,11 @@ jobs:
           node-version: 18.x
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm start & npx wait-on http://localhost:1338
+      - run: npm start & npx wait-on $APP
       - name: Run accessibility-checker
         run: |
           npm install accessibility-checker
-          npx achecker "http://localhost:1338/understandable"
+          npx achecker $URL
       - name: Archive accessibility-checker test results
         uses: actions/upload-artifact@v4
         with:
@@ -62,7 +68,7 @@ jobs:
           node-version: 18.x
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm start & npx wait-on http://localhost:1338
+      - run: npm start & npx wait-on $APP
       - name: Run HTML_CodeSniffer
         run: |
           npm i --save html_codesniffer
@@ -70,7 +76,7 @@ jobs:
           npm install
           cd ../..
           npm i puppeteer
-          bash test.bash run htmlcs "http://localhost:1338/"
+          bash test.bash run htmlcs $URL
       - name: Archive HTML_CodeSniffer test results
         uses: actions/upload-artifact@v4
         with:

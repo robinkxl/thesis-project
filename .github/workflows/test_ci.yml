@@ -2,9 +2,9 @@ name: Web Accessibility
 
 on:
   push:
-    branches: [ master, setup-testing-env ]
+    branches: [ main, setup-testing-env ]
   pull_request:
-    branches: [ master, setup-testing-env ]
+    branches: [ main, setup-testing-env ]
 
 jobs:
   axe:

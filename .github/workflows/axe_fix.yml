@@ -35,10 +35,12 @@ jobs:
       - name: testing chromedriver
         run: |
           npm install -g chromedriver@122
+          chromedriver --version
           echo chromedriver path: $(which chromedriver)
       - name: Run axe-core
         run: |
           npm install -g @axe-core/cli
+          chromedriver --version
           axe $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
       - name: Archive axe-core test results
         uses: actions/upload-artifact@v4

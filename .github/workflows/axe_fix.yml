@@ -25,8 +25,8 @@ jobs:
         with:
           chrome-version: 123
       - name: Chrome check
-        run: chrome --version
         run: |
+          chrome --version
           ${{ steps.setup-chrome.outputs.chrome-path }}
       - run: npm ci
       - run: npm run build --if-present

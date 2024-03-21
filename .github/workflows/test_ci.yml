@@ -60,7 +60,7 @@ jobs:
         if: success() || failure()
         uses: actions/upload-artifact@v4
         with:
-          name: Accessibility-checker
+          name: Accessibility-checker-${{ matrix.webpage }}
           path: results/achecker/*
 
   htmlcs:
@@ -86,7 +86,8 @@ jobs:
           npm i puppeteer
           bash test.bash run htmlcs $APP/${{ matrix.webpage }}
       - name: Archive HTML_CodeSniffer test results
+        if: success() || failure()
         uses: actions/upload-artifact@v4
         with:
-          name: HTML_CodeSniffer
+          name: HTML_CodeSniffer-${{ matrix.webpage }}
           path: results/HTML_CodeSniffer/*

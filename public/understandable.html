@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="EN">
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,188 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
         <title>Web Accessibility Testing Page</title>
+        <script src="script/understandable.js" type="text/javascript" defer></script>
+        <script src="script/search.js" type="text/javascript" defer></script>
     </head>
     <body>
+        <footer>
+            <p>Made by <a href="https://github.com/Ylih">Ylih</a> and <a href="https://github.com/elemoser">elemoser</a></p>
+        </footer>
+        <main>
+            <article>
+                <h1>Understandable</h1>
+                <p>Information and the operation of the user interface must be understandable.</p>
+                <section id="guideline-3-1">
+                    <h2>Guideline 3.1: Readable</h2>
+                    <p>
+                        Make text content readable and understandable.
+                    </p>
+
+                    <h3>3.1.1: Language of Page (Level A)</h3>
+                    <p>
+                        The default human language of each Web page can be programmatically determined.
+                    </p>
+                    <!-- https://www.w3.org/WAI/WCAG22/Techniques/html/H57.html -->
+                    <div class="disclaimer-box">
+                        <div class="disclaimer">
+                            <p>
+                                To demonstrate this violation, the web page html tag is using the wrong lang tag.
+                                The lang tag should be "en" since the primary language used in this web page is english but the tag is set as "fr" for french.
+                            </p>
+                        </div>
+                        <div class="disclaimer">
+                            <p>
+                                To further demonstrate this violation, the lang tag is removed on the perceivable page.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>3.1.2: Language of Parts (Level AA)</h3>
+                    <p>
+                        The human language of each passage or phrase in the content can be programmatically determined except for proper names,
+                        technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediately surrounding text.
+                    </p>
+                    <!-- https://www.w3.org/WAI/WCAG21/Techniques/html/H58 -->
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The texts below uses the lang attribute to help determin which language the text is written in.</p>
+                            <div>
+                                <h4>Swedish Text (lang="sv"):</h4>
+                                <p lang="sv">
+                                    Denna text använder lang-attributet för att ange att innehållet är på svenska. Detta gör att texten uppfyller riktlinjerna för regel 3.1.2.
+                                </p>
+                            </div>
+                            <div>
+                                <h4>English Text (lang="en"):</h4>
+                                <p lang="en">
+                                    The web page has the lang tag "fr" which would suggest that all text written in English besides this text should fail on tests.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The texts below does not use the lang attribute to help determin which language the text is written in.</p>
+                            <div>
+                                <h4>Swedish Text (lang="sv"):</h4>
+                                <p>Denna text använder inte lang-attributet för att ange att innehållet är på svenska. Detta gör att texten inte uppfyller riktlinjerna</p>
+                            </div>
+                            <div>
+                                <h4>English Text (lang="en"):</h4>
+                                <p>The web page has the lang tag "fr" which would suggest that all text written in english should fail on tests.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="guideline-3-2">
+                    <h2>Guideline 3.2: Predictable</h2>
+                    <p>
+                        Make Web pages appear and operate in predictable ways.
+                    </p>
+
+                    <h3>3.2.1: On Focus (Level A)</h3>
+                    <p>
+                        When any user interface component receives focus, it does not initiate a change of context.
+                    </p>
+                    <p>w3 explains changes of context as "major changes that, if made without user awareness, can disorient users who are not able to view the entire page simultaneously"</p>
+                    <div class="disclaimer-box">
+                        <div class="disclaimer">
+                            <p>This has already been tested in operable 2.1.1 where a link drops the focus when being focused. A similar example is given below for context.</p>
+                        </div>
+                    </div>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>A link that can be focused by using tab. The focus wont move until the user presses tab again.</p>
+                            <a href="#">Link</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>Once the first link is focused it will blur itself and then when you tab again the focus will end up on the link next to the first one.</p>
+                            <a href="#" onFocus="this.blur()">Link</a>
+                            <a href="#">Link</a>
+                        </div>
+                    </div>
+
+                    <h3>3.2.2: On Input (Level A)</h3>
+                    <p>
+                        Changing the setting of any user interface component does not automatically cause a change of context unless the user has been advised of the behavior before using the component.
+                    </p>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>This form changes page after you submit it with the button.</p>
+                            <form method="get" id="formCorrectGl322">
+                                <label for="selectCorrect">Choose web page:</label>
+                                <select id="selectCorrect">
+                                    <option value="">Select option</option>
+                                    <option value="home">Home</option>
+                                    <option value="perceivable">Perceivable</option>
+                                    <option value="operable">Operable</option>
+                                    <option value="understandable">Understandable</option>
+                                </select>
+                                <button type="submit">Go to page</button>
+                            </form>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>This form changes page as soon as you enter one of the options listed.</p>
+                            <form method="get" id="formWrongGl322">
+                                <label for="selectWrong">Choose web page:</label>
+                                <select id="selectWrong">
+                                    <option value="">Select option</option>
+                                    <option value="home">Home</option>
+                                    <option value="perceivable">Perceivable</option>
+                                    <option value="operable">Operable</option>
+                                    <option value="understandable">Understandable</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+    
+                    <h3>3.2.3: Consistent Navigation (Level AA)</h3>
+                    <p>
+                        Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same relative order each time they are repeated, unless a change is initiated by the user.
+                    </p>
+                    <div class="disclaimer-box">
+                        <div class="disclaimer">
+                            <p>
+                                Just like rearranging furniture can be confusing, changing navigation on a website can leave users disoriented.
+                                This guideline emphasizes the importance of keeping navigation consistent across pages. Just like you probably got surprised by the footer and header being rearranged!
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>3.2.4: Consistent Identification (Level AA)</h3>
+                    <p>
+                        Components that have the same functionality within a set of Web pages are identified consistently.
+                    </p>
+                    <!-- https://www.w3.org/WAI/WCAG21/Techniques/failures/F31 -->
+                    <div class="disclaimer-box">
+                        <div class="disclaimer">
+                            <p>
+                                The search bar in the header allows users to locate and highlight specific text.
+                                It's important to note that on all other web pages, the search bar features a button labeled 'search,' 
+                                on this particular page, it displays 'find.' Despite this discrepancy, both buttons serve the same function,
+                                this inconsistency may impact users, potentially leading to a failure to meet criterion 3.2.4.
+                            </p>
+                        </div>
+                    </div>
+                </section id="guideline-3-3">
+                    <h2>Guideline 3.3: Input Assistance</h2>
+                    <p>
+                        Help users avoid and correct mistakes.
+                    </p>
+
+                    <h3>3.3.1: Error Identification (Level A)</h3>
+                    <p>
+                        If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.
+                    </p>
+                <section>
+
+                </section>
+            </article>
+        </main>
         <header>
             <h1>Evaluation Webpage for Web Accessibility Testing Tools!</h1>
             <nav>
@@ -20,17 +200,11 @@
                     <li><a href="/understandable">Understandable</a></li>
                 </ul>
             </nav>
+            <div class="search-container">
+                <label for="search">Find: </label>
+                <input type="text" name="search" id="search" placeholder="Find on page...">
+                <button onclick="searchPage()">Find</button>
+            </div>
         </header>
-        <main>
-            <h1>Understandable</h1>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur facere magnam dolorum. Rem suscipit alias dicta,
-            excepturi molestiae facilis aliquid sequi est officiis, placeat animi? Voluptas quisquam animi eius amet magnam quidem impedit et sint quos deleniti cum veniam atque,
-            itaque officia quibusdam inventore asperiores dolorem soluta tempora est corporis. Officia,
-            accusantium aliquam delectus earum quasi at animi quidem veniam odio quibusdam.
-            Reiciendis corporis cum accusamus fugiat nesciunt ducimus tempore eum porro mollitia laborum molestias molestiae saepe, iure magnam nisi?
-        </main>
-        <footer>
-            <p>Made by <a href="https://github.com/Ylih">Ylih</a> and <a href="https://github.com/elemoser">elemoser</a></p>
-        </footer>
     </body>
 </html>

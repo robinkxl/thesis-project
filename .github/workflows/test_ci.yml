@@ -28,15 +28,17 @@ jobs:
           node-version: 18.x
       - name: Chrome browser-action
         uses: browser-actions/setup-chrome@v1
-        with:
-            chrome-version: 122
       - run: npm ci
       - run: npm run build --if-present
       - run: npm start & npx wait-on $APP
+      - name: Installing chromedriver
+        run: |
+          npm install -g chromedriver@122
       - name: Run axe-core
         run: |
           npm install -g @axe-core/cli
-          axe $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
+          CHROMEDRIVER_PATH=$(which chromedriver)
+          axe --chromedriver-path $CHROMEDRIVER_PATH $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
       - name: Archive axe-core test results
         uses: actions/upload-artifact@v4
         with:

@@ -23,8 +23,11 @@ jobs:
       - name: Chrome browser-action
         uses: browser-actions/setup-chrome@v1
         with:
-          chrome-version: 122
-      - run: chrome --version
+          chrome-version: 123
+      - name: Chrome check
+        run: chrome --version
+        run: |
+          ${{ steps.setup-chrome.outputs.chrome-path }}
       - run: npm ci
       - run: npm run build --if-present
       - run: npm start & npx wait-on $APP

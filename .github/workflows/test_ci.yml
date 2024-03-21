@@ -10,12 +10,13 @@ on:
 env:
   # Url for the running web app
   APP: http://localhost:1338
-  # Url to test
-  URL: http://localhost:1338/perceivable
 
 jobs:
   axe:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        webpage: [perceivable, operable, understandable]
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js 18
@@ -30,7 +31,7 @@ jobs:
       - name: Run axe-core
         run: |
           npm install -g @axe-core/cli
-          axe $URL --dir ./results/axe/ --save axe-results.json
+          axe $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
       - name: Archive axe-core test results
         uses: actions/upload-artifact@v4
         with:

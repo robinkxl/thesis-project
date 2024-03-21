@@ -21,6 +21,12 @@ header h1 {
     list-style-type: none;
 }
 
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
 /** CONTENT **/
 main {
     margin: 0 auto;
@@ -58,6 +64,16 @@ table {
     padding: 1em;
 }
 
+.disclaimer-box {
+    margin-bottom: 2rem;
+}
+
+.disclaimer-box > * {
+    flex: 1;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
 .correct {
     background-color: #88c98280;
     border: 1px solid darkgreen;
@@ -72,6 +88,12 @@ table {
 
 .disclaimer {
     background-color: #ffdd1b80;
+    border: 1px solid darkgoldenrod;
+    border-radius: 0.5em;
+}
+
+.highlighted {
+    background-color: yellow;
     border: 1px solid darkgoldenrod;
     border-radius: 0.5em;
 }

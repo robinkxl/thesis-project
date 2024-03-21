@@ -12,34 +12,37 @@ env:
   APP: http://localhost:1338
 
 jobs:
-  axe:
+  # axe:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       webpage: [perceivable, operable, understandable]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Use Node.js 18
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 18.x
+  #     - name: Chrome browser-action
+  #       uses: browser-actions/setup-chrome@v1
+  #     - run: npm ci
+  #     - run: npm run build --if-present
+  #     - run: npm start & npx wait-on $APP
+  #     - name: Run axe-core
+  #       run: |
+  #         npm install -g @axe-core/cli
+  #         axe $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
+  #     - name: Archive axe-core test results
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: Axe-core
+  #         path: results/axe/axe-results.json
+
+  achecker:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         webpage: [perceivable, operable, understandable]
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js 18
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-      - name: Chrome browser-action
-        uses: browser-actions/setup-chrome@v1
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm start & npx wait-on $APP
-      - name: Run axe-core
-        run: |
-          npm install -g @axe-core/cli
-          axe $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
-      - name: Archive axe-core test results
-        uses: actions/upload-artifact@v4
-        with:
-          name: Axe-core
-          path: results/axe/axe-results.json
-
-  achecker:
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js 18
@@ -52,7 +55,7 @@ jobs:
       - name: Run accessibility-checker
         run: |
           npm install accessibility-checker
-          npx achecker $URL
+          npx achecker $APP/${{ matrix.webpage }}
       - name: Archive accessibility-checker test results
         if: success() || failure()
         uses: actions/upload-artifact@v4
@@ -62,6 +65,9 @@ jobs:
 
   htmlcs:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        webpage: [perceivable, operable, understandable]
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js 18
@@ -78,7 +84,7 @@ jobs:
           npm install
           cd ../..
           npm i puppeteer
-          bash test.bash run htmlcs $URL
+          bash test.bash run htmlcs $APP/${{ matrix.webpage }}
       - name: Archive HTML_CodeSniffer test results
         uses: actions/upload-artifact@v4
         with:

@@ -35,7 +35,8 @@ jobs:
       - name: Run axe-core
         run: |
           npm install -g @axe-core/cli
-          axe --chromedriver-path ${{ steps.setup-chrome.outputs.chrome-path }} $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
+          npm i -g chromedriver@122
+          axe $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
       - name: Archive axe-core test results
         uses: actions/upload-artifact@v4
         with:

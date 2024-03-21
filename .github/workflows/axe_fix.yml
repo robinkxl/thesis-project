@@ -22,6 +22,7 @@ jobs:
           node-version: 18.x
       - name: Chrome browser-action
         uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
         with:
           chrome-version: 123
       - name: Chrome check

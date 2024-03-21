@@ -2,6 +2,12 @@ on:
   push:
     branches: [ axe-fix ]
 
+env:
+  # Url for the running web app
+  APP: http://localhost:1338
+  # Url to test
+  URL: http://localhost:1338
+
 jobs:
   axe:
     runs-on: ubuntu-latest

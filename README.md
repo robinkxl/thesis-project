@@ -5,7 +5,7 @@ This repository contains the code for the thesis project *Incorporating Web Acce
 
 TODO: Describe our work.
 
-The published website can accessed via the link: [https://effective-carnival-o4gzzj4.pages.github.io/](https://effective-carnival-o4gzzj4.pages.github.io/). Note that this repo is private, this link therefore only works for anyone with access to the repo.
+The published website can accessed via the link: [https://ylih.github.io/Evaluation-site-for-Web-Accessibility-testing-tools/](https://ylih.github.io/Evaluation-site-for-Web-Accessibility-testing-tools/). Note that this repo is private, this link therefore only works for anyone with access to the repo.
 
 TODO: Description of how the website works and how to set it up (alternatively link to the documentation).
 

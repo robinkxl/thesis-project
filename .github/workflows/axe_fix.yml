@@ -22,7 +22,7 @@ jobs:
           node-version: 18.x
       - name: Chrome browser-action
         uses: browser-actions/setup-chrome@v1
-        run: chrome --version
+      - run: chrome --version
       - run: npm ci
       - run: npm run build --if-present
       - run: npm start & npx wait-on $APP

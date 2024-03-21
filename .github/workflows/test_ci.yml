@@ -1,0 +1,96 @@
+name: Web Accessibility Testing Tools Results
+# This workflow runs all tools on a given webpage and save the results as github artifacts.
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  # Url for the running web app
+  APP: http://localhost:1338
+
+jobs:
+  # axe:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       webpage: [perceivable, operable, understandable]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Use Node.js 18
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 18.x
+  #     - name: Chrome browser-action
+  #       uses: browser-actions/setup-chrome@v1
+  #     - run: npm ci
+  #     - run: npm run build --if-present
+  #     - run: npm start & npx wait-on $APP
+  #     - name: Run axe-core
+  #       run: |
+  #         npm install -g @axe-core/cli
+  #         axe $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
+  #     - name: Archive axe-core test results
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: Axe-core
+  #         path: results/axe/axe-results.json
+
+  achecker:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        webpage: [perceivable, operable, understandable]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm start & npx wait-on $APP
+      - name: Run accessibility-checker
+        run: |
+          npm install accessibility-checker
+          npx achecker $APP/${{ matrix.webpage }}
+      - name: Archive accessibility-checker test results
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Accessibility-checker-${{ matrix.webpage }}
+          path: results/achecker/*
+
+  htmlcs:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        webpage: [perceivable, operable, understandable]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm start & npx wait-on $APP
+      - name: Run HTML_CodeSniffer
+        run: |
+          npm i --save html_codesniffer
+          cd node_modules/html_codesniffer
+          npm install
+          cd ../..
+          npm i puppeteer
+          bash test.bash run htmlcs $APP/${{ matrix.webpage }}
+      - name: Archive HTML_CodeSniffer test results
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: HTML_CodeSniffer-${{ matrix.webpage }}
+          path: results/HTML_CodeSniffer/*

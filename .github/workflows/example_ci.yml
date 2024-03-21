@@ -1,0 +1,73 @@
+name: Example Web Accessibility CI
+# This workflow demonstrates how the Web Accessibility tools chosen can be used in a CI pipeline.
+# The jobs below will fail if the webpage tested contains WCAG violations.
+
+on:
+  push:
+    branches: [ setup-testing-env ]
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  # Url for the running web app
+  APP: http://localhost:1338
+  # Url to test
+  URL: http://localhost:1338
+
+jobs:
+  axe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - name: Chrome browser-action
+        uses: browser-actions/setup-chrome@v1
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm start & npx wait-on $APP
+      - name: Run axe
+        if: 
+        run: |
+          npm install -g @axe-core/cli
+          axe $URL --exit
+
+  achecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm start & npx wait-on $APP
+      - name: Run achecker
+        run: |
+          npm install accessibility-checker
+          npx achecker $URL
+
+  htmlcs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm start & npx wait-on $APP
+      - name: Run HTML_CodeSniffer
+        run: |
+          npm i --save html_codesniffer
+          cd node_modules/html_codesniffer
+          npm install
+          cd ../..
+          npm i puppeteer
+          cp html_cs.js node_modules/html_codesniffer/html_cs.js
+          node node_modules/html_codesniffer/html_cs.js $URL

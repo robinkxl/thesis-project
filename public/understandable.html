@@ -185,8 +185,89 @@
                     <p>
                         If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.
                     </p>
-                <section>
+                    <div class="disclaimer-box">
+                        <p class="disclaimer">
+                            Since most modern browsers have some form of built-in form validation, I've had to use the attribute 'novalidate' to get more control over the validation process.
+                        </p>
+                    </div>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>
+                                This form contains robust error handling that shows the mistakes user has done as soon as they 'unfocus' the input field.
+                                The form also performs the validation upon being sent to make sure everything is in order.
+                            </p>
+                            <div class="color-example">
+                                <h4>Rules for name and password to be valid:</h4>
+                                <p>All letters should be in the range A-Za-z.</p>
+                                <p>Name:</p>
+                                <ul>
+                                    <li>Atleast 2 letters</li>
+                                    <li>No digits</li>
+                                    <li>No symbols</li>
+                                </ul>
 
+                                <p>Password:</p>
+                                <ul>
+                                    <li>Contain 8 characters</li>
+                                    <li>Contain atleast 1 uppercase letter</li>
+                                    <li>Contain atleast 1 digit</li>
+                                    <li>Contain atleast 1 symbol</li>
+                                </ul>
+                                <p><span class="required">*</span> Required field.</p>
+
+                                <form id="correctForm" class="block-form" action="#" novalidate>
+                                    <label for="unameCorrect">Username: <span class="required">*</span></label>
+                                    <input type="text" id="unameCorrect" name="unameCorrect" required>
+                                    <span id="unameCorrectError" class="required"></span>
+
+                                    <label for="passwordCorrect">Password: <span class="required">*</span></label>
+                                    <input type="password" id="passwordCorrect" name="passwordCorrect" required>
+                                    <span id="passwordCorrectError" class="required"></span>
+
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>
+                                This form contains error handling but the errors aren't displayed to the user. Instead if the user has done something wrong the text
+                                'Something went wrong' is appended to a span element below the form.
+                            </p>
+                            <div class="color-example">
+                                <h4>Rules for name and password to be valid:</h4>
+                                <p>All letters should be in the range A-Za-z.</p>
+                                <p>Name:</p>
+                                <ul>
+                                    <li>Atleast 2 letters</li>
+                                    <li>No digits</li>
+                                    <li>No symbols</li>
+                                </ul>
+
+                                <p>Password:</p>
+                                <ul>
+                                    <li>Contain 8 characters</li>
+                                    <li>Contain atleast 1 uppercase letter</li>
+                                    <li>Contain atleast 1 digit</li>
+                                    <li>Contain atleast 1 symbol</li>
+                                </ul>
+                                <p><span class="required">*</span> Required field.</p>
+
+                                <!-- This form will be on submit and will contain a vague message at the bottom saying something with user info is wrong but not whats wrong. -->
+                                <form id="wrongForm" class="block-form" action="#" novalidate>
+                                    <label for="unameWrong">Username: <span class="required">*</span></label>
+                                    <input type="text" id="unameWrong" name="unameWrong" required>
+
+                                    <label for="passwordWrong">Password: <span class="required">*</span></label>
+                                    <input type="password" id="passwordWrong" name="passwordWrong" required>
+
+                                    <button type="submit">Submit</button>
+                                </form>
+                                <span id="wrongFormError" class="required"></span>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </article>
         </main>
@@ -201,9 +282,11 @@
                 </ul>
             </nav>
             <div class="search-container">
-                <label for="search">Find: </label>
-                <input type="text" name="search" id="search" placeholder="Find on page...">
-                <button onclick="searchPage()">Find</button>
+                <form id="searchForm">
+                    <label for="search">Find: </label>
+                    <input type="text" name="search" id="search" placeholder="Find on page...">
+                    <button>Find</button>
+                </form>
             </div>
         </header>
     </body>

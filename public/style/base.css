@@ -114,7 +114,8 @@ table {
     margin-bottom: 0.5rem;
 }
 
-.block-form label {
+.block-form label,
+.block-form p {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }

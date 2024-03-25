@@ -1,3 +1,9 @@
+(function() {
+    document.getElementById('searchForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        searchPage();
+    });
+})();
 function searchPage() {
     const searched = document.getElementById('search').value.toLowerCase();
     const searchableElements = document.getElementsByTagName('body')[0].querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');

@@ -106,6 +106,29 @@ table {
     border: 1px solid gray;
 }
 
+.block-form > * {
+    display: block;
+}
+
+.block-form input {
+    margin-bottom: 0.5rem;
+}
+
+.block-form label,
+.block-form p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.block-form input[type=text],
+.block-form input[type=email],
+.block-form input[type=password] {
+    border: 1px solid #333;
+    border-radius: 0.25rem;
+    padding: 0.2em 0.3em;
+    font-size: 1.15rem;
+}
+
 /** FOOTER **/
 footer {
     text-align: center;

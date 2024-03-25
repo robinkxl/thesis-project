@@ -80,6 +80,61 @@
                             </div>
                         </div>
                     </div>
+
+                    <h3>3.1.3: Unusual Words (Level AAA)</h3>
+                    <p>
+                        A mechanism is available for identifying specific definitions of words or phrases used in an unusual or restricted way, including idioms and jargon.
+                    </p>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>
+                                Below are a few examples that uses idioms and jargon that may need to be explained further.
+                                They contain a link to a dictionary on the site that explains the term.
+                            </p>
+                            <div class="color-example">
+                                <p>Victor did <a href="/dictionary#spillthebeans">spill the beans</a> about an incident at work last week.</p>
+                                <p>It may be necessary to update the <a href="/dictionary#driverinsoftware">driver</a> for your printer.</p>
+                            </div>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>Below are the same examples but without a mechanism to identifying the definitions.</p>
+                            <div class="color-example">
+                                <p>Victor did spill the beans about an incident at work last week.</p>
+                                <p>It may be necessary to update the driver for your printer.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>3.1.4: Abbreviations (Level AAA)</h3>
+                    <p>
+                        A mechanism for identifying the expanded form or meaning of abbreviations is available.
+                    </p>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>
+                                Below are a few examples that uses abbreviations. The abbreviations are linked to the website dictionary where they are explained.
+                            </p>
+                            <div class="color-example">
+                                <p><a href="/dictionary#WCAG">WCAG</a> compliance increases the quality of your website.</p>
+                                <p>The <a href="/dictionary#W3C">W3C</a> is an international organization that creates standards for the World Wide Web.</p>
+                                <p>Sometimes I ponder if there is an <a href="/dictionary#API">API</a> for this...</p>
+                            </div>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>
+                                Below are a few examples that uses abbreviations but without a mechanism to identifying them.
+                            </p>
+                            <div class="color-example">
+                                <p>WCAG compliance increases the quality of your website.</p>
+                                <p>The W3C is an international organization that creates standards for the World Wide Web.</p>
+                                <p>Sometimes I ponder if there is an API for this...</p>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 <section id="guideline-3-2">
                     <h2>Guideline 3.2: Predictable</h2>
@@ -185,8 +240,99 @@
                     <p>
                         If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.
                     </p>
-                <section>
+                    <div class="disclaimer-box">
+                        <p class="disclaimer">
+                            Since most modern browsers have some form of built-in form validation, I've had to use the attribute 'novalidate' to get more control over the validation process.
+                        </p>
+                    </div>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>
+                                This form contains robust error handling that shows the mistakes user has done as soon as they 'unfocus' the input field.
+                                The form also performs the validation upon being sent to make sure everything is in order.
+                            </p>
+                            <div class="color-example">
+                                <h4>Rules for name and password to be valid:</h4>
+                                <p>All letters should be in the range A-Za-z.</p>
+                                <p>Name:</p>
+                                <ul>
+                                    <li>Atleast 2 letters</li>
+                                    <li>No digits</li>
+                                    <li>No symbols</li>
+                                </ul>
 
+                                <p>Password:</p>
+                                <ul>
+                                    <li>Contain 8 characters</li>
+                                    <li>Contain atleast 1 uppercase letter</li>
+                                    <li>Contain atleast 1 digit</li>
+                                    <li>Contain atleast 1 symbol</li>
+                                </ul>
+                                <p><span class="required">*</span> Required field.</p>
+
+                                <form id="correctForm" class="block-form" action="#" novalidate>
+                                    <label for="unameCorrect">Username: <span class="required">*</span></label>
+                                    <input type="text" id="unameCorrect" name="username" required>
+                                    <div id="unameCorrectError" class="required"></div>
+
+                                    <label for="passwordCorrect">Password: <span class="required">*</span></label>
+                                    <input type="password" id="passwordCorrect" name="password" required>
+                                    <div id="passwordCorrectError" class="required"></div>
+
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>
+                                This form contains error handling but the errors aren't displayed to the user. Instead if the user has done something wrong the text
+                                'Something went wrong' is appended to a span element below the form.
+                            </p>
+                            <div class="color-example">
+                                <h4>Rules for name and password to be valid:</h4>
+                                <p>All letters should be in the range A-Za-z.</p>
+                                <p>Name:</p>
+                                <ul>
+                                    <li>Atleast 2 letters</li>
+                                    <li>No digits</li>
+                                    <li>No symbols</li>
+                                </ul>
+
+                                <p>Password:</p>
+                                <ul>
+                                    <li>Contain 8 characters</li>
+                                    <li>Contain atleast 1 uppercase letter</li>
+                                    <li>Contain atleast 1 digit</li>
+                                    <li>Contain atleast 1 symbol</li>
+                                </ul>
+                                <p><span class="required">*</span> Required field.</p>
+
+                                <!-- This form will be on submit and will contain a vague message at the bottom saying something with user info is wrong but not whats wrong. -->
+                                <form id="wrongForm" class="block-form" action="#" novalidate>
+                                    <p>Username: <span class="required">*</span></p>
+                                    <input type="text" id="unameWrong" name="unameWrong" required>
+
+                                    <p for="passwordWrong">Password: <span class="required">*</span></p>
+                                    <input type="password" id="passwordWrong" name="passwordWrong" required>
+
+                                    <button type="submit">Submit</button>
+                                </form>
+                                <div id="wrongFormError" class="required"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>3.3.2: Labels or Instructions (Level A)</h3>
+                    <p>
+                        Labels or instructions are provided when content requires user input.
+                    </p>
+                    <div class="disclaimer-box">
+                        <p class="disclaimer">
+                            The correct example above feature inputs of "type=text" and "type=password" with proper labeling whereas the "wrong" form uses p elements to display the labels for the inputs.
+                            This might seem fine for people with sight but for users that rely on screen readers this isn't as clear or robust.
+                        </p>
+                    </div>
                 </section>
             </article>
         </main>
@@ -201,9 +347,11 @@
                 </ul>
             </nav>
             <div class="search-container">
-                <label for="search">Find: </label>
-                <input type="text" name="search" id="search" placeholder="Find on page...">
-                <button onclick="searchPage()">Find</button>
+                <form id="searchForm">
+                    <label for="find">Find: </label>
+                    <input type="text" name="find" id="search" placeholder="Find on page...">
+                    <button>Find</button>
+                </form>
             </div>
         </header>
     </body>

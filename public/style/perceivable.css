@@ -67,11 +67,20 @@
     color: #a9bdd1;
 }
 
-.gl-1-4-3-large-text {
+.large-text {
     font-size: 24px;
 }
 
-.gl-1-4-3-large-text-bold {
+.large-text-bold {
     font-size: 19px;
     font-weight: bold;
+}
+
+/* 1.4.6 contrast (Enhanced) */
+.gl-1-4-6-normal-text-insufficient {
+    color: #A34100;
+}
+
+.gl-1-4-6-large-text-insufficient {
+    color: #D65600;
 }

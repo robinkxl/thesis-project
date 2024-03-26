@@ -78,12 +78,9 @@ function run-htmlcs {
     # see configuration in html_cs.js
     timestamp=$(date +%F_%T)
     results=$(node html_cs.js "$@" | sed 's/;/,/g')
-    # formatted_results=$(echo "$results" | sed 's/|/;/g')
     mkdir -p results/HTML_CodeSniffer
     echo "$@" > "results/HTML_CodeSniffer/htmlcs-results-$timestamp.txt"
     echo "$results" >> "results/HTML_CodeSniffer/htmlcs-results-$timestamp.txt"
-    # echo "Message;WCAG;DOM_object;Unknown;Description;HTML_tag" > "results/HTML_CodeSniffer/htmlcs-results-$timestamp.csv"
-    # echo -e "$formatted_results" >> "results/HTML_CodeSniffer/htmlcs-results-$timestamp.csv"
     echo "HTML_CodeSniffer audit generated and saved at results/HTML_CodeSniffer."
 }
 
@@ -115,7 +112,7 @@ function run-asq {
     PROJECT_ID="1"
     REFERENTIAL="RGAA_4_0"
     LEVEL="AA"
-    URL_TO_AUDIT="$@"
+    URL_TO_AUDIT="$@" # Does not work with locally run app
 
     curl -s -X POST \
          "${API_URL}"                                               \

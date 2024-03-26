@@ -23,6 +23,48 @@ function updateReport(updatedData) {
       });
 }
 
+function generateAxeReport(filePath) {
+    const results = require(filePath);
+    const urlPath = results[0].url;
+    let violationCount = 0; // for summary
+
+    // Function to create a new violation object with default values
+    function createViolationObject() {
+        return {
+            tool: tool,
+            url: urlPath,
+            error_name: "",
+            error_description: "",
+            error_position: ""
+        };
+    }
+    
+    if (results[0].violations.length > 0) {
+        for (key in results[0].violations) {
+                // console.log(violationCount);
+                // console.log(results[0].violations[key].id);
+                // console.log(results[0].violations[key].description);
+                // violationCount += 1;
+            results[0].violations[key].nodes.forEach((node) => {
+                // console.log(violationCount);
+                // console.log(node.any[0].id);
+                // console.log(node.any[0].message);
+                // console.log(node.html);
+                const violation = createViolationObject();
+                violation['error_name'] = node.any[0].id;
+                violation['error_description'] = node.any[0].message;
+                violation['error_position'] = node.html;
+                jsonData.report.push(violation);
+                violationCount += 1;
+            });
+        }
+    } else {
+        const violation = createViolationObject();
+        jsonData.report.push(violation);
+    }
+    
+    updateReport(jsonData);
+}
 
 function generateAcheckerReport(filePath) {
     const results = require(filePath);
@@ -55,7 +97,7 @@ function generateAcheckerReport(filePath) {
     }
 
     // console.log(jsonData.report);
-    updateReport(jsonData)
+    updateReport(jsonData);
 }
 
 function generateHTMLCSReport(filePath) {
@@ -94,15 +136,19 @@ function generateHTMLCSReport(filePath) {
             jsonData.report.push(violation);
         }
 
-        updateReport(jsonData)
+        updateReport(jsonData);
     });
 }
 
-// console.log(path);
+// console.log(tool);
 
 if (tool == "achecker") {
     generateAcheckerReport(path);
 } else if (tool == "HTML_CodeSniffer") {
-    generateHTMLCSReport(path)
+    generateHTMLCSReport(path);
+} else if (tool === "axe") {
+    generateAxeReport(path);
+} else {
+    process.exit(1);
 }
 

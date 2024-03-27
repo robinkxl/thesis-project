@@ -84,12 +84,34 @@ function htmlcs-results-summary {
 
 }
 
+function asq-results-summary {
+    # Define the target directory
+    asq_directory="asqatasun-docker/results/audits"
+
+    # Check if the target is not a directory
+    if [ ! -d "$asq_directory" ]; then
+    echo "The '$asq_directory' directory does not exist."
+    exit 1
+    fi
+
+    # Loop through files in the target directory
+    for file in "$asq_directory"/*; do
+    if [ -f "$file" ]; then
+        node "$JS_FILE" "asq" "./$file"
+    fi
+    done
+
+    echo "Asqatasun results report is done."
+
+}
+
 function main {
     # Create output file to write to
     echo '{"summary": [], "report": []}' > $OUTPUT_FILE
     achecker-results-summary
     axe-results-summary
     htmlcs-results-summary
+    asq-results-summary
 }
 
 main

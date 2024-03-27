@@ -1,5 +1,6 @@
 // Generates a results report for a given achecker result file
 const fs = require("fs");
+const readline = require("readline");
 
 // Check if a filename is provided as an argument
 if (process.argv.length < 4) {
@@ -148,12 +149,64 @@ function generateHTMLCSReport(filePath) {
     });
 }
 
+function generateAsqatasunReport(filePath) {
+    // Read csv file and extract results details
+    const stream = fs.createReadStream(filePath);
+    const reader = readline.createInterface({ input: stream });
+    const rgaa = require('./asqatasun-docker/criteres_v4.1.json');
+    let data = [];
+
+    reader.on("line", row => {
+        data.push(row.split(","));
+    });
+
+    reader.on("close", () => {
+        //  Reached the end of file
+        const toolName = "Asqatasun";
+        let urlPath = data[0][3].replaceAll('"', '');
+        let summary = {
+            tool: toolName,
+            url: urlPath,
+            fails: 0
+        };
+        
+        // name
+        // rgaa.topics[0].topic
+        // description
+        // rgaa.topics[0].criteria[0].criterium.tests['1'] (array)
+
+        // console.log(data);
+        data.forEach(item => {
+            if (item.includes('nc')) {
+                const violation = createViolationObject(toolName,urlPath);
+                const themeIndex = parseInt(item[0]) - 1;
+                const criteriaIndex = parseInt(item[1]) - 1;
+                const testIndex = item[2];
+
+                violation['error_name'] = rgaa.topics[themeIndex].topic;
+                violation['error_description'] = rgaa.topics[themeIndex].criteria[criteriaIndex].criterium.tests[testIndex].join(' ');
+                violation['error_position'] = "";
+                summary.fails += 1;
+                jsonData.report.push(violation);
+            }
+        });
+
+        // Update summary
+        jsonData.summary.push(summary);
+        // console.log(jsonData);
+        updateReport(jsonData);
+    });
+    
+}
+
 if (tool == "achecker") {
     generateAcheckerReport(path);
 } else if (tool == "htmlcs") {
     generateHTMLCSReport(path);
 } else if (tool === "axe") {
     generateAxeReport(path);
+} else if (tool === "asq") {
+    generateAsqatasunReport(path);
 } else {
     process.exit(1);
 }

@@ -58,7 +58,6 @@ table {
     margin-bottom: 2rem;
 }
 
-/* pass flex:1 to direct children on example-box. */
 .example-box > * {
     flex: 1;
     padding: 1em;
@@ -106,6 +105,8 @@ table {
     border: 1px solid gray;
 }
 
+
+/* FORM STYLING */
 .block-form > * {
     display: block;
 }
@@ -155,4 +156,15 @@ footer {
 
 .quick-flashing {
     animation: flash 0.1s infinite alternate;
+}
+
+/** ORIENTATION **/
+@media screen and (max-width: 885px) {
+    header ul {
+        padding: 0;
+    }
+
+    .example-box {
+        flex-direction: column;
+    }
 }

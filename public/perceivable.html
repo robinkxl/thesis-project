@@ -96,13 +96,6 @@
                     </div>
                 </section>
 
-                <section id="guideline-1-2">
-                    <h2>Guideline 1.2: Time-based media</h2>
-                    <p>
-                        Provide alternatives for time-based media.
-                    </p>
-                </section>
-
                 <section id="guideline-1-3">
                     <h2>Guideline 1.3: Adaptable</h2>
                     <p>
@@ -304,6 +297,29 @@
                             </ul>
                         </div>
                     </div>
+
+                    <h3 id="guideline-1-3-4">1.3.4: Orientation</h3>
+                    <p>
+                        Content does not restrict its view and operation to a single display orientation, such as portrait or landscape, unless a specific display orientation is essential.
+                    </p>
+                    <h3>Example:</h3>
+                    <h4>Content not showing in certain orientation</h4>
+                    <div class="disclaimer-box">
+                        <p class="disclaimer">
+                            If you are using a computer you can try this with devtools.
+                        </p>
+                    </div>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>This content is not affected by orientation.</p>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p class="orientation">You have the wrong orientation. Try rotating your device!</p>
+                            <p class="corr-orientation">You are now using the correct orientation.</p>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="guideline-1.4">
@@ -345,11 +361,11 @@
                                 <form action="#" method="post">
                                     <fieldset>
                                         <legend>Contact Information</legend>
-                                            <label class="gl-1-4-1-labels" for="name">Name:</label>
-                                            <input class="gl-1-4-1-input-error" type="text" id="name" name="name" required>
+                                            <label class="gl-1-4-1-labels" for="nameCorrect">Name:</label>
+                                            <input class="gl-1-4-1-input-error" type="text" id="nameCorrect" name="name" required>
                                             <p class="gl-1-4-1-error-msg">Please enter your name.</p>
-                                            <label class="gl-1-4-1-labels" for="email">Email:</label>
-                                            <input class="gl-1-4-1-input-error" type="email" id="email" name="email" required>
+                                            <label class="gl-1-4-1-labels" for="emailCorrect">Email:</label>
+                                            <input class="gl-1-4-1-input-error" type="email" id="emailCorrect" name="email" required>
                                             <p class="gl-1-4-1-error-msg">Please enter a valid email address.</p>
                                     </fieldset>
                                 </form>
@@ -362,10 +378,10 @@
                                 <form action="#" method="post">
                                     <fieldset>
                                         <legend>Contact Information</legend>
-                                            <label class="gl-1-4-1-labels" for="name">Name:</label>
-                                            <input class="gl-1-4-1-input-error" type="text" id="name" name="name" required>
-                                            <label class="gl-1-4-1-labels" for="email">Email:</label>
-                                            <input class="gl-1-4-1-input-error" type="email" id="email" name="email" required>
+                                            <label class="gl-1-4-1-labels" for="nameWrong">Name:</label>
+                                            <input class="gl-1-4-1-input-error" type="text" id="nameWrong" name="name" required>
+                                            <label class="gl-1-4-1-labels" for="emailWrong">Email:</label>
+                                            <input class="gl-1-4-1-input-error" type="email" id="emailWrong" name="email" required>
                                     </fieldset>
                                 </form>
                             </div>

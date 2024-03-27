@@ -38,6 +38,22 @@
     flex-direction: column;
 }
 
+/* 1.3.4 orientation example */
+.orientation {
+    text-align: center;
+    font-size: 2rem;
+}
+
+@media all and (orientation: landscape) {
+    .orientation { display: block; }
+    .corr-orientation { display: none; }
+}
+
+@media all and (orientation: portrait) {
+    .orientation { display: none; }
+    .corr-orientation { display: block; }
+}
+
 /* 1.4.1 use of color */
 .gl-1-4-1 {
     text-decoration: none;

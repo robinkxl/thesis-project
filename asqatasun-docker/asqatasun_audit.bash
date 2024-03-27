@@ -1,15 +1,33 @@
 #!/usr/bin/env bash
-# Script to run Asqatasun test for a given url
+# Script to run Asqatasun tests for a given url
 
-# Global variables
+# Global variables for Asqatasun
 ASQA_USER="admin%40asqatasun.org"
 ASQA_PASSWORD="myAsqaPassword"
 PORT="8081"
 API_PREFIX_URL="http://${ASQA_USER}:${ASQA_PASSWORD}@localhost:${PORT}"
-FOLDER="asqatasun-docker"
+# Folder where to find Asqatasun files
+FOLDER=$(dirname "$0")
+# Public url of test web app
+URL_PUBLIC="https://ylih.github.io/Evaluation-site-for-Web-Accessibility-testing-tools"
+WEBPAGES=("" "perceivable" "operable" "understandable")
+# Folder for audit results
+CURRENT_DIR=$(pwd)
+RESULTS="$FOLDER/results"
 
-# Path to script directory
-SCRIPT_DIR=$(dirname "$0")
+__usage="
+Usage: $(basename $0) [OPTIONS]
+
+Options:
+  setup          Runs the Asqatasun docker containers
+  run            Audit all webpage (i.e. perceivable, operable, etc.)
+  audit <id>     Download given audit in $RESULTS
+  cleanup        Closes the docker containers
+
+The setup requires the following folder (or similar) in the root of this repo:
+- asqatasun-docker/api-5.0.0-rc.2_ubuntu-18.04/
+- see https://gitlab.com/asqatasun/asqatasun-docker
+"
 
 function run-asq {
     API_URL="${API_PREFIX_URL}/api/v0/audit/page/run"
@@ -35,11 +53,18 @@ function run-asq {
 }
 
 function view-asq-audit {
+    mkdir -p "$FOLDER/results"
+
+    # Get audit results summary
     API_PREFIX_URL="http://${ASQA_USER}:${ASQA_PASSWORD}@localhost:${PORT}"
     API_URL="${API_PREFIX_URL}/api/v0/audit/$@"
     results=$(curl -s -X GET "${API_URL}" -H  "accept: */*")
     # Save results
-    echo "$results" > ${SCRIPT_DIR}/audit.json
+    echo "$results" > $RESULTS/summary$@.json
+
+    # Get audit results details
+    save-asq-audit "$@"
+
     # Extract number of failed tests
     failed=$(echo "$results" |  jq '.subject.repartitionBySolutionType[1].number')
     echo "Failed tests: $failed"
@@ -58,31 +83,57 @@ function view-asq-audit {
         # variable is not an integer
         echo "Audit $@ could not be downloaded; please check status manually."
     fi
-
-    save-asq-audit "$@"
 }
 
 function save-asq-audit {
+    mkdir -p "$FOLDER/results/audits"
+
     API_PREFIX_URL="http://${ASQA_USER}:${ASQA_PASSWORD}@localhost:${PORT}"
     API_URL="${API_PREFIX_URL}/api/v0/audit/$@/tests"
 
-    curl -s -X GET "${API_URL}" -H  "accept: */*" --output "${FOLDER}/audit.csv"
+    curl -s -X GET "${API_URL}" -H  "accept: */*" --output "$RESULTS/audits/audit$@.csv"
 }
 
 function main {
-    echo "Audit for webpage: $@"
-    if [[ -z "$1" ]]; then
-      echo "Provide an url to audit!"
-    else
-      AUDIT_ID=$(run-asq "$@")
-      echo "Asqatasun audit ${AUDIT_ID} generated."
-      echo "Waiting for audit..."
-      sleep 10
-      view-asq-audit "${AUDIT_ID}"
-    fi
-    # Download previous audit
-    # view-asq-audit "$@"
+    case "$1" in
+        run)
+            # Run tests for given webpage
+            for page in "${WEBPAGES[@]}"
+            do
+                echo "Audit for webpage: $URL_PUBLIC/$page"
+                AUDIT_ID=$(run-asq "$URL_PUBLIC/$page")
+                echo "Asqatasun audit ${AUDIT_ID} generated."
+                # echo "Waiting for audit..."
+                sleep 2
+                # view-asq-audit "${AUDIT_ID}"
+            done
+        ;;
+        audit)
+            # Download results for given audit
+            view-asq-audit $2
+        ;;
+        setup)
+                # Asqatasun
+                # Download the tool https://gitlab.com/asqatasun/asqatasun-docker
+                # Save under /asqatasun-docker
+                cd "$FOLDER/api-5.0.0-rc.2_ubuntu-18.04"
+                docker-compose rm -fsv # reset db
+                docker-compose --build 
+                # docker-compose build --no-cache # rebuild image
+                docker-compose up -d
+                cd "$CURRENT_DIR"
+                echo "Aqatasun is ready."
+        ;;
+        cleanup)
+                current_directory=$(pwd)
+                cd "$FOLDER/api-5.0.0-rc.2_ubuntu-18.04"
+                docker-compose down
+                cd "$CURRENT_DIR"
+                echo "Asqatasun containers are down."
+        ;;
+        *)
+            echo "$__usage"
+    esac
 }
 
-# http://localhost:1338/
 main "$@"

@@ -3,25 +3,19 @@
 __usage="
 Usage: $(basename $0) [OPTIONS]
 
-Tools: axe, achecker, htmlcs, asq
+Tools: axe, achecker, htmlcs
 
 Options:
   start                        Starts container for the webapp 
   setup <tool>                 Install the dependencies for the tool
   run <tool> <url>             Audit a webpage with a specific tool
-  asq                          Saves last Asqatasun audit as JSON
   cleanup <tool>               Uninstall the dependencies to run the tool
   end                          Closes all running docker containers
 
-Note that Asqatasun works a bit differently from the others.
-The setup requires the following folder the root of this repo:
-- asqatasun-docker/5.x/5.0.y/5.0.0-rc.2/api-5.0.0-rc.2_ubuntu-18.04
-- see https://gitlab.com/asqatasun/asqatasun-docker
+Note that Asqatasun is not included here, since it works differently fromthe other tools.
+To learn more and/or test Asqatasun run the following command in the terminal:
+./asqatasun-docker/asqatasun_audit.bash
 "
-
-# Global variables
-ASQA_USER="admin%40asqatasun.org"
-ASQA_PASSWORD="myAsqaPassword"
 
 function set-up-axe {
     # axe core
@@ -84,86 +78,28 @@ function run-htmlcs {
     echo "HTML_CodeSniffer audit generated and saved at results/HTML_CodeSniffer."
 }
 
-#TODO update the script for Asqatasun!
-function set-up-asq {
-    # Asqatasun
-    # Download the tool https://gitlab.com/asqatasun/asqatasun-docker
-    # Save under /asqatasun-docker
-    cd asqatasun-docker/5.x/5.0.y/5.0.0-rc.2/api-5.0.0-rc.2_ubuntu-18.04
-    docker-compose rm -fsv # reset db
-    docker-compose --build
-    # docker-compose build --no-cache # rebuild image
-    docker-compose up -d
-    cd ../../../../..
-}
-
-function clean-up-asq {
-    docker-compose down
-}
-
-function run-asq {
-    # Create folder of Asqatasun results
-    mkdir -p results/Asqatasun
-
-    # Prepare variables
-    API_PREFIX_URL="http://${ASQA_USER}:${ASQA_PASSWORD}@localhost:8081"
-    API_URL="${API_PREFIX_URL}/api/v0/audit/page/run"
-
-    PROJECT_ID="1"
-    REFERENTIAL="RGAA_4_0"
-    LEVEL="AA"
-    URL_TO_AUDIT="$@" # Does not work with locally run app
-
-    curl -s -X POST \
-         "${API_URL}"                                               \
-         -H  "accept: */*"                                          \
-         -H  "Content-Type: application/json"                       \
-         -d "{                                                      \
-                \"urls\": [    \"${URL_TO_AUDIT}\"  ],              \
-                               \"referential\": \"${REFERENTIAL}\", \
-                               \"level\": \"${LEVEL}\",             \
-                               \"contractId\": ${PROJECT_ID},       \
-                               \"tags\": []                         \
-             }" --output "results/Asqatasun/audit.txt"
-
-    echo "Asqatasun audit generated."
-}
-
-function save-asq-audit {
-    ASQA_USER="admin%40asqatasun.org"
-    ASQA_PASSWORD="myAsqaPassword"
-    API_PREFIX_URL="http://${ASQA_USER}:${ASQA_PASSWORD}@localhost:8081"
-    AUDIT_ID=$(cat "results/Asqatasun/audit.txt")
-
-    API_URL="${API_PREFIX_URL}/api/v0/audit/${AUDIT_ID}"
-    curl -s -X GET "${API_URL}" -H  "accept: */*" --output "results/Asqatasun/audit.json"
-}
-
 function main {
     case "$1" in
         start)
             echo "Starting server..."
             docker-compose up -d server
+            echo "View web app at http://localhost:1338/"
         ;;
         setup)
             set-up-$2
+            echo "Ready to test $2"
         ;;
         run)
             echo "Evaluating webpage: $3"
             run-$2 "$3"
         ;;
-        asq)
-            # Asqatasun audits take few minutes
-            # Save the results from the last audit
-            # as JSON with this command
-            save-asq-audit
-        ;;
         cleanup)
             clean-up-$2
+            echo "Clean up is done."
         ;;
         end)
-            clean-up-asq
-            echo "All containers are down now."
+            docker-compose down
+            echo "All containers for the server are down now."
         ;;
         *)
             echo "$__usage"

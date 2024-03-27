@@ -63,25 +63,24 @@ table {
 }
 
 .disclaimer-box > * {
-    flex: 1;
     padding: 1em;
     margin-bottom: 1em;
 }
 
 .correct {
-    background-color: #88c98280;
+    background-color: #bbe6b5;
     border: 1px solid darkgreen;
     border-radius: 0.5em;
 }
 
 .wrong {
-    background-color: #e5767680;
+    background-color: #f5c0c0;
     border: 1px solid darkred;
     border-radius: 0.5em;
 }
 
 .disclaimer {
-    background-color: #ffdd1b80;
+    background-color: #fff098;
     border: 1px solid darkgoldenrod;
     border-radius: 0.5em;
 }

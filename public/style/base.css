@@ -55,16 +55,11 @@ table {
 .example-box {
     display: flex;
     gap: 1em;
-    margin-bottom: 2rem;
 }
 
 .example-box > * {
     flex: 1;
     padding: 1em;
-}
-
-.disclaimer-box {
-    margin-bottom: 2rem;
 }
 
 .disclaimer-box > * {
@@ -88,6 +83,13 @@ table {
 .disclaimer {
     background-color: #ffdd1b80;
     border: 1px solid darkgoldenrod;
+    border-radius: 0.5em;
+}
+
+.info {
+    padding: 1em;
+    background-color: #dff0ff;
+    border: 1px solid #083baa;
     border-radius: 0.5em;
 }
 
@@ -133,6 +135,7 @@ table {
 /** FOOTER **/
 footer {
     text-align: center;
+    margin-top: 2rem;
 }
 
 /** GENERAL USE **/

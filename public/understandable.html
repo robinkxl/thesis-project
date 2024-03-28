@@ -311,12 +311,8 @@
 
                                 <!-- This form will be on submit and will contain a vague message at the bottom saying something with user info is wrong but not whats wrong. -->
                                 <form id="wrongForm" class="block-form" action="#" novalidate>
-                                    <p>Username: <span class="required">*</span></p>
                                     <input type="text" id="unameWrong" name="unameWrong" required>
-
-                                    <p for="passwordWrong">Password: <span class="required">*</span></p>
                                     <input type="password" id="passwordWrong" name="passwordWrong" required>
-
                                     <button type="submit">Submit</button>
                                 </form>
                                 <div id="wrongFormError" class="required"></div>
@@ -329,8 +325,7 @@
                     </p>
                     <div class="disclaimer-box">
                         <p class="disclaimer">
-                            The correct example above feature inputs of "type=text" and "type=password" with proper labeling whereas the "wrong" form uses p elements to display the labels for the inputs.
-                            This might seem fine for people with sight but for users that rely on screen readers this isn't as clear or robust.
+                            The correct example above feature inputs of "type=text" and "type=password" with proper labeling whereas the "wrong" form uses no labels to display the inputs.
                         </p>
                     </div>
                 </section>
@@ -349,7 +344,7 @@
             <div class="search-container">
                 <form id="searchForm">
                     <label for="find">Find: </label>
-                    <input type="text" name="find" id="search" placeholder="Find on page...">
+                    <input type="text" name="find" id="find" placeholder="Find on page...">
                     <button>Find</button>
                 </form>
             </div>

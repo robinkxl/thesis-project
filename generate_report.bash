@@ -107,7 +107,7 @@ function asq-results-summary {
 
 function main {
     # Create output file to write to
-    echo '{"summary": [], "report": []}' > $OUTPUT_FILE
+    echo '{"summary": {}, "report": []}' > $OUTPUT_FILE
     achecker-results-summary
     axe-results-summary
     htmlcs-results-summary

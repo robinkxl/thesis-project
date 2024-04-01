@@ -9,7 +9,7 @@ if (process.argv.length < 4) {
 }
 
 // Extract the filename from the command-line arguments
-const tool = process.argv[2];
+const toolAbbreviation = process.argv[2];
 const path = process.argv[3];
 
 // Global variables
@@ -26,7 +26,7 @@ function updateReport(updatedData) {
 }
 
 // Function to create a new violation object with default values
-function createViolationObject(toolName,pageUrl) {
+function createViolationObject(toolName, pageUrl) {
     return {
         tool: toolName,
         url: pageUrl,
@@ -36,55 +36,58 @@ function createViolationObject(toolName,pageUrl) {
     };
 }
 
+// Function to handle summary updates
+function updateSummary(webpageName, toolName, errors) {
+    if (!jsonData.summary.hasOwnProperty(webpageName)) {
+        // If entrie does not yet exist
+        jsonData.summary[webpageName] = {};
+    }
+
+    jsonData.summary[webpageName] = {
+        ...jsonData.summary[webpageName],
+        [toolName]: errors
+    };
+}
+
 function generateAxeReport(filePath) {
     const results = require(filePath);
     const urlPath = results[0].url;
-    let summary = {
-        tool: tool,
-        url: urlPath,
-        fails: 0
-    }
+    const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2).replace(':','_');
+    const toolFullName = "Axe";
+    let fails = 0;
 
     if (results[0].violations.length > 0) {
         for (key in results[0].violations) {
             results[0].violations[key].nodes.forEach((node) => {
                 node.any.forEach((error) => {
-                    const violation = createViolationObject(tool, urlPath);
+                    const violation = createViolationObject(toolFullName, urlPath);
 
                     violation['error_name'] = error.id;
                     violation['error_description'] = error.message;
                     violation['error_position'] = node.html;
-                    summary.fails += 1;
+                    fails += 1;
                     jsonData.report.push(violation);
                 });
             });
         }
-    } 
-    // else {
-    //     const violation = createViolationObject();
-    //     jsonData.report.push(violation);
-    // }
+    }
     
-    jsonData.summary.push(summary);
-    // console.log(jsonData);
+    updateSummary(webpage, toolFullName, fails);
     updateReport(jsonData);
 }
 
 function generateAcheckerReport(filePath) {
     const results = require(filePath);
-    const toolName = "accessibility-checker";
+    const toolFullName = "Accessibility-checker";
     const urlPath = results.summary.URL;
-    const summary = {
-        tool: toolName,
-        url: urlPath,
-        fails: results.summary.counts.violation
-    };
+    const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2).replace(':','_');
+    const fails = results.summary.counts.violation;
 
-    if (summary.fails > 0) {
+    if (fails > 0) {
         // Extract violations
         for (key in results.results) {
             if (results.results[key].level == "violation") {
-                const violation = createViolationObject(toolName, urlPath);
+                const violation = createViolationObject(toolFullName, urlPath);
 
                 violation['error_name'] = results.results[key].ruleId;
                 violation['error_description'] = results.results[key].message;
@@ -93,14 +96,9 @@ function generateAcheckerReport(filePath) {
             }
         }
     }
-    // else {
-    //     const violation = createViolationObject(urlPath);
-    //     jsonData.report.push(violation);
-    // }
 
     // Update summary
-    jsonData.summary.push(summary);
-    // console.log(jsonData);
+    updateSummary(webpage, toolFullName, fails);
     updateReport(jsonData);
 }
 
@@ -116,35 +114,26 @@ function generateHTMLCSReport(filePath) {
         const lines = data.toString().split('\n');
         const uniqueLines = new Set(lines);
         const urlPath = lines[0];
-        const toolName = "HTML_CodeSniffer";
-        let summary = {
-            tool: toolName,
-            url: urlPath,
-            fails: 0
-        };
+        const webpage = urlPath.split('/').at(-1).replace(':','_');
+        const toolFullName = "HTML_CodeSniffer";
+        let fails = 0;
         let itemsArray = [];
 
         uniqueLines.forEach(line => {
             if (line.includes("Error")) {
-                const violation = createViolationObject(toolName,urlPath);
+                const violation = createViolationObject(toolFullName, urlPath);
 
                 itemsArray = line.split('|');
                 violation['error_name'] = itemsArray[1];
                 violation['error_description'] = itemsArray[4];
                 violation['error_position'] = itemsArray[5];
-                summary.fails++;
+                fails++;
                 jsonData.report.push(violation);
             }
         });
-
-        // if (violationCount === 0) {
-        //     // Save results
-        //     jsonData.report.push(violation);
-        // }
         
         // Update summary
-        jsonData.summary.push(summary);
-        // console.log(jsonData);
+        updateSummary(webpage, toolFullName, fails);
         updateReport(jsonData);
     });
 }
@@ -162,23 +151,14 @@ function generateAsqatasunReport(filePath) {
 
     reader.on("close", () => {
         //  Reached the end of file
-        const toolName = "Asqatasun";
-        let urlPath = data[0][3].replaceAll('"', '');
-        let summary = {
-            tool: toolName,
-            url: urlPath,
-            fails: 0
-        };
-        
-        // name
-        // rgaa.topics[0].topic
-        // description
-        // rgaa.topics[0].criteria[0].criterium.tests['1'] (array)
-
-        // console.log(data);
+        const toolFullName = "Asqatasun";
+        const urlPath = data[0][3].replaceAll('"', '');
+        const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2).replace(':','_');
+        let fails = 0;
+    
         data.forEach(item => {
             if (item.includes('nc')) {
-                const violation = createViolationObject(toolName,urlPath);
+                const violation = createViolationObject(toolFullName,urlPath);
                 const themeIndex = parseInt(item[0]) - 1;
                 const criteriaIndex = parseInt(item[1]) - 1;
                 const testIndex = item[2];
@@ -186,26 +166,25 @@ function generateAsqatasunReport(filePath) {
                 violation['error_name'] = rgaa.topics[themeIndex].topic;
                 violation['error_description'] = rgaa.topics[themeIndex].criteria[criteriaIndex].criterium.tests[testIndex].join(' ');
                 violation['error_position'] = "";
-                summary.fails += 1;
+                fails += 1;
                 jsonData.report.push(violation);
             }
         });
 
         // Update summary
-        jsonData.summary.push(summary);
-        // console.log(jsonData);
+        updateSummary(webpage, toolFullName, fails);
         updateReport(jsonData);
     });
     
 }
 
-if (tool == "achecker") {
+if (toolAbbreviation == "achecker") {
     generateAcheckerReport(path);
-} else if (tool == "htmlcs") {
+} else if (toolAbbreviation == "htmlcs") {
     generateHTMLCSReport(path);
-} else if (tool === "axe") {
+} else if (toolAbbreviation === "axe") {
     generateAxeReport(path);
-} else if (tool === "asq") {
+} else if (toolAbbreviation === "asq") {
     generateAsqatasunReport(path);
 } else {
     process.exit(1);

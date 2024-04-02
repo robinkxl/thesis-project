@@ -42,3 +42,40 @@ In order to test the different tools locally, we created a bash-script (work in 
 In order to test the different tools in github actions:
 * go to *.github/workflows/example_ci.yml* and see an [example](https://github.com/idasm-unibe-ch/unibe-web-accessibility/actions/workflows/example_ci.yml) of how to integrate them in a CI pipeline.
 * go to *.github/workflows/test_ci.yml* and view the [results](https://github.com/idasm-unibe-ch/unibe-web-accessibility/actions/workflows/test_ci.yml) from the Web Accessibility testing tools by downloading them from github artifacts.
+
+## From tests to result report and analysis
+
+In order to obtain the audit results for the webpages of the published test website follow the following steps:
+
+```
+# Start by running an audit for each webpage
+# with the Accessibility-checker
+./test.bash setup achecker
+./test.bash run achecker
+./test.bash cleanup achecker
+
+# with Axe 
+./test.bash setup axe
+./test.bash run axe
+./test.bash cleanup axe
+
+# with HTML_CodeSniffer 
+./test.bash setup htmlcs
+./test.bash run htmlcs
+./test.bash cleanup htmlcs
+
+# with Asqatasun
+asqatasun-docker/asqatasun_audit.bash setup
+asqatasun-docker/asqatasun_audit.bash run
+# NOTE: The results need to be downloaded separately.
+# Substitute the id below with the audit id to download.
+asqatasun-docker/asqatasun_audit.bash audit <id>
+asqatasun-docker/asqatasun_audit.bash cleanup
+
+# Now all results have been saved 
+# and you can generate (see results/): 
+# report.json
+# error_overview.csv
+# error_summary_overview.csv
+./generate_report.bash
+```

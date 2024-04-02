@@ -20,13 +20,16 @@ Usage: $(basename $0) [OPTIONS]
 
 Options:
   setup          Runs the Asqatasun docker containers
-  run            Audit all webpage (i.e. perceivable, operable, etc.)
+  run            Audit all public webpages (i.e. perceivable, operable, etc.)
   audit <id>     Download given audit in $RESULTS
   cleanup        Closes the docker containers
 
 The setup requires the following folder (or similar) in the root of this repo:
 - asqatasun-docker/api-5.0.0-rc.2_ubuntu-18.04/
 - see https://gitlab.com/asqatasun/asqatasun-docker
+To run properly this script requires the following helper tools:
+- curl (https://curl.se/)
+- jq (https://jqlang.github.io/jq/)
 "
 
 function run-asq {
@@ -72,7 +75,7 @@ function view-asq-audit {
     if [[ "$failed" =~ ^[0-9]+$ ]]; then
         # variable is an integer
         if [[ $failed -gt 0 ]]; then
-            echo "See audit.csv for failed tests."
+            echo "See audit$@.csv for failed tests."
             exit 1
         elif [ $failed -eq 0 ]; then
             echo "No tests failed."
@@ -118,7 +121,6 @@ function main {
                 # Save under /asqatasun-docker
                 cd "$FOLDER/api-5.0.0-rc.2_ubuntu-18.04"
                 docker-compose rm -fsv # reset db
-                docker-compose --build 
                 # docker-compose build --no-cache # rebuild image
                 docker-compose up -d
                 cd "$CURRENT_DIR"

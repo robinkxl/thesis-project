@@ -4,6 +4,7 @@
     "perceivable": {
         "perceivableCriterions": 8,
         "perceivableExampleErrors": 16,
+        "perceivablePageErrors": 18, 
         "implementedCriterions": {
             "1.1.1": {
                 "urlToCriterion": "https://www.w3.org/TR/WCAG21/#non-text-content",
@@ -146,6 +147,7 @@
     "operable": {
         "operableCriterions": 6,
         "operableExampleErrors": 9,
+        "operablePageErrors": 8,
         "implementedCriterions": {
             "2.1.1": {
                 "urlToCriterion": "https://www.w3.org/TR/WCAG21/#keyboard",
@@ -240,6 +242,7 @@
     "understandable": {
         "understandableCriterions": 10,
         "understandableExampleErrors": 10,
+        "understandablePageErrors": 9,
         "implementedCriterions": {
             "3.1.1": {
                 "urlToCriterion": "https://www.w3.org/TR/WCAG21/#language-of-page",

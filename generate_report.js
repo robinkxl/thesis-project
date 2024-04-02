@@ -32,7 +32,8 @@ function createViolationObject(toolName, pageUrl) {
         url: pageUrl,
         error_name: "",
         error_description: "",
-        error_position: ""
+        error_position: "",
+        error_help: ""
     };
 }
 
@@ -65,6 +66,7 @@ function generateAxeReport(filePath) {
                     violation['error_name'] = error.id;
                     violation['error_description'] = error.message;
                     violation['error_position'] = node.html;
+                    violation['error_help'] = results[0].violations[key].helpUrl;
                     fails += 1;
                     jsonData.report.push(violation);
                 });
@@ -92,6 +94,7 @@ function generateAcheckerReport(filePath) {
                 violation['error_name'] = results.results[key].ruleId;
                 violation['error_description'] = results.results[key].message;
                 violation['error_position'] = results.results[key].snippet;
+                violation['error_help'] = results.results[key].help;
                 jsonData.report.push(violation);
             }
         }
@@ -120,7 +123,7 @@ function generateHTMLCSReport(filePath) {
         let itemsArray = [];
 
         uniqueLines.forEach(line => {
-            if (line.includes("Error")) {
+            if (line.includes("[HTMLCS] Error")) {
                 const violation = createViolationObject(toolFullName, urlPath);
 
                 itemsArray = line.split('|');

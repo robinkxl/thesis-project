@@ -13,7 +13,7 @@ function generateTotalErrorsOverview() {
         // Filter errors for test webpages
         if (Object.keys(webdoc).includes(key)) {
             report.summary[key]["Webpage"] = key;
-            report.summary[key]["Implemented_Errors"] = webdoc[key][key+"ExampleErrors"];
+            report.summary[key]["Implemented_Errors"] = webdoc[key][key+"PageErrors"];
             overview.push(report.summary[key]);  
         }
     }
@@ -42,7 +42,7 @@ function generateTotalErrorsOverviewLaTeX() {
             tableContent += key + separator;
             tableContent += Object.values(report.summary[key]).join(separator);
             tableContent += separator; 
-            tableContent += webdoc[key][key+"ExampleErrors"]; 
+            tableContent += webdoc[key][key+"PageErrors"]; 
             tableContent += endOfRow;    
         }
     }
@@ -163,7 +163,7 @@ const objectToCsv = function (data) {
     for (const row of data) {
         const values = headers.map(header => {
             const val = row[header]
-            return `"${val}"`;
+            return `${val}`;
         });
  
         // To add, separator between each value
@@ -177,5 +177,5 @@ const objectToCsv = function (data) {
 };
 
 generateTotalErrorsOverview()
-generateTotalErrorsOverviewLaTeX()
+// generateTotalErrorsOverviewLaTeX()
 generateErrorOverview()

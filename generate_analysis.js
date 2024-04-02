@@ -105,10 +105,6 @@ function generateErrorOverview() {
 
                         // Check if tag in error_position is included
                         // in the element of the criterion example
-                        // if (errorPositionTag && criterions[id].examples[name].element.includes(errorPositionTag)){
-                        //     error["related_criterion"].push(id);
-                        //     error["criterion_example"].push(name);
-                        // }
                         if (errorPositionTag.length > 0) {
                             errorPositionTag.forEach(tagItem => {
                                 if (criterions[id].examples[name].element.includes(tagItem.split(' ')[0].replace('>', ''))) {
@@ -140,23 +136,16 @@ function generateErrorOverview() {
 }
 
 
-// Helper object that transforms a JSON object
-// to a CSV object 
+// Helper object that transforms a JSON object to a CSV object 
 // Solution from geeksforgeeks.org
 const objectToCsv = function (data) {
     const sep = ';';
     const csvRows = [];
  
-    /* Get headers as every csv data format 
-    has header (head means column name)
-    so objects key is nothing but column name 
-    for csv data using Object.key() function.
-    We fetch key of object as column name for 
-    csv */
+    // Get headers 
     const headers = Object.keys(data[0]);
  
-    /* Using push() method we push fetched 
-       data into csvRows[] array */
+    // Push fetched headers into csvRows
     csvRows.push(headers.join(sep));
  
     // Loop to get value of each objects key

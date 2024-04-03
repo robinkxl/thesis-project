@@ -5,7 +5,10 @@
     });
 })();
 function searchPage() {
-    const searched = document.getElementById('search').value.toLowerCase();
+    let searched = document.getElementById('search');
+    if (!searched) searched = document.getElementById('find');
+    searched = searched.value.toLowerCase();
+
     const searchableElements = document.getElementsByTagName('body')[0].querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');
 
     clearHighlight();

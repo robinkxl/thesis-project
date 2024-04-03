@@ -42,9 +42,17 @@ function achecker-results-summary {
 
     # Check if the target is not a directory
     if [ ! -d "$achecker_directory" ]; then
-    echo "The '$achecker_directory' directory does not exist."
-    exit 1
+        # Try alternative
+        achecker_directory_alt=$achecker_directory
+        achecker_directory="results/achecker/ylih.github.io/Evaluation-site-for-Web-Accessibility-testing-tools"
+        # Check if the target is not a directory
+        if [ ! -d "$achecker_directory" ]; then
+        echo "The '$achecker_directory_alt' and '$achecker_directory' directory does not exist."
+        exit 1
+        fi
     fi
+
+    echo "Note that achecker is using: '$achecker_directory'"
 
     # Rename home page file
     # Needed for being read in the loop below! 
@@ -107,11 +115,14 @@ function asq-results-summary {
 
 function main {
     # Create output file to write to
-    echo '{"summary": [], "report": []}' > $OUTPUT_FILE
+    echo '{"summary": {}, "report": []}' > $OUTPUT_FILE
     achecker-results-summary
     axe-results-summary
     htmlcs-results-summary
     asq-results-summary
+    echo "Generating analysis overviews..."
+    node generate_analysis.js
+    echo "✅"
 }
 
 main

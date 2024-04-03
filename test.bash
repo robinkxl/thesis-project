@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Public url of test web app
+URL_PUBLIC="https://ylih.github.io/Evaluation-site-for-Web-Accessibility-testing-tools"
+WEBPAGES=("" "perceivable" "operable" "understandable")
+
 __usage="
 Usage: $(basename $0) [OPTIONS]
 
@@ -7,9 +11,10 @@ Tools: axe, achecker, htmlcs
 
 Options:
   start                        Starts container for the webapp 
-  setup <tool>                 Install the dependencies for the tool
-  run <tool> <url>             Audit a webpage with a specific tool
-  cleanup <tool>               Uninstall the dependencies to run the tool
+  setup <tool>                 Installs the dependencies for the tool
+  test <tool> <url>            Audits a webpage with a specific tool
+  run <tool>                   Audits all public webpages with a specific tool
+  cleanup <tool>               Uninstalls the dependencies to run the tool
   end                          Closes all running docker containers
 
 Note that Asqatasun is not included here, since it works differently fromthe other tools.
@@ -87,11 +92,18 @@ function main {
         ;;
         setup)
             set-up-$2
-            echo "Ready to test $2"
+            echo "Ready to use $2"
         ;;
-        run)
+        test)
             echo "Evaluating webpage: $3"
             run-$2 "$3"
+        ;;
+        run)
+            for page in "${WEBPAGES[@]}"
+            do
+                echo "Audit for webpage: $URL_PUBLIC/$page"
+                run-$2 "$URL_PUBLIC/$page"
+            done
         ;;
         cleanup)
             clean-up-$2
@@ -108,4 +120,5 @@ function main {
 }
 
 # ./test.bash run axe http://localhost:1338/
+# ./test.bash run axe https://ylih.github.io/Evaluation-site-for-Web-Accessibility-testing-tools/
 main "$@"

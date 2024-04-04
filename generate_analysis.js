@@ -13,7 +13,7 @@ function generateTotalErrorsOverview() {
         // Filter errors for test webpages
         if (Object.keys(webdoc).includes(key)) {
             report.summary[key]["Webpage"] = key;
-            report.summary[key]["Implemented_Errors"] = webdoc[key][key+"PageErrors"];
+            report.summary[key]["Violated_Criterions"] = webdoc[key][key+"PageErrors"];
             overview.push(report.summary[key]);  
         }
     }
@@ -48,7 +48,7 @@ function generateTotalErrorsOverviewLaTeX() {
     }
     
     tableTitle.unshift("Webpage");
-    tableTitle.push("Implemented_Errors");
+    tableTitle.push("Violated_Criterions");
 
     let table = tableTitle.join(separator) + endOfRow;
 

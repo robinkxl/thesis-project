@@ -358,33 +358,29 @@
                     <div class="example-box">
                         <div class="correct">
                             <h3>Correct</h3>
-                            <p>The form below has been posted without any information in the required fields. The response to this is a red error message stating the issue.</p>
+                            <p>The form below has been "posted" without any information in the required fields. The response to this is a red error message stating the issue.</p>
                             <div class="color-example">
                                 <form action="#">
-                                    <fieldset>
-                                        <legend>Contact Information</legend>
-                                            <label class="gl-1-4-1-labels" for="nameCorrect">Name:</label>
-                                            <input class="gl-1-4-1-input-error" type="text" id="nameCorrect" name="name" required>
-                                            <p class="gl-1-4-1-error-msg">Please enter your name.</p>
-                                            <label class="gl-1-4-1-labels" for="emailCorrect">Email:</label>
-                                            <input class="gl-1-4-1-input-error" type="email" id="emailCorrect" name="email" required>
-                                            <p class="gl-1-4-1-error-msg">Please enter a valid email address.</p>
-                                    </fieldset>
+                                    <label class="gl-1-4-1-labels" for="nameCorrect">Name:</label>
+                                    <input class="gl-1-4-1-input-error" type="text" id="nameCorrect" name="name" required>
+                                    <p class="gl-1-4-1-error-msg">Please enter your name.</p>
+                                    <label class="gl-1-4-1-labels" for="emailCorrect">Email:</label>
+                                    <input class="gl-1-4-1-input-error" type="email" id="emailCorrect" name="email" required>
+                                    <p class="gl-1-4-1-error-msg">Please enter a valid email address.</p>
+                                    <button type="submit">Send</button>
                                 </form>
                             </div>
                         </div>
                         <div class="wrong">
                             <h3>Wrong</h3>
-                            <p>The form below has been posted without any information in the required fields. The response to this is a to highlight the missing fields.</p>
+                            <p>The form below has been "posted" without any information in the required fields. The response to this is a to highlight the missing fields.</p>
                             <div class="color-example">
                                 <form action="#">
-                                    <fieldset>
-                                        <legend>Contact Information</legend>
-                                            <label class="gl-1-4-1-labels" for="nameWrong">Name:</label>
-                                            <input class="gl-1-4-1-input-error" type="text" id="nameWrong" name="name" required>
-                                            <label class="gl-1-4-1-labels" for="emailWrong">Email:</label>
-                                            <input class="gl-1-4-1-input-error" type="email" id="emailWrong" name="email" required>
-                                    </fieldset>
+                                    <label class="gl-1-4-1-labels" for="nameWrong">Name:</label>
+                                    <input class="gl-1-4-1-input-error" type="text" id="nameWrong" name="name" required>
+                                    <label class="gl-1-4-1-labels" for="emailWrong">Email:</label>
+                                    <input class="gl-1-4-1-input-error" type="email" id="emailWrong" name="email" required>
+                                    <button type="submit">Send</button>
                                 </form>
                             </div>
                         </div>

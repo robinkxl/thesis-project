@@ -72,6 +72,8 @@
 
 .gl-1-4-1-input-error {
     border-color: rgb(185, 0, 0);
+    display: block;
+    margin-bottom: 0.5em;
 }
 
 /* 1.4.3 contrast (minimum) */

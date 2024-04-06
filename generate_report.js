@@ -98,7 +98,8 @@ function generateAcheckerReport(filePath) {
 
                 violation['error_name'] = results.results[key].ruleId;
                 violation['error_description'] = results.results[key].message;
-                violation['error_position'] = results.results[key].snippet;
+                violation['error_position'] = results.results[key].path.dom;
+                violation['error_position'] += results.results[key].snippet;
                 violation['error_help'] = results.results[key].help;
                 jsonData.report.push(violation);
             }
@@ -173,6 +174,7 @@ function generateAsqatasunReport(filePath) {
 
                 violation['error_name'] = rgaa.topics[themeIndex].topic;
                 violation['error_description'] = rgaa.topics[themeIndex].criteria[criteriaIndex].criterium.tests[testIndex].join(' ');
+                violation['error_description'] = violation['error_description'].replaceAll(';',',');
                 violation['error_position'] = "";
                 fails += 1;
                 jsonData.report.push(violation);

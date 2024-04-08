@@ -1,10 +1,10 @@
 {
     "criterionsImplemented": 24,
-    "totalExampleErrors": 35,
+    "totalExampleErrors": 38,
     "perceivable": {
         "perceivableCriterions": 8,
-        "perceivableExampleErrors": 16,
-        "perceivablePageErrors": 18, 
+        "perceivableExampleErrors": 18,
+        "perceivablePageErrors": 20, 
         "implementedCriterions": {
             "1.1.1": {
                 "urlToCriterion": "https://www.w3.org/TR/WCAG21/#non-text-content",
@@ -251,8 +251,8 @@
     },
     "understandable": {
         "understandableCriterions": 10,
-        "understandableExampleErrors": 10,
-        "understandablePageErrors": 9,
+        "understandableExampleErrors": 11,
+        "understandablePageErrors": 10,
         "implementedCriterions": {
             "3.1.1": {
                 "urlToCriterion": "https://www.w3.org/TR/WCAG21/#language-of-page",

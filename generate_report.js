@@ -60,16 +60,21 @@ function generateAxeReport(filePath) {
     if (results[0].violations.length > 0) {
         for (key in results[0].violations) {
             results[0].violations[key].nodes.forEach((node) => {
-                node.any.forEach((error) => {
-                    const violation = createViolationObject(toolFullName, urlPath);
+                const violation = createViolationObject(toolFullName, urlPath);
 
-                    violation['error_name'] = error.id;
-                    violation['error_description'] = error.message;
-                    violation['error_position'] = node.html;
-                    violation['error_help'] = results[0].violations[key].helpUrl;
-                    fails += 1;
-                    jsonData.report.push(violation);
-                });
+                violation['error_name'] = results[0].violations[key].id;
+                violation['error_description'] = results[0].violations[key].description;
+                violation['error_position'] = node.html.replaceAll('\n', '');
+                violation['error_help'] = results[0].violations[key].helpUrl;
+
+                for (let i = 0; i < node.any.length; i++) {
+                    if (node.any[i].relatedNodes.length > 0) {
+                        violation['error_position'] = node.any[i].relatedNodes[0].html.replaceAll('\n', '').replace(/\s{2,}/g,'');
+                    }
+                }
+
+                fails += 1;
+                jsonData.report.push(violation);
             });
         }
     }
@@ -93,7 +98,8 @@ function generateAcheckerReport(filePath) {
 
                 violation['error_name'] = results.results[key].ruleId;
                 violation['error_description'] = results.results[key].message;
-                violation['error_position'] = results.results[key].snippet;
+                violation['error_position'] = results.results[key].path.dom;
+                violation['error_position'] += results.results[key].snippet;
                 violation['error_help'] = results.results[key].help;
                 jsonData.report.push(violation);
             }
@@ -168,6 +174,7 @@ function generateAsqatasunReport(filePath) {
 
                 violation['error_name'] = rgaa.topics[themeIndex].topic;
                 violation['error_description'] = rgaa.topics[themeIndex].criteria[criteriaIndex].criterium.tests[testIndex].join(' ');
+                violation['error_description'] = violation['error_description'].replaceAll(';',',');
                 violation['error_position'] = "";
                 fails += 1;
                 jsonData.report.push(violation);

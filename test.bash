@@ -35,6 +35,7 @@ function clean-up-axe {
 }
 
 function run-axe {
+    mkdir -p "results/axe"
     npx axe "$1" --dir ./results/axe/
     echo "Axe-core audit generated and saved at results/axe."
 }

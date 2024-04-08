@@ -102,7 +102,7 @@
                         "description": "Only using a different color for a link is insufficient especially inside of text content."
                     },
                     "colorCueInForm": {
-                        "row": 380,
+                        "row": 377,
                         "element": "<form action='#'>",
                         "description": "Only using a color to display errors in a form is insufficient."
                     }
@@ -114,12 +114,17 @@
                 "examplesGiven": 2,
                 "examples": {
                     "normalText": {
-                        "row": 417,
+                        "row": 413,
                         "element": "<p class='gl-1-4-3-normal-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 4.5:1 but is 4.05:1"
                     },
                     "largeText": {
-                        "row": 435,
+                        "row": 431,
+                        "element": "<p class='large-text gl-1-4-3-large-text-insufficient'>This text does not have sufficient contrast!</p>",
+                        "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 1.92:1"
+                    },
+                    "boldText": {
+                        "row": 441,
                         "element": "<p class='large-text gl-1-4-3-large-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 1.92:1"
                     }
@@ -131,14 +136,19 @@
                 "examplesGiven": 2,
                 "examples": {
                     "normalText": {
-                        "row": 463,
+                        "row": 476,
                         "element": "<p class='gl-1-4-6-normal-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 7:1 but is 6.33:1"
                     },
                     "largeText": {
-                        "row": 473,
+                        "row": 493,
                         "element": "<p class='gl-1-4-6-normal-text-insufficient large-text'>This text has sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 4.5:1 but is 4.04:1"
+                    },
+                    "boldText": {
+                        "row": 510,
+                        "element": "<p class='large-text-bold gl-1-4-6-large-text-insufficient'>This text does not have sufficient contrast!</p>",
+                        "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 4.04:1"
                     }
                 }
             }

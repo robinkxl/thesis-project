@@ -358,33 +358,29 @@
                     <div class="example-box">
                         <div class="correct">
                             <h3>Correct</h3>
-                            <p>The form below has been posted without any information in the required fields. The response to this is a red error message stating the issue.</p>
+                            <p>The form below has been "posted" without any information in the required fields. The response to this is a red error message stating the issue.</p>
                             <div class="color-example">
                                 <form action="#">
-                                    <fieldset>
-                                        <legend>Contact Information</legend>
-                                            <label class="gl-1-4-1-labels" for="nameCorrect">Name:</label>
-                                            <input class="gl-1-4-1-input-error" type="text" id="nameCorrect" name="name" required>
-                                            <p class="gl-1-4-1-error-msg">Please enter your name.</p>
-                                            <label class="gl-1-4-1-labels" for="emailCorrect">Email:</label>
-                                            <input class="gl-1-4-1-input-error" type="email" id="emailCorrect" name="email" required>
-                                            <p class="gl-1-4-1-error-msg">Please enter a valid email address.</p>
-                                    </fieldset>
+                                    <label class="gl-1-4-1-labels" for="nameCorrect">Name:</label>
+                                    <input class="gl-1-4-1-input-error" type="text" id="nameCorrect" name="name" required>
+                                    <p class="gl-1-4-1-error-msg">Please enter your name.</p>
+                                    <label class="gl-1-4-1-labels" for="emailCorrect">Email:</label>
+                                    <input class="gl-1-4-1-input-error" type="email" id="emailCorrect" name="email" required>
+                                    <p class="gl-1-4-1-error-msg">Please enter a valid email address.</p>
+                                    <button type="submit">Send</button>
                                 </form>
                             </div>
                         </div>
                         <div class="wrong">
                             <h3>Wrong</h3>
-                            <p>The form below has been posted without any information in the required fields. The response to this is a to highlight the missing fields.</p>
+                            <p>The form below has been "posted" without any information in the required fields. The response to this is a to highlight the missing fields.</p>
                             <div class="color-example">
                                 <form action="#">
-                                    <fieldset>
-                                        <legend>Contact Information</legend>
-                                            <label class="gl-1-4-1-labels" for="nameWrong">Name:</label>
-                                            <input class="gl-1-4-1-input-error" type="text" id="nameWrong" name="name" required>
-                                            <label class="gl-1-4-1-labels" for="emailWrong">Email:</label>
-                                            <input class="gl-1-4-1-input-error" type="email" id="emailWrong" name="email" required>
-                                    </fieldset>
+                                    <label class="gl-1-4-1-labels" for="nameWrong">Name:</label>
+                                    <input class="gl-1-4-1-input-error" type="text" id="nameWrong" name="name" required>
+                                    <label class="gl-1-4-1-labels" for="emailWrong">Email:</label>
+                                    <input class="gl-1-4-1-input-error" type="email" id="emailWrong" name="email" required>
+                                    <button type="submit">Send</button>
                                 </form>
                             </div>
                         </div>
@@ -400,6 +396,7 @@
                         <li>Incidental - Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.</li>
                         <li>Logotypes - Text that is part of a logo or brand name has no contrast requirement.</li>
                     </ul>
+                    <p>Large scale text is text with at least 18 point or 14 point bold or font size that would yield equivalent size.</p>
                     <h3>Examples:</h3>
                     <h4>1. Normal text</h4>
                     <div class="example-box">
@@ -425,7 +422,6 @@
                             <p>The text below has sufficient contrast ratio even though it uses the same color as the insufficient example above.</p>
                             <div class="color-example">
                                 <p class="gl-1-4-3-normal-text-insufficient large-text">This text has sufficient contrast!</p>
-                                <p class="gl-1-4-3-normal-text-insufficient large-text-bold">This text also has sufficient contrast because it is bold!</p>
                             </div>
                         </div>
                         <div class="wrong">
@@ -433,6 +429,22 @@
                             <p>The text below does not have sufficient contrast ratio. According to <a href="https://webaim.org/resources/contrastchecker/">WebAIM's contrast checker</a> it has a contrast of 1.92:1</p>
                             <div class="color-example">
                                 <p class="large-text gl-1-4-3-large-text-insufficient">This text does not have sufficient contrast!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>3. Bold text</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The text below has sufficient contrast ratio even though it uses the same color as the insufficient example above.</p>
+                            <div class="color-example">
+                                <p class="gl-1-4-3-normal-text-insufficient large-text-bold">This text also has sufficient contrast because it is bold!</p>
+                            </div>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The text below does not have sufficient contrast ratio. According to <a href="https://webaim.org/resources/contrastchecker/">WebAIM's contrast checker</a> it has a contrast of 1.92:1</p>
+                            <div class="color-example">
                                 <p class="large-text-bold gl-1-4-3-large-text-insufficient">This text does not have sufficient contrast!</p>
                             </div>
                         </div>
@@ -446,6 +458,7 @@
                         <li>Incidental - Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.</li>
                         <li>Logotypes - Text that is part of a logo or brand name has no contrast requirement.</li>
                     </ul>
+                    <p>Large scale text is text with at least 18 point or 14 point bold or font size that would yield equivalent size.</p>
                     <h3>Examples:</h3>
                     <h4>1. Normal text</h4>
                     <div class="example-box">
@@ -471,7 +484,6 @@
                             <p>The text below has sufficient contrast ratio even though it uses the same color as the insufficient example above.</p>
                             <div class="color-example">
                                 <p class="gl-1-4-6-normal-text-insufficient large-text">This text has sufficient contrast!</p>
-                                <p class="gl-1-4-6-normal-text-insufficient large-text-bold">This text also has sufficient contrast because it is bold!</p>
                             </div>
                         </div>
                         <div class="wrong">
@@ -479,6 +491,22 @@
                             <p>The text below does not have sufficient contrast ratio. According to <a href="https://webaim.org/resources/contrastchecker/">WebAIM's contrast checker</a> it has a contrast of 4.04:1</p>
                             <div class="color-example">
                                 <p class="large-text gl-1-4-6-large-text-insufficient">This text does not have sufficient contrast!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>3. Bold text</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The text below has sufficient contrast ratio even though it uses the same color as the insufficient color from example 1.</p>
+                            <div class="color-example">
+                                <p class="gl-1-4-6-normal-text-insufficient large-text-bold">This text also has sufficient contrast because it is bold!</p>
+                            </div>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The text below does not have sufficient contrast ratio. According to <a href="https://webaim.org/resources/contrastchecker/">WebAIM's contrast checker</a> it has a contrast of 4.04:1</p>
+                            <div class="color-example">
                                 <p class="large-text-bold gl-1-4-6-large-text-insufficient">This text does not have sufficient contrast!</p>
                             </div>
                         </div>

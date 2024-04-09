@@ -98,6 +98,12 @@ table {
     border-radius: 0.5em;
 }
 
+.highlighted {
+    background-color: yellow;
+    border: 1px solid darkgoldenrod;
+    border-radius: 0.5em;
+}
+
 .color-example {
     width: 95%;
     padding: 2.5% 2.5%;

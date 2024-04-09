@@ -24,4 +24,8 @@ app.get('/understandable', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/understandable.html'));
 })
 
+app.get('/dictionary', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/dictionary.html'));
+})
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

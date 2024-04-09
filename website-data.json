@@ -1,0 +1,385 @@
+{
+    "criterionsImplemented": 24,
+    "totalExampleErrors": 38,
+    "perceivable": {
+        "perceivableCriterions": 8,
+        "perceivableExampleErrors": 18,
+        "perceivablePageErrors": 20, 
+        "implementedCriterions": {
+            "1.1.1": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#non-text-content",
+                "level": "A",
+                "examplesGiven": 3,
+                "examples": {
+                    "missingAlt": {
+                        "row": 62,
+                        "element": "<img src='images/Sticky.png'>",
+                        "description": "The image is missing an alternative text."
+                    },
+                    "decorativeImage": {
+                        "row": 78,
+                        "element": "<img src='images/decoration.png' alt='This tag is not necessary.'>",
+                        "description": "If an image is purely decorative the alt tag should be empty."
+                    },
+                    "imageContainingText": {
+                        "row": 94,
+                        "element": "<img src='images/important_text.png' alt='It wasn't that important after all'>",
+                        "description": "images containing text information should convey it in the alt attribute."
+                    }
+                }
+            },
+            "1.3.1": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#info-and-relationships",
+                "level": "A",
+                "examplesGiven": 3,
+                "examples": {
+                    "wrongOrderHeadings": {
+                        "row": 123,
+                        "element": "<h6>This is h6</h6>",
+                        "description": "The subsequent headings are supposed to come before this one programmatically."
+                    },
+                    "wrongfulList": {
+                        "row": 144,
+                        "element": "<ol><p>1. Write code</p><p>2. Review code</p><p>3. Rewrite code</p></ol>",
+                        "description": "The list is not using the <li> element preventing the proper conveyance of information, structure, and relationship in the content."
+                    },
+                    "tableMissingHeadings": {
+                        "row": 190,
+                        "element": "<td>Time</td>",
+                        "description": "Table is not using the <th> element preventing the proper conveyance of information, structure, and relationship in the content."
+                    }
+                }
+            },
+            "1.3.2": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#meaningful-sequence",
+                "level": "A",
+                "examplesGiven": 2,
+                "examples": {
+                    "incorrectOrder": {
+                        "row": 241,
+                        "element": "<div class='column-example'>",
+                        "description": "The paragraphs inside the <div> are programmatically in the wrong sequence."
+                    },
+                    "whiteSpacing": {
+                        "row": 270,
+                        "element": "<h4>W   E   L   C   O   M   E</h4>",
+                        "description": "The letters are not using CSS for white spacing. This can cause screen readers to read each individual letter by itself instead of 'welcome'"
+                    }
+                }
+            },
+            "1.3.3": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#sensory-characteristics",
+                "level": "A",
+                "examplesGiven": 1,
+                "examples": {
+                    "iconNavigation": {
+                        "row": 295,
+                        "element": "<ul class='nav-menu'>",
+                        "description": "The links inside the list do not provide enough clarity. Using only an emoji is not sufficient for understanding and operating content."
+                    }
+                }
+            },
+            "1.3.4": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#orientation",
+                "level": "AA",
+                "examplesGiven": 1,
+                "examples": {
+                    "orientationBlockingContent": {
+                        "row": 319,
+                        "element": "<div class='wrong'>",
+                        "description": "The content inside the div is not being displayed unless you have the proper orientation on your device."
+                    }
+                }
+            },
+            "1.4.1": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#use-of-color",
+                "level": "A",
+                "examplesGiven": 2,
+                "examples": {
+                    "linkInText": {
+                        "row": 345,
+                        "element": "<p>This <a class='gl-1-4-1' href='#guideline-1-4-1'>link</a> might not be visible for people with color-blindness.</p>",
+                        "description": "Only using a different color for a link is insufficient especially inside of text content."
+                    },
+                    "colorCueInForm": {
+                        "row": 377,
+                        "element": "<form action='#'>",
+                        "description": "Only using a color to display errors in a form is insufficient."
+                    }
+                }
+            },
+            "1.4.3": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#contrast-minimum",
+                "level": "AA",
+                "examplesGiven": 2,
+                "examples": {
+                    "normalText": {
+                        "row": 413,
+                        "element": "<p class='gl-1-4-3-normal-text-insufficient'>This text does not have sufficient contrast!</p>",
+                        "description": "The contrast between the text and the background is insufficient. It should be at least 4.5:1 but is 4.05:1"
+                    },
+                    "largeText": {
+                        "row": 431,
+                        "element": "<p class='large-text gl-1-4-3-large-text-insufficient'>This text does not have sufficient contrast!</p>",
+                        "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 1.92:1"
+                    },
+                    "boldText": {
+                        "row": 441,
+                        "element": "<p class='large-text gl-1-4-3-large-text-insufficient'>This text does not have sufficient contrast!</p>",
+                        "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 1.92:1"
+                    }
+                }
+            },
+            "1.4.6": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#contrast-enhanced",
+                "level": "AAA",
+                "examplesGiven": 2,
+                "examples": {
+                    "normalText": {
+                        "row": 476,
+                        "element": "<p class='gl-1-4-6-normal-text-insufficient'>This text does not have sufficient contrast!</p>",
+                        "description": "The contrast between the text and the background is insufficient. It should be at least 7:1 but is 6.33:1"
+                    },
+                    "largeText": {
+                        "row": 493,
+                        "element": "<p class='gl-1-4-6-normal-text-insufficient large-text'>This text has sufficient contrast!</p>",
+                        "description": "The contrast between the text and the background is insufficient. It should be at least 4.5:1 but is 4.04:1"
+                    },
+                    "boldText": {
+                        "row": 510,
+                        "element": "<p class='large-text-bold gl-1-4-6-large-text-insufficient'>This text does not have sufficient contrast!</p>",
+                        "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 4.04:1"
+                    }
+                }
+            }
+        }
+    },
+    "operable": {
+        "operableCriterions": 6,
+        "operableExampleErrors": 9,
+        "operablePageErrors": 8,
+        "implementedCriterions": {
+            "2.1.1": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#keyboard",
+                "level": "A",
+                "examplesGiven": 3,
+                "examples": {
+                    "focusNotVisible": {
+                        "row": 61,
+                        "element": "<a id='gl-2-1-1-link' href='#'>Link</a>",
+                        "description": "The focus is not displayed on this link."
+                    },
+                    "focusMovingByItself": {
+                        "row": 76,
+                        "element": "<a id='gl-2-1-1-link-from' href='#gl-2-1-1-link-from'>Link</a>",
+                        "description": "Once focused it wont let you leave for 3 seconds and then it moves for you."
+                    },
+                    "imageContainingText": {
+                        "row": 94,
+                        "element": "<span id='fake-link' class='faked-link'>This link is fake!</span>",
+                        "description": "This is a span element but with added event handling. It should just be an <a> element instead since that is recognized by assistive technology."
+                    }
+                }
+            },
+            "2.2.2": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#pause-stop-hide",
+                "level": "A",
+                "examplesGiven": 1,
+                "examples": {
+                    "flashingSign": {
+                        "row": 136,
+                        "element": "<div id='gl-2-2-2-sign-w' class='gl-2-2-2-flash flashing'>",
+                        "description": "This sign can't be stopped or paused."
+                    }
+                }
+            },
+            "2.3.1": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#three-flashes-or-below-threshold",
+                "level": "A",
+                "examplesGiven": 1,
+                "examples": {
+                    "flashingText": {
+                        "row": 165,
+                        "element": "<div id='gl-2-3-1-sign-w' class='quick-flashing'>",
+                        "description": "The text is flashing more than 3 times per second."
+                    }
+                }
+            },
+            "2.3.2": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#three-flashes",
+                "level": "AAA",
+                "examplesGiven": 0,
+                "examples": {
+                    "flashingText": {
+                        "row": 165,
+                        "element": "<div id='gl-2-3-1-sign-w' class='quick-flashing'>",
+                        "description": "The rule automatically fails because of the test case given in 2.3.1 that flashes 5 times per second."
+                    }
+                }
+            },
+            "2.4.2": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#page-titled",
+                "level": "A",
+                "examplesGiven": 2,
+                "examples": {
+                    "noTitle": {
+                        "row": 3,
+                        "element": "<head>",
+                        "description": "The page is missing a title."
+                    },
+                    "nonDescriptiveTitle": {
+                        "row": 11,
+                        "page": "perceivable",
+                        "element": "<title>What is a title?</title>",
+                        "description": "The perceivable page does not contain a descriptive title."
+                    }
+                }
+            },
+            "2.4.3": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#focus-order",
+                "level": "A",
+                "examplesGiven": 1,
+                "examples": {
+                    "wrongTabOrder": {
+                        "row": 16,
+                        "element": "<nav>",
+                        "description": "The links inside the navigation menu does not have meaningful sequencing. This can result in users relying on keyboard navigation to be confused."
+                    }
+                }
+            }
+        }
+    },
+    "understandable": {
+        "understandableCriterions": 10,
+        "understandableExampleErrors": 11,
+        "understandablePageErrors": 10,
+        "implementedCriterions": {
+            "3.1.1": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#language-of-page",
+                "level": "A",
+                "examplesGiven": 2,
+                "examples": {
+                    "noLangTag": {
+                        "row": 2,
+                        "page": "perceivable",
+                        "element": "<html>",
+                        "description": "Page does not have a lang attribute on the html element."
+                    },
+                    "wrongLangTag": {
+                        "row": 2,
+                        "element": "<html lang='fr'>",
+                        "description": "Page has lang attribute but it isn't the primary language of the page."
+                    }
+                }
+            },
+            "3.1.2": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#language-of-parts",
+                "level": "AA",
+                "examplesGiven": 1,
+                "examples": {
+                    "textRequireLangTag": {
+                        "row": 79,
+                        "element": "<p>The web page has the lang tag 'fr' which would suggest that all text written in english should fail on tests.</p>",
+                        "description": "Text not written in the primary language of the page should have a lang tag."
+                    }
+                }
+            },
+            "3.1.3": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#unusual-words",
+                "level": "AAA",
+                "examplesGiven": 1,
+                "examples": {
+                    "linkToDictionary": {
+                        "row": 104,
+                        "element": "<p>Victor did spill the beans about an incident at work last week.</p>",
+                        "description": "Text uses idiom without explanation or link to explanation."
+                    }
+                }
+            },
+            "3.1.4": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#abbreviations",
+                "level": "AAA",
+                "examplesGiven": 1,
+                "examples": {
+                    "linkToDictionary": {
+                        "row": 132,
+                        "element": "<p>WCAG compliance increases the quality of your website.</p>",
+                        "description": "Text uses abbreviations without explanation or link to explanation."
+                    }
+                }
+            },
+            "3.2.1": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#on-focus",
+                "level": "A",
+                "examplesGiven": 1,
+                "examples": {
+                    "focusDropped": {
+                        "row": 164,
+                        "element": "<a href='#' onFocus='this.blur()'>Link</a>",
+                        "description": "The element loses focus, making it hard for keyboard-only users to interact with. This might also confuse users."
+                    }
+                }
+            },
+            "3.2.2": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#on-input",
+                "level": "A",
+                "examplesGiven": 1,
+                "examples": {
+                    "selectSendingOnChange": {
+                        "row": 192,
+                        "element": "<form method='get' id='formWrongGl322'>",
+                        "description": "The form is being submitted as soon as the select element swaps option."
+                    }
+                }
+            },
+            "3.2.3": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#consistent-navigation",
+                "level": "AA",
+                "examplesGiven": 1,
+                "examples": {
+                    "consistentPageStructure": {
+                        "row": 334,
+                        "element": "<header>",
+                        "description": "The header element is not consistent with all other pages."
+                    }
+                }
+            },
+            "3.2.4": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#consistent-identification",
+                "level": "AA",
+                "examplesGiven": 1,
+                "examples": {
+                    "consistentPageStructure": {
+                        "row": 347,
+                        "element": "<input type='text' name='find' id='find' placeholder='Find on page...'>",
+                        "description": "This fulfills the same function as 'search' on the other pages. Naming in 'find' on this page causes inconsistency."
+                    }
+                }
+            },
+            "3.3.1": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#error-identification",
+                "level": "A",
+                "examplesGiven": 1,
+                "examples": {
+                    "errorIdentification": {
+                        "row": 313,
+                        "element": "<form id='wrongForm' class='block-form' action='#' novalidate>",
+                        "description": "The form does not contain any relevant error handling."
+                    }
+                }
+            },
+            "3.3.2": {
+                "urlToCriterion": "https://www.w3.org/TR/WCAG21/#labels-or-instructions",
+                "level": "A",
+                "examplesGiven": 1,
+                "examples": {
+                    "errorIdentification": {
+                        "row": 313,
+                        "element": "<form id='wrongForm' class='block-form' action='#' novalidate>",
+                        "description": "The form does not contain any labels."
+                    }
+                }
+            }
+        }
+    }
+}

@@ -22,18 +22,57 @@
                 </ul>
             </nav>
             <div class="search-container">
-                <label for="search">Search: </label>
-                <input type="text" name="search" id="search" placeholder="Search on web page...">
-                <button onclick="searchPage()">Search</button>
+                <form id="searchForm">
+                    <label for="search">Search: </label>
+                    <input type="text" name="search" id="search" placeholder="Search on page...">
+                    <button>Search</button>
+                </form>
             </div>
         </header>
         <main>
             <h1>Home</h1>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur facere magnam dolorum. Rem suscipit alias dicta,
-            excepturi molestiae facilis aliquid sequi est officiis, placeat animi? Voluptas quisquam animi eius amet magnam quidem impedit et sint quos deleniti cum veniam atque,
-            itaque officia quibusdam inventore asperiores dolorem soluta tempora est corporis. Officia,
-            accusantium aliquam delectus earum quasi at animi quidem veniam odio quibusdam.
-            Reiciendis corporis cum accusamus fugiat nesciunt ducimus tempore eum porro mollitia laborum molestias molestiae saepe, iure magnam nisi?
+            <p>
+                This website is part of our thesis project: <i>Incorporating Web Accessibility into a CI/CD Pipeline: A study of Open Source Evaluation tools</i>, which can be viewed here: (link to be included...).
+            </p>
+            <p>
+                The idea behind the website is to test different accessibility testing tools. All the pages except for this one contain test cases that breaks criterions of WCAG 2.1.
+            </p>
+
+            <h2>A Test Case</h2>
+            <p>
+                The test cases comprise the WCAG success criterion code and title, along with its corresponding level.
+                Below the title, there is typically an explanation of the error.
+                Lastly, there are two boxes: one displaying a correct implementation and the other showing a wrongful implementation.
+            </p>
+            <div class="info">
+                <h3>X.X.X: Title of criterion (Level of criterion (A, AA, AAA))</h3>
+                <p>Some text about the error.</p>
+                <div class="example-box">
+                    <div class="correct">
+                        <h3>Correct</h3>
+                        <p>A correct implementation of code following the criterion.</p>
+                    </div>
+                    <div class="wrong">
+                        <h3>Wrong</h3>
+                        <p>An implementation breaking the criterion.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>A Disclaimer</h2>
+            <p>
+                Occasionally, the example is applied to a different page, even though the error itself is related to the current page.
+                For example, the lang attribute may be removed on the perceivable page, while the error is actually part of a criterion on the understandable page.
+                These test cases are typically presented as disclaimers.
+            </p>
+            <div class="info">
+                <div class="disclaimer-box">
+                    <p class="disclaimer">
+                        This is a typical disclaimer. As mentioned earlier, they serve to alert the viewer about a criterion being violated on another page.
+                        Additionally, they can be utilized to provide users with information about other relevant matters.
+                    </p>
+                </div>
+            </div>
         </main>
         <footer>
             <p>Made by <a href="https://github.com/Ylih">Ylih</a> and <a href="https://github.com/elemoser">elemoser</a></p>

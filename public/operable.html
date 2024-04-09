@@ -17,14 +17,16 @@
                 <ul class="nav-links">
                     <li><a href="/" tabindex="1">Home</a></li>
                     <li><a href="/perceivable" tabindex="3">Perceivable</a></li>
-                    <li><a href="/operable" tabindex="4">Operable</a></li>
+                    <li><a href="/operable">Operable</a></li>
                     <li><a href="/understandable" tabindex="2">Understandable</a></li>
                 </ul>
             </nav>
             <div class="search-container">
-                <label for="search">Search: </label>
-                <input type="text" name="search" id="search" placeholder="Search on web page...">
-                <button onclick="searchPage()">Search</button>
+                <form id="searchForm">
+                    <label for="search">Search: </label>
+                    <input type="text" name="search" id="search" placeholder="Search on page...">
+                    <button>Search</button>
+                </form>
             </div>
         </header>
         <main>
@@ -38,7 +40,7 @@
                         Make all functionality available from a keyboard.
                     </p>
 
-                    <h3>2.1.1: Keyboard</h3>
+                    <h3>2.1.1: Keyboard (Level A)</h3>
                     <p>
                         All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes,
                         except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
@@ -100,7 +102,7 @@
                         Provide users enough time to read and use content.
                     </p>
 
-                    <h3>2.2.2: Pause, Stop, Hide</h3>
+                    <h3>2.2.2: Pause, Stop, Hide (Level A)</h3>
                     <p>For moving, blinking, scrolling, or auto-updating information, all of the following are true:</p>
                     <ul>
                         <li>
@@ -169,7 +171,7 @@
                     <p>
                         Web pages do not contain anything that flashes more than three times in any one second period.
                     </p>
-                    <div class="example-box">
+                    <div class="disclaimer-box">
                         <div class="disclaimer">
                             <p>Because of the flashing text in the "wrong" example above this rule automatically fails.</p>
                         </div>
@@ -202,7 +204,7 @@
                         If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation,
                         focusable components receive focus in an order that preserves meaning and operability.
                     </p>
-                    <div class="example-box">
+                    <div class="disclaimer-box">
                         <div class="disclaimer">
                             <p>
                                 The navigation menu at the start of this page uses tabindex in an order that does not preserve meaning.

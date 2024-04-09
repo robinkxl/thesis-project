@@ -4,7 +4,7 @@ name: Example Web Accessibility CI
 
 on:
   push:
-    branches: [ setup-testing-env ]
+    branches: [ example_ci ]
   
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

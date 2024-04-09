@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="EN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style/base.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        <script src="script/search.js" type="text/javascript" defer></script>
+        <script src="script/dictionary.js" type="text/javascript" defer></script>
+        <title>Web Accessibility Testing Page</title>
+    </head>
+    <body>
+        <header>
+            <h1>Evaluation Webpage for Web Accessibility Testing Tools!</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/perceivable">Perceivable</a></li>
+                    <li><a href="/operable">Operable</a></li>
+                    <li><a href="/understandable">Understandable</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <form id="searchForm">
+                    <label for="search">Search: </label>
+                    <input type="text" name="search" id="search" placeholder="Find on page...">
+                    <button>Search</button>
+                </form>
+            </div>
+        </header>
+        <main>
+            <h1>Dictionary</h1>
+            <p>
+                Below is a dictionary with explanations of abbreviations, terms, jargon and idioms used on this web page.
+            </p>
+            <div class="color-example">
+                <h2>Idiom</h2>
+                <p id="spillthebeans"> Spill the beans - Reveal a secret </p>
+
+                <h2>Jargon</h2>
+                <p id="driverinsoftware"> Driver - The word "driver" is defined as software that contains specific instructions</p>
+
+                <h2>Abbreviations</h2>
+                <p id="WCAG">WCAG - Web Content Accessibility Guidelines</p>
+                <p id="W3C">W3C - World Wide Web Consortium</p>
+                <p id="API">API -  Application Programming Interface: A set of rules and protocols for building and interacting with software applications.</p>
+            </div>
+        </main>
+        <footer>
+            <p>Made by <a href="https://github.com/Ylih">Ylih</a> and <a href="https://github.com/elemoser">elemoser</a></p>
+        </footer>
+    </body>
+</html>

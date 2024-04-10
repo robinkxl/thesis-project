@@ -22,7 +22,7 @@
                         "description": "If an image is purely decorative the alt tag should be empty."
                     },
                     "imageContainingText": {
-                        "row": 94,
+                        "row": 95,
                         "element": "<img src='images/important_text.png' alt='It wasn't that important after all'>",
                         "description": "images containing text information should convey it in the alt attribute."
                     }
@@ -34,17 +34,17 @@
                 "examplesGiven": 3,
                 "examples": {
                     "wrongOrderHeadings": {
-                        "row": 123,
+                        "row": 124,
                         "element": "<h6>This is h6</h6>",
                         "description": "The subsequent headings are supposed to come before this one programmatically."
                     },
                     "wrongfulList": {
-                        "row": 144,
+                        "row": 145,
                         "element": "<ol><p>1. Write code</p><p>2. Review code</p><p>3. Rewrite code</p></ol>",
                         "description": "The list is not using the <li> element preventing the proper conveyance of information, structure, and relationship in the content."
                     },
                     "tableMissingHeadings": {
-                        "row": 190,
+                        "row": 191,
                         "element": "<td>Time</td>",
                         "description": "Table is not using the <th> element preventing the proper conveyance of information, structure, and relationship in the content."
                     }
@@ -56,12 +56,12 @@
                 "examplesGiven": 2,
                 "examples": {
                     "incorrectOrder": {
-                        "row": 241,
+                        "row": 242,
                         "element": "<div class='column-example'>",
                         "description": "The paragraphs inside the <div> are programmatically in the wrong sequence."
                     },
                     "whiteSpacing": {
-                        "row": 270,
+                        "row": 271,
                         "element": "<h4>W   E   L   C   O   M   E</h4>",
                         "description": "The letters are not using CSS for white spacing. This can cause screen readers to read each individual letter by itself instead of 'welcome'"
                     }
@@ -73,7 +73,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "iconNavigation": {
-                        "row": 299,
+                        "row": 300,
                         "element": "<ul class='nav-menu'>",
                         "description": "The links inside the list do not provide enough clarity. Using only an emoji is not sufficient for understanding and operating content."
                     }
@@ -85,7 +85,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "orientationBlockingContent": {
-                        "row": 323,
+                        "row": 324,
                         "element": "<div class='wrong'>",
                         "description": "The content inside the div is not being displayed unless you have the proper orientation on your device."
                     }
@@ -97,12 +97,12 @@
                 "examplesGiven": 2,
                 "examples": {
                     "linkInText": {
-                        "row": 349,
+                        "row": 350,
                         "element": "<p>This <a class='gl-1-4-1' href='#guideline-1-4-1'>link</a> might not be visible for people with color-blindness.</p>",
                         "description": "Only using a different color for a link is insufficient especially inside of text content."
                     },
                     "colorCueInForm": {
-                        "row": 381,
+                        "row": 382,
                         "element": "<form action='#'>",
                         "description": "Only using a color to display errors in a form is insufficient."
                     }
@@ -114,17 +114,17 @@
                 "examplesGiven": 2,
                 "examples": {
                     "normalText": {
-                        "row": 417,
+                        "row": 418,
                         "element": "<p class='gl-1-4-3-normal-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 4.5:1 but is 4.05:1"
                     },
                     "largeText": {
-                        "row": 435,
+                        "row": 436,
                         "element": "<p class='large-text gl-1-4-3-large-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 1.92:1"
                     },
                     "boldText": {
-                        "row": 445,
+                        "row": 446,
                         "element": "<p class='large-text gl-1-4-3-large-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 1.92:1"
                     }
@@ -136,17 +136,17 @@
                 "examplesGiven": 2,
                 "examples": {
                     "normalText": {
-                        "row": 480,
+                        "row": 481,
                         "element": "<p class='gl-1-4-6-normal-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 7:1 but is 6.33:1"
                     },
                     "largeText": {
-                        "row": 497,
+                        "row": 498,
                         "element": "<p class='gl-1-4-6-normal-text-insufficient large-text'>This text has sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 4.5:1 but is 4.04:1"
                     },
                     "boldText": {
-                        "row": 514,
+                        "row": 515,
                         "element": "<p class='large-text-bold gl-1-4-6-large-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 4.04:1"
                     }

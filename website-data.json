@@ -73,7 +73,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "iconNavigation": {
-                        "row": 295,
+                        "row": 299,
                         "element": "<ul class='nav-menu'>",
                         "description": "The links inside the list do not provide enough clarity. Using only an emoji is not sufficient for understanding and operating content."
                     }
@@ -85,7 +85,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "orientationBlockingContent": {
-                        "row": 319,
+                        "row": 323,
                         "element": "<div class='wrong'>",
                         "description": "The content inside the div is not being displayed unless you have the proper orientation on your device."
                     }
@@ -97,12 +97,12 @@
                 "examplesGiven": 2,
                 "examples": {
                     "linkInText": {
-                        "row": 345,
+                        "row": 349,
                         "element": "<p>This <a class='gl-1-4-1' href='#guideline-1-4-1'>link</a> might not be visible for people with color-blindness.</p>",
                         "description": "Only using a different color for a link is insufficient especially inside of text content."
                     },
                     "colorCueInForm": {
-                        "row": 377,
+                        "row": 381,
                         "element": "<form action='#'>",
                         "description": "Only using a color to display errors in a form is insufficient."
                     }
@@ -114,17 +114,17 @@
                 "examplesGiven": 2,
                 "examples": {
                     "normalText": {
-                        "row": 413,
+                        "row": 417,
                         "element": "<p class='gl-1-4-3-normal-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 4.5:1 but is 4.05:1"
                     },
                     "largeText": {
-                        "row": 431,
+                        "row": 435,
                         "element": "<p class='large-text gl-1-4-3-large-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 1.92:1"
                     },
                     "boldText": {
-                        "row": 441,
+                        "row": 445,
                         "element": "<p class='large-text gl-1-4-3-large-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 1.92:1"
                     }
@@ -136,17 +136,17 @@
                 "examplesGiven": 2,
                 "examples": {
                     "normalText": {
-                        "row": 476,
+                        "row": 480,
                         "element": "<p class='gl-1-4-6-normal-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 7:1 but is 6.33:1"
                     },
                     "largeText": {
-                        "row": 493,
+                        "row": 497,
                         "element": "<p class='gl-1-4-6-normal-text-insufficient large-text'>This text has sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 4.5:1 but is 4.04:1"
                     },
                     "boldText": {
-                        "row": 510,
+                        "row": 514,
                         "element": "<p class='large-text-bold gl-1-4-6-large-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 4.04:1"
                     }

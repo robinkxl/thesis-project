@@ -33,7 +33,10 @@ function clearHighlight() {
 }
 
 function setBase() {
-    let base = window.location.href;
+    let url = window.location.href;
+    let base = url.slice(0,url.lastIndexOf('/') + 1);
     let baseElem = document.getElementById('base');
+    let homeElem = document.getElementById('home');
     baseElem.href = base;
+    homeElem.href = base;
 }

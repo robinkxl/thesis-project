@@ -37,6 +37,6 @@ function setBase() {
     let base = url.slice(0,url.lastIndexOf('/') + 1);
     let baseElem = document.getElementById('base');
     let homeElem = document.getElementById('home');
-    baseElem.href = base;
+    baseElem.href = url;
     homeElem.href = base;
 }

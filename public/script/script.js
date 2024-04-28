@@ -1,9 +1,11 @@
 (function() {
+    setBase();
     document.getElementById('searchForm').addEventListener('submit', (e) => {
         e.preventDefault();
         searchPage();
     });
 })();
+
 function searchPage() {
     let searched = document.getElementById('search');
     if (!searched) searched = document.getElementById('find');
@@ -28,4 +30,10 @@ function clearHighlight() {
     highlightedElements.forEach(e => {
         e.classList.remove('highlighted');
     });
+}
+
+function setBase() {
+    let base = window.location.href;
+    let baseElem = document.getElementById('base');
+    baseElem.href = base;
 }

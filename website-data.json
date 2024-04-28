@@ -12,17 +12,17 @@
                 "examplesGiven": 3,
                 "examples": {
                     "missingAlt": {
-                        "row": 62,
+                        "row": 63,
                         "element": "<img src='images/Sticky.png'>",
                         "description": "The image is missing an alternative text."
                     },
                     "decorativeImage": {
-                        "row": 78,
+                        "row": 79,
                         "element": "<img src='images/decoration.png' alt='This tag is not necessary.'>",
                         "description": "If an image is purely decorative the alt tag should be empty."
                     },
                     "imageContainingText": {
-                        "row": 95,
+                        "row": 96,
                         "element": "<img src='images/important_text.png' alt='It wasn't that important after all'>",
                         "description": "images containing text information should convey it in the alt attribute."
                     }
@@ -34,17 +34,17 @@
                 "examplesGiven": 3,
                 "examples": {
                     "wrongOrderHeadings": {
-                        "row": 124,
+                        "row": 125,
                         "element": "<h6>This is h6</h6>",
                         "description": "The subsequent headings are supposed to come before this one programmatically."
                     },
                     "wrongfulList": {
-                        "row": 145,
+                        "row": 146,
                         "element": "<ol><p>1. Write code</p><p>2. Review code</p><p>3. Rewrite code</p></ol>",
                         "description": "The list is not using the <li> element preventing the proper conveyance of information, structure, and relationship in the content."
                     },
                     "tableMissingHeadings": {
-                        "row": 191,
+                        "row": 192,
                         "element": "<td>Time</td>",
                         "description": "Table is not using the <th> element preventing the proper conveyance of information, structure, and relationship in the content."
                     }
@@ -56,12 +56,12 @@
                 "examplesGiven": 2,
                 "examples": {
                     "incorrectOrder": {
-                        "row": 242,
+                        "row": 243,
                         "element": "<div class='column-example'>",
                         "description": "The paragraphs inside the <div> are programmatically in the wrong sequence."
                     },
                     "whiteSpacing": {
-                        "row": 271,
+                        "row": 272,
                         "element": "<h4>W   E   L   C   O   M   E</h4>",
                         "description": "The letters are not using CSS for white spacing. This can cause screen readers to read each individual letter by itself instead of 'welcome'"
                     }
@@ -73,7 +73,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "iconNavigation": {
-                        "row": 300,
+                        "row": 301,
                         "element": "<ul class='nav-menu'>",
                         "description": "The links inside the list do not provide enough clarity. Using only an emoji is not sufficient for understanding and operating content."
                     }
@@ -85,7 +85,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "orientationBlockingContent": {
-                        "row": 324,
+                        "row": 325,
                         "element": "<div class='wrong'>",
                         "description": "The content inside the div is not being displayed unless you have the proper orientation on your device."
                     }
@@ -97,12 +97,12 @@
                 "examplesGiven": 2,
                 "examples": {
                     "linkInText": {
-                        "row": 350,
+                        "row": 351,
                         "element": "<p>This <a class='gl-1-4-1' href='#guideline-1-4-1'>link</a> might not be visible for people with color-blindness.</p>",
                         "description": "Only using a different color for a link is insufficient especially inside of text content."
                     },
                     "colorCueInForm": {
-                        "row": 382,
+                        "row": 383,
                         "element": "<form action='#'>",
                         "description": "Only using a color to display errors in a form is insufficient."
                     }
@@ -114,17 +114,17 @@
                 "examplesGiven": 2,
                 "examples": {
                     "normalText": {
-                        "row": 418,
+                        "row": 419,
                         "element": "<p class='gl-1-4-3-normal-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 4.5:1 but is 4.05:1"
                     },
                     "largeText": {
-                        "row": 436,
+                        "row": 437,
                         "element": "<p class='large-text gl-1-4-3-large-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 1.92:1"
                     },
                     "boldText": {
-                        "row": 446,
+                        "row": 447,
                         "element": "<p class='large-text gl-1-4-3-large-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 1.92:1"
                     }
@@ -136,17 +136,17 @@
                 "examplesGiven": 2,
                 "examples": {
                     "normalText": {
-                        "row": 481,
+                        "row": 482,
                         "element": "<p class='gl-1-4-6-normal-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 7:1 but is 6.33:1"
                     },
                     "largeText": {
-                        "row": 498,
+                        "row": 499,
                         "element": "<p class='gl-1-4-6-normal-text-insufficient large-text'>This text has sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 4.5:1 but is 4.04:1"
                     },
                     "boldText": {
-                        "row": 515,
+                        "row": 516,
                         "element": "<p class='large-text-bold gl-1-4-6-large-text-insufficient'>This text does not have sufficient contrast!</p>",
                         "description": "The contrast between the text and the background is insufficient. It should be at least 3:1 but is 4.04:1"
                     }
@@ -165,17 +165,17 @@
                 "examplesGiven": 3,
                 "examples": {
                     "focusNotVisible": {
-                        "row": 61,
+                        "row": 62,
                         "element": "<a id='gl-2-1-1-link' href='#'>Link</a>",
                         "description": "The focus is not displayed on this link."
                     },
                     "focusMovingByItself": {
-                        "row": 76,
+                        "row": 77,
                         "element": "<a id='gl-2-1-1-link-from' href='#gl-2-1-1-link-from'>Link</a>",
                         "description": "Once focused it wont let you leave for 3 seconds and then it moves for you."
                     },
                     "imageContainingText": {
-                        "row": 94,
+                        "row": 95,
                         "element": "<span id='fake-link' class='faked-link'>This link is fake!</span>",
                         "description": "This is a span element but with added event handling. It should just be an <a> element instead since that is recognized by assistive technology."
                     }
@@ -187,7 +187,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "flashingSign": {
-                        "row": 136,
+                        "row": 137,
                         "element": "<div id='gl-2-2-2-sign-w' class='gl-2-2-2-flash flashing'>",
                         "description": "This sign can't be stopped or paused."
                     }
@@ -199,7 +199,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "flashingText": {
-                        "row": 165,
+                        "row": 166,
                         "element": "<div id='gl-2-3-1-sign-w' class='quick-flashing'>",
                         "description": "The text is flashing more than 3 times per second."
                     }
@@ -211,7 +211,7 @@
                 "examplesGiven": 0,
                 "examples": {
                     "flashingText": {
-                        "row": 165,
+                        "row": 166,
                         "element": "<div id='gl-2-3-1-sign-w' class='quick-flashing'>",
                         "description": "The rule automatically fails because of the test case given in 2.3.1 that flashes 5 times per second."
                     }
@@ -223,12 +223,12 @@
                 "examplesGiven": 2,
                 "examples": {
                     "noTitle": {
-                        "row": 3,
+                        "row": 4,
                         "element": "<head>",
                         "description": "The page is missing a title."
                     },
                     "nonDescriptiveTitle": {
-                        "row": 11,
+                        "row": 12,
                         "page": "perceivable",
                         "element": "<title>What is a title?</title>",
                         "description": "The perceivable page does not contain a descriptive title."
@@ -241,7 +241,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "wrongTabOrder": {
-                        "row": 16,
+                        "row": 17,
                         "element": "<nav>",
                         "description": "The links inside the navigation menu does not have meaningful sequencing. This can result in users relying on keyboard navigation to be confused."
                     }
@@ -260,13 +260,13 @@
                 "examplesGiven": 2,
                 "examples": {
                     "noLangTag": {
-                        "row": 2,
+                        "row": 3,
                         "page": "perceivable",
                         "element": "<html>",
                         "description": "Page does not have a lang attribute on the html element."
                     },
                     "wrongLangTag": {
-                        "row": 2,
+                        "row": 3,
                         "element": "<html lang='fr'>",
                         "description": "Page has lang attribute but it isn't the primary language of the page."
                     }
@@ -278,7 +278,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "textRequireLangTag": {
-                        "row": 79,
+                        "row": 80,
                         "element": "<p>The web page has the lang tag 'fr' which would suggest that all text written in english should fail on tests.</p>",
                         "description": "Text not written in the primary language of the page should have a lang tag."
                     }
@@ -290,7 +290,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "linkToDictionary": {
-                        "row": 104,
+                        "row": 105,
                         "element": "<p>Victor did spill the beans about an incident at work last week.</p>",
                         "description": "Text uses idiom without explanation or link to explanation."
                     }
@@ -302,7 +302,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "linkToDictionary": {
-                        "row": 132,
+                        "row": 133,
                         "element": "<p>WCAG compliance increases the quality of your website.</p>",
                         "description": "Text uses abbreviations without explanation or link to explanation."
                     }
@@ -314,7 +314,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "focusDropped": {
-                        "row": 164,
+                        "row": 165,
                         "element": "<a href='#' onFocus='this.blur()'>Link</a>",
                         "description": "The element loses focus, making it hard for keyboard-only users to interact with. This might also confuse users."
                     }
@@ -326,7 +326,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "selectSendingOnChange": {
-                        "row": 192,
+                        "row": 193,
                         "element": "<form method='get' id='formWrongGl322'>",
                         "description": "The form is being submitted as soon as the select element swaps option."
                     }
@@ -338,7 +338,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "consistentPageStructure": {
-                        "row": 334,
+                        "row": 335,
                         "element": "<header>",
                         "description": "The header element is not consistent with all other pages."
                     }
@@ -350,7 +350,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "consistentPageStructure": {
-                        "row": 347,
+                        "row": 348,
                         "element": "<input type='text' name='find' id='find' placeholder='Find on page...'>",
                         "description": "This fulfills the same function as 'search' on the other pages. Naming in 'find' on this page causes inconsistency."
                     }
@@ -362,7 +362,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "errorIdentification": {
-                        "row": 313,
+                        "row": 314,
                         "element": "<form id='wrongForm' class='block-form' action='#' novalidate>",
                         "description": "The form does not contain any relevant error handling."
                     }
@@ -374,7 +374,7 @@
                 "examplesGiven": 1,
                 "examples": {
                     "errorIdentification": {
-                        "row": 313,
+                        "row": 314,
                         "element": "<form id='wrongForm' class='block-form' action='#' novalidate>",
                         "description": "The form does not contain any labels."
                     }

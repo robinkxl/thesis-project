@@ -21,9 +21,10 @@ function guideLine322() {
 function changePageGl322(e) {
     const form = e.closest('form');
     const chosenPage = form.querySelector('select').value;
-    const url = 'http://localhost:1338/';
+    let url = window.location.href;
+    const base = url.slice(0, url.lastIndexOf('/') + 1);
     if (chosenPage) {
-        chosenPage === "home" ? window.location.href = url : window.location.href = `${url}${chosenPage}`;
+        chosenPage === "home" ? window.location.href = base : window.location.href = `${base}${chosenPage}`;
     }
 }
 

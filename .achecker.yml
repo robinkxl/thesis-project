@@ -31,9 +31,6 @@ failLevels:
 reportLevels:
     - violation
     - potentialviolation
-    - recommendation
-    - potentialrecommendation
-    - manual
 
 # Optional - In which formats should the results be output
 # Valid values: json, csv, xlsx, html, disable

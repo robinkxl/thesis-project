@@ -31,7 +31,7 @@ jobs:
       - run: npm start & npx wait-on $APP
       - name: Installing chromedriver
         run: |
-          npm install -g chromedriver@122
+          npm install -g chromedriver@124
       - name: Run axe
         if: 
         run: |

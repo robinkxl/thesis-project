@@ -3,8 +3,8 @@ name: Example Web Accessibility CI with Accessibility-checker, Axe, HTML_Codesni
 # The jobs below will fail if the webpage tested contains WCAG violations.
 
 on:
-  push:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
   
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

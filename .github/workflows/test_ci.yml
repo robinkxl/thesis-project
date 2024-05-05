@@ -62,7 +62,7 @@ jobs:
       - name: Run accessibility-checker
         run: |
           npm install accessibility-checker
-          output=$(npx achecker $APP/${{ matrix.webpage }})
+          output=$(npx achecker $APP/${{ matrix.webpage }} 2>&1)
       - name: Archive accessibility-checker test results
         # if: success() || failure()
         uses: actions/upload-artifact@v4

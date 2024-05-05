@@ -1,12 +1,8 @@
 name: Web Accessibility Testing Tools Results
-# This workflow runs Accessibility-checker, Axe, and HTML_Codesniffer on all web pages of our test website and saves the results as github artifacts.
+# This workflow runs Accessibility-checker, Axe, and HTML_Codesniffer 
+# on all web pages of our test website and saves the results as github artifacts.
 
 on:
-  # push:
-  #   branches: [ master ]
-  # pull_request:
-  #   branches: [ master ]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -47,9 +43,6 @@ jobs:
 
   achecker:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        webpage: [perceivable, operable, understandable]
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js 18
@@ -62,19 +55,16 @@ jobs:
       - name: Run accessibility-checker
         run: |
           npm install accessibility-checker
-          output=$(npx achecker $APP/${{ matrix.webpage }} 2>&1)
+          bash test.bash run achecker $APP
       - name: Archive accessibility-checker test results
         # if: success() || failure()
         uses: actions/upload-artifact@v4
         with:
-          name: Accessibility-checker-${{ matrix.webpage }}
+          name: Accessibility-checker
           path: results/achecker/*
 
   htmlcs:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        webpage: [perceivable, operable, understandable]
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js 18
@@ -91,10 +81,10 @@ jobs:
           npm install
           cd ../..
           npm i puppeteer
-          bash test.bash test htmlcs $APP/${{ matrix.webpage }}
+          bash test.bash run htmlcs $APP
       - name: Archive HTML_CodeSniffer test results
         if: success() || failure()
         uses: actions/upload-artifact@v4
         with:
-          name: HTML_CodeSniffer-${{ matrix.webpage }}
+          name: HTML_CodeSniffer
           path: results/HTML_CodeSniffer/*

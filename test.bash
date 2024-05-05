@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Public url of test web app
-URL_PUBLIC="https://ylih.github.io/Evaluation-site-for-Web-Accessibility-testing-tools"
 WEBPAGES=("" "perceivable" "operable" "understandable")
 
 __usage="
@@ -12,8 +11,8 @@ Tools: axe, achecker, htmlcs
 Options:
   start                        Starts container for the webapp 
   setup <tool>                 Installs the dependencies for the tool
-  test <tool> <url>            Audits a webpage with a specific tool
-  run <tool>                   Audits all public webpages with a specific tool
+  test <tool> <url>            Audits a web page with a specific tool
+  run <tool> <host>            Audits all web pages from test website with a specific tool
   cleanup <tool>               Uninstalls the dependencies to run the tool
   end                          Closes all running docker containers
 
@@ -102,8 +101,8 @@ function main {
         run)
             for page in "${WEBPAGES[@]}"
             do
-                echo "Audit for webpage: $URL_PUBLIC/$page"
-                run-$2 "$URL_PUBLIC/$page"
+                echo "Audit for webpage: $3/$page"
+                run-$2 "$3/$page"
             done
         ;;
         cleanup)

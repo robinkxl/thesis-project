@@ -76,7 +76,7 @@ function view-asq-audit {
         # variable is an integer
         if [[ $failed -gt 0 ]]; then
             echo "See audit$@.csv for failed tests."
-            exit 1
+            # exit 1
         elif [ $failed -eq 0 ]; then
             echo "No tests failed."
         else

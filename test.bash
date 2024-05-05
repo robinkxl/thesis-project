@@ -120,5 +120,5 @@ function main {
 }
 
 # ./test.bash run axe http://localhost:1338/
-# ./test.bash run axe https://ylih.github.io/Evaluation-site-for-Web-Accessibility-testing-tools/
+# ./test.bash run axe https://idasm-unibe-ch.github.io/unibe-web-accessibility/
 main "$@"

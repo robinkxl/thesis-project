@@ -20,15 +20,14 @@ jobs:
           sleep 20
       - name: Run Asqatasun
         run: |
-          cd asqatasun-docker
-          ./asqatasun_audit.bash run
+          bash asqatasun-docker/asqatasun_audit.bash run
       - name: Download audits
         run: |
           sleep 20
-          ./asqatasun_audit.bash audit 1
-          ./asqatasun_audit.bash audit 2
-          ./asqatasun_audit.bash audit 3
-          ./asqatasun_audit.bash audit 4
+          bash asqatasun-docker/asqatasun_audit.bash audit 1
+          bash asqatasun-docker/asqatasun_audit.bash audit 2
+          bash asqatasun-docker/asqatasun_audit.bash audit 3
+          bash asqatasun-docker/asqatasun_audit.bash audit 4
       - name: Archive Asqatasun test results
         uses: actions/upload-artifact@v4
         with:

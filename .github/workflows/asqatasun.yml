@@ -1,5 +1,5 @@
 name: Asqatasun
-# Does not work yet!!!
+# Due to its perculiarities, Asqatasun has its own workflow.
 
 on:
   workflow_dispatch:
@@ -15,9 +15,10 @@ jobs:
           sudo apt-get install -y curl jq
       - name: Start Asqatasun docker container
         run: docker-compose -f asqatasun-docker/api-5.0.0-rc.2_ubuntu-18.04/docker-compose.yml up -d
-      # - name: Wait for Docker container to start
-      #   run: |
-      #     sleep 20
+      - name: Wait for Docker container to start
+        run: |
+          sleep 10
       - name: Run Asqatasun
         run: |
-          curl http://admin%40asqatasun.org:myAsqaPassword@localhost:8085/api/v0/audit
+          cd asqatasun-docker
+          ./asqatasun_audit.bash run

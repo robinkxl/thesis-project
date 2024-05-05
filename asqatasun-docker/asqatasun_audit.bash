@@ -9,7 +9,7 @@ API_PREFIX_URL="http://${ASQA_USER}:${ASQA_PASSWORD}@localhost:${PORT}"
 # Folder where to find Asqatasun files
 FOLDER=$(dirname "$0")
 # Public url of test web app
-URL_PUBLIC="https://ylih.github.io/Evaluation-site-for-Web-Accessibility-testing-tools"
+URL_PUBLIC="https://idasm-unibe-ch.github.io/unibe-web-accessibility/"
 WEBPAGES=("" "perceivable" "operable" "understandable")
 # Folder for audit results
 CURRENT_DIR=$(pwd)

@@ -1,5 +1,5 @@
 name: Web Accessibility Testing Tools Results
-# This workflow runs all tools on a given webpage and save the results as github artifacts.
+# This workflow runs Accessibility-checker, Axe, and HTML_Codesniffer on all web pages of our test website and saves the results as github artifacts.
 
 on:
   # push:
@@ -91,7 +91,7 @@ jobs:
           npm install
           cd ../..
           npm i puppeteer
-          bash test.bash run htmlcs $APP/${{ matrix.webpage }}
+          bash test.bash test htmlcs $APP/${{ matrix.webpage }}
       - name: Archive HTML_CodeSniffer test results
         if: success() || failure()
         uses: actions/upload-artifact@v4

@@ -76,7 +76,7 @@ function clean-up-htmlcs {
 
 function run-htmlcs {
     # see configuration in html_cs.js
-    timestamp=$(date +%F_%T)
+    timestamp=$(date +%F_%H-%M-%S)
     results=$(node html_cs.js "$@" | sed 's/;/,/g')
     mkdir -p results/HTML_CodeSniffer
     echo "$@" > "results/HTML_CodeSniffer/htmlcs-results-$timestamp.txt"

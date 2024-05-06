@@ -120,9 +120,9 @@ function main {
     axe-results-summary
     htmlcs-results-summary
     asq-results-summary
-    echo "Generating analysis overviews..."
-    node generate_analysis.js
-    echo "✅"
+    # echo "Generating analysis overviews..."
+    # node generate_analysis.js # File created for facilitating analysis
+    echo "Done ✅"
 }
 
 main

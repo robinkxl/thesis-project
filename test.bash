@@ -40,6 +40,18 @@ function clean-up-lighthouse {
     npm uninstall -g @lhci/cli
 }
 
+function set-up-pa11y {
+    npm install -g pa11y
+    npm install pa11y-reporter-html --save
+}
+
+function run-pa11y {
+    mkdir -p "results/pa11y"
+# it works fine again but dir needs to be adjusted so we can get html for each diff page
+    pa11y --reporter html "$1" > report.html
+    echo "Pa11y audit generated and saved at report.html."
+}
+
 function set-up-axe {
     # axe core
     npm i @axe-core/cli

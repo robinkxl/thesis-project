@@ -88,3 +88,6 @@ jobs:
         with:
           name: HTML_CodeSniffer
           path: results/HTML_CodeSniffer/*
+  
+  pa11y:
+    runs-on: ubuntu-latest

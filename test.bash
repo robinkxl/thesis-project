@@ -20,6 +20,25 @@ Note that Asqatasun is not included here, since it works differently fromthe oth
 To learn more and/or test Asqatasun run the following command in the terminal:
 ./asqatasun-docker/asqatasun_audit.bash
 "
+function set-up-lighthouse {
+    npm install -g @lhci/cli@0.14.x
+}
+
+function run-lighthouse {
+    mkdir -p results/lighthouse
+   # echo "Webpages: ${WEBPAGES[@]}"
+    echo "--url="$1""
+
+    # this is giving a set of reports but its going to the wrong dir. atm. needs to be fixed
+    lhci collect --url="$1" --dir ./results/lighthouse/
+
+   # echo "on: $1/"
+   # it runs 3 times on each page which can be a little time consuming
+}
+
+function clean-up-lighthouse {
+    npm uninstall -g @lhci/cli
+}
 
 function set-up-axe {
     # axe core

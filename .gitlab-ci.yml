@@ -19,10 +19,11 @@ before_script:
   - npm run build || true
 
 #https://www.jenkins.io/doc/book/pipeline/docker/
+#https://hub.docker.com/r/cypress/browsers/
 build:
   stage: build
-  # node:18 wasnt suitable for docker ?
-  image: node:18
+  # node:20 for more consistency instead ?
+  image: node:20
   script:
     - echo "Build completed"
   artifacts:
@@ -32,11 +33,8 @@ build:
 # trying axe first -- quicker ?
 axe:
   stage: test
-  image: node:18
+  image: node:20
   # strategy matrix - webpage - pages ? script has them manually for now
-  services:
-    - name: chrome
-      alias: chrome
   script:
     - npm install -g chromedriver@124 @axe-core/cli
     - npm start & npx wait-on $APP

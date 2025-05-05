@@ -22,7 +22,7 @@ before_script:
 build:
   stage: build
   # node:18 wasnt suitable for docker ?
-  image: cypress/browsers:node18.12.0-chrome107-ff107
+  image: node:18
   script:
     - echo "Build completed"
   artifacts:

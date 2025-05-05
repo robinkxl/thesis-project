@@ -1,32 +1,72 @@
 
-npm_check:
-  needs:
-    - npm_install
+#npm_check:
+#  needs:
+#    - npm_install
 
 
 stages:
+  - build
   - test
+  - archive
 
-lighthouse:
-  image: registry.gitlab.com/gitlab-ci-utils/lighthouse:latest
-  stage: test
+variables:
+  APP: "http://localhost:1338"
+
+# needing setup
+before_script:
+  - apt-get update && apt-get install -y curl wget bash unzip
+  - npm ci
+  - npm run build || true
+
+build:
+  stage: build
+  image: node:18
   script:
+    - echo "Build completed"
+  artifacts:
+    paths:
+      - ./
+
+# trying axe first -- quicker ?
+axe:
+  stage: test
+  image: node:18
+  # strategy matrix - webpage - pages ? script has them manually for now
+  services:
+    - name: chrome
+      alias: chrome
+  script:
+    - npm install -g chromedriver@124 @axe-core/cli
+    - npm start & npx wait-on $APP
+    - mkdir -p results/axe/
+    - axe --chromedriver-path $(which chromedriver) $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json
+    - axe --chromedriver-path $(which chromedriver) $APP/operable --dir ./results/axe/ --save axe-results-operable.json
+    - axe --chromedriver-path $(which chromedriver) $APP/understandable --dir ./results/axe/ --save axe-results-understandable.json
+  artifacts:
+    paths:
+      - results/axe/
+
+
+
+ #lighthouse:
+   #image: registry.gitlab.com/gitlab-ci-utils/lighthouse:latest
+   #stage: test
+   #script:
     # Start a local static server, serving the site in the ./site/ folder,
     # piping the output to null so it is not displayed, and waiting
     # until the server is available (port 3000 is the default for serve).
-    - serve ./site/ > /dev/null 2>&1 & wait-on http://localhost:3000/
+     #- serve ./site/ > /dev/null 2>&1 & wait-on http://localhost:3000/
     # Run lighthouse against the test site in headless mode, but otherwise
     # with the default settings.
-    - lighthouse http://localhost:3000 --chrome-flags="--headless"
-  artifacts:
+    # - lighthouse http://localhost:3000 --chrome-flags="--headless"
+   #artifacts:
     # Always save artifacts. This is needed if lighthouse is run configured
     # to fail on certain criteria, and will ensure the report is saved.
-    when: always
+     #when: always
     # Save the lighthouse report, which by default is named for the site
     # analyzed and the current time.
-    paths:
-      - localhost*.html
-
+     #paths:
+     #  - localhost*.html
 
 
 #current ref : https://gitlab.com/gitlab-ci-utils/lighthouse

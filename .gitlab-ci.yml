@@ -1,9 +1,4 @@
 
-#npm_check:
-#  needs:
-#    - npm_install
-
-
 stages:
   - build
   - test
@@ -23,6 +18,9 @@ before_script:
 build:
   stage: build
   # node:20 for more consistency instead ?
+  # node:20 is better but its still missing chrome in container
+  # build can just be with node:20 its faster?
+  # image: cypress/browsers:node-20.14.0-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1
   image: node:20
   script:
     - echo "Build completed"
@@ -33,7 +31,7 @@ build:
 # trying axe first -- quicker ?
 axe:
   stage: test
-  image: node:20
+  image: cypress/browsers:node-20.14.0-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1
   # strategy matrix - webpage - pages ? script has them manually for now
   script:
     - npm install -g chromedriver@124 @axe-core/cli
@@ -48,26 +46,5 @@ axe:
 
 
 
- #lighthouse:
-   #image: registry.gitlab.com/gitlab-ci-utils/lighthouse:latest
-   #stage: test
-   #script:
-    # Start a local static server, serving the site in the ./site/ folder,
-    # piping the output to null so it is not displayed, and waiting
-    # until the server is available (port 3000 is the default for serve).
-     #- serve ./site/ > /dev/null 2>&1 & wait-on http://localhost:3000/
-    # Run lighthouse against the test site in headless mode, but otherwise
-    # with the default settings.
-    # - lighthouse http://localhost:3000 --chrome-flags="--headless"
-   #artifacts:
-    # Always save artifacts. This is needed if lighthouse is run configured
-    # to fail on certain criteria, and will ensure the report is saved.
-     #when: always
-    # Save the lighthouse report, which by default is named for the site
-    # analyzed and the current time.
-     #paths:
-     #  - localhost*.html
-
-
-#current ref : https://gitlab.com/gitlab-ci-utils/lighthouse
+# ref : https://gitlab.com/gitlab-ci-utils/lighthouse
 # ref for custom runner + lhci https://medium.com/1mgofficial/integrating-lighthouse-ci-in-your-gitlab-ci-cd-pipeline-1233b9223e5c

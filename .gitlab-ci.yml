@@ -18,9 +18,11 @@ before_script:
   - npm ci
   - npm run build || true
 
+#https://www.jenkins.io/doc/book/pipeline/docker/
 build:
   stage: build
-  image: node:18
+  # node:18 wasnt suitable for docker ?
+  image: cypress/browsers:node18.12.0-chrome107-ff107
   script:
     - echo "Build completed"
   artifacts:

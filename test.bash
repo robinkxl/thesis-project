@@ -48,6 +48,7 @@ function set-up-pa11y {
 function run-pa11y {
     mkdir -p "results/pa11y"
 # it works fine again but dir needs to be adjusted so we can get html for each diff page
+# TODO: its also not in the yml yet!
     pa11y --reporter html "$1" > report.html
     echo "Pa11y audit generated and saved at report.html."
 }

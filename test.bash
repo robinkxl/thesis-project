@@ -53,6 +53,56 @@ function run-pa11y {
     echo "Pa11y audit generated and saved at report.html."
 }
 
+function clean-up-pa11y {
+    npm uninstall -g pa11y
+}
+
+# another option: https://www.totalvalidator.com/products/ci.html but it has a small fee
+
+# not fully implemented qualWeb is just 2.1
+function set-up-qualweb {
+    npm i -g @qualweb/cli
+}
+
+# not fully implemented since qualWeb is just 2.1
+function run-qualweb {
+    qw -u https://act-rules.github.io/pages/about/ -r earl
+}
+
+# not implemented fully
+function set-up-skynet {
+    python -m ensurepip --upgrade
+    pip install selenium
+    pip install webdriver-manager
+}
+# not implemented fully
+function run-skynet {
+    #https://freeaccessibilitychecker.skynettechnologies.com/
+    #https://freeaccessibilitychecker.skynettechnologies.com/?website=https://idasm-unibe-ch.github.io/unibe-web-accessibility/
+    #https://freeaccessibilitychecker.skynettechnologies.com/?website=https://idasm-unibe-ch.github.io/unibe-web-accessibility/perceivable
+    CHECKER_URL="https://www.skynettechnologies.com/accessibility-checker"
+
+    # will change this but want to keep simple for testing purposs
+    TARGET_URL="https://idasm-unibe-ch.github.io/unibe-web-accessibility/perceivable"
+
+    echo " "$CHECKER_URL" + "$TARGET_URL""
+
+    # Send the request using curl --- info about user agent helps curl req. to get through as automated interaction
+    response=$(curl -s -X POST "$CHECKER_URL" \
+    -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" \
+    -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" \
+    -H "Accept-Encoding: gzip, deflate, br" \
+    -H "Connection: keep-alive" \
+    -d "url=$TARGET_URL")
+
+   #  python download_report.py "$TARGET_URL" using python to try and click thru the elements of the page and download it
+   # couldnt get it to work fully, downloads require email and everything.. it was just something i wanted to try
+
+    #curl -o response.html "https://freeaccessibilitychecker.skynettechnologies.com/?website=https://idasm-unibe-ch.github.io/unibe-web-accessibility/perceivable"
+}
+# not implemented
+# function clear-skynet {}
+
 function set-up-axe {
     # axe core
     npm i @axe-core/cli
@@ -73,7 +123,7 @@ function run-axe {
 
 function set-up-achecker {
     # achecker
-    npm i accessibility-checker
+    npm install -g accessibility-checker
 }
 
 function clean-up-achecker {

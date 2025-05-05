@@ -1,48 +1,48 @@
 
-stages:
-  - build
-  - test
-  - archive
+#stages:
+#  - build
+#  - test
+#  - archive
 
-variables:
-  APP: "http://localhost:1338"
+#variables:
+#  APP: "http://localhost:1338"
 
 # needing setup
-before_script:
-  - apt-get update && apt-get install -y curl wget bash unzip
-  - npm ci
-  - npm run build --if-present  # currently not
+#before_script:
+# - apt-get update && apt-get install -y curl wget bash unzip
+#  - npm ci
+#  - npm run build --if-present  # currently not
 
 #https://www.jenkins.io/doc/book/pipeline/docker/
 #https://hub.docker.com/r/cypress/browsers/
-build:
-  stage: build
+#build:
+#  stage: build
   # node:20 for more consistency instead ?
   # node:20 is better but its still missing chrome in container
   # build can just be with node:20 its faster?
   # image: cypress/browsers:node-20.14.0-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1
-  image: node:20
-  script:
-    - echo "Build completed"
-  artifacts:
-    paths:
-      - ./
+#  image: node:20
+#  script:
+#    - echo "Build completed"
+#  artifacts:
+#    paths:
+#      - ./
 
 # trying axe first -- quicker ?
-axe:
-  stage: test
-  image: cypress/browsers:node-20.14.0-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1
+#axe:
+#  stage: test
+#  image: cypress/browsers:node-20.14.0-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1
   # strategy matrix - webpage - pages ? script has them manually for now
-  script:
-    - npm install -g chromedriver@124 @axe-core/cli
-    - npm start & npx wait-on $APP
-    - mkdir -p results/axe/
-    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json
-    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/operable --dir ./results/axe/ --save axe-results-operable.json
-    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/understandable --dir ./results/axe/ --save axe-results-understandable.json
-  artifacts:
-    paths:
-      - results/axe/
+#  script:
+#    - npm install -g chromedriver@124 @axe-core/cli
+#    - npm start & npx wait-on $APP
+#    - mkdir -p results/axe/
+##    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json
+#    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/operable --dir ./results/axe/ --save axe-results-operable.json
+#    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/understandable --dir ./results/axe/ --save axe-results-understandable.json
+#  artifacts:
+#    paths:
+#      - results/axe/
 
 # https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md
 

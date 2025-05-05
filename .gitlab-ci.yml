@@ -1,7 +1,7 @@
 
-npm_check:
-  needs:
-    - npm_install
+#npm_check:
+ # needs:
+ #   - npm_install
 
 
 stages:

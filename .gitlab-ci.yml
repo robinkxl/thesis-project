@@ -1,12 +1,7 @@
 
 #npm_check:
-<<<<<<< HEAD
 #  needs:
 #    - npm_install
-=======
- # needs:
- #   - npm_install
->>>>>>> a8e41ade07ebb880f7e8f2a68f0e1d9b6517df13
 
 
 stages:

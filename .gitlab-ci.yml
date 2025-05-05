@@ -11,7 +11,8 @@ variables:
 before_script:
   - apt-get update && apt-get install -y curl wget bash unzip
   - npm ci
-  - npm run build || true
+  - npm run build --if-present  # currently not
+  - google-chrome --version
 
 #https://www.jenkins.io/doc/book/pipeline/docker/
 #https://hub.docker.com/r/cypress/browsers/
@@ -37,14 +38,14 @@ axe:
     - npm install -g chromedriver@124 @axe-core/cli
     - npm start & npx wait-on $APP
     - mkdir -p results/axe/
-    - axe --chromedriver-path $(which chromedriver) $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json
-    - axe --chromedriver-path $(which chromedriver) $APP/operable --dir ./results/axe/ --save axe-results-operable.json
-    - axe --chromedriver-path $(which chromedriver) $APP/understandable --dir ./results/axe/ --save axe-results-understandable.json
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/operable --dir ./results/axe/ --save axe-results-operable.json
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/understandable --dir ./results/axe/ --save axe-results-understandable.json
   artifacts:
     paths:
       - results/axe/
 
-
+# https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md
 
 # ref : https://gitlab.com/gitlab-ci-utils/lighthouse
 # ref for custom runner + lhci https://medium.com/1mgofficial/integrating-lighthouse-ci-in-your-gitlab-ci-cd-pipeline-1233b9223e5c

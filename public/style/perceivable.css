@@ -1,5 +1,28 @@
 @import './base.css';
 
+/* 1.3.1 form example */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+}
+
+.control, fieldset {
+  margin: 6px 0;
+}
+
+label {
+  display: inline-block;
+  width: 120px;
+  vertical-align: top;
+}
+
+.required {
+  color: rgb(185, 0, 0);
+}
+
 /* 1.3.2 white space example */
 .column-example {
     display: flex;
@@ -76,6 +99,11 @@
     margin-bottom: 0.5em;
 }
 
+.gl-1-4-1-distinct-link {
+    color: rgb(51, 51, 255);
+    text-decoration: underline;
+}
+
 /* 1.4.3 contrast (minimum) */
 .gl-1-4-3-normal-text-insufficient {
     color: slategray;
@@ -94,6 +122,34 @@
     font-weight: bold;
 }
 
+.BGcolor-example {
+   position:relative;
+    height: 100px;
+    width: 100%;
+    color: white;
+    background: url("https://images.pexels.com/photos/311039/pexels-photo-311039.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.normal-overlay {
+  text-align:center;
+  position: absolute;
+  color: rgb(0, 0, 0);
+  top:30%;
+  right:50%;
+  transform:translate(50%, -50%);
+}
+
+.poor-normal-overlay {
+  text-align:center;
+  position: absolute;
+  color: rgb(200, 160, 233);
+  top:30%;
+  right:50%;
+  transform:translate(50%, -50%);
+}
+
 /* 1.4.6 contrast (Enhanced) */
 .gl-1-4-6-normal-text-insufficient {
     color: #A34100;
@@ -101,4 +157,32 @@
 
 .gl-1-4-6-large-text-insufficient {
     color: #D65600;
+}
+
+.enhanced-BGcolor-example {
+   position:relative;
+    height: 100px;
+    width: 100%;
+    color: white;
+    background: url("https://images.pexels.com/photos/7135037/pexels-photo-7135037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.enhanced-normal-overlay {
+  text-align:center;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  top:30%;
+  right:50%;
+  transform:translate(50%, -50%);
+}
+
+.poor-enhanced-normal-overlay {
+  text-align:center;
+  position: absolute;
+  color: rgb(22, 87, 177);
+  top:30%;
+  right:50%;
+  transform:translate(50%, -50%);
 }

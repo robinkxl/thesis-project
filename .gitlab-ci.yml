@@ -1,24 +1,35 @@
+stages:
+  - test
 
 lighthouse:
-  image: registry.gitlab.com/gitlab-ci-utils/lighthouse:latest
+  image: node:18
   stage: test
+  services:
+    - name: your-app-image:latest  #need the current image from docker container of the server 
+      alias: app
   script:
-    # Start a local static server, serving the site in the ./site/ folder,
-    # piping the output to null so it is not displayed, and waiting
-    # until the server is available (port 3000 is the default for serve).
-    - serve ./site/ > /dev/null 2>&1 & wait-on http://localhost:1338/
-    # Run lighthouse against the test site in headless mode, but otherwise
-    # with the default settings.
-    - lighthouse http://localhost:1338 --chrome-flags="--headless"
-  artifacts:
-    # Always save artifacts. This is needed if lighthouse is run configured
-    # to fail on certain criteria, and will ensure the report is saved.
-    when: always
-    # Save the lighthouse report, which by default is named for the site
-    # analyzed and the current time.
-    paths:
-      - localhost*.html
+# might need docker compose up -d server instead here, and docker:dind
+    - npm ci
+    - npx wait-on http://localhost:1338/ # waits until ready 
+    - npx lhci collect --url=http://localhost:1338/
+    - npx lhci upload --target=temporary-public-storage
+  only:
+    - master
 
+# https://careers.edicomgroup.com/techblog/integrating-google-lighthouse-in-gitlab-ci/
+#stages:
+#  - report
+#static_review_report:
+#  stage: report
+#  image: edicom/lighthouse:latest
+#  script:
+#    - npm install
+#    - npm run build:prod
+#    - lhci autorun --upload.target=temporary-public-storage --collect.settings.chromeFlags="--no-sandbox" --assert.preset="lighthouse:recommended" || echo "LHCI failed!"
+#  allow_failure: true
+# except:
+#   refs:
+#     - master
 
 #stages:
 #  - build

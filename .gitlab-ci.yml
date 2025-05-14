@@ -2,6 +2,9 @@ stages:
   - LHtest
   - AXEtest
 
+variables:
+  APP: "http://localhost:1338"
+
 # needing a build stage for download of chrome / reducing time for npm and other installations ?
 # archiving?
 # see commented code at end of file
@@ -31,12 +34,13 @@ axe:
   image: cypress/browsers:node-20.14.0-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1
   # strategy matrix - webpage - pages ? script has them manually for now
   script:
+    - npm ci
     - npm install -g chromedriver@124 @axe-core/cli
     - npm start & npx wait-on $APP
     - mkdir -p results/axe/
-    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json
-    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/operable --dir ./results/axe/ --save axe-results-operable.json
-    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/understandable --dir ./results/axe/ --save axe-results-understandable.json
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu" $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu" $APP/operable --dir ./results/axe/ --save axe-results-operable.json
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu" $APP/understandable --dir ./results/axe/ --save axe-results-understandable.json
   artifacts:
     paths:
       - results/axe/
@@ -50,8 +54,6 @@ axe:
 #  - test
 #  - archive
 
-#variables:
-#  APP: "http://localhost:1338"
 
 # needing setup
 #before_script:

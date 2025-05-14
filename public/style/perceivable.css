@@ -51,15 +51,31 @@ label {
 .touch-target {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px;
-    margin: 8px 0;
+    gap: 0px;
+    padding: 1px;
+    margin: 2px 0;
     cursor: pointer;
   }
 
 .touch-target input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
+    width: 17px;
+    height: 17px;
+}
+/* 17 px ?? */
+/* https://learn.microsoft.com/en-gb/windows/win32/uxguide/ctrl-check-boxes#recommended-sizing-and-spacing */
+
+.unlabeled-touch-target {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    padding-bottom:2px;
+    margin: 0px 0 5px 0;
+    cursor: pointer;
+}
+
+.unlabeled-touch-target input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
 }
 
 /* 1.3.3 sensory characteristics example */

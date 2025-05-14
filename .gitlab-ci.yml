@@ -1,20 +1,49 @@
 stages:
-  - test
+  - LHtest
+  - AXEtest
+
+# needing a build stage for download of chrome / reducing time for npm and other installations ?
+# archiving?
+# see commented code at end of file
 
 lighthouse:
   image: node:18
-  stage: test
+  stage: LHtest
   before_script:
     - apt-get update && apt-get install -y wget curl ca-certificates fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatk1.0-0 libcups2 libdbus-1-3 libgdk-pixbuf2.0-0 libnspr4 libnss3 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 xdg-utils libu2f-udev
     - apt-get install -y chromium  # .. no chrome before ..
     - chromium --version
   script:
     - npm ci
+  #   - mkdir -p results/lighthouse/
     - curl -I http://localhost:1338 || echo "App not responding"
     - npx lhci autorun  # testing without docker because of the "priviledge mode" errors
     # something to archive artifacts or just handle it through link?
   only:
     - master
+  # artifacts:
+    # paths:
+      # - results/lighthouse/
+
+# trying axe first -- quicker ?
+axe:
+  stage: AXEtest
+  image: cypress/browsers:node-20.14.0-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1
+   strategy matrix - webpage - pages ? script has them manually for now
+  script:
+    - npm install -g chromedriver@124 @axe-core/cli
+    - npm start & npx wait-on $APP
+    - mkdir -p results/axe/
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/operable --dir ./results/axe/ --save axe-results-operable.json
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/understandable --dir ./results/axe/ --save axe-results-understandable.json
+  artifacts:
+    paths:
+      - results/axe/
+
+# https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md
+# ref : https://gitlab.com/gitlab-ci-utils/lighthouse
+# ref for custom runner + lhci https://medium.com/1mgofficial/integrating-lighthouse-ci-in-your-gitlab-ci-cd-pipeline-1233b9223e5c
 
 #stages:
 #  - build
@@ -44,24 +73,3 @@ lighthouse:
 #  artifacts:
 #    paths:
 #      - ./
-
-# trying axe first -- quicker ?
-#axe:
-#  stage: test
-#  image: cypress/browsers:node-20.14.0-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1
-  # strategy matrix - webpage - pages ? script has them manually for now
-#  script:
-#    - npm install -g chromedriver@124 @axe-core/cli
-#    - npm start & npx wait-on $APP
-#    - mkdir -p results/axe/
-##    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json
-#    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/operable --dir ./results/axe/ --save axe-results-operable.json
-#    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new" $APP/understandable --dir ./results/axe/ --save axe-results-understandable.json
-#  artifacts:
-#    paths:
-#      - results/axe/
-
-# https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md
-
-# ref : https://gitlab.com/gitlab-ci-utils/lighthouse
-# ref for custom runner + lhci https://medium.com/1mgofficial/integrating-lighthouse-ci-in-your-gitlab-ci-cd-pipeline-1233b9223e5c

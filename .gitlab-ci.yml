@@ -11,24 +11,10 @@ lighthouse:
   script:
     - npm ci
     - curl -I http://localhost:1338 || echo "App not responding"
-    - npx lhci autorun  # testing without docker because of the "privilege mode" errors ?
+    - npx lhci autorun  # testing without docker because of the "priviledge mode" errors
+    # something to archive artifacts or just handle it through link?
   only:
     - master
-
-# https://careers.edicomgroup.com/techblog/integrating-google-lighthouse-in-gitlab-ci/
-#stages:
-#  - report
-#static_review_report:
-#  stage: report
-#  image: edicom/lighthouse:latest
-#  script:
-#    - npm install
-#    - npm run build:prod
-#    - lhci autorun --upload.target=temporary-public-storage --collect.settings.chromeFlags="--no-sandbox" --assert.preset="lighthouse:recommended" || echo "LHCI failed!"
-#  allow_failure: true
-# except:
-#   refs:
-#     - master
 
 #stages:
 #  - build

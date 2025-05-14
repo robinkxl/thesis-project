@@ -1,10 +1,14 @@
 module.exports = {
   ci: {
     collect: {
+      url: [
+        'http://localhost:1338/perceivable',
+        'http://localhost:1338/operable',
+        'http://localhost:1338/understandable',
+      ],
       startServerCommand: 'npm run start', // Adjust to your app's dev/start command
       startServerReadyPattern: 'listening on port 1338', // cohesive with app.js now
-      url: ['http://localhost:1338'], // URL that is being tests 
-      numberOfRuns: 1,  // or 3?
+      numberOfRuns: 1,  // this will be 1 for each url.
       settings: {
         chromeFlags: ['--no-sandbox'], // bypass the sandbox error
       },

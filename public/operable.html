@@ -103,7 +103,7 @@
                                 An image that functions as a link. The image changes on hover and focus, making it accessible to both mouse and keyboard users.
                             </p>
                             <a id="gl-2-1-1-img-link" href="#">
-                                <img id="gl-2-1-1-img" src="images/Operable.png" alt="Go to Operable page">
+                                <img id="gl-2-1-1-img" class="img-link" src="images/Operable.png" alt="Go to Operable page">
                             </a>
                         </div>
                         <div class="wrong">
@@ -111,7 +111,7 @@
                             <p>
                                 This image acts like a link using only the mouse. Keyboard users cannot activate it.
                             </p>
-                            <p><img id="mouse-only-link" src="images/Operable.png" alt="Go to Operable page"></p>
+                            <p><img id="mouse-only-link" class="img-link" src="images/Operable.png" alt="Go to Operable page"></p>
                         </div>
                     </div>
                 </section>
@@ -244,6 +244,50 @@
                             <p>
                                 To demonstrate this violation, section 2.4.6 has a fake heading.
                             </p>
+                        </div>
+                    </div>
+                    <h3>2.4.7: Focus Visible (Level AA)</h3>
+                    <p>
+                        Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.
+                    </p>
+                    <h3>Examples:</h3>
+                    <h4>1. Hidden Focus</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>A link that can be focused by using tab. The focus wont move until the user presses tab again.</p>
+                            <a href="#">Link</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>Focus is hidden which disrupts keyboard navigation.</p>
+                            <a id="gl-2-4-7-link" class="hidden-focus" href="#">Link</a>
+                        </div>
+                    </div>
+                    <h4>2. Outline similar to focus</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>A link that can be focused by using tab. The focus wont move until the user presses tab again.</p>
+                            <a href="#">Link</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The link has an outline that makes it hard to see when its focused.</p>
+                            <a id="gl-2-4-7-link" class="gl-2-4-7-outline" href="#">Link</a>
+                        </div>
+                    </div>
+                    <h4>3. Border similar to focus</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>A link that can be focused by using tab. The focus wont move until the user presses tab again.</p>
+                            <a href="#">Link</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The link has a border that makes it hard to see when its focused.</p>
+                            <a id="gl-2-4-7-link" class="gl-2-4-7-border" href="#">Link</a>
                         </div>
                     </div>
                 </section>

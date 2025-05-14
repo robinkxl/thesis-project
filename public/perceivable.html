@@ -386,16 +386,20 @@
                         <!-- touch targets need to be of proper size as to not flag these as another issue .. -->
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
-                            <input style="font-size: 24px" id="fox" type="checkbox" name="animal" value="fox">
-                            <label style="margin-left: 10px" for="fox">Fox</label><br>
-                            <input style="font-size: 24px" id="bird" type="checkbox" name="animal" value="bird">
-                            <label style="margin-left: 10px" for="bird">Bird</label><br>
-                            <input style="font-size: 24px" id="frog" type="checkbox" name="animal" value="frog">
-                            <label style="margin-left: 10px" for="frog">Frog</label><br>
-                            <input style="font-size: 24px" id="snake" type="checkbox" name="animal" value="snake">
-                            <label style="margin-left: 10px" for="snake">Snake</label><br>
-                            <input style="font-size: 24px" id="snail" type="checkbox" name="animal" value="snail">
-                            <label style="margin-left: 10px" for="snail">Snail</label><br>
+                            <input id="fox" type="checkbox" name="animal" value="fox">
+                            <label class="touch-target" for="fox">Fox</label><br>
+
+                            <input id="bird" type="checkbox" name="animal" value="bird">
+                            <label class="touch-target" for="bird">Bird</label><br>
+
+                            <input id="frog" type="checkbox" name="animal" value="frog">
+                            <label class="touch-target" for="frog">Frog</label><br>
+
+                            <input id="snake" type="checkbox" name="animal" value="snake">
+                            <label class="touch-target" for="snake">Snake</label><br>
+
+                            <input id="snail" type="checkbox" name="animal" value="snail">
+                            <label class="touch-target" for="snail">Snail</label><br>
                         </fieldset>
                     </div>
                     <div class="wrong">
@@ -403,11 +407,11 @@
                         <p> These form checkboxes lack labels to be able to be programmatically determined. </p>
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
-                            <input style="font-size: 24px" id="fox" type="checkbox" name="animal" value="fox"> Fox <br>
-                            <input style="font-size: 24px" id="bird" type="checkbox" name="animal" value="bird"> Bird <br>
-                            <input style="font-size: 24px" id="frog" type="checkbox" name="animal" value="frog"> Frog <br>
-                            <input style="font-size: 24px" id="snake" type="checkbox" name="animal" value="snake"> Snake <br>
-                            <input style="font-size: 24px" id="snail" type="checkbox" name="animal" value="snail"> Snail <br>
+                            <input class="touch-target" id="fox" type="checkbox" name="animal" value="fox"> Fox <br>
+                            <input class="touch-target" id="bird" type="checkbox" name="animal" value="bird"> Bird <br>
+                            <input class="touch-target" id="frog" type="checkbox" name="animal" value="frog"> Frog <br>
+                            <input class="touch-target" id="snake" type="checkbox" name="animal" value="snake"> Snake <br>
+                            <input class="touch-target" id="snail" type="checkbox" name="animal" value="snail"> Snail <br>
                         </fieldset>
                     </div>
                 </div>

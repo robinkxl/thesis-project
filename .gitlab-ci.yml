@@ -5,7 +5,7 @@ lighthouse:
   image: node:18
   stage: test
   services:
-    - name: your-app-image:latest  #need the current image from docker container of the server 
+    - name: node:latest  #need the current image from docker container of the server 
       alias: app
   script:
 # might need docker compose up -d server instead here, and docker:dind

@@ -43,6 +43,33 @@ function guideLine211() {
     fakeLink.addEventListener('click', () => {
         window.location.href='operable#fake-link';
     });
+
+    // Guideline 2-1-1 Example 4
+    let imgLink = document.getElementById('gl-2-1-1-img-link');
+    let img = document.getElementById('gl-2-1-1-img');
+    if (imgLink && img) {
+        imgLink.addEventListener('mouseover', () => swapImageOn('gl-2-1-1-img'));
+        imgLink.addEventListener('mouseout', () => swapImageOff('gl-2-1-1-img'));
+        imgLink.addEventListener('focus', () => swapImageOn('gl-2-1-1-img'));
+        imgLink.addEventListener('blur', () => swapImageOff('gl-2-1-1-img'));
+    }
+
+    let wrongImg = document.getElementById('mouse-only-link');
+    if (wrongImg) {
+        wrongImg.addEventListener('mousedown', () => {
+            window.location.href = '#';
+        });
+    }
+
+    function swapImageOn(id) {
+        let img = document.getElementById(id);
+        if (img) img.src = 'images/Operable_blue.png';
+    }
+
+    function swapImageOff(id) {
+        let img = document.getElementById(id);
+        if (img) img.src = 'images/Operable.png';
+    }
 }
 
 function guideLine222() {

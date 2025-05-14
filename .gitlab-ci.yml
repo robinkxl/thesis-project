@@ -2,27 +2,15 @@ stages:
   - test
 
 lighthouse:
-  image: docker:latest
+  image: node:18
   stage: test
-  services:
-    - docker:dind
-    #- name: node:latest  #need the current image from docker container of the server 
-    #  alias: app
-  variables:
-    DOCKER_HOST: tcp://docker:2375/ #the dind service 
-    DOCKER_TLS_CERTDIR: ""
-  before_script:
-    - apk add --no-cache docker-compose
   script:
-# might need docker compose up -d server instead here, and docker:dind
-    - docker compose up -d server
-    - apk add --no-cache curl # can help with debugging
-    - curl -I http://localhost:1338 || echo "App not responding" #debgging help
-    - npx wait-on http://localhost:1338/ --timeout 30000 # waits until ready but with timeout..
-    - npx lhci collect --url=http://localhost:1338/
-    - npx lhci upload --target=temporary-public-storage
+    - npm ci
+    - curl -I http://localhost:1338 || echo "App not responding"
+    - npx lhci autorun  # testing without docker because of the "privilege mode" errors ?
   only:
     - master
+
 
 # https://careers.edicomgroup.com/techblog/integrating-google-lighthouse-in-gitlab-ci/
 #stages:

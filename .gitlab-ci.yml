@@ -29,7 +29,7 @@ lighthouse:
 axe:
   stage: AXEtest
   image: cypress/browsers:node-20.14.0-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1
-   strategy matrix - webpage - pages ? script has them manually for now
+  # strategy matrix - webpage - pages ? script has them manually for now
   script:
     - npm install -g chromedriver@124 @axe-core/cli
     - npm start & npx wait-on $APP

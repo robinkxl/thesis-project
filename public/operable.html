@@ -47,7 +47,6 @@
                         except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
                     </p>
                     <h3>Examples:</h3>
-
                     <h4>1. Focus not visible</h4>
                     <!-- https://www.w3.org/WAI/WCAG21/Techniques/failures/F55 -->
                     <div class="example-box">
@@ -165,6 +164,7 @@
                     <p>
                         Do not design content in a way that is known to cause seizures or physical reactions.
                     </p>
+
                     <h3>2.3.1: Three Flashes or Below Threshold (Level A)</h3>
                     <p>
                         Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.
@@ -371,6 +371,61 @@
                             <h3>Wrong</h3>
                             <p>The focus is difficult to see because the contrast of the outline against the  background is too low.</p>
                             <button id="gl-2-4-13-button">Example button</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="guideline-2-5">
+                    <h2>Guideline 2.5: Input Modalities</h2>
+                    <p>
+                        Make it easier for users to operate functionality through various inputs beyond keyboard.
+                    </p>
+
+                    <h3>2.5.3: Label in Name (Level A)</h3>
+                    <p>
+                        For user interface components with labels that include text or images of text, the name contains the text that is presented visually.
+                    </p>
+                    <h3>Examples:</h3>
+                    <h4>1. Mismatch of visual and accessible name</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The visible name of this button matches its accessible name.</p>
+                            <button aria-label="Press this button">Press this button</button>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The visible name of this button is different from its accessible name, making it impossible to access by speech input.</p>
+                            <button aria-label="Click this button">Press this button</button>
+                        </div>
+                    </div>
+                    <h4>2. Section of the visual name is hidden</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The visible name of this link matches its accessible name.</p>
+                            <a href="#">Go to Operable page</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The visible name of this link is partially hidden, making it impossible to access by speech input.</p>
+                            <a href="#">Go to <span class="accessibly-hidden">Operable</span> page</a>
+                        </div>
+                    </div>
+                    <h4>3. Section of the visual name is hidden</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The accessible name matches the visible label (value attribute).</p>
+                            <input type="submit" value="Click this button">
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>
+                                The visible label says "Click this button", but the accessible name is "Press this button" due to the hidden label referenced with <code>aria-labelledby</code>, making it impossible to access by speech input.
+                            </p>
+                            <div id="hidden-label" class="accessibly-hidden">Press this button</div>
+                            <input type="submit" aria-labelledby="hidden-label" value="Click this button">
                         </div>
                     </div>
                 </section>

@@ -73,3 +73,19 @@ fake-heading {
     border:none;
     border-radius: 0;
 }
+
+/* gl-2-4-13 Inner Focus */
+#gl-2-4-13-button { 
+  background-color: #013365;
+  color: white;
+  padding: 10px;
+}
+
+#gl-2-4-13-button:focus {
+    outline: 2px #ffff00 solid;
+}
+
+.inner-focus:focus { 
+  outline: 2px #ffff00 solid;
+  outline-offset: -4px;
+}

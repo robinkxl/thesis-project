@@ -290,6 +290,43 @@
                             <a id="gl-2-4-7-link" class="gl-2-4-7-border" href="#">Link</a>
                         </div>
                     </div>
+                    <h3>2.4.13: Focus Appearance (Level AAA)</h3>
+                    <p>
+                        When the keyboard focus indicator is visible, an area of the focus indicator meets all the following:
+                    </p>
+                    <ul>
+                        <li>
+                            is at least as large as the area of a 2 CSS pixel thick perimeter of the unfocused component or sub-component, and
+                        </li>
+                        <li>
+                            has a contrast ratio of at least 3:1 between the same pixels in the focused and unfocused states.
+                        </li>
+                    </ul>
+                    <p>
+                        Exceptions:
+                    </p>
+                    <ul>
+                        <li>
+                            The focus indicator is determined by the user agent and cannot be adjusted by the author, or
+                        </li>
+                        <li>
+                            The focus indicator and the indicator's background color are not modified by the author.
+                        </li>
+                    </ul>
+                    <h3>Example:</h3>
+                    <h4>1. Inner Border</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The focus indicator is contained inside the button so it maintains contrast whatever background the button is placed on.</p>
+                            <button id="gl-2-4-13-button" class="inner-focus">Example button</button>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The focus is difficult to see because the contrast of the outline against the  background is too low.</p>
+                            <button id="gl-2-4-13-button">Example button</button>
+                        </div>
+                    </div>
                 </section>
             </article>
         </main>

@@ -301,6 +301,41 @@
                             </p>
                         </div>
                     </div>
+                    <h3>2.4.9: Link Purpose (Link Only) (Level AAA)</h3>
+                    <p>
+                        A mechanism is available to allow the purpose of each link to be identified from link text alone, except where the purpose of the link would be ambiguous to users in general.
+                    </p>
+                    <h3>Examples:</h3>
+                    <h4>1. Non-specific link</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The link below has its purpose stated in the text.</p>
+                            <a href="#">Operable examples</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The link below has nondescript text. Its purpose can be determined from the surrounding text but not from the link text alone.</p>
+                            <a href="#">Click here</a> to see the examples on the Operable page.
+                        </div>
+                    </div>
+                    <h4>2. Image-only link</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The link below has its purpose stated in the text.</p>
+                            <a href="https://www.w3.org/WAI/">
+                                <img class="img-link" src="images/W3C_WAI.png" alt="Go to W3C's Web Accessibility Initiative page">
+                            </a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The link below contains only non-text content (an image) and does not have an accessible name.</p>
+                            <a href="https://www.w3.org/WAI/">
+                                <img class="img-link" src="images/W3C_WAI.png">
+                            </a>
+                        </div>
+                    </div>
                     <h3>2.4.13: Focus Appearance (Level AAA)</h3>
                     <p>
                         When the keyboard focus indicator is visible, an area of the focus indicator meets all the following:

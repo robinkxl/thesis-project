@@ -1,5 +1,5 @@
 stages:
-  - LHtest
+#  - LHtest
   - AXEtest
 
 variables:
@@ -29,13 +29,17 @@ lighthouse:
       # - results/lighthouse/
 
 # trying axe first -- quicker ?
+# https://github.com/dequelabs/axe-core
 axe:
   stage: AXEtest
   image: cypress/browsers:node-20.14.0-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1
   # strategy matrix - webpage - pages ? script has them manually for now
+  variables:
+    APP: "http://localhost:1338"
+    CHROME_BIN: "/opt/google/chrome/chrome"
   script:
     - npm ci
-    - npm install -g chromedriver@124 @axe-core/cli
+    - npm install -g chromedriver @axe-core/cli
     - npm start & npx wait-on $APP
     - mkdir -p results/axe/
     - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu" $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json

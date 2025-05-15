@@ -42,9 +42,9 @@ axe:
     - npm install -g chromedriver @axe-core/cli
     - npm start & npx wait-on $APP
     - mkdir -p results/axe/
-    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu" $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json
-    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu" $APP/operable --dir ./results/axe/ --save axe-results-operable.json
-    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu" $APP/understandable --dir ./results/axe/ --save axe-results-understandable.json
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --user-data-dir=/tmp/axe-profile-perceivable" $APP/perceivable --dir ./results/axe/ --save axe-results-perceivable.json
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --user-data-dir=/tmp/axe-profile-operable" $APP/operable --dir ./results/axe/ --save axe-results-operable.json
+    - axe --chromedriver-path $(which chromedriver) --chrome-options="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --user-data-dir=/tmp/axe-profile-understandable" $APP/understandable --dir ./results/axe/ --save axe-results-understandable.json
   artifacts:
     paths:
       - results/axe/

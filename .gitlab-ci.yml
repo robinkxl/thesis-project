@@ -43,7 +43,7 @@ axe:
     - npm start & npx wait-on $APP
     - mkdir -p results/axe/
     - CHROMEDRIVER_PATH=$(which chromedriver)
-    - axe --chromedriver-path $CHROMEDRIVER_PATH $URL --exit
+    - axe --chromedriver-path $CHROMEDRIVER_PATH $APP --exit
 
   artifacts:
     paths:

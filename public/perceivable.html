@@ -366,7 +366,7 @@
                         <div class="color-example">
                         <form>
                           <div class="control">
-                            <label for="name" class="required">Full name</label><input aria-describedby="required-description" id="name" type="text" />
+                            <label for="name" class="required">Full name</label><input aria-describedby="required-description" id="name" type="text" required/>
                           </div>
                           <div class="control">
                             <label for="biography">Biography</label><textarea id="biography" type="text"></textarea>
@@ -587,6 +587,50 @@
                         <p class="corr-orientation">You are now using the correct orientation.</p>
                     </div>
                 </div>
+
+                <h3 id="guideline-1-3-4">1.3.5: Identify Input Purpose (AA)</h3>
+                <p>
+                    Form autocompletion is a way of easing form completion for users that may struggle with reading, typing, or those that use assistive technologies in general.
+                    Providing the appropriate labels and titles helps not only users to understand the purpose of the field, but allows for the autocompletion as a result
+                    of forms being able to be programmatically determined.
+
+                    <br><br>
+                    Depending on the context of the form, some input types are not available as autocompletions.
+                    There is a <a href="https://www.w3schools.com/tags/att_input_autocomplete.asp" target="_blank">list by w3schools</a>
+                    that catalogues all of the available autocompletion for input types.
+                </p>
+
+                <h3>Example:</h3>
+                <h4>1. Autocompletion Identification</h4>
+                <div class="disclaimer-box">
+                    <p class="disclaimer">
+                        In order to manually see the affect of correct and wrong, autocompletion needs to be allowed and completed in browser settings first.
+                    </p>
+                </div>
+                <div class="example-box">
+                    <div class="correct">
+                        <h3>Correct</h3>
+                        <div class="color-example">
+                        <p>This form input can be programmatically determined and autocompletion can be utilized.</p>
+                            <form id="correctForm" class="block-form" action="#" novalidate>
+                                <label for="email">Email: </label>
+                                <input type="email" id="email" name="email" autocomplete="email">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="wrong">
+                        <h3>Wrong</h3>
+                        <div class="color-example">
+                        <p>This form input does not provide any autocompletion.</p>
+                            <form id="wrongForm" class="block-form" action="#" novalidate>
+                                <label for="email">Email: </label>
+                                <input type="email" id="email" name="email" autocomplete="off">
+                            <!-- i wonder here, if the name being misaligned is what causes autocompletion errors, or if the accessibility warning
+                             will be raised even with "autocomplete="off"""-->
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section id="guideline-1.4">
@@ -804,6 +848,38 @@
                         <a href="https://codepen.io/yaphi1/pen/oNbEqGV"> optimal overlay contrast finder for images </a> </p>
                         <div class="BGcolor-example">
                             <p class="large-text-bold poor-normal-overlay">Here is overlaying text!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 id="guideline-1-4-4">1.4.4: Resize Text (AA) </h3>
+                <p>
+                  """""" Ensuring that text containers resize when the text resizes AND using measurements that are relative to other measurements
+                    in the content by using one or more of the following techniques: """"
+
+                    Using three container examples of the ways that things can be measured in relevancec to eachother to allow for proper resizing:
+                    Techniques for relative measurements
+
+                    C12: Using percent for font sizes
+                    C13: Using named font sizes
+                    C14: Using em units for font sizes
+                </p>
+                <h3>Examples:</h3>
+                <h4>1. percent for font sizes .</h4>
+                <div class="example-box">
+                    <div class="correct">
+                        <h3>Correct</h3>
+                        <p> .... </p>
+                        <div class="color-example">
+                            <p> .... </p>
+                        </div>
+                    </div>
+                    <div class="wrong">
+                        <h3>Wrong</h3>
+                        <p> ... </p>
+                        <div class="color-example">
+                            <p> ...
+                            </p>
                         </div>
                     </div>
                 </div>

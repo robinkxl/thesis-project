@@ -110,6 +110,10 @@ a:hover {
     border: 1px solid gray;
 }
 
+fieldset {
+    border-radius: 0.5em;
+}
+
 
 /* FORM STYLING */
 input[type=button]:hover,

@@ -345,6 +345,7 @@
                     <div class="correct">
                         <h3>Correct</h3>
                         <p> Below is a form with required fields marked with asterisk and color. </p>
+                        <div class="color-example">
                         <form>
                           <div class="control">
                             <label for="name">Full name<span class="required">*</span></label><input aria-describedby="required-description" id="name" type="text" />
@@ -357,11 +358,12 @@
                           </div>
                           <p aria-hidden="true" id="required-description">
                             <span class="required">*</span>Required field </p>
-                        </form>
+                        </form></div>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p> Below is a form with required fields marked without an asterisks, providing no solutions for color-blindness or assistive technologies. </p>
+                        <p> Below is a form with required fields marked without an asterisks, providing no solutions for color-blindness or assistive technologies. </p>  
+                        <div class="color-example">
                         <form>
                           <div class="control">
                             <label for="name" class="required">Full name</label><input aria-describedby="required-description" id="name" type="text" />
@@ -373,6 +375,7 @@
                             <input type="submit" value="Register" />
                           </div>
                         </form>
+                        </div>
                     </div>
                 </div>
 
@@ -440,23 +443,25 @@
                         <p> The below input fields have a title element to describe their 
                             purpose that will aid assistive technologies where labels may not be applicable.
                         </p>
+                        <div class="color-example">
                         <fieldset><legend>Phone number</legend>
                             <input id="areaCode" name="areaCode" title="Area Code" 
-                            type="text" size="3" value="" >
+                            type="text" size="3" value="" placeholder="(123)" >
                             <input id="exchange" name="exchange" title="First three digits of phone number" 
-                            type="text" size="3" value="" >
+                            type="text" size="3" value="" placeholder="456">
                             <input id="lastDigits" name="lastDigits" title="Last four digits of phone number" 
-                            type="text" size="4" value="" >
-                        </fieldset> 
+                            type="text" size="4" value="" placeholder="7890">
+                        </fieldset></div>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
                         <p> The below input fields have neither titles or labels to help explain purpose. </p>
+                        <div class="color-example">
                         <fieldset><legend>Phone number</legend>
-                            <input id="areaCode" name="areaCode" type="text" size="3" value="" >
-                            <input id="exchange" name="exchange" type="text" size="3" value="" >
-                            <input id="lastDigits" name="lastDigits" type="text" size="4" value="" >
-                        </fieldset> 
+                            <input id="areaCode" name="areaCode" type="text" size="3" value="" placeholder="(123)">
+                            <input id="exchange" name="exchange" type="text" size="3" value="" placeholder="456">
+                            <input id="lastDigits" name="lastDigits" type="text" size="4" value="" placeholder="7890">
+                        </fieldset></div>
                     </div>
                 </div>
 

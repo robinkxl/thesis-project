@@ -329,6 +329,47 @@
                             The correct example above feature inputs of "type=text" and "type=password" with proper labeling whereas the "wrong" form uses no labels to display the inputs.
                         </p>
                     </div>
+                    <div class="example-box">
+                    <div class="correct">
+                        <h3>Correct</h3>
+                        <p> Each input has both labeling and titles to provide value of the fields as well as placeholders for understandability.
+                        </p>
+                         <div class="color-example">
+                            <p>All birthdates should be entered in the following format: YYYY/MM/DD. </p>
+                                <ul>
+                                    <li>No letters</li>
+                                    <li>No symbols</li>
+                                </ul>
+                            <fieldset><legend>Date of Birth</legend>
+                                <label for="birthYear"> Year <input id="birthYear" name="birthYear" title="Birth Year" aria-described=”birthYear”
+                                type="text" size="4" value="" placeholder="2001"></label> /
+                                <label for="birthMonth"> Month <input id="birthMonth" name="birthMonth" title="Birth Month" aria-described=”birthMonth”
+                                type="text" size="2" value="" placeholder="07"></label> /
+                                <label for="birthDay"> Day <input id="birthDay" name="birthDay" title="Birth Day" aria-described=”birthDay”
+                                type="text" size="2" value="" placeholder="23"></label>
+                            </fieldset> 
+                        </div>
+                    </div>
+                    <div class="wrong">
+                        <h3>Wrong</h3>
+                        <p> This example not only lacks labels and titling, but also reduces understandability without examples of expected formatting. </p>
+                            <div class="color-example">
+                            <p>All birthdates should be entered. </p>
+                                <ul>
+                                    <li>No letters</li>
+                                    <li>No symbols</li>
+                                </ul>
+                            <fieldset><legend>Date of Birth</legend>
+                                <input id="birthYear" name="birthYear" title="Birth Year" aria-described=”birthYear”
+                                type="text" size="4" value=""></label> /
+                                <label for="birthMonth"><input id="birthMonth" name="birthMonth" title="Birth Month" aria-described=”birthMonth”
+                                type="text" size="2" value=""></label> /
+                                <label for="birthDay"><input id="birthDay" name="birthDay" title="Birth Day" aria-described=”birthDay”
+                                type="text" size="2" value=""></label>
+                            </fieldset> 
+                        </div>
+                    </div>
+                </div>
                 </section>
             </article>
         </main>

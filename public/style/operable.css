@@ -89,8 +89,3 @@ fake-heading {
   outline: 2px #ffff00 solid;
   outline-offset: -4px;
 }
-
-/* gl-2-5-3 Hidden Label */
-.accessibly-hidden {
-    display: none;
-}

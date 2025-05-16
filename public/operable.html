@@ -409,7 +409,7 @@
                         <div class="wrong">
                             <h3>Wrong</h3>
                             <p>The visible name of this link is partially hidden, making it impossible to access by speech input.</p>
-                            <a href="#">Go to <span class="accessibly-hidden">Operable</span> page</a>
+                            <a href="#">Go to <span class="hidden">Operable</span> page</a>
                         </div>
                     </div>
                     <h4>3. Section of the visual name is hidden</h4>
@@ -424,7 +424,7 @@
                             <p>
                                 The visible label says "Click this button", but the accessible name is "Press this button" due to the hidden label referenced with <code>aria-labelledby</code>, making it impossible to access by speech input.
                             </p>
-                            <div id="hidden-label" class="accessibly-hidden">Press this button</div>
+                            <div id="hidden-label" class="hidden">Press this button</div>
                             <input type="submit" aria-labelledby="hidden-label" value="Click this button">
                         </div>
                     </div>

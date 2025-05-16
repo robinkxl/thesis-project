@@ -180,6 +180,42 @@ label {
   transform:translate(50%, -50%);
 }
 
+/* 1.4.4 Resize Text (AA) */
+#container {
+    width: 20em;
+    height: 1em;
+    background-color: white;
+    padding: 2.5%;
+    border-radius: 0.5em;
+    border: 1px solid gray;
+    margin-bottom: 5px;
+}
+
+.fixedSizeText p{
+    margin: auto;
+    color:black;
+    font-size: 12px;
+}
+
+.percentText p{
+    margin: auto;
+    color: black;
+    font-size: 100%;
+}
+
+.emText p{
+    margin: auto;
+    color: black;
+    font-size: 1em;
+}
+
+.namedText p{
+    margin: auto;
+    color: black;
+    font-size: medium;
+}
+
+
 /* 1.4.6 contrast (Enhanced) */
 .gl-1-4-6-normal-text-insufficient {
     color: #A34100;

@@ -854,33 +854,42 @@
 
                 <h3 id="guideline-1-4-4">1.4.4: Resize Text (AA) </h3>
                 <p>
-                  """""" Ensuring that text containers resize when the text resizes AND using measurements that are relative to other measurements
-                    in the content by using one or more of the following techniques: """"
-
-                    Using three container examples of the ways that things can be measured in relevancec to eachother to allow for proper resizing:
-                    Techniques for relative measurements
-
-                    C12: Using percent for font sizes
-                    C13: Using named font sizes
-                    C14: Using em units for font sizes
+                    This guideline ensures dynamic resizing for font sizes and having css measurements of the font size that align and are relative to
+                    the other measurements such as viewport or container. Below represents appropriate techniques of fontsizing
+                    with percentages, em units, and named font sizes.
                 </p>
-                <h3>Examples:</h3>
-                <h4>1. percent for font sizes .</h4>
+
+                <!-- https://stackoverflow.com/questions/16056591/font-scaling-based-on-size-of-container -->
+
+                <h3>Example:</h3>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
-                        <p> .... </p>
-                        <div class="color-example">
-                            <p> .... </p>
+                        <p> Using proper measurements for font sizes allows the text to be resized dynamically with the container. </p>
+                    <div id="container">
+                        <div class="percentText">
+                           <p>Here is some font sized at 100%.</p>
                         </div>
+                    </div>
+                    <div id="container">
+                        <div class="emText">
+                           <p>Here is some font sized at 1em.</p>
+                        </div>
+                    </div>
+                    <div id="container">
+                        <div class="namedText">
+                           <p>Here is some font size named as "medium".</p>
+                        </div>
+                    </div>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p> ... </p>
-                        <div class="color-example">
-                            <p> ...
-                            </p>
+                        <p> The font has a fixed size, limiting its resizability with the container. </p>
+                        <div id="container">
+                        <div class="fixedSizeText">
+                            <p>Here is some font sized at 12px.</p>
                         </div>
+                    </div>
                     </div>
                 </div>
 

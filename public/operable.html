@@ -261,7 +261,7 @@
                         <div class="wrong">
                             <h3>Wrong</h3>
                             <p>Focus is hidden which disrupts keyboard navigation.</p>
-                            <a id="gl-2-4-7-link" class="hidden-focus" href="#">Link</a>
+                            <a class="hidden-focus" href="#">Link</a>
                         </div>
                     </div>
                     <h4>2. Outline similar to focus</h4>
@@ -274,7 +274,7 @@
                         <div class="wrong">
                             <h3>Wrong</h3>
                             <p>The link has an outline that makes it hard to see when its focused.</p>
-                            <a id="gl-2-4-7-link" class="gl-2-4-7-outline" href="#">Link</a>
+                            <a class="gl-2-4-7-outline" href="#">Link</a>
                         </div>
                     </div>
                     <h4>3. Border similar to focus</h4>
@@ -287,7 +287,7 @@
                         <div class="wrong">
                             <h3>Wrong</h3>
                             <p>The link has a border that makes it hard to see when its focused.</p>
-                            <a id="gl-2-4-7-link" class="gl-2-4-7-border" href="#">Link</a>
+                            <a class="gl-2-4-7-border" href="#">Link</a>
                         </div>
                     </div>
                     <h3>2.4.8: Location (Level AAA)</h3>
@@ -365,12 +365,14 @@
                         <div class="correct">
                             <h3>Correct</h3>
                             <p>The focus indicator is contained inside the button so it maintains contrast whatever background the button is placed on.</p>
-                            <button id="gl-2-4-13-button" class="inner-focus">Example button</button>
+                            <button class="gl-2-4-13-button inner-focus">Reveal the hidden text</button>
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
                         </div>
                         <div class="wrong">
                             <h3>Wrong</h3>
                             <p>The focus is difficult to see because the contrast of the outline against the  background is too low.</p>
-                            <button id="gl-2-4-13-button">Example button</button>
+                            <button class="gl-2-4-13-button">Reveal the hidden text</button>
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
                         </div>
                     </div>
                 </section>
@@ -391,12 +393,14 @@
                         <div class="correct">
                             <h3>Correct</h3>
                             <p>The visible name of this button matches its accessible name.</p>
-                            <button aria-label="Press this button">Press this button</button>
+                            <button aria-label="Reveal the hidden text">Reveal the hidden text</button>
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
                         </div>
                         <div class="wrong">
                             <h3>Wrong</h3>
                             <p>The visible name of this button is different from its accessible name, making it impossible to access by speech input.</p>
-                            <button aria-label="Click this button">Press this button</button>
+                            <button aria-label="Show the hidden text">Reveal the hidden text</button>
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
                         </div>
                     </div>
                     <h4>2. Section of the visual name is hidden</h4>
@@ -416,16 +420,19 @@
                     <div class="example-box">
                         <div class="correct">
                             <h3>Correct</h3>
-                            <p>The accessible name matches the visible label (value attribute).</p>
-                            <input type="submit" value="Click this button">
+                            <p>The hidden accessible name matches the visible label of this button.</p>
+                            <div id="hidden-label-c" class="hidden">Reveal the hidden text</div>
+                            <input type="submit" aria-labelledby="hidden-label-c" value="Reveal the hidden text">
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
                         </div>
                         <div class="wrong">
                             <h3>Wrong</h3>
                             <p>
-                                The visible label says "Click this button", but the accessible name is "Press this button" due to the hidden label referenced with <code>aria-labelledby</code>, making it impossible to access by speech input.
+                                The visible label says "Reveal the hidden text", but the hidden accessible name is "Click the hidden text", making it impossible to access by speech input.
                             </p>
-                            <div id="hidden-label" class="hidden">Press this button</div>
-                            <input type="submit" aria-labelledby="hidden-label" value="Click this button">
+                            <div id="hidden-label-w" class="hidden">Show the hidden text</div>
+                            <input type="submit" aria-labelledby="hidden-label-w" value="Reveal the hidden text">
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
                         </div>
                     </div>
                 </section>

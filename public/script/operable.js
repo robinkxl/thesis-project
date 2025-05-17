@@ -1,6 +1,7 @@
 (function(){
     guideLine211();
     guideLine222();
+    guideLine253();
 })();
 
 function guideLine211() {
@@ -89,6 +90,19 @@ function guideLine222() {
         isPaused = true;
         isPaused ? saleSign.style.animationPlayState = 'paused' : null;
     })
+}
+
+function guideLine253() {
+    document.querySelectorAll('.example-box .correct, .example-box .wrong').forEach(section => {
+        const button = section.querySelector('input[type="submit"], button');
+        const text = section.querySelector('.toggle-hidden');
+
+        if (button && text) {
+            button.addEventListener('click', () => {
+                text.classList.toggle('hidden');
+            });
+        }
+    });
 }
 
 function disableTab(e) {

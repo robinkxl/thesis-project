@@ -181,9 +181,9 @@ label {
 }
 
 /* 1.4.4 Resize Text (AA) */
-#container {
-    width: 20em;
-    height: 1em;
+.container {
+    width: 80%;
+    min-height: 1em;
     background-color: white;
     padding: 2.5%;
     border-radius: 0.5em;
@@ -215,6 +215,46 @@ label {
     font-size: medium;
 }
 
+.correctFlow {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.correctFlow > * {
+  border-radius: 5px;
+}
+
+.flowContainer {
+    width: 5em;
+    height: 1em;
+    margin:auto;
+    background-color: white;
+    padding: 2.5%;
+    border-radius: 0.5em;
+    border: 1px solid gray;
+    margin-bottom: 5px;
+}
+
+.noFlow {
+  width: 200px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.noFlow > * {
+  border-radius: 5px;
+}
+
+.fixedContainer {
+    width:200px;
+    margin:auto;
+    background-color: white;
+    padding: 2.5%;
+    border-radius: 0.5em;
+    border: 1px solid gray;
+    margin-bottom: 5px;
+}
 
 /* 1.4.6 contrast (Enhanced) */
 .gl-1-4-6-normal-text-insufficient {

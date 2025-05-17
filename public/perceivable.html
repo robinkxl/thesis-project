@@ -857,26 +857,30 @@
                     This guideline ensures dynamic resizing for font sizes and having css measurements of the font size that align and are relative to
                     the other measurements such as viewport or container. Below represents appropriate techniques of fontsizing
                     with percentages, em units, and named font sizes.
+
+                    <br>
+                    -Position the containers as a row of floating boxes, which wrap to new rows when the layout becomes too narrow [P:HM]
                 </p>
 
                 <!-- https://stackoverflow.com/questions/16056591/font-scaling-based-on-size-of-container -->
 
-                <h3>Example:</h3>
+                <h3>Examples:</h3>
+                <h4>1. Various font sizing measures.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
                         <p> Using proper measurements for font sizes allows the text to be resized dynamically with the container. </p>
-                    <div id="container">
+                    <div class="container">
                         <div class="percentText">
                            <p>Here is some font sized at 100%.</p>
                         </div>
                     </div>
-                    <div id="container">
+                    <div class="container">
                         <div class="emText">
                            <p>Here is some font sized at 1em.</p>
                         </div>
                     </div>
-                    <div id="container">
+                    <div class="container">
                         <div class="namedText">
                            <p>Here is some font size named as "medium".</p>
                         </div>
@@ -885,11 +889,59 @@
                     <div class="wrong">
                         <h3>Wrong</h3>
                         <p> The font has a fixed size, limiting its resizability with the container. </p>
-                        <div id="container">
+                        <div class="container">
                         <div class="fixedSizeText">
                             <p>Here is some font sized at 12px.</p>
                         </div>
                     </div>
+                    </div>
+                </div>
+
+                <h4>2. Wrappable resizing text boxes.</h4>
+                <div class="example-box">
+                    <div class="correct">
+                        <h3>Correct</h3>
+                        <p> As the page resizes, the boxes are able to wrap and adjust alongside the resize. </p>
+                    <div class="correctFlow">
+                    <div class="flowContainer">
+                        <div class="percentText">
+                           <p>100%.</p>
+                        </div>
+                    </div>
+                    <div class="flowContainer">
+                        <div class="emText">
+                           <p>1em.</p>
+                        </div>
+                    </div>
+                    <div class="flowContainer">
+                        <div class="namedText">
+                           <p>"medium".</p>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="wrong">
+                        <h3>Wrong</h3>
+                        <p> These text boxes will not dynamically resize the font or wrap to fit page resizing. </p>
+
+                        <div class="noFlow">
+                        <div class="fixedContainer">
+                        <div class="fixedSizeText">
+                            <p>12px.</p>
+                        </div>
+                    </div>
+                        <div class="fixedContainer">
+                        <div class="fixedSizeText">
+                            <p>12px.</p>
+                        </div>
+                    </div>
+                        <div class="fixedContainer">
+                        <div class="fixedSizeText">
+                            <p>12px.</p>
+                        </div>
+                    </div>
+                    </div>
+                    
                     </div>
                 </div>
 

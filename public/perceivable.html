@@ -224,6 +224,7 @@
                 <h3>1.2.2: Captions (Prerecorded) - Level A </h3>
                 <p>
                    ..... 
+                   <!-- https://gist.github.com/aldrinjenson/6777f7bb8864ff5003b399d1f730c656 -->
                 </p>
                 <h3>Example:</h3>
                 <h4>1. Captioning .. .. ..</h4>
@@ -231,7 +232,18 @@
                     <div class="correct">
                         <h3>Correct</h3>
                         <p>The video has captions .,</p>
-                        ..... 
+                        <div class="1.2.2-video">
+                            <figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
+                                <div class="wp-block-embed__wrapper">
+                            <iframe title="Understanding WCAG SC 1.2.2 Captions (Prerecorded) (Level A) - Understanding WCAG SC 1.2.2 Captions (Prerecorded) (Level A)" 
+                            width="250" height="150" src="https://www.youtube.com/embed/E3BjAL1BLbc?feature=oembed" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+                        </iframe></div>
+                        
+                        <figcaption class="wp-element-caption">1.2.2 Captions (Prerecorded)</figcaption></figure>
+
+                        </div>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
@@ -822,7 +834,7 @@
                             within the background image for the text overlaying it to be visible. 
                         </p>
                         <div class="BGcolor-example">
-                            <p class="normal-overlay">Here is overlaying text!</p>
+                            <p class="normal-overlay">Here is overlaying text with sufficient contrast!</p>
                         </div>
                     </div>
                     <div class="wrong">
@@ -830,7 +842,7 @@
                         <p> Below is an insufficient contrast ratio of the overlaying text, making it difficult for visual disabilities.
                         <a href="https://codepen.io/yaphi1/pen/oNbEqGV"> optimal overlay contrast finder for images </a> </p>
                         <div class="BGcolor-example">
-                            <p class="poor-normal-overlay">Here is overlaying text!</p>
+                            <p class="poor-normal-overlay">This overlaying text does not have sufficient contrast!</p>
                         </div>
                     </div>
                 </div>
@@ -843,7 +855,7 @@
                             within the background image for the text overlaying it to be visible. 
                         </p>
                         <div class="BGcolor-example">
-                            <p class="large-text normal-overlay">Here is overlaying text!</p>
+                            <p class="large-text normal-overlay">Here is overlaying text with sufficient contrast!</p>
                         </div>
                     </div>
                     <div class="wrong">
@@ -851,7 +863,7 @@
                         <p> Below is an insufficient contrast ratio of the overlaying of large text, making it difficult for visual disabilities.
                         <a href="https://codepen.io/yaphi1/pen/oNbEqGV"> optimal overlay contrast finder for images </a> </p>
                         <div class="BGcolor-example">
-                            <p class="large-text poor-normal-overlay">Here is overlaying text!</p>
+                            <p class="large-text poor-normal-overlay">This overlaying text does not have sufficient contrast!</p>
                         </div>
                     </div>
                 </div>
@@ -864,7 +876,7 @@
                             within the background image for the text overlaying it to be visible. 
                         </p>
                         <div class="BGcolor-example">
-                            <p class="large-text-bold normal-overlay">Here is overlaying text!</p>
+                            <p class="large-text-bold normal-overlay">Here is overlaying text with sufficient contrast!</p>
                         </div>
                     </div>
                     <div class="wrong">
@@ -872,7 +884,7 @@
                         <p> Below is an insufficient contrast ratio of the overlaying of large text, making it difficult for visual disabilities.
                         <a href="https://codepen.io/yaphi1/pen/oNbEqGV"> optimal overlay contrast finder for images </a> </p>
                         <div class="BGcolor-example">
-                            <p class="large-text-bold poor-normal-overlay">Here is overlaying text!</p>
+                            <p class="large-text-bold poor-normal-overlay">This overlaying text does not have sufficient contrast!</p>
                         </div>
                     </div>
                 </div>
@@ -882,12 +894,15 @@
                     This guideline ensures dynamic resizing for font sizes and having css measurements of the font size that align and are relative to
                     the other measurements such as viewport or container. Below represents appropriate techniques of fontsizing
                     with percentages, em units, and named font sizes.
-
-                    <br>
-                    -Position the containers as a row of floating boxes, which wrap to new rows when the layout becomes too narrow [P:HM]
                 </p>
 
                 <!-- https://stackoverflow.com/questions/16056591/font-scaling-based-on-size-of-container -->
+                <div class="disclaimer-box">
+                    <p class="disclaimer2">
+                    we need to revisit this one and ensure our understanding is right according to the boxes vs texts flow and resizing.
+                    </p>
+                </div>
+
 
                 <h3>Examples:</h3>
                 <h4>1. Various font sizing measures.</h4>
@@ -950,17 +965,17 @@
                         <p> These text boxes will not dynamically resize the font or wrap to fit page resizing. </p>
 
                         <div class="noFlow">
-                        <div class="fixedContainer">
+                        <div class="flowContainer">
                         <div class="percentText">
                             <p>100%.</p>
                         </div>
                     </div>
-                        <div class="fixedContainer">
+                        <div class="flowContainer">
                         <div class="percentText">
                             <p>100%.</p>
                         </div>
                     </div>
-                        <div class="fixedContainer">
+                        <div class="flowContainer">
                         <div class="percentText">
                             <p>100%.</p>
                         </div>
@@ -1057,14 +1072,14 @@
                         <h3>Correct</h3>
                         <p> This overlaying normal text passes with ratios above 9.21:1 with the lightest colors of the background image. </p>
                         <div class="enhanced-BGcolor-example">
-                            <p class="enhanced-normal-overlay">Here is overlaying text!</p>
+                            <p class="enhanced-normal-overlay">Here is overlaying text with sufficient contrast!</p>
                         </div>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
                         <p> The text below does not have sufficient contrast ratio for enhanced contrast guidelines. </p>
                         <div class="enhanced-BGcolor-example">
-                            <p class="poor-enhanced-normal-overlay">Here is overlaying text!</p>
+                            <p class="poor-enhanced-normal-overlay">This overlaying text does not have sufficient contrast!</p>
                         </div>
                     </div>
                 </div>
@@ -1075,14 +1090,14 @@
                         <h3>Correct</h3>
                         <p> This overlaying normal text passes with ratios above 9.21:1 with the lightest colors of the background image. </p>
                         <div class="enhanced-BGcolor-example">
-                            <p class="large-text enhanced-normal-overlay">Here is overlaying text!</p>
+                            <p class="large-text enhanced-normal-overlay">Here is overlaying text with sufficient contrast!</p>
                         </div>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
                         <p> The text below does not have sufficient contrast ratio for enhanced contrast guidelines. </p>
                         <div class="enhanced-BGcolor-example">
-                            <p class="large-text poor-enhanced-normal-overlay">Here is overlaying text!</p>
+                            <p class="large-text poor-enhanced-normal-overlay">This overlaying text does not have sufficient contrast!</p>
                         </div>
                     </div>
                 </div>
@@ -1093,14 +1108,92 @@
                         <h3>Correct</h3>
                         <p> This overlaying normal text passes with ratios above 9.21:1 with the lightest colors of the background image. </p>
                         <div class="enhanced-BGcolor-example">
-                            <p class="large-text-bold enhanced-normal-overlay">Here is overlaying text!</p>
+                            <p class="large-text-bold enhanced-normal-overlay">Here is overlaying text with sufficient contrast!</p>
                         </div>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
                         <p> The text below does not have sufficient contrast ratio for enhanced contrast guidelines. </p>
                         <div class="enhanced-BGcolor-example">
-                            <p class="large-text-bold poor-enhanced-normal-overlay">Here is overlaying text!</p>
+                            <p class="large-text-bold poor-enhanced-normal-overlay">This overlaying text does not have sufficient contrast!</p>
+                        </div>
+                    </div>
+                </div>
+
+<!-- https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html -->
+<!-- https://ux.stackexchange.com/questions/126920/why-wcag-2-0-doesnt-comply-with-its-own-line-length-criterion-of-1-4-8 -->
+                <h3 id="guideline-1-4-8">1.4.8: Visual Presentation (AAA) </h3>
+                <p> The intent of this success criterion is to ensure that visually rendered text is presented in such a manner 
+                    that it can be perceived without its layout interfering with its readability. People with some cognitive, 
+                    language and learning disabilities and some low vision users cannot perceive the text and/or lose their 
+                    reading place if the text is presented in a manner that is difficult for them to read.
+                </p>
+                <div class="disclaimer-box">
+                    <p class="disclaimer">
+                    - using relative measures for the text can comply with the 80 character limit that is recommended, so that can be mentioned
+                    in the resizing criteria how this is related.. 
+                    </p>
+                </div>
+
+                <h3>Examples:</h3>
+                <h4>1. Justified Text </h4>
+                <div class="example-box">
+                    <div class="correct">
+                        <h3>Correct</h3>
+                        <div class="color-example">
+                            <p> This is some text that does not have any justification type assigned to it. It is better to pursue
+                                this design of not justifying text as it will aid in readability. Justification is often only ever used
+                                for the sake of aesthetics, and matching the text content to align with the sides of the container.
+                             </p>
+                        </div>
+                    </div>
+                    <div class="wrong">
+                        <h3>Wrong</h3>
+                        <div class="color-example">
+                        <div class="gl-1-4-8-justified-text">
+                            <p> This is an example paragraph of justified text. By including the justification type, it will produce an uneven
+                                block of text, with holes and interrupts throughout the paragraph that can make it more difficult for users to read. 
+                                The justification type can add spaces between words or characters, in order to fill out space to the edges of the container.
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -line spacing is at least space-and-a-half within paragraphs, and paragraph spacing is at least 1.5
+                     times larger than the line spacing [P:H] -->
+                <h4>2. Line Spacing </h4>
+                <div class="example-box">
+                    <div class="correct">
+                        <h3>Correct</h3>
+                        <div class="color-example">
+                        <div class="gl-1-4-8-normal-line-height"></div>
+                            <p> This is an example of a paragraph that has default spacing, meaning single space between its lines. In order to
+                                ensure understandable text that is easy to follow, the paragraph that is to follow this one requires a
+                                spacing of atleast 1.5 times that of the line-height within the paragraph. That means <i>"the spacing from the top of the last line of 1 
+                                paragraph is 250% farther from the Top of the first line of the next paragraph"</i>
+                                <a href="https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html" target="_blank"> WCAG SC 1.4.8 </a>
+                            </p>
+                            <p>
+                                Now this is a start of a new paragraph that will have the proper margining as a result of the text being place
+                                into a new paragraph element.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="wrong">
+                        <h3>Wrong</h3>
+                        <div class="color-example">
+                        <div class="gl-1-4-8-short-line-height">
+                            <p> There actually is no css attribute for paragraph height like there is a line-height that affects the lines
+                                within a paragraph element, so this should be an easy mistake to avoid. The problem would arise when adjusting
+                                the margins of the paragraph element, or simply by not manually separating a block of text into different
+                                elements.
+                                <br>
+                                This is an example of relying on a breakline element as opposed to creating two seperate paragraph elements to
+                                create space between the paragraphs. This is not good! A paragraph requires 150% of the space that is found 
+                                between the general line-height within the paragraphs.
+                            </p>
+                        </div>
                         </div>
                     </div>
                 </div>

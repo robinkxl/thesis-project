@@ -3,3 +3,4 @@ node_modules/
 results/
 audit.csv
 audit.json
+.DS_Store

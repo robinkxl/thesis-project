@@ -1,6 +1,7 @@
 (function(){
     guideLine211();
     guideLine222();
+    guideLine253();
 })();
 
 function guideLine211() {
@@ -43,6 +44,33 @@ function guideLine211() {
     fakeLink.addEventListener('click', () => {
         window.location.href='operable#fake-link';
     });
+
+    // Guideline 2-1-1 Example 4
+    let imgLink = document.getElementById('gl-2-1-1-img-link');
+    let img = document.getElementById('gl-2-1-1-img');
+    if (imgLink && img) {
+        imgLink.addEventListener('mouseover', () => swapImageOn('gl-2-1-1-img'));
+        imgLink.addEventListener('mouseout', () => swapImageOff('gl-2-1-1-img'));
+        imgLink.addEventListener('focus', () => swapImageOn('gl-2-1-1-img'));
+        imgLink.addEventListener('blur', () => swapImageOff('gl-2-1-1-img'));
+    }
+
+    let wrongImg = document.getElementById('mouse-only-link');
+    if (wrongImg) {
+        wrongImg.addEventListener('mousedown', () => {
+            window.location.href = '#';
+        });
+    }
+
+    function swapImageOn(id) {
+        let img = document.getElementById(id);
+        if (img) img.src = 'images/Operable_blue.png';
+    }
+
+    function swapImageOff(id) {
+        let img = document.getElementById(id);
+        if (img) img.src = 'images/Operable.png';
+    }
 }
 
 function guideLine222() {
@@ -62,6 +90,19 @@ function guideLine222() {
         isPaused = true;
         isPaused ? saleSign.style.animationPlayState = 'paused' : null;
     })
+}
+
+function guideLine253() {
+    document.querySelectorAll('.example-box .correct, .example-box .wrong').forEach(section => {
+        const button = section.querySelector('input[type="submit"], button');
+        const text = section.querySelector('.toggle-hidden');
+
+        if (button && text) {
+            button.addEventListener('click', () => {
+                text.classList.toggle('hidden');
+            });
+        }
+    });
 }
 
 function disableTab(e) {

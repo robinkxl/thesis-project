@@ -352,13 +352,22 @@
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p> This example not only lacks labels and titling, but also reduces understandability without examples of expected formatting. </p>
+                        <p> This example not only lacks labels and titling similar to the example above, but also reduces understandability without examples of expected formatting
+                            with the use of placeholders in the input fields. </p>
                             <div class="color-example">
                             <p>All birthdates should be entered. </p>
                                 <ul>
                                     <li>No letters</li>
                                     <li>No symbols</li>
                                 </ul>
+                            <fieldset><legend>Date of Birth</legend>
+                                <input id="birthYear" name="birthYear" title="Birth Year" aria-labelledby=”birthYear”
+                                type="text" size="4" value=""> /
+                                <input id="birthMonth" name="birthMonth" title="Birth Month" aria-labelledby=”birthMonth”
+                                type="text" size="2" value=""> /
+                                <input id="birthDay" name="birthDay" title="Birth Day" aria-labelledby=”birthDay”
+                                type="text" size="2" value="">
+                            </fieldset> 
                         </div>
                     </div>
                 </div>

@@ -154,8 +154,10 @@
                     <div class="correct">
                         <h3>Correct</h3>
                         <p> This ASCII art will be hidden from assistive technologies as it is purely decorative. </p>
-                        <!-- using pre is to preserve white spaces so that it doesnt just print the symbols in a line .. -->
-                        <pre aria-label="An ASCII art leaf.">
+                        <!-- using pre is to preserve white spaces so that it doesnt just print the symbols in a line 
+                         https://www.w3.org/TR/html-aria/ .. -->
+                        <figure>
+                        <pre role="img" aria-label="ASCII leaf.">
                            |
                          .'|'.
                         /.'|\ \
@@ -164,11 +166,17 @@
                           \|/
                            `
                         </pre>
+                          <figcaption id="leaf-caption">
+                            Found on the <cite><a href="https://www.asciiart.eu/plants/leaf" target="_blank">ASCII Art Archive</a></cite>.
+                          </figcaption>
+                        </figure>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
                         <p> This ASCII drawing will still be picked up by assistive technologies and
-                            create confusing contexts as screen-readers would read just the symbols with no provided context. </p>
+                            create confusing contexts as screen-readers would read just the symbols with no provided context and
+                            represents a figure element without a caption. </p>
+                        <figure>
                         <pre>
                            |
                          .'|'.
@@ -178,6 +186,7 @@
                           \|/
                            `
                         </pre>
+                        </figure>
                     </div>
                 </div>
 
@@ -189,19 +198,26 @@
                         <h3>Correct</h3>
                         <p> This ASCII art has a label in order to describe the art for users using assistive technologies. </p>
                         <!-- using pre is to preserve white spaces so that it doesnt just print the symbols in a line .. -->
-                        <pre aria-label="An ASCII art frog.">
+                        <figure aria-hidden="true">
+                        <pre role="img" aria-label="ASCII frog.">
                             _
                           .'_`--.___   __
                          ( 'o`   - .`.'_ )
                            `-._      `_`./_
                              '/\\    ( .'/ )
                             ,__//`---'`-'_/
-                             /-'        '/
+                             /-'        '/  VK
                         </pre>
+                          <figcaption id="frog-caption-c">
+                            Art by Veronica Karlsson.
+                            Found on the <cite><a href="https://www.asciiart.eu/animals/frogs" target="_blank">ASCII Art Archive</a></cite>.
+                          </figcaption>
+                        </figure>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
                         <p> This ASCII drawing does not have any labeling or alt text to help decipher it for assistive technologies. </p>
+                        <figure>
                         <pre>
                             _
                           .'_`--.___   __
@@ -209,8 +225,13 @@
                            `-._      `_`./_
                              '/\\    ( .'/ )
                             ,__//`---'`-'_/
-                             /-'        '/
+                             /-'        '/  VK
                         </pre>
+                          <figcaption id="frog-caption-w">
+                            Art by Veronica Karlsson.
+                            Found on the <cite><a href="https://www.asciiart.eu/animals/frogs" target="_blank">ASCII Art Archive</a></cite>.
+                          </figcaption>
+                        </figure>
                     </div>
                 </div>
             </section>
@@ -385,13 +406,13 @@
                         <div class="color-example">
                         <form>
                           <div class="control">
-                            <label for="name">Full name<span class="required">*</span></label><input aria-describedby="required-description" id="name" type="text" />
+                            <label for="name-c">Full name<span class="required">*</span></label><input aria-describedby="required-description" id="name-c" type="text">
                           </div>
                           <div class="control">
-                            <label for="biography">Biography</label><textarea id="biography" type="text"></textarea>
+                            <label for="biography-c">Biography</label><textarea id="biography-c"></textarea>
                           </div>
                           <div class="control">
-                            <input type="submit" value="Register" />
+                            <input type="submit" value="Register">
                           </div>
                           <p aria-hidden="true" id="required-description">
                             <span class="required">*</span>Required field </p>
@@ -403,13 +424,13 @@
                         <div class="color-example">
                         <form>
                           <div class="control">
-                            <label for="name" class="required">Full name</label><input aria-describedby="required-description" id="name" type="text" required/>
+                            <label for="name-w" class="required">Full name</label><input aria-describedby="required-description" id="name-w" type="text" required>
                           </div>
                           <div class="control">
-                            <label for="biography">Biography</label><textarea id="biography" type="text"></textarea>
+                            <label for="biography-w">Biography</label><textarea id="biography-w"></textarea>
                           </div>
                           <div class="control">
-                            <input type="submit" value="Register" />
+                            <input type="submit" value="Register">
                           </div>
                         </form>
                         </div>
@@ -427,24 +448,24 @@
                           44 by 44 CSS pixels ????  -->
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
-                            <label class="touch-target" for="fox">
-                            <input id="fox" type="checkbox" name="animal" value="fox">
+                            <label class="touch-target" for="fox-c">
+                            <input id="fox-c" type="checkbox" name="animal" value="fox">
                             Fox</label><br>
 
-                            <label class="touch-target" for="bird">
-                            <input  id="bird" type="checkbox" name="animal" value="bird">
+                            <label class="touch-target" for="bird-c">
+                            <input  id="bird-c" type="checkbox" name="animal" value="bird">
                             Bird</label><br>
 
-                            <label class="touch-target" for="frog">
-                            <input id="frog" type="checkbox" name="animal" value="frog">
+                            <label class="touch-target" for="frog-c">
+                            <input id="frog-c" type="checkbox" name="animal" value="frog">
                             Frog</label><br>
 
-                            <label class="touch-target" for="snake">
-                            <input id="snake" type="checkbox" name="animal" value="snake">
+                            <label class="touch-target" for="snake-c">
+                            <input id="snake-c" type="checkbox" name="animal" value="snake">
                             Snake</label><br>
 
-                            <label class="touch-target" for="snail">
-                            <input id="snail" type="checkbox" name="animal" value="snail">
+                            <label class="touch-target" for="snail-c">
+                            <input id="snail-c" type="checkbox" name="animal" value="snail">
                             Snail</label><br>
                         </fieldset>
                     </div>
@@ -454,19 +475,19 @@
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
                             <div class="unlabeled-touch-target">
-                            <input id="fox" type="checkbox" name="animal" value="fox"> Fox
+                            <input id="fox-w" type="checkbox" name="animal" value="fox"> Fox
                             </div>
                             <div class="unlabeled-touch-target">
-                            <input id="bird" type="checkbox" name="animal" value="bird"> Bird
+                            <input id="bird-w" type="checkbox" name="animal" value="bird"> Bird
                             </div>
                             <div class="unlabeled-touch-target">
-                            <input id="frog" type="checkbox" name="animal" value="frog"> Frog
+                            <input id="frog-w" type="checkbox" name="animal" value="frog"> Frog
                             </div>
                             <div class="unlabeled-touch-target">
-                            <input id="snake" type="checkbox" name="animal" value="snake"> Snake
+                            <input id="snake-w" type="checkbox" name="animal" value="snake"> Snake
                             </div>
                             <div class="unlabeled-touch-target">
-                            <input id="snail" type="checkbox" name="animal" value="snail"> Snail
+                            <input id="snail-w" type="checkbox" name="animal" value="snail"> Snail
                             </div>
                         </fieldset>
                     </div>
@@ -482,11 +503,11 @@
                         </p>
                         <div class="color-example">
                         <fieldset><legend>Phone number</legend>
-                            <input id="areaCode" name="areaCode" title="Area Code" 
+                            <input id="areaCode-c" name="areaCode" title="Area Code" 
                             type="text" size="3" value="" placeholder="(123)" >
-                            <input id="exchange" name="exchange" title="First three digits of phone number" 
+                            <input id="exchange-c" name="exchange" title="First three digits of phone number" 
                             type="text" size="3" value="" placeholder="456">
-                            <input id="lastDigits" name="lastDigits" title="Last four digits of phone number" 
+                            <input id="lastDigits-c" name="lastDigits" title="Last four digits of phone number" 
                             type="text" size="4" value="" placeholder="7890">
                         </fieldset></div>
                     </div>
@@ -495,9 +516,9 @@
                         <p> The below input fields have neither titles or labels to help explain purpose. </p>
                         <div class="color-example">
                         <fieldset><legend>Phone number</legend>
-                            <input id="areaCode" name="areaCode" type="text" size="3" value="" placeholder="(123)">
-                            <input id="exchange" name="exchange" type="text" size="3" value="" placeholder="456">
-                            <input id="lastDigits" name="lastDigits" type="text" size="4" value="" placeholder="7890">
+                            <input id="areaCode-w" name="areaCode" type="text" size="3" value="" placeholder="(123)">
+                            <input id="exchange-w" name="exchange" type="text" size="3" value="" placeholder="456">
+                            <input id="lastDigits-w" name="lastDigits" type="text" size="4" value="" placeholder="7890">
                         </fieldset></div>
                     </div>
                 </div>
@@ -625,7 +646,7 @@
                     </div>
                 </div>
 
-                <h3 id="guideline-1-3-4">1.3.5: Identify Input Purpose (AA)</h3>
+                <h3 id="guideline-1-3-">1.3.5: Identify Input Purpose (AA)</h3>
                 <p>
                     Form autocompletion is a way of easing form completion for users that may struggle with reading, typing, or those that use assistive technologies in general.
                     Providing the appropriate labels and titles helps not only users to understand the purpose of the field, but allows for the autocompletion as a result
@@ -650,8 +671,8 @@
                         <div class="color-example">
                         <p>This form input can be programmatically determined and autocompletion can be utilized.</p>
                             <form id="correctForm" class="block-form" action="#" novalidate>
-                                <label for="email">Email: </label>
-                                <input type="email" id="email" name="email" autocomplete="email">
+                                <label for="email-c">Email: </label>
+                                <input type="email" id="email-c" name="email" autocomplete="email">
                             </form>
                         </div>
                     </div>
@@ -660,8 +681,8 @@
                         <div class="color-example">
                         <p>This form input does not provide any autocompletion.</p>
                             <form id="wrongForm" class="block-form" action="#" novalidate>
-                                <label for="email">Email: </label>
-                                <input type="email" id="email" name="email" autocomplete="off">
+                                <label for="email-w">Email: </label>
+                                <input type="email" id="email-w" name="email" autocomplete="off">
                             <!-- i wonder here, if the name being misaligned is what causes autocompletion errors, or if the accessibility warning
                              will be raised even with "autocomplete="off"""-->
                             </form>

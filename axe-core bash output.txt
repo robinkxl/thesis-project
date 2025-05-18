@@ -1,0 +1,155 @@
+Running axe-core 4.8.4 in chrome-headless
+
+DevTools listening on ws://127.0.0.1:52566/devtools/browser/5fb93481-e8d0-417e-93a0-0c07bcd26ca7
+
+Testing http://localhost:1338/ ... please wait, this may take a minute.
+
+  Violation of "color-contrast" with 1 occurrences!
+    Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds. Correct invalid elements at:
+     - #home
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/color-contrast
+
+1 Accessibility issues detected.
+Testing complete of 1 pages
+
+Saved file at C:\Users\ncpet\Documents\LNU\thesis-project\results\axe\axe-results-1747585083615.json
+
+Please note that only 20% to 50% of all accessibility issues can automatically be detected.
+Manual testing is always required. For more information see:
+https://dequeuniversity.com/class/testing
+
+Axe-core audit generated and saved at results/axe.
+Audit for webpage: http://localhost:1338/perceivable
+Running axe-core 4.8.4 in chrome-headless
+
+DevTools listening on ws://127.0.0.1:52582/devtools/browser/14b7b6df-54fd-4843-a85f-d049de3f883b
+
+Testing http://localhost:1338/perceivable ... please wait, this may take a minute.
+
+  Violation of "color-contrast" with 4 occurrences!
+    Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds. Correct invalid elements at:
+     - .current
+     - .wrong > .color-example > .gl-1-4-3-normal-text-insufficient
+     - .gl-1-4-3-large-text-insufficient.large-text
+     - .gl-1-4-3-large-text-insufficient.large-text-bold
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/color-contrast
+
+  Violation of "heading-order" with 1 occurrences!
+    Ensures the order of headings is semantically correct. Correct invalid elements at:
+     - .wrong > h6
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/heading-order
+
+  Violation of "html-has-lang" with 1 occurrences!
+    Ensures every HTML document has a lang attribute. Correct invalid elements at:
+     - html
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/html-has-lang
+
+  Violation of "image-alt" with 1 occurrences!
+    Ensures <img> elements have alternate text or a role of none or presentation. Correct invalid elements at:
+     - .wrong > img[src$="Sticky.png"]
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/image-alt
+
+  Violation of "label-title-only" with 3 occurrences!
+    Ensures that every form element has a visible label and is not solely labeled using hidden labels, or the title or aria-describedby attributes. Correct invalid elements at:
+     - input[title="Area Code"]
+     - .correct > .color-example > fieldset > input[name="exchange"][placeholder="456"][size="3"]
+     - .correct > .color-example > fieldset > input[name="lastDigits"][size="4"][placeholder="7890"]
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/label-title-only
+
+  Violation of "list" with 1 occurrences!
+    Ensures that lists are structured correctly. Correct invalid elements at:
+     - .wrong > ol
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/list
+
+  Violation of "role-img-alt" with 1 occurrences!
+    Ensures [role="img"] elements have alternate text. Correct invalid elements at:
+     - .wrong > span[role="img"]
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/role-img-alt
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+12 Accessibility issues detected.
+Testing complete of 1 pages
+
+Saved file at C:\Users\ncpet\Documents\LNU\thesis-project\results\axe\axe-results-1747585092010.json
+
+Please note that only 20% to 50% of all accessibility issues can automatically be detected.
+Manual testing is always required. For more information see:
+https://dequeuniversity.com/class/testing
+
+Axe-core audit generated and saved at results/axe.
+Audit for webpage: http://localhost:1338/operable
+Running axe-core 4.8.4 in chrome-headless
+
+DevTools listening on ws://127.0.0.1:52609/devtools/browser/f02067f5-2a15-4c2d-8572-b0a36632cb85
+
+Testing http://localhost:1338/operable ... please wait, this may take a minute.
+
+  Violation of "color-contrast" with 2 occurrences!
+    Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds. Correct invalid elements at:
+     - #gl-2-2-2-sign-c > h4
+     - #gl-2-2-2-sign-w > h4
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/color-contrast
+
+  Violation of "document-title" with 1 occurrences!
+    Ensures each HTML document contains a non-empty <title> element. Correct invalid elements at:
+     - html
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/document-title
+
+  Violation of "image-alt" with 1 occurrences!
+    Ensures <img> elements have alternate text or a role of none or presentation. Correct invalid elements at:
+     - .wrong > a[href$="WAI/"] > img[src$="W3C_WAI.png"]
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/image-alt
+
+  Violation of "link-name" with 1 occurrences!
+    Ensures links have discernible text. Correct invalid elements at:
+     - .wrong > a[href$="WAI/"]
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/link-name
+
+  Violation of "tabindex" with 3 occurrences!
+    Ensures tabindex attribute values are not greater than 0. Correct invalid elements at:
+     - #home
+     - a[href$="perceivable"]
+     - a[href$="understandable"]
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/tabindex
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+8 Accessibility issues detected.
+Testing complete of 1 pages
+
+Saved file at C:\Users\ncpet\Documents\LNU\thesis-project\results\axe\axe-results-1747585095323.json
+
+Please note that only 20% to 50% of all accessibility issues can automatically be detected.
+Manual testing is always required. For more information see:
+https://dequeuniversity.com/class/testing
+
+Axe-core audit generated and saved at results/axe.
+Audit for webpage: http://localhost:1338/understandable
+Running axe-core 4.8.4 in chrome-headless
+
+DevTools listening on ws://127.0.0.1:52630/devtools/browser/e6336daa-6111-43fd-8547-95a7aa460334
+
+Testing http://localhost:1338/understandable ... please wait, this may take a minute.
+
+  Violation of "color-contrast" with 1 occurrences!
+    Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds. Correct invalid elements at:
+     - .current
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/color-contrast
+
+  Violation of "label" with 2 occurrences!
+    Ensures every form element has a label. Correct invalid elements at:
+     - #unameWrong
+     - #passwordWrong
+    For details, see: https://dequeuniversity.com/rules/axe/4.8/label
+
+9 Accessibility issues detected.
+Testing complete of 1 pages
+
+Saved file at C:\Users\ncpet\Documents\LNU\thesis-project\results\axe\axe-results-1747585099375.json
+
+Please note that only 20% to 50% of all accessibility issues can automatically be detected.
+Manual testing is always required. For more information see:
+https://dequeuniversity.com/class/testing
+
+Axe-core audit generated and saved at results/axe.

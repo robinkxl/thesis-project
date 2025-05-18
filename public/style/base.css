@@ -16,9 +16,40 @@ header h1 {
 }
 
 .nav-links {
-    display: flex;
     justify-content: space-evenly;
     list-style-type: none;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+}
+
+.nav-link, .nav-link:visited {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background-color: #eee;
+    color: #000;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    background-color: #015ecc;
+    color: #fff;
+    outline: 2px solid #fff5be;
+    outline-offset: 0;
+}
+
+.current {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #ccc;
+    color: #666;
+    border-radius: 4px;
+    cursor: default;
+    pointer-events: none;
 }
 
 .search-container {

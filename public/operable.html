@@ -16,10 +16,10 @@
             <h1>Evaluation Webpage for Web Accessibility Testing Tools!</h1>
             <nav>
                 <ul class="nav-links">
-                    <li><a id="home" href="/" tabindex="1">Home</a></li>
-                    <li><a href="perceivable" tabindex="3">Perceivable</a></li>
-                    <li><a href="operable">Operable</a></li>
-                    <li><a href="understandable" tabindex="2">Understandable</a></li>
+                    <li><a class="nav-link" id="home" href="/" tabindex="1">Home</a></li>
+                    <li><a class="nav-link" href="perceivable" tabindex="3">Perceivable</a></li>
+                    <li><a class="nav-link" href="operable">Operable</a></li>
+                    <li><a class="nav-link" href="understandable" tabindex="2">Understandable</a></li>
                 </ul>
             </nav>
             <div class="search-container">
@@ -47,7 +47,6 @@
                         except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
                     </p>
                     <h3>Examples:</h3>
-
                     <h4>1. Focus not visible</h4>
                     <!-- https://www.w3.org/WAI/WCAG21/Techniques/failures/F55 -->
                     <div class="example-box">
@@ -93,6 +92,25 @@
                                 This link wont be recognized by assistive technology.
                             </p>
                             <span id="fake-link" class="faked-link">This link is fake!</span>
+                        </div>
+                    </div>
+                    <h4>4. Device-specific event handlers for links</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>
+                                An image that functions as a link. The image changes on hover and focus, making it accessible to both mouse and keyboard users.
+                            </p>
+                            <a id="gl-2-1-1-img-link" href="#">
+                                <img id="gl-2-1-1-img" class="img-link" src="images/Operable.png" alt="Go to Operable page">
+                            </a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>
+                                This image acts like a link using only the mouse. Keyboard users cannot activate it.
+                            </p>
+                            <p><img id="mouse-only-link" class="img-link" src="images/Operable.png" alt="Go to Operable page"></p>
                         </div>
                     </div>
                 </section>
@@ -146,6 +164,7 @@
                     <p>
                         Do not design content in a way that is known to cause seizures or physical reactions.
                     </p>
+
                     <h3>2.3.1: Three Flashes or Below Threshold (Level A)</h3>
                     <p>
                         Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.
@@ -214,6 +233,206 @@
                             <p>
                                 Preferably tabindex should never have a higher value than 0 since it can disrupt the logical order of tabbable elements.
                             </p>
+                        </div>
+                    </div>
+                    <fake-heading>2.4.6: Headings and Labels (Level AA)</fake-heading>
+                    <p>
+                        Headings and labels describe topic or purpose.
+                    </p>
+                    <div class="disclaimer-box">
+                        <div class="disclaimer">
+                            <p>
+                                To demonstrate this violation, section 2.4.6 has a fake heading.
+                            </p>
+                        </div>
+                    </div>
+                    <h3>2.4.7: Focus Visible (Level AA)</h3>
+                    <p>
+                        Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.
+                    </p>
+                    <h3>Examples:</h3>
+                    <h4>1. Hidden Focus</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>A link that can be focused by using tab. The focus wont move until the user presses tab again.</p>
+                            <a href="#">Link</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>Focus is hidden which disrupts keyboard navigation.</p>
+                            <a class="hidden-focus" href="#">Link</a>
+                        </div>
+                    </div>
+                    <h4>2. Outline similar to focus</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>A link that can be focused by using tab. The focus wont move until the user presses tab again.</p>
+                            <a href="#">Link</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The link has an outline that makes it hard to see when its focused.</p>
+                            <a class="gl-2-4-7-outline" href="#">Link</a>
+                        </div>
+                    </div>
+                    <h4>3. Border similar to focus</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>A link that can be focused by using tab. The focus wont move until the user presses tab again.</p>
+                            <a href="#">Link</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The link has a border that makes it hard to see when its focused.</p>
+                            <a class="gl-2-4-7-border" href="#">Link</a>
+                        </div>
+                    </div>
+                    <h3>2.4.8: Location (Level AAA)</h3>
+                    <p>
+                        Information about the user's location within a set of Web pages is available.
+                    </p>
+                    <div class="disclaimer-box">
+                        <div class="disclaimer">
+                            <p>
+                                The selected page within the navigation menu is disabled both for mouse and keyboard navigation and is visually presented as disabled on every page except for the "Operable" page.
+                            </p>
+                        </div>
+                    </div>
+                    <h3>2.4.9: Link Purpose (Link Only) (Level AAA)</h3>
+                    <p>
+                        A mechanism is available to allow the purpose of each link to be identified from link text alone, except where the purpose of the link would be ambiguous to users in general.
+                    </p>
+                    <h3>Examples:</h3>
+                    <h4>1. Non-specific link</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The link below has its purpose stated in the text.</p>
+                            <a href="#">Operable examples</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The link below has nondescript text. Its purpose can be determined from the surrounding text but not from the link text alone.</p>
+                            <a href="#">Click here</a> to see the examples on the Operable page.
+                        </div>
+                    </div>
+                    <h4>2. Image-only link</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The link below has its purpose stated in the text.</p>
+                            <a href="https://www.w3.org/WAI/">
+                                <img class="img-link" src="images/W3C_WAI.png" alt="Go to W3C's Web Accessibility Initiative page">
+                            </a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The link below contains only non-text content (an image) and does not have an accessible name.</p>
+                            <a href="https://www.w3.org/WAI/">
+                                <img class="img-link" src="images/W3C_WAI.png">
+                            </a>
+                        </div>
+                    </div>
+                    <h3>2.4.13: Focus Appearance (Level AAA)</h3>
+                    <p>
+                        When the keyboard focus indicator is visible, an area of the focus indicator meets all the following:
+                    </p>
+                    <ul>
+                        <li>
+                            is at least as large as the area of a 2 CSS pixel thick perimeter of the unfocused component or sub-component, and
+                        </li>
+                        <li>
+                            has a contrast ratio of at least 3:1 between the same pixels in the focused and unfocused states.
+                        </li>
+                    </ul>
+                    <p>
+                        Exceptions:
+                    </p>
+                    <ul>
+                        <li>
+                            The focus indicator is determined by the user agent and cannot be adjusted by the author, or
+                        </li>
+                        <li>
+                            The focus indicator and the indicator's background color are not modified by the author.
+                        </li>
+                    </ul>
+                    <h3>Example:</h3>
+                    <h4>1. Inner Border</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The focus indicator is contained inside the button so it maintains contrast whatever background the button is placed on.</p>
+                            <button class="gl-2-4-13-button inner-focus">Reveal the hidden text</button>
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The focus is difficult to see because the contrast of the outline against the  background is too low.</p>
+                            <button class="gl-2-4-13-button">Reveal the hidden text</button>
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="guideline-2-5">
+                    <h2>Guideline 2.5: Input Modalities</h2>
+                    <p>
+                        Make it easier for users to operate functionality through various inputs beyond keyboard.
+                    </p>
+
+                    <h3>2.5.3: Label in Name (Level A)</h3>
+                    <p>
+                        For user interface components with labels that include text or images of text, the name contains the text that is presented visually.
+                    </p>
+                    <h3>Examples:</h3>
+                    <h4>1. Mismatch of visual and accessible name</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The visible name of this button matches its accessible name.</p>
+                            <button aria-label="Reveal the hidden text">Reveal the hidden text</button>
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The visible name of this button is different from its accessible name, making it impossible to access by speech input.</p>
+                            <button aria-label="Show the hidden text">Reveal the hidden text</button>
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
+                        </div>
+                    </div>
+                    <h4>2. Section of the visual name is hidden</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The visible name of this link matches its accessible name.</p>
+                            <a href="#">Go to Operable page</a>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>The visible name of this link is partially hidden, making it impossible to access by speech input.</p>
+                            <a href="#">Go to <span class="hidden">Operable</span> page</a>
+                        </div>
+                    </div>
+                    <h4>3. Section of the visual name is hidden</h4>
+                    <div class="example-box">
+                        <div class="correct">
+                            <h3>Correct</h3>
+                            <p>The hidden accessible name matches the visible label of this button.</p>
+                            <div id="hidden-label-c" class="hidden">Reveal the hidden text</div>
+                            <input type="submit" aria-labelledby="hidden-label-c" value="Reveal the hidden text">
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
+                        </div>
+                        <div class="wrong">
+                            <h3>Wrong</h3>
+                            <p>
+                                The visible label says "Reveal the hidden text", but the hidden accessible name is "Click the hidden text", making it impossible to access by speech input.
+                            </p>
+                            <div id="hidden-label-w" class="hidden">Show the hidden text</div>
+                            <input type="submit" aria-labelledby="hidden-label-w" value="Reveal the hidden text">
+                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
                         </div>
                     </div>
                 </section>

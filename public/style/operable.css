@@ -14,6 +14,11 @@
     color: red;
 }
 
+.img-link {
+    width: 7em;
+    height: auto;
+}
+
 /* gl-2-2-2-flash */
 .gl-2-2-2-flash {
     width: 25%;
@@ -26,4 +31,61 @@
 .gl-2-2-2-controller {
     width: 25%;
     margin: 0 auto;
+}
+
+/* gl-2-4-6 Fake Heading */
+fake-heading {
+    font-family: "Open Sans", sans-serif;
+    color: #333;
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+/* gl-2-4-7 Hidden Focus */
+.hidden-focus:focus {
+    outline: none;
+}
+
+.gl-2-4-7-outline {
+    outline: 2px solid #015ecc;
+    box-shadow: 0 0 0 3px white;
+    border-radius: 2px;
+}
+
+.gl-2-4-7-outline:focus {
+    outline:revert;
+}
+
+
+.gl-2-4-7-border {
+    border: 2px solid #015ecc;
+    box-shadow: 0 0 0 1px white;
+    border-radius: 3px;
+}
+
+.gl-2-4-7-border:focus {
+    border:none;
+    border-radius: 0;
+}
+
+/* gl-2-4-13 Inner Focus */
+.gl-2-4-13-button { 
+  background-color: #013365;
+  color: white;
+  padding: 10px;
+}
+
+.gl-2-4-13-button:focus {
+    outline: 2px #ffff00 solid;
+}
+
+.inner-focus:focus { 
+  outline: 2px #ffff00 solid;
+  outline-offset: -4px;
 }

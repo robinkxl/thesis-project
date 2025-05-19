@@ -130,19 +130,14 @@
                     </div>
                 </div>
 
-                <!--- new addition: 1.1.1 hiding ASCII art in HTML for assistive technologies, purely left decorative.
-                TODO i tihnk it would be beneficial instead for this example of ASCII art to be a diff ascii so its a little more clear . -->
+                <!--- new addition: 1.1.1 hiding ASCII art in HTML for assistive technologies, purely left decorative. -->
                 <h4>5. Hiding ASCII art that is purely decorative. </h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
                         <p> This ASCII art will be hidden from assistive technologies as it is purely decorative. </p>
-                        <!-- using pre is to preserve white spaces so that it doesnt just print the symbols in a line 
-                         https://www.w3.org/TR/html-aria/ .. -->
-                        <!-- https://stackoverflow.com/questions/64484859/what-does-focusable-elements-should-have-interactive-semantics-mean-in-a-figur -->
                         <div role="presentation" aria-hidden="true">
                         <figure>
-                            <!-- To make sense of ASCII Art, the visual impression is key. Hence, the corresponding role would be the img role. -->
                         <pre>
                            |
                          .'|'.
@@ -153,7 +148,7 @@
                            `
                         </pre>
                           <figcaption id="leaf-caption">
-                            Found on the <cite><a href="https://www.asciiart.eu/plants/leaf" target="_blank">ASCII Art Archive</a></cite>.
+                            Leaf ASCII art.
                           </figcaption>
                         </figure>
                         </div>

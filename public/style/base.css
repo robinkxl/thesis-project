@@ -176,24 +176,35 @@ button {
 }
 
 .touch-target {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 0px;
     padding: 1px;
     margin: 2px 0;
     cursor: pointer;
-    min-width: 17px;
-    min-height: 17px;
-  }
+}
 
 .touch-target input[type="checkbox"] {
     min-width: 17px;
     min-height: 17px;
 }
-/* 17 px ?? */
-/* https://learn.microsoft.com/en-gb/windows/win32/uxguide/ctrl-check-boxes#recommended-sizing-and-spacing */
 
-.unlabeled-touch-target {
+.touch-target input[type="button"] {
+    min-width: 24px;
+    min-height: 24px;
+}
+
+/* this is for touch-target pagination */
+.pagination-1 li {
+  display: inline-block; 
+  min-height: 44px;
+  min-width: 44px;
+  background-color:#000000;
+  color: white;
+  margin: auto;
+}
+
+.insufficient-touch-target {
     display: flex;
     align-items: center;
     gap: 0px;
@@ -202,9 +213,14 @@ button {
     cursor: pointer;
 }
 
-.unlabeled-touch-target input[type="checkbox"] {
-    width: 17px;
-    height: 17px;
+.insufficient-touch-target input[type="checkbox"] {
+    min-width: 7px;
+    min-height: 7px;
+}
+
+.insufficient-touch-target input[type="button"] {
+    min-width: 1px;
+    min-height: 1px;
 }
 
 /** FOOTER **/

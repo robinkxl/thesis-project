@@ -436,25 +436,40 @@
                         </div>
                     </div>
 
-                     <h3>2.5.8: </h3>
+                     <h3>2.5.8: Target Size (Minimum) (AA)</h3>
+                    <!-- touch sizes need to be 24 x 24 CSS pixels this AA not AAA(which is 44x44)  -->
                     <p>
                      ....
                     </p>
                     <h3>Examples:</h3>
                     <h4>1. Touch-Target sizes </h4>
-                    <!--- -->
                     <div class="example-box">
                         <div class="correct">
                             <h3>Correct</h3>
-                            <p>The touch target is of reasonable size for level AA.</p>
-                            <label class="touch-target" for="bird-c">
-                            <input  id="bird-c" type="checkbox" name="animal" value="bird"> Bird </label>
+                            <p>The touch target is of reasonable minimum size for level AA.</p>
+                            <label class="touch-target" for="checkbox-c">
+                            <input id="checkbox-c" type="checkbox" name="checkboxExample" value="checkbox-c"> Correct Size </label> <br>
+                            <label class="touch-target" for="button-c">
+                            <input id="button-c" type="button" name="buttonExample" value="Correct Size"></label>
+
+                        <ol class="pagination-1">
+                            <li><a class="previous">previous</a></li>
+                            <li><a aria-current="page">1</li>
+                            <li><a href="/page-2">2</a></li>
+                            <li><a href="/page-3">3</a></li>
+                            <li><a href="/page-4">4</a></li>
+                            <li><a href="/page-5">5</a></li>
+                            <li><a href="/pages-6-10">next</a></li>
+                          </ol>
+                        </nav>
                         </div>
                         <div class="wrong">
                             <h3>Wrong</h3>
-                            <p>...</p>
-                            <div class="unlabeled-touch-target">
-                             .......
+                            <p>The touch target is not a reasonable size for level AA and can make it difficult for users to click.</p>
+                            <label class="insufficient-touch-target" for="checkbox-w">
+                            <input id="checkbox-w" type="checkbox" name="checkboxExample" value="checkbox-w"> Wrong Size </label> <br>
+                            <label class="insufficien-touch-target" for="button-w">
+                            <input id="button-w" type="button" name="buttonExample" value="Wrong Size"></label>
                             </div>
                         </div>
                     </div>

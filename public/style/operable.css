@@ -89,3 +89,14 @@ fake-heading {
   outline: 2px #ffff00 solid;
   outline-offset: -4px;
 }
+
+/* 2.5.8 */
+
+/* this is for touch-target pagination */
+.pagination-1 li {
+  display: inline-block; 
+  min-height: 44px;
+  min-width: 44px;
+  background-color:#000000;
+  color: white;
+}

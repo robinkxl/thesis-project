@@ -156,6 +156,7 @@
                         <p> This ASCII art will be hidden from assistive technologies as it is purely decorative. </p>
                         <!-- using pre is to preserve white spaces so that it doesnt just print the symbols in a line 
                          https://www.w3.org/TR/html-aria/ .. -->
+                        <div aria-hidden="true">
                         <figure>
                         <pre role="img" aria-label="ASCII leaf.">
                            |
@@ -170,6 +171,7 @@
                             Found on the <cite><a href="https://www.asciiart.eu/plants/leaf" target="_blank">ASCII Art Archive</a></cite>.
                           </figcaption>
                         </figure>
+                        </div>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
@@ -192,13 +194,13 @@
 
                 <!--- new addition: 1.1.1 using aria-labeling for ASCII art in HTML.
                 https://stackoverflow.com/questions/33929647/alt-attribute-for-ascii-art-in-html  -->
-                <h4>7. Providing alternative text for HTML ASCII elements. </h4>
+                <h4>7. Providing alternative text for ASCII elements. </h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
                         <p> This ASCII art has a label in order to describe the art for users using assistive technologies. </p>
                         <!-- using pre is to preserve white spaces so that it doesnt just print the symbols in a line .. -->
-                        <figure aria-hidden="true">
+                        <figure>
                         <pre role="img" aria-label="ASCII frog.">
                             _
                           .'_`--.___   __

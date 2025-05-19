@@ -175,6 +175,38 @@ button {
     font-size: 1.15rem;
 }
 
+.touch-target {
+    display: inline-flex;
+    align-items: center;
+    gap: 0px;
+    padding: 1px;
+    margin: 2px 0;
+    cursor: pointer;
+    min-width: 17px;
+    min-height: 17px;
+  }
+
+.touch-target input[type="checkbox"] {
+    min-width: 17px;
+    min-height: 17px;
+}
+/* 17 px ?? */
+/* https://learn.microsoft.com/en-gb/windows/win32/uxguide/ctrl-check-boxes#recommended-sizing-and-spacing */
+
+.unlabeled-touch-target {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    padding-bottom:2px;
+    margin: 0px 0 5px 0;
+    cursor: pointer;
+}
+
+.unlabeled-touch-target input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+}
+
 /** FOOTER **/
 footer {
     text-align: center;

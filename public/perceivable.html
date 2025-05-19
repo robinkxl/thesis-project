@@ -108,39 +108,22 @@
 
                 <!--- new addition: 1.1.1 hiding HTML emoji's from assistive tech. when purely decorative.
                     https://www.upyoura11y.com/images-icons-and-emojis/  -->
-                <h4>4. Hiding HTML emojis that are purely decorative. </h4>
-                <div class="example-box">
-                    <div class="correct">
-                        <h3>Correct</h3>
-                        <p>The HTML emoji below will be hidden from assistive technologies as it is purely decorative.
-                        </p>
-                        <span aria-hidden="true" style='font-size:50px;'>&#128513;</span>
-                    </div>
-                    <div class="wrong">
-                        <h3>Wrong</h3>
-                        <p>
-                            The image below does not have proper aria labeling to hide it from assistive technologies.
-                            The language will become unclear considering it will read the emoji's unicode value and
-                            provide no information.
-                        </p>
-                        <span style='font-size:50px;'>&#128513;</span>
-                    </div>
-                </div>
 
                 <!--- new addition: 1.1.1 using HTML emoji's as images to properly consider them for assistive tech.
                     https://www.upyoura11y.com/images-icons-and-emojis/  -->
-                <h4>5. Properly considering HTML emojis as images. </h4>
+                <h4>4. Properly considering HTML emojis as images. </h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
-                        <!-- is aria-labeling enough for it being an img, or does it need alt as well ?? need to check the tools. -->
                         <p>The HTML emoji will be considered as an image for assistive technologies with proper aria
                             labeling. </p>
+
+                        <!-- span should not usually have an aria-label, but since we override the role with "img" it can be used! 
+                         https://benmyers.dev/blog/dont-use-aria-label-on-static-text-elements/#but-voiceover -->    
                         <span role="img" style='font-size:50px;' aria-label="SMILING FACE WITH HALO">&#128519;</span>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <!-- i want to make sure im not making it too complex, so are we evaluating if it picks up on "img", or just "aria-labeling / alt" ? -->
                         <p> The HTML emoji as an image below does not have proper aria labeling/alternative text to
                             provide context for assistive technologies. </p>
                         <span role="img" style='font-size:50px;'>&#128519;</span>
@@ -149,16 +132,18 @@
 
                 <!--- new addition: 1.1.1 hiding ASCII art in HTML for assistive technologies, purely left decorative.
                 TODO i tihnk it would be beneficial instead for this example of ASCII art to be a diff ascii so its a little more clear . -->
-                <h4>6. Hiding ASCII art that is purely decorative. </h4>
+                <h4>5. Hiding ASCII art that is purely decorative. </h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
                         <p> This ASCII art will be hidden from assistive technologies as it is purely decorative. </p>
                         <!-- using pre is to preserve white spaces so that it doesnt just print the symbols in a line 
                          https://www.w3.org/TR/html-aria/ .. -->
-                        <div aria-hidden="true">
+                        <!-- https://stackoverflow.com/questions/64484859/what-does-focusable-elements-should-have-interactive-semantics-mean-in-a-figur -->
+                        <div role="presentation" aria-hidden="true">
                         <figure>
-                        <pre role="img" aria-label="ASCII leaf.">
+                            <!-- To make sense of ASCII Art, the visual impression is key. Hence, the corresponding role would be the img role. -->
+                        <pre>
                            |
                          .'|'.
                         /.'|\ \
@@ -178,7 +163,7 @@
                         <p> This ASCII drawing will still be picked up by assistive technologies and
                             create confusing contexts as screen-readers would read just the symbols with no provided context and
                             represents a figure element without a caption. </p>
-                        <figure>
+                        <figure role="presentation">
                         <pre>
                            |
                          .'|'.
@@ -194,14 +179,14 @@
 
                 <!--- new addition: 1.1.1 using aria-labeling for ASCII art in HTML.
                 https://stackoverflow.com/questions/33929647/alt-attribute-for-ascii-art-in-html  -->
-                <h4>7. Providing alternative text for ASCII elements. </h4>
+                <h4>6. Providing alternative text for ASCII elements. </h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
                         <p> This ASCII art has a label in order to describe the art for users using assistive technologies. </p>
                         <!-- using pre is to preserve white spaces so that it doesnt just print the symbols in a line .. -->
                         <figure>
-                        <pre role="img" aria-label="ASCII frog.">
+                        <pre role="img" aria-label="ASCII frog">
                             _
                           .'_`--.___   __
                          ( 'o`   - .`.'_ )
@@ -218,9 +203,9 @@
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p> This ASCII drawing does not have any labeling or alt text to help decipher it for assistive technologies. </p>
+                        <p> This ASCII drawing does not have any labeling/alt text to help decipher it for assistive technologies. </p>
                         <figure>
-                        <pre>
+                        <pre role="img">
                             _
                           .'_`--.___   __
                          ( 'o`   - .`.'_ )
@@ -408,7 +393,7 @@
                         <div class="color-example">
                         <form>
                           <div class="control">
-                            <label for="name-c">Full name<span class="required">*</span></label><input aria-describedby="required-description" id="name-c" type="text">
+<label for="name-c">Full name<span class="required">*</span></label><input aria-describedby="required-description" id="name-c" type="text">
                           </div>
                           <div class="control">
                             <label for="biography-c">Biography</label><textarea id="biography-c"></textarea>
@@ -416,7 +401,8 @@
                           <div class="control">
                             <input type="submit" value="Register">
                           </div>
-                          <p aria-hidden="true" id="required-description">
+<!-- wait why is this aria-hidden true  here ??? -->
+<p aria-hidden="true" id="required-description">
                             <span class="required">*</span>Required field </p>
                         </form></div>
                     </div>
@@ -426,7 +412,7 @@
                         <div class="color-example">
                         <form>
                           <div class="control">
-                            <label for="name-w" class="required">Full name</label><input aria-describedby="required-description" id="name-w" type="text" required>
+<label for="name-w" class="required">Full name</label><input aria-describedby="required-description" id="name-w" type="text" required>
                           </div>
                           <div class="control">
                             <label for="biography-w">Biography</label><textarea id="biography-w"></textarea>

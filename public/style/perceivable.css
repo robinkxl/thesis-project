@@ -54,22 +54,6 @@ label {
     letter-spacing: 0.3em;
 }
 
-.touch-target {
-    display: inline-flex;
-    align-items: center;
-    gap: 0px;
-    padding: 1px;
-    margin: 2px 0;
-    cursor: pointer;
-  }
-
-.touch-target input[type="checkbox"] {
-    width: 17px;
-    height: 17px;
-}
-/* 17 px ?? */
-/* https://learn.microsoft.com/en-gb/windows/win32/uxguide/ctrl-check-boxes#recommended-sizing-and-spacing */
-
 .unlabeled-touch-target {
     display: flex;
     align-items: center;

@@ -389,11 +389,13 @@
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
-                        <p> Below is a form with required fields marked with asterisk and color. </p>
+                        <p> Below is a form with required fields marked with asterisk and color. The required field includes an aria-describedby 
+                            attribute that will provide information for assistive technologies like screen readers, considering how an asteriks may
+                            be ignored, or not be clear enough as to what it is for. </p>
                         <div class="color-example">
                         <form>
                           <div class="control">
-<label for="name-c">Full name<span class="required">*</span></label><input aria-describedby="required-description" id="name-c" type="text">
+                        <label for="name-c">Full name<span class="required">*</span></label><input aria-describedby="required-description" id="name-c" type="text" required>
                           </div>
                           <div class="control">
                             <label for="biography-c">Biography</label><textarea id="biography-c"></textarea>
@@ -401,18 +403,19 @@
                           <div class="control">
                             <input type="submit" value="Register">
                           </div>
-<!-- wait why is this aria-hidden true  here ??? -->
-<p aria-hidden="true" id="required-description">
+                        <p aria-hidden="true" id="required-description">
                             <span class="required">*</span>Required field </p>
                         </form></div>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p> Below is a form with required fields marked without an asterisks, providing no solutions for color-blindness or assistive technologies. </p>  
+                        <p> Below is a form with required fields marked without an asterisks, leaving the user unaware. There is also
+                            a missing aria-describedby attribute to clarify for screen readers. Providing no solutions for color-blindness
+                            or assistive technologies. </p>
                         <div class="color-example">
                         <form>
                           <div class="control">
-<label for="name-w" class="required">Full name</label><input aria-describedby="required-description" id="name-w" type="text" required>
+                        <label for="name-w" class="required">Full name</label><input id="name-w" type="text" required>
                           </div>
                           <div class="control">
                             <label for="biography-w">Biography</label><textarea id="biography-w"></textarea>
@@ -432,27 +435,25 @@
                     <div class="correct">
                         <h3>Correct</h3>
                         <p> Forms with checkboxes need to be programmatically determinable with proper labels. </p>
-                        <!-- touch targets need to be of proper size as to not flag these as another issue ..
-                          44 by 44 CSS pixels ????  -->
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
-                            <label class="touch-target" for="fox-c">
+                            <label for="fox-c">
                             <input id="fox-c" type="checkbox" name="animal" value="fox">
                             Fox</label><br>
 
-                            <label class="touch-target" for="bird-c">
+                            <label for="bird-c">
                             <input  id="bird-c" type="checkbox" name="animal" value="bird">
                             Bird</label><br>
 
-                            <label class="touch-target" for="frog-c">
+                            <label for="frog-c">
                             <input id="frog-c" type="checkbox" name="animal" value="frog">
                             Frog</label><br>
 
-                            <label class="touch-target" for="snake-c">
+                            <label for="snake-c">
                             <input id="snake-c" type="checkbox" name="animal" value="snake">
                             Snake</label><br>
 
-                            <label class="touch-target" for="snail-c">
+                            <label for="snail-c">
                             <input id="snail-c" type="checkbox" name="animal" value="snail">
                             Snail</label><br>
                         </fieldset>
@@ -462,21 +463,11 @@
                         <p> These form checkboxes lack labels to be able to be programmatically determined. </p>
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
-                            <div class="unlabeled-touch-target">
-                            <input id="fox-w" type="checkbox" name="animal" value="fox"> Fox
-                            </div>
-                            <div class="unlabeled-touch-target">
-                            <input id="bird-w" type="checkbox" name="animal" value="bird"> Bird
-                            </div>
-                            <div class="unlabeled-touch-target">
-                            <input id="frog-w" type="checkbox" name="animal" value="frog"> Frog
-                            </div>
-                            <div class="unlabeled-touch-target">
-                            <input id="snake-w" type="checkbox" name="animal" value="snake"> Snake
-                            </div>
-                            <div class="unlabeled-touch-target">
-                            <input id="snail-w" type="checkbox" name="animal" value="snail"> Snail
-                            </div>
+                            <input id="fox-w" type="checkbox" name="animal" value="fox"> Fox <br>
+                            <input id="bird-w" type="checkbox" name="animal" value="bird"> Bird <br>
+                            <input id="frog-w" type="checkbox" name="animal" value="frog"> Frog <br>
+                            <input id="snake-w" type="checkbox" name="animal" value="snake"> Snake <br>
+                            <input id="snail-w" type="checkbox" name="animal" value="snail"> Snail <br>
                         </fieldset>
                     </div>
                 </div>
@@ -1179,8 +1170,9 @@
                         <div class="gl-1-4-8-normal-line-height"></div>
                             <p> This is an example of a paragraph that has default spacing, meaning single space between its lines. In order to
                                 ensure understandable text that is easy to follow, the paragraph that is to follow this one requires a
-                                spacing of atleast 1.5 times that of the line-height within the paragraph. That means <i>"the spacing from the top of the last line of 1 
-                                paragraph is 250% farther from the Top of the first line of the next paragraph"</i>
+                                spacing of atleast 1.5 times that of the line-height within the paragraph. That means 
+                                <i>"the spacing from the top of the last line of 1 paragraph is 250% farther from the Top of the first line of 
+                                the next paragraph"</i>
                                 <a href="https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html" target="_blank"> WCAG SC 1.4.8 </a>
                             </p>
                             <p>
@@ -1212,6 +1204,7 @@
     </main>
     <footer>
         <p>Made by <a href="https://github.com/Ylih">Ylih</a> and <a href="https://github.com/elemoser">elemoser</a></p>
+        <p>Further developed by <a href="/">Nils</a> and <a href="/">Robin</a></p>
     </footer>
 </body>
 

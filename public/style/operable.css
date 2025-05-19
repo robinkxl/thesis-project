@@ -89,3 +89,21 @@ fake-heading {
   outline: 2px #ffff00 solid;
   outline-offset: -4px;
 }
+
+/* 2.5.8 */
+.touch-target {
+    display: inline-flex;
+    align-items: center;
+    gap: 0px;
+    padding: 1px;
+    margin: 2px 0;
+    cursor: pointer;
+  }
+
+  /* can change this from being checkboxes */
+.touch-target input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+}
+/* 17 px ?? */
+/* https://learn.microsoft.com/en-gb/windows/win32/uxguide/ctrl-check-boxes#recommended-sizing-and-spacing */

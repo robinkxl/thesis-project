@@ -45,8 +45,8 @@ header h1 {
 .current {
     display: inline-block;
     padding: 0.5em 1em;
-    background-color: #ccc;
-    color: #666;
+    background-color:#8ed6e8;
+    color: #000000;
     border-radius: 4px;
     cursor: default;
     pointer-events: none;

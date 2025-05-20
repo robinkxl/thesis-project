@@ -436,11 +436,28 @@
                         </div>
                     </div>
 
-                     <h3>2.5.8: Target Size (Minimum) (AA)</h3>
+                    <h3>2.5.8: Target Size (Minimum) (Level AA)</h3>
                     <!-- touch sizes need to be 24 x 24 CSS pixels this AA not AAA(which is 44x44)  -->
                     <p>
-                     ....
+                        The size of the target for pointer inputs is at least 24 by 24 CSS pixels, except where:
                     </p>
+                    <ul>
+                        <li>
+                            <b>Spacing:</b> Undersized targets (those less than 24 by 24 CSS pixels) are positioned so that if a 24 CSS pixel diameter circle is centered on the bounding box of each, the circles do not intersect another target or the circle for another undersized target;
+                        </li>
+                        <li>
+                            <b>Equivalent:</b> The function can be achieved through a different control on the same page that meets this criterion;
+                        </li>
+                        <li>
+                            <b>Inline:</b> The target is in a sentence or its size is otherwise constrained by the line-height of non-target text;
+                        </li>
+                        <li>
+                            <b>User agent control:</b> The size of the target is determined by the user agent and is not modified by the author;
+                        </li>
+                        <li>
+                            <b>Essential:</b> A particular presentation of the target is essential or is legally required for the information being conveyed.
+                        </li>
+                    </ul>
                     <h3>Examples:</h3>
                     <h4>1. Touch-Target sizes </h4>
                     <div class="example-box">
@@ -451,17 +468,6 @@
                             <input id="checkbox-c" type="checkbox" name="checkboxExample" value="checkbox-c"> Correct Size </label> <br>
                             <label class="touch-target" for="button-c">
                             <input id="button-c" type="button" name="buttonExample" value="Correct Size"></label>
-
-                        <ol class="pagination-1">
-                            <li><a class="previous">previous</a></li>
-                            <li><a aria-current="page">1</li>
-                            <li><a href="/page-2">2</a></li>
-                            <li><a href="/page-3">3</a></li>
-                            <li><a href="/page-4">4</a></li>
-                            <li><a href="/page-5">5</a></li>
-                            <li><a href="/pages-6-10">next</a></li>
-                          </ol>
-                        </nav>
                         </div>
                         <div class="wrong">
                             <h3>Wrong</h3>
@@ -470,7 +476,6 @@
                             <input id="checkbox-w" type="checkbox" name="checkboxExample" value="checkbox-w"> Wrong Size </label> <br>
                             <label class="insufficien-touch-target" for="button-w">
                             <input id="button-w" type="button" name="buttonExample" value="Wrong Size"></label>
-                            </div>
                         </div>
                     </div>
 

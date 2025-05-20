@@ -234,23 +234,27 @@
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
-                        <p>The video has captions .,</p>
+                        <p>The video has a caption track! </p>
                         <div class="1.2.2-video">
-                            <figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
-                                <div class="wp-block-embed__wrapper">
-                            <iframe title="Understanding WCAG SC 1.2.2 Captions (Prerecorded) (Level A) - Understanding WCAG SC 1.2.2 Captions (Prerecorded) (Level A)" 
-                            width="250" height="150" src="https://www.youtube.com/embed/E3BjAL1BLbc?feature=oembed" 
-                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-                        </iframe></div>
-                        
-                        <figcaption class="wp-element-caption">1.2.2 Captions (Prerecorded)</figcaption></figure>
-
+                            <video width="320" height="240" controls>
+                                <source src="videos/perspective-video/perspective-video.mp4" type="video/mp4">
+                                <track
+                                    label="English"
+                                    kind="captions"
+                                    srclang="en"
+                                    src="videos/perspective-video/perspective-caption.vtt"
+                                    default>
+	                        </video>
                         </div>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p>.... </p>
+                        <p> This is an example of a video with no captions track! </p>
+                        <div class="1.2.2-video">
+                            <video width="320" height="240" controls>
+                                <source src="videos/perspective-video/perspective-video.mp4" type="video/mp4">
+	                        </video>
+                        </div>
                     </div>
                 </div>
         </section>

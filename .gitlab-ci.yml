@@ -24,6 +24,7 @@ lighthouse:
     # something to archive artifacts or just handle it through link?
   only:
     - master
+    - perceivable
   # artifacts:
     # paths:
       # - results/lighthouse/

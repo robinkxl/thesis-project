@@ -106,36 +106,34 @@
                     </div>
                 </div>
 
-                <!--- new addition: 1.1.1 hiding HTML emoji's from assistive tech. when purely decorative.
-                    https://www.upyoura11y.com/images-icons-and-emojis/  -->
-
                 <!--- new addition: 1.1.1 using HTML emoji's as images to properly consider them for assistive tech.
                     https://www.upyoura11y.com/images-icons-and-emojis/  -->
-                <h4>4. Properly considering HTML emojis as images. </h4>
+                <h4>4. Properly considering HTML emojis as images.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
                         <p>The HTML emoji will be considered as an image for assistive technologies with proper aria
                             labeling. </p>
-
                         <!-- span should not usually have an aria-label, but since we override the role with "img" it can be used! 
                          https://benmyers.dev/blog/dont-use-aria-label-on-static-text-elements/#but-voiceover -->    
                         <span role="img" style='font-size:50px;' aria-label="SMILING FACE WITH HALO">&#128519;</span>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p> The HTML emoji as an image below does not have proper aria labeling/alternative text to
+                        <p> The HTML emoji is not treated as an image, and does not have proper aria labeling/alternative text to
                             provide context for assistive technologies. </p>
-                        <span role="img" style='font-size:50px;'>&#128519;</span>
+                        <span style='font-size:50px;'>&#128519;</span>
                     </div>
                 </div>
 
                 <!--- new addition: 1.1.1 hiding ASCII art in HTML for assistive technologies, purely left decorative. -->
-                <h4>5. Hiding ASCII art that is purely decorative. </h4>
+                <h4>5. Hiding ASCII art that is purely decorative.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
-                        <p> This ASCII art will be hidden from assistive technologies as it is purely decorative. </p>
+                        <p> This ASCII art is given the role of presentation, and will be hidden from assistive technologies
+                            as it is purely decorative.
+                        </p>
                         <div role="presentation" aria-hidden="true">
                         <figure>
                         <pre>
@@ -174,7 +172,7 @@
 
                 <!--- new addition: 1.1.1 using aria-labeling for ASCII art in HTML.
                 https://stackoverflow.com/questions/33929647/alt-attribute-for-ascii-art-in-html  -->
-                <h4>6. Providing alternative text for ASCII elements. </h4>
+                <h4>6. Providing alternative text for ASCII elements.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
@@ -218,39 +216,44 @@
                 </div>
             </section>
 
-        <section id="guideline-1-2">
-                <h2>Guideline 1.2: .... </h2>
+            <section id="guideline-1-2">
+                <h2>Guideline 1.2: Time-based Media </h2>
                 <p>
-                    .....
+                   Provide alternatives for time-based media.
                 </p>
 
-                <h3>1.2.2: Captions (Prerecorded) - Level A </h3>
+                <!-- further CSS is possible for the video controls, but not implemented 
+                 https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Audio_and_video_delivery/Video_player_styling_basics -->
+                <h3>1.2.2: Captions (Prerecorded) (Level A)</h3>
                 <p>
-                   ..... 
-                   <!-- https://gist.github.com/aldrinjenson/6777f7bb8864ff5003b399d1f730c656 -->
+                   Synchronized captions are provided for non-live video.
                 </p>
                 <h3>Example:</h3>
-                <h4>1. Captioning .. .. ..</h4>
+                <h4>1. Caption tracks for videos</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
-                        <p>The video has captions .,</p>
-                        <div class="1.2.2-video">
-                            <figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
-                                <div class="wp-block-embed__wrapper">
-                            <iframe title="Understanding WCAG SC 1.2.2 Captions (Prerecorded) (Level A) - Understanding WCAG SC 1.2.2 Captions (Prerecorded) (Level A)" 
-                            width="250" height="150" src="https://www.youtube.com/embed/E3BjAL1BLbc?feature=oembed" 
-                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-                        </iframe></div>
-                        
-                        <figcaption class="wp-element-caption">1.2.2 Captions (Prerecorded)</figcaption></figure>
-
+                        <p>The video has a caption track!</p>
+                        <div class="gl-1-2-2">
+                            <video autoplay="off" controls>
+                                <source src="videos/perspective-video/perspective-video.mp4" type="video/mp4">
+                                <track
+                                    label="English"
+                                    kind="captions"
+                                    srclang="en"
+                                    src="videos/perspective-video/perspective-caption.vtt"
+                                    default>
+	                        </video>
                         </div>
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p>.... </p>
+                        <p>This is an example of a video with no caption track!</p>
+                        <div class="gl-1-2-2">
+                            <video autoplay="off" controls>
+                                <source src="videos/perspective-video/perspective-video.mp4" type="video/mp4">
+	                        </video>
+                        </div>
                     </div>
                 </div>
         </section>
@@ -268,12 +271,12 @@
                     determined or are available in text.
                 </p>
                 <h3>Examples:</h3>
-                <!-- https://www.w3.org/WAI/WCAG21/Techniques/html/H42 -->
+                <!-- https://www.w3.org/WAI/WCAG22/Techniques/html/H42 -->
                 <h4>1. h1-h6 in correct order.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
-                        <p>throughout the page h1-h3 has already been used in order. Below are the rest of the headings
+                        <p>Throughout the page h1-h3 has already been used in order. Below are the rest of the headings
                             in correct order.</p>
                         <h4>This is h4</h4>
                         <h5>This is h5</h5>
@@ -281,7 +284,7 @@
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p>throughout the page h1-h3 has already been used in order. Below are the rest of the headings
+                        <p>Throughout the page h1-h3 has already been used in order. Below are the rest of the headings
                             in incorrect order.</p>
                         <h6>This is h6</h6>
                         <h4>This is h4</h4>
@@ -289,8 +292,8 @@
                     </div>
                 </div>
 
-                <!-- https://www.w3.org/WAI/WCAG21/Techniques/html/H48 -->
-                <h4> 2. Using lists. </h4>
+                <!-- https://www.w3.org/WAI/WCAG22/Techniques/html/H48 -->
+                <h4>2. Using lists.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
@@ -313,7 +316,7 @@
                     </div>
                 </div>
 
-                <!-- https://www.w3.org/WAI/WCAG21/Techniques/html/H51 & https://www.w3.org/WAI/WCAG21/Techniques/failures/F91 -->
+                <!-- https://www.w3.org/WAI/WCAG22/Techniques/html/H51 & https://www.w3.org/WAI/WCAG22/Techniques/failures/F91 -->
                 <h4>3. Proper table markup.</h4>
                 <div class="example-box">
                     <div class="correct">
@@ -380,7 +383,7 @@
 
                 <!-- https://www.nngroup.com/articles/required-fields/ 
                  https://www.digitala11y.com/academy/required-input-with-asterisk-and-aria/ -->
-                <h4>4. Asterisk to label obligatory forms. </h4>
+                <h4>4. Asterisk to label obligatory forms.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
@@ -424,33 +427,31 @@
                 </div>
 
                 <!-- https://webaim.org/techniques/forms/controls#checkbox  -->
-                <!-- possibly something to consider for one of the criterias being the mislabeled input / value / label ? -->
-                <h4>5. Labeling for checkboxes. </h4>
+                <h4>5. Labeling for checkboxes.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
                         <p> Forms with checkboxes need to be programmatically determinable with proper labels. </p>
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
-                            <label class="touch-target" for="fox-c">
                             <input id="fox-c" type="checkbox" name="animal" value="fox">
-                            Fox</label><br>
+                            <label class="touch-target" for="fox-c">Fox</label>
 
                             <label class="touch-target" for="bird-c">
                             <input id="bird-c" type="checkbox" name="animal" value="bird">
-                            Bird</label><br>
+                            Bird</label>
 
                             <label class="touch-target" for="frog-c">
                             <input id="frog-c" type="checkbox" name="animal" value="frog">
-                            Frog</label><br>
+                            Frog</label>
 
                             <label class="touch-target" for="snake-c">
                             <input id="snake-c" type="checkbox" name="animal" value="snake">
-                            Snake</label><br>
+                            Snake</label>
 
                             <label class="touch-target" for="snail-c">
                             <input id="snail-c" type="checkbox" name="animal" value="snail">
-                            Snail</label><br>
+                            Snail</label>
                         </fieldset>
                     </div>
                     <div class="wrong">
@@ -458,17 +459,17 @@
                         <p> These form checkboxes lack labels to be able to be programmatically determined. </p>
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
-                            <input class="touch-target" id="fox-w" type="checkbox" name="animal" value="fox"> Fox <br>
-                            <input class="touch-target" id="bird-w" type="checkbox" name="animal" value="bird"> Bird <br>
-                            <input class="touch-target" id="frog-w" type="checkbox" name="animal" value="frog"> Frog <br>
-                            <input class="touch-target" id="snake-w" type="checkbox" name="animal" value="snake"> Snake <br>
-                            <input class="touch-target" id="snail-w" type="checkbox" name="animal" value="snail"> Snail <br>
+                            <input class="touch-target" id="fox-w" type="checkbox" name="animal" value="fox"> Fox
+                            <input class="touch-target" id="bird-w" type="checkbox" name="animal" value="bird"> Bird
+                            <input class="touch-target" id="frog-w" type="checkbox" name="animal" value="frog"> Frog
+                            <input class="touch-target" id="snake-w" type="checkbox" name="animal" value="snake"> Snake
+                            <input class="touch-target" id="snail-w" type="checkbox" name="animal" value="snail"> Snail
                         </fieldset>
                     </div>
                 </div>
 
                 <!-- https://www.w3.org/TR/WCAG20-TECHS/H65.html  -->
-                <h4>6. Applying title elements instead of labels. </h4>
+                <h4>6. Applying title elements instead of labels.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
@@ -622,21 +623,25 @@
 
                 <h3 id="guideline-1-3-">1.3.5: Identify Input Purpose (AA)</h3>
                 <p>
-                    Form autocompletion is a way of easing form completion for users that may struggle with reading, typing, or those that use assistive technologies in general.
-                    Providing the appropriate labels and titles helps not only users to understand the purpose of the field, but allows for the autocompletion as a result
+                    Form autocompletion is a way of easing form completion for users that may struggle with reading, typing,
+                    or those that use assistive technologies in general.
+                    Providing the appropriate labels and titles helps not only users to understand the purpose of the field,
+                    but allows for the autocompletion as a result
                     of forms being able to be programmatically determined.
 
                     <br><br>
                     Depending on the context of the form, some input types are not available as autocompletions.
-                    There is a <a href="https://www.w3schools.com/tags/att_input_autocomplete.asp" target="_blank">list by w3schools</a>
+                    There is a list of 
+                    <a href="https://www.w3schools.com/tags/att_input_autocomplete.asp" target="_blank">Input Attribute Values</a>
                     that catalogues all of the available autocompletion for input types.
                 </p>
 
                 <h3>Example:</h3>
-                <h4>1. Autocompletion Identification</h4>
+                <h4>1. Autocompletion identification.</h4>
                 <div class="disclaimer-box">
                     <p class="disclaimer">
-                        In order to manually see the affect of correct and wrong, autocompletion needs to be allowed and completed in browser settings first.
+                        In order to manually see the affect of correct and wrong, autocompletion needs to be allowed and completed 
+                        in browser settings first for this context of autocompleting email forms.
                     </p>
                 </div>
                 <div class="example-box">
@@ -657,8 +662,6 @@
                             <form id="wrongForm" class="block-form" action="#" novalidate>
                                 <label for="email-w">Email: </label>
                                 <input type="email" id="email-w" name="email" autocomplete="off">
-                            <!-- i wonder here, if the name being misaligned is what causes autocompletion errors, or if the accessibility warning
-                             will be raised even with "autocomplete="off"""-->
                             </form>
                         </div>
                     </div>
@@ -677,9 +680,9 @@
                     a response, or distinguishing a visual element.
                 </p>
                 <h3>Examples:</h3>
-                <!-- https://www.w3.org/WAI/WCAG21/Techniques/failures/F73 -->
+                <!-- https://www.w3.org/WAI/WCAG22/Techniques/failures/F73 -->
                 <!-- https://dequeuniversity.com/rules/axe/3.5/link-in-text-block
-                 https://www.w3.org/WAI/WCAG21/Techniques/general/G183  -->
+                 https://www.w3.org/WAI/WCAG22/Techniques/general/G183  -->
                 <h4>1. Link in text.</h4>
                 <div class="example-box">
                     <div class="correct">
@@ -735,7 +738,7 @@
                     </div>
                 </div>
 
-                <!-- https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum -->
+                <!-- https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum -->
                 <h3 id="guideline-1-4-3">1.4.3: Contrast Minimum (Level AA)</h3>
                 <p>
                     The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except
@@ -817,7 +820,6 @@
                     </div>
                 </div>
 
-                <!-- https://codepen.io/olawanlejoel/pen/NWvWPKO -->
                 <!-- https://webaim.org/resources/linkcontrastchecker/ 
                  https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html 
                  https://multiple-contrast-checker.netlify.app/ -->
@@ -834,8 +836,7 @@
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p> Below is an insufficient contrast ratio of the overlaying text, making it difficult for visual disabilities.
-                        <a href="https://codepen.io/yaphi1/pen/oNbEqGV"> optimal overlay contrast finder for images </a> </p>
+                        <p> Below is an insufficient contrast ratio of the overlaying text, making it difficult for visual disabilities.</p>
                         <div class="BGcolor-example">
                             <p class="poor-normal-overlay">This overlaying text does not have sufficient contrast!</p>
                         </div>
@@ -855,8 +856,7 @@
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p> Below is an insufficient contrast ratio of the overlaying of large text, making it difficult for visual disabilities.
-                        <a href="https://codepen.io/yaphi1/pen/oNbEqGV"> optimal overlay contrast finder for images </a> </p>
+                        <p> Below is an insufficient contrast ratio of the overlaying of large text, making it difficult for visual disabilities.</p>
                         <div class="BGcolor-example">
                             <p class="large-text poor-normal-overlay">This overlaying text does not have sufficient contrast!</p>
                         </div>
@@ -876,8 +876,7 @@
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p> Below is an insufficient contrast ratio of the overlaying of large text, making it difficult for visual disabilities.
-                        <a href="https://codepen.io/yaphi1/pen/oNbEqGV"> optimal overlay contrast finder for images </a> </p>
+                        <p> Below is an insufficient contrast ratio of the overlaying of large text, making it difficult for visual disabilities.</p>
                         <div class="BGcolor-example">
                             <p class="large-text-bold poor-normal-overlay">This overlaying text does not have sufficient contrast!</p>
                         </div>
@@ -890,15 +889,7 @@
                     the other measurements such as viewport or container. Below represents appropriate techniques of fontsizing
                     with percentages, em units, and named font sizes.
                 </p>
-
                 <!-- https://stackoverflow.com/questions/16056591/font-scaling-based-on-size-of-container -->
-                <div class="disclaimer-box">
-                    <p class="disclaimer2">
-                    we need to revisit this one and ensure our understanding is right according to the boxes vs texts flow and resizing.
-                    </p>
-                </div>
-
-
                 <h3>Examples:</h3>
                 <h4>1. Various font sizing measures.</h4>
                 <div class="example-box">
@@ -1115,8 +1106,7 @@
                     </div>
                 </div>
 
-<!-- https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html -->
-<!-- https://ux.stackexchange.com/questions/126920/why-wcag-2-0-doesnt-comply-with-its-own-line-length-criterion-of-1-4-8 -->
+                <!-- https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html -->
                 <h3 id="guideline-1-4-8">1.4.8: Visual Presentation (AAA) </h3>
                 <p> The intent of this success criterion is to ensure that visually rendered text is presented in such a manner 
                     that it can be perceived without its layout interfering with its readability. People with some cognitive, 
@@ -1125,13 +1115,15 @@
                 </p>
                 <div class="disclaimer-box">
                     <p class="disclaimer">
-                    - using relative measures for the text can comply with the 80 character limit that is recommended, so that can be mentioned
-                    in the resizing criteria how this is related.. 
+                        This criteria also mentions that line lengths of text should not exceed 80 characters.
+                        As mentioned by <a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C20.html" target="_blank">WCAG 2.2 Technique C20</a>
+                        this can be solved by approaching criteria 1.4.4 properly with using relative measures for text. This will allow the 
+                        character limit to be maintained as well as dynamic.
                     </p>
                 </div>
 
                 <h3>Examples:</h3>
-                <h4>1. Justified Text </h4>
+                <h4>1. Justified Text.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
@@ -1157,7 +1149,7 @@
 
                 <!-- -line spacing is at least space-and-a-half within paragraphs, and paragraph spacing is at least 1.5
                      times larger than the line spacing [P:H] -->
-                <h4>2. Line Spacing </h4>
+                <h4>2. Line Spacing.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
@@ -1168,7 +1160,7 @@
                                 spacing of atleast 1.5 times that of the line-height within the paragraph. That means 
                                 <i>"the spacing from the top of the last line of 1 paragraph is 250% farther from the Top of the first line of 
                                 the next paragraph"</i>
-                                <a href="https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html" target="_blank"> WCAG SC 1.4.8 </a>
+                                <a href="https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html" target="_blank">(WCAG SC 1.4.8)</a>
                             </p>
                             <p>
                                 Now this is a start of a new paragraph that will have the proper margining as a result of the text being place

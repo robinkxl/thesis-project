@@ -94,7 +94,7 @@ function guideLine222() {
 
 function guideLine253() {
     document.querySelectorAll('.example-box .correct, .example-box .wrong').forEach(section => {
-        const button = section.querySelector('input[type="submit"], button');
+        const button = section.querySelector('input[type="submit"], button, input[type="button"]');
         const text = section.querySelector('.toggle-hidden');
 
         if (button && text) {

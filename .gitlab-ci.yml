@@ -62,6 +62,8 @@ achecker:
   stage: acheckerTest
   image: node:18
   before_script:
+    - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
+    - chromium --version
     - npm ci
     - npm run build --if-present
     - npm start & npx wait-on $APP

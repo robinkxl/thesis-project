@@ -1,8 +1,8 @@
 stages:
 #  - LHtest
-  - acheckerTest
-  - htmlcsTest
-#  - a11yTest
+#  - acheckerTest
+#  - htmlcsTest
+  - a11yTest
 #  - AXEtest
 # - LHtest
 
@@ -17,28 +17,25 @@ include:
 variables:
   URL: "http://localhost:1338"
   APP: "http://localhost:1338"
-  a11y_urls: "http://localhost:1338/perceivable"
+  a11y_urls: "https://idasm-unibe-ch.github.io/unibe-web-accessibility/"
 
 #htmlcs:
-#  image: node:18
-  stage: htmlcsTest
-  before_script:
-    - npm ci
-    - npm run build --if-present
-    - npm start & npx wait-on $APP
-  script:
-    - npm i --save html_codesniffer
-    - cd node_modules/html_codesniffer
-    - npm install
-    - cd ../..
-    - npm i puppeteer # the js file has it set so puppeteer has no sandbox on launch
-    - cp html_cs.js node_modules/html_codesniffer/HTMLCS.js
-    - node node_modules/html_codesniffer/HTMLCS.js $APP
-  only:
-    - master
-
-
-
+# #  image: node:18
+# stage: htmlcsTest
+# before_script:
+#   - npm ci
+#   - npm run build --if-present
+#   - npm start & npx wait-on $APP
+# script:
+#   - npm i --save html_codesniffer
+#   - cd node_modules/html_codesniffer
+#   - npm install
+#   - cd ../..
+#   - npm i puppeteer # the js file has it set so puppeteer has no sandbox on launch
+#   - cp html_cs.js node_modules/html_codesniffer/HTMLCS.js
+#   - node node_modules/html_codesniffer/HTMLCS.js $APP
+# only:
+#   - master
 
 
 # needing a build stage for download of chrome / reducing time for npm and other installations ?
@@ -72,38 +69,38 @@ variables:
 # in bash: npm i --save-dev pa11y-ci
 
 # using this for seeting up localhost instead of the template.
-#a11y:
-#  stage: a11yTest
-#  image: "$CI_TEMPLATE_REGISTRY_HOST/gitlab-org/ci-cd/accessibility:6.2.3"
-#  script:
-#    - npm ci
-#    - npm run build --if-present
-#    - npm start & npx wait-on $APP
-#    - /gitlab-accessibility.sh "$a11y_urls"
-#  allow_failure: true
-#  artifacts:
-#    when: always
-#    expose_as: 'Accessibility Reports'
-#    paths: ['reports/']
-#    reports:
-#      accessibility: reports/gl-accessibility.json
-#  rules:
-#    - if: $a11y_urls
-
-achecker:
-  stage: acheckerTest
-  image: node:18
-  before_script:
-    - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
-    - chromium --version
+a11y:
+  stage: a11yTest
+  image: "$CI_TEMPLATE_REGISTRY_HOST/gitlab-org/ci-cd/accessibility:6.2.3"
+  script:
     - npm ci
     - npm run build --if-present
     - npm start & npx wait-on $APP
-  script:
-    - npm install accessibility-checker
-    - npx achecker --no-sandbox --ruleArchive latest --policies WCAG_2_1 --failLevels violation --reportLevels violation,potentialviolation --outputFormat json --outputFolder results/achecker $APP
-# the above line worked on commnd line, so why not now ?
-# these are already clarified in the achecker.yml for the most part....
+    - /gitlab-accessibility.sh "$a11y_urls"
+  allow_failure: true
+  artifacts:
+    when: always
+    expose_as: 'Accessibility Reports'
+    paths: ['reports/']
+    reports:
+       accessibility: reports/gl-accessibility.json
+  rules:
+    - if: $a11y_urls
+
+# achecker:
+#   stage: acheckerTest
+#   image: node:18
+#   before_script:
+#     - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
+#     - chromium --version
+#     - npm ci
+#     - npm run build --if-present
+#     - npm start & npx wait-on $APP
+#   script:
+#     - npm install accessibility-checker
+#     - npx achecker --no-sandbox --ruleArchive latest --policies WCAG_2_1 --failLevels violation --reportLevels violation,potentialviolation --outputFormat json --outputFolder results/achecker $APP
+# # the above line worked on commnd line, so why not now ?
+# # these are already clarified in the achecker.yml for the most part....
 
 
 

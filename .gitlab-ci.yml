@@ -1,5 +1,5 @@
 stages:
-  - a11y
+  - a11yTest
 #  - AXEtest
 # - LHtest
 
@@ -40,7 +40,7 @@ variables:
 
 # using this for seeting up localhost instead of the template.
 a11y:
-  stage: accessibility
+  stage: a11yTest
   image: "$CI_TEMPLATE_REGISTRY_HOST/gitlab-org/ci-cd/accessibility:6.2.3"
   script:
     - npm ci

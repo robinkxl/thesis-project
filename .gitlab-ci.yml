@@ -24,10 +24,42 @@ lighthouse:
     # something to archive artifacts or just handle it through link?
   only:
     - master
-    - perceivable
   # artifacts:
     # paths:
       # - results/lighthouse/
+
+
+# trying axe in a different way
+# https://blog.jameswinfield.co.uk/checking-accessibility-on-your-ci-pipeline-with-axe-core-cli/
+axe:
+  runs-on: ubuntu-latest
+  strategy:
+    matrix:
+      webpage: [perceivable, operable, understandable]
+  steps:
+    - uses: actions/checkout@v4
+     - name: Use Node.js 18
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18.x
+    - name: Chrome browser-action
+      uses: browser-actions/setup-chrome@v1
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm start & npx wait-on $APP
+    - name: Installing chromedriver
+      run: |
+        npm install -g chromedriver@124
+    - name: Run axe-core
+      run: |
+          npm install -g @axe-core/cli
+          CHROMEDRIVER_PATH=$(which chromedriver)
+          axe --chromedriver-path $CHROMEDRIVER_PATH $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
+    - name: Archive axe-core test results
+      uses: actions/upload-artifact@v4
+      with:
+        name: Axe-core-${{ matrix.webpage }}
+        path: results/axe/axe-results-${{ matrix.webpage }}.json
 
 # trying axe first -- quicker ?
 # https://github.com/dequelabs/axe-core

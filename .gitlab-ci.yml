@@ -13,22 +13,6 @@ include:
   - template: "Verify/Accessibility.gitlab-ci.yml"
 #  - '.achecker.yml
   # - 'docker-compose.yml'
-version: "3.8"
-networks:
-  testnet:
-services:
-  server:
-    image: node:18
-    container_name: "server"
-    ports:
-      - "1338:1338"
-    volumes:
-      - ".:/server"
-    working_dir: /server
-    command: bash -c "npm install && npm run start"
-    networks:
-      - testnet
-    restart: "always"
 
 variables:
   URL: "http://localhost:1338"

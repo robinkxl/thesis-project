@@ -52,7 +52,7 @@ axe:
     - npm ci
     - npm run build --if-present
     - npm start & npx wait-on $APP
-    - npm install -g chromedriver@124
+    - npx browser-driver-manager install chrome
     - npm install -g @axe-core/cli
   script:
     # it needs to be export i think, so that axe --chromedriver..etc below can use it

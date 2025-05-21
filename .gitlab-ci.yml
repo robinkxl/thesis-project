@@ -57,11 +57,13 @@ axe:
   script:
     # it needs to be export i think, so that axe --chromedriver..etc below can use it
     - export CHROMEDRIVER_PATH=$(which chromedriver)
-    - export CHROME_FLAGS="--no-sandbox --disable-dev-shm-usage --disable-gpu --headless=new"
     - mkdir -p results/axe
-    - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options "$CHROME_FLAGS" $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
+    - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options="no-sandbox,disable-setuid-sandbox,disable-dev-shm-usage" $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
   artifacts:
     name: Axe-core-$webpage
+
+  # chrome options only looking for it directly?
+  # https://github.com/dequelabs/axe-core-npm/blob/develop/packages/cli/README.md
 
 # https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md
 # ref : https://gitlab.com/gitlab-ci-utils/lighthouse

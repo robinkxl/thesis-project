@@ -30,7 +30,6 @@ lighthouse:
     # paths:
       # - results/lighthouse/
 
-
 # trying axe in a different way
 # https://blog.jameswinfield.co.uk/checking-accessibility-on-your-ci-pipeline-with-axe-core-cli/
 # the yaml also uses ubuntu rather https://www.nerds-life.com/t/how-to-get-google-chrome-on-ubuntu-24-04/1384
@@ -43,8 +42,8 @@ axe:
       - webpage: "operable"
       - webpage: "understandable"
   variables:
-    name: Axe-core-${{ matrix.webpage }}  # idk if this is necessary still here or if its just artifacts
-    path: results/axe/axe-results-${{ matrix.webpage }}.json
+    name: Axe-core-$webpage  # idk if this is necessary still here or if its just artifacts
+    path: results/axe/axe-results-$webpage.json
     APP: http://localhost:1338
   before_script:
     - apt-get update && apt-get install -y curl unzip xvfb libxi6 libgconf-2-4
@@ -59,37 +58,10 @@ axe:
     # it needs to be export i think, so that axe --chromedriver..etc below can use it
     - export CHROMEDRIVER_PATH=$(which chromedriver)
     - mkdir -p results/axe
-    - axe --chromedriver-path $CHROMEDRIVER_PATH $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
+    - axe --chromedriver-path $CHROMEDRIVER_PATH $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
   artifacts:
-    name: Axe-core-${{ matrix.webpage }}
+    name: Axe-core-$webpage
 
-
-
-
-# trying axe first -- quicker ?
-# https://github.com/dequelabs/axe-core
-# from the github ver. -- https://github.com/idasm-unibe-ch/unibe-web-accessibility/blob/master/.github/workflows/example_ci.yml
-
-# TODO: theres an issue with axe not being able to do "Error: SessionNotCreatedError: session not created: 
-# "probably user data directory is already in use, please specify a unique value for --user-data-dir argument, or don't use --user-data-dir" ""
-# however......... i tried user-data-dir arguments for each page and it didnt seem to fix the issue
-#axe:
-#  stage: AXEtest
-#  image: cypress/browsers:node-20.14.0-chrome-125.0.6422.141-1-ff-126.0.1-edge-125.0.2535.85-1
-#  # strategy matrix - webpage - pages ? script has them manually for now
-#  variables:
-#    APP: "http://localhost:1338"
-#  script:
-#    - npm ci
-#    - npm install -g chromedriver @axe-core/cli
-#    - npm start & npx wait-on $APP
-#    - mkdir -p results/axe/
-#    - CHROMEDRIVER_PATH=$(which chromedriver)
-#    - axe --chromedriver-path $CHROMEDRIVER_PATH $APP --exit
-#
-#  artifacts:
-#    paths:
-#      - results/axe/
 
 # https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md
 # ref : https://gitlab.com/gitlab-ci-utils/lighthouse

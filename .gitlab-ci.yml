@@ -1,6 +1,6 @@
 stages:
-#  - LHtest
-#  - acheckerTest
+  - LHtest
+  - acheckerTest
 #  - htmlcsTest
   - a11yTest
 #  - AXEtest
@@ -11,13 +11,13 @@ stages:
 include:
   - template: "Verify/Accessibility.gitlab-ci.yml"
 #  - '.achecker.yml
-#  - 'docker-compose.yml'
+  - 'docker-compose.yml'
 
 
 variables:
   URL: "http://localhost:1338"
   APP: "http://localhost:1338"
-  a11y_urls: "https://idasm-unibe-ch.github.io/unibe-web-accessibility/"
+  a11y_urls: "https://idasm-unibe-ch.github.io/unibe-web-accessibility/operable https://idasm-unibe-ch.github.io/unibe-web-accessibility/percievable https://idasm-unibe-ch.github.io/unibe-web-accessibility/understandable"
 
 #htmlcs:
 # #  image: node:18
@@ -43,32 +43,30 @@ variables:
 # see commented code at end of file
 # reducing dependencies for lighthouse since it wasnt all needed, just precautionary testing ..v
 # wget curl ca-certificates fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatk1.0-0 libcups2 libdbus-1-3 libgdk-pixbuf2.0-0 libnspr4 libnss3 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 xdg-utils libu2f-udev
-#lighthouse:
-#  image: node:18
-#  stage: LHtest
-#  before_script:
-#    - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
-#    - chromium --version
-    # - npm install -g pa11y
-    # - npm install pa11y-reporter-html --save
-#  script:
-#    - npm ci
-  #   - mkdir -p results/lighthouse/
-##    - npm run build --if-present
-#    - npm start & npx wait-on $APP
-#    - curl -I http://localhost:1338 || echo "App not responding"
-#    - npx lhci autorun  # testing without docker because of the "priviledge mode" errors
+lighthouse:
+ image: node:18
+ stage: LHtest
+ before_script:
+    - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
+    - chromium --version
+ script:
+    - npm ci
+    - mkdir -p results/lighthouse/
+    - npm run build --if-present
+    - npm start & npx wait-on $APP
+    - curl -I http://localhost:1338 || echo "App not responding"
+    - npx lhci autorun  # testing without docker because of the "priviledge mode" errors
     # something to archive artifacts or just handle it through link?
-#  only:
-#    - master
+ only:
+    - master
   # artifacts:
-    # paths:
-      # - results/lighthouse/
+  #  paths:
+  #    - results/lighthouse/
 
 # trying to add pa11y
 # in bash: npm i --save-dev pa11y-ci
 
-# using this for seeting up localhost instead of the template.
+# A11Y WORKS JUST FINE IF THE WEBSITE IS HOSTED !!!!
 a11y:
   stage: a11yTest
   image: "$CI_TEMPLATE_REGISTRY_HOST/gitlab-org/ci-cd/accessibility:6.2.3"
@@ -87,18 +85,18 @@ a11y:
   rules:
     - if: $a11y_urls
 
-# achecker:
-#   stage: acheckerTest
-#   image: node:18
-#   before_script:
-#     - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
-#     - chromium --version
-#     - npm ci
-#     - npm run build --if-present
-#     - npm start & npx wait-on $APP
-#   script:
-#     - npm install accessibility-checker
-#     - npx achecker --no-sandbox --ruleArchive latest --policies WCAG_2_1 --failLevels violation --reportLevels violation,potentialviolation --outputFormat json --outputFolder results/achecker $APP
+achecker:
+   stage: acheckerTest
+   image: node:18
+   before_script:
+    - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
+    - chromium --version
+    - npm ci
+    - npm run build --if-present
+    - npm start & npx wait-on $APP
+   script:
+    - npm install accessibility-checker
+    - npx achecker --no-sandbox --ruleArchive latest --policies WCAG_2_1 --failLevels violation --reportLevels violation,potentialviolation --outputFormat json --outputFolder results/achecker "$a11y_urls"
 # # the above line worked on commnd line, so why not now ?
 # # these are already clarified in the achecker.yml for the most part....
 

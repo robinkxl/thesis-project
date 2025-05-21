@@ -17,7 +17,6 @@ lighthouse:
   stage: LHtest
   before_script:
     - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
-    - apt-get install -y chromium  # .. no chrome before ..
     - chromium --version
   script:
     - npm ci
@@ -34,12 +33,15 @@ lighthouse:
 
 # trying axe in a different way
 # https://blog.jameswinfield.co.uk/checking-accessibility-on-your-ci-pipeline-with-axe-core-cli/
+# the yaml also uses ubuntu rather https://www.nerds-life.com/t/how-to-get-google-chrome-on-ubuntu-24-04/1384
 axe:
   image: node:18  # github had use node 18, same as lighthouse
   stage:  AXEtest
   parallel:
     matrix:
-      webpage: [perceivable, operable, understandable]
+      - webpage: "perceivable"
+      - webpage: "operable"
+      - webpage: "understandable"
   variables:
     name: Axe-core-${{ matrix.webpage }}  # idk if this is necessary still here or if its just artifacts
     path: results/axe/axe-results-${{ matrix.webpage }}.json

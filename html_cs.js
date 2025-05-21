@@ -11,6 +11,7 @@ let fail = false;
 
 (async () => {
   const browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
     // executablePath
   });
 

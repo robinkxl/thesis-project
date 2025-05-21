@@ -69,7 +69,7 @@ achecker:
     - npm start & npx wait-on $APP
   script:
     - npm install accessibility-checker
-    - npx achecker $APP
+    - npx achecker --no-sandbox $APP
 
 
 

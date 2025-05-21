@@ -1,6 +1,6 @@
 stages:
-  - LHtest
-# - AXEtest
+  - AXEtest
+#  - LHtest
 
 # for pa11y: https://opensource.com/article/23/2/automated-accessibility-testing
 
@@ -12,55 +12,62 @@ variables:
 # see commented code at end of file
 # reducing dependencies for lighthouse since it wasnt all needed, just precautionary testing ..v
 # wget curl ca-certificates fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatk1.0-0 libcups2 libdbus-1-3 libgdk-pixbuf2.0-0 libnspr4 libnss3 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 xdg-utils libu2f-udev
-lighthouse:
-  image: node:18
-  stage: LHtest
-  before_script:
-    - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
-    - chromium --version
-  script:
-    - npm ci
-  #   - mkdir -p results/lighthouse/
-    - curl -I http://localhost:1338 || echo "App not responding"
-    - npx lhci autorun  # testing without docker because of the "priviledge mode" errors
-    # something to archive artifacts or just handle it through link?
-  only:
-    - master
-  artifacts:
-    paths:
-    - results/lighthouse/
+#lighthouse:
+#  image: node:18
+#  stage: LHtest
+#  before_script:
+#    - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
+#    - chromium --version
+#  script:
+#    - npm ci
+#  #   - mkdir -p results/lighthouse/
+#    - curl -I http://localhost:1338 || echo "App not responding"
+#    - npx lhci autorun  # testing without docker because of the "priviledge mode" errors
+#    # something to archive artifacts or just handle it through link?
+#  only:
+#    - master
+  # artifacts:
+    # paths:
+      # - results/lighthouse/
 
 # trying axe in a different way
 # https://blog.jameswinfield.co.uk/checking-accessibility-on-your-ci-pipeline-with-axe-core-cli/
 # the yaml also uses ubuntu rather https://www.nerds-life.com/t/how-to-get-google-chrome-on-ubuntu-24-04/1384
-#axe:
-#  image: node:18  # github had use node 18, same as lighthouse
-#  stage:  AXEtest
-#  parallel:
-#    matrix:
-#      - webpage: "perceivable"
-#    #  - webpage: "operable"
+axe:
+  image: node:18  # github had use node 18, same as lighthouse
+  stage:  AXEtest
+  parallel:
+    matrix:
+      - webpage: "perceivable"
+    #  - webpage: "operable"
     #  - webpage: "understandable"
-#  variables:
-#    name: Axe-core-$webpage  # idk if this is necessary still here or if its just artifacts
-#    path: results/axe/axe-results-$webpage.json
-#    APP: http://localhost:1338
-#  before_script:
-##    - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
- #   - chromium --version
-#    - npm ci
-#    - npm run build --if-present
-#    - npm start & npx wait-on $APP
-#  script:
-#    - npm install -g @axe-core/cli
-#    - npm install -g chromedriver@124
-##    - axe --browser chromium --chromedriver-path $(which chromedriver) $APP --exit
-#  artifacts:
-#    paths:
-#      - $path
-##  only:
-#    - master
-
+  variables:
+    name: Axe-core-$webpage  # idk if this is necessary still here or if its just artifacts
+    path: results/axe/axe-results-$webpage.json
+    APP: http://localhost:1338
+  before_script:
+    - apt-get update && apt-get install -y curl unzip xvfb libxi6 libgconf-2-4
+    - curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb
+    - apt install -y ./chrome.deb
+    - npm ci
+    - npm run build --if-present
+    - npm start & npx wait-on $APP
+    - npm install -g browser-driver-manager
+    - npx browser-driver-manager install chrome
+    - npm install -g @axe-core/cli
+  script:
+    # it needs to be export i think, so that axe --chromedriver..etc below can use it
+    # which chromedriver needs to change too because of the browser-driver-manager ?
+    # chrome-path is either included or not in the second export line ...
+    - export CHROMEDRIVER_PATH=$(npx browser-driver-manager which chromedriver)
+    - export CHROME_PATH=$(npx browser-driver-manager which chrome)
+    - echo "Chromium path $(which chromium)"
+    - echo "Chromedriver path $(which chromedriver)"
+    - echo "npxbrwoser manger path $(npx browser-driver-manager which chromedriver)"
+    - mkdir -p results/axe
+    - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options disable-dev-shm-usage $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
+  artifacts:
+    name: Axe-core-$webpage
 
   # chrome options only looking for it directly?
   # https://github.com/dequelabs/axe-core-npm/blob/develop/packages/cli/README.md

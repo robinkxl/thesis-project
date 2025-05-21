@@ -3,7 +3,7 @@ networks:
   testnet:
 services:
   server:
-    image: node:20
+    image: node:18
     container_name: "server"
     ports:
       - "1338:1338"

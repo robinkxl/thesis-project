@@ -19,7 +19,6 @@
     "@axe-core/cli": "^4.10.1",
     "chromedriver": "^136.0.2",
     "pa11y": "^8.0.0",
-    "pa11y-reporter-html": "^2.0.0",
-    "puppeteer": "^24.9.0"
+    "pa11y-reporter-html": "^2.0.0"
   }
 }

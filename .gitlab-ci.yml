@@ -1,9 +1,10 @@
 stages:
+  - server
   - LHtest
   - acheckerTest
-#  - htmlcsTest
   - a11yTest
 #  - AXEtest
+#  - htmlcsTests
 # - LHtest
 
 # for pa11y: https://opensource.com/article/23/2/automated-accessibility-testing
@@ -11,8 +12,23 @@ stages:
 include:
   - template: "Verify/Accessibility.gitlab-ci.yml"
 #  - '.achecker.yml
-  - 'docker-compose.yml'
-
+  # - 'docker-compose.yml'
+version: "3.8"
+networks:
+  testnet:
+services:
+  server:
+    image: node:18
+    container_name: "server"
+    ports:
+      - "1338:1338"
+    volumes:
+      - ".:/server"
+    working_dir: /server
+    command: bash -c "npm install && npm run start"
+    networks:
+      - testnet
+    restart: "always"
 
 variables:
   URL: "http://localhost:1338"
@@ -54,6 +70,7 @@ lighthouse:
     - mkdir -p results/lighthouse/
     - npm run build --if-present
     - npm start & npx wait-on $APP
+    - docker compose up
     - curl -I http://localhost:1338 || echo "App not responding"
     - npx lhci autorun  # testing without docker because of the "priviledge mode" errors
     # something to archive artifacts or just handle it through link?

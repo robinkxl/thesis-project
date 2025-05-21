@@ -54,8 +54,6 @@ axe:
   script:
     - npm install -g @axe-core/cli
     - npm install -g chromedriver@124
-    - echo "Chromium path: $(which chromium)"
-    - echo "Chromedriver path: $(which chromedriver)"
     - axe --browser chromium --chromedriver-path $(which chromedriver) $APP --exit
   artifacts:
     paths:

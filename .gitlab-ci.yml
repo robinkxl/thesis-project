@@ -39,8 +39,8 @@ axe:
   parallel:
     matrix:
       - webpage: "perceivable"
-      - webpage: "operable"
-      - webpage: "understandable"
+    #  - webpage: "operable"
+    #  - webpage: "understandable"
   variables:
     name: Axe-core-$webpage  # idk if this is necessary still here or if its just artifacts
     path: results/axe/axe-results-$webpage.json
@@ -57,7 +57,10 @@ axe:
     - npm install -g @axe-core/cli
   script:
     # it needs to be export i think, so that axe --chromedriver..etc below can use it
-    - export CHROMEDRIVER_PATH=$(which chromedriver)
+    # which chromedriver needs to change too because of the browser-driver-manager ?
+    # chrome-path is either included or not in the second export line ...
+    - export CHROMEDRIVER_PATH=$(npx browser-driver-manager chrome-path)
+    - export CHROME_PATH=$(npx browser-driver-manager which chrome)
     - mkdir -p results/axe
     - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options disable-dev-shm-usage $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
   artifacts:

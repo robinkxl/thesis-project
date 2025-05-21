@@ -63,8 +63,7 @@ axe:
     - export CHROME_PATH="/root/.browser-driver-manager/chrome/linux-136.0.7103.113/chrome-linux64/chrome"
     - export CHROMEDRIVER_PATH="/root/.browser-driver-manager/chromedriver/linux-136.0.7103.113/chromedriver-linux64/chromedriver"
     - mkdir -p results/axe
-    - echo "dir $(--user-data-dir=/tmp/chrome-user-data-dir)"
-    - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options disable-dev-shm-usage --user-data-dir=/tmp/chrome-user-data-dir $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
+    - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options "disable-dev-shm-usage --user-data-dir=/tmp/chrome-user-data-dir-$(date +%s)" $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
   artifacts:
     name: Axe-core-$webpage
 

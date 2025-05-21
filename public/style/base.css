@@ -52,10 +52,6 @@ header h1 {
     pointer-events: none;
 }
 
-.current a:visited {
-    color: #000000;
-}
-
 .search-container {
     display: flex;
     justify-content: center;

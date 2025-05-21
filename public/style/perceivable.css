@@ -139,7 +139,7 @@ label {
     height: 100px;
     width: 100%;
     color: white;
-    background: url("https://images.pexels.com/photos/311039/pexels-photo-311039.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-image: url("../images/bg-example1.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -242,7 +242,7 @@ label {
     height: 100px;
     width: 100%;
     color: white;
-    background: url("https://images.pexels.com/photos/7135037/pexels-photo-7135037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-image: url("../images/bg-example2.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
 }

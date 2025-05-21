@@ -1,11 +1,16 @@
 stages:
-  - AXEtest
-#  - LHtest
+  - accessibility
+#  - AXEtest
+# - LHtest
 
 # for pa11y: https://opensource.com/article/23/2/automated-accessibility-testing
 
+include:
+  - template: "Verify/Accessibility.gitlab-ci.yml"
+
 variables:
   APP: "http://localhost:1338"
+  a11y_urls: "http://localhost:1338/perceivable"
 
 # needing a build stage for download of chrome / reducing time for npm and other installations ?
 # archiving?
@@ -30,42 +35,65 @@ variables:
     # paths:
       # - results/lighthouse/
 
+# trying to add pa11y
+# in bash: npm i --save-dev pa11y-ci
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # trying axe in a different way
 # https://blog.jameswinfield.co.uk/checking-accessibility-on-your-ci-pipeline-with-axe-core-cli/
 # the yaml also uses ubuntu rather https://www.nerds-life.com/t/how-to-get-google-chrome-on-ubuntu-24-04/1384
-axe:
-  image: node:18  # github had use node 18, same as lighthouse
-  stage:  AXEtest
-  parallel:
-    matrix:
-      - webpage: "perceivable"
-    #  - webpage: "operable"
-    #  - webpage: "understandable"
-  variables:
-    name: Axe-core-$webpage  # idk if this is necessary still here or if its just artifacts
-    path: results/axe/axe-results-$webpage.json
-    APP: http://localhost:1338
-  before_script:
-    - apt-get update && apt-get install -y curl unzip xvfb libxi6 libgconf-2-4
-    - curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb
-    - apt install -y ./chrome.deb
-    - npm ci
-    - npm run build --if-present
-    - npm start & npx wait-on $APP
-    - npm install -g browser-driver-manager
-    - npx browser-driver-manager install chrome
-    - npm install -g @axe-core/cli
-  script:
+
+# even in all different types of chrome installations... the issue is session errors.. it could be something with 
+# proper priviledges or something. idk.
+# axe:
+#  image: node:18  # github had use node 18, same as lighthouse
+#  stage:  AXEtest
+#  parallel:
+##    matrix:
+#      - webpage: "perceivable"
+##    #  - webpage: "operable"
+#    #  - webpage: "understandable"
+#  variables:
+#    name: Axe-core-$webpage  # idk if this is necessary still here or if its just artifacts
+##    path: results/axe/axe-results-$webpage.json
+#    APP: http://localhost:1338
+#  before_script:
+#    - apt-get update && apt-get install -y curl unzip xvfb libxi6 libgconf-2-4
+#    - curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb
+#    - apt install -y ./chrome.deb
+#    - npm ci
+#    - npm run build --if-present
+##    - npm start & npx wait-on $APP
+#    - npm install -g browser-driver-manager
+#    - npx browser-driver-manager install chrome
+#    - npm install -g @axe-core/cli
+#  script:
     # it needs to be export i think, so that axe --chromedriver..etc below can use it
     # which chromedriver needs to change too because of the browser-driver-manager ?
     #- export CHROME_PATH=$(npx browser-driver-manager which chrome)
-    - echo "npx manager path $(npx browser-driver-manager which chrome)"
-    - export CHROME_PATH="/root/.browser-driver-manager/chrome/linux-136.0.7103.113/chrome-linux64/chrome"
-    - export CHROMEDRIVER_PATH="/root/.browser-driver-manager/chromedriver/linux-136.0.7103.113/chromedriver-linux64/chromedriver"
-    - mkdir -p results/axe
-    - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options "disable-dev-shm-usage --user-data-dir=/tmp/chrome-user-data-dir-$(date +%s)" $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
-  artifacts:
-    name: Axe-core-$webpage
+#    - echo "npx manager path $(npx browser-driver-manager which chrome)"
+#    - export CHROME_PATH="/root/.browser-driver-manager/chrome/linux-136.0.7103.113/chrome-linux64/chrome"
+#    - export CHROMEDRIVER_PATH="/root/.browser-driver-manager/chromedriver/linux-136.0.7103.113/chromedriver-linux64/chromedriver"
+#    - mkdir -p results/axe
+#    - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options "disable-dev-shm-usage --user-data-dir=/tmp/chrome-user-data-dir-$(date +%s)" $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
+#  artifacts:
+#    name: Axe-core-$webpage
 
   # chrome options only looking for it directly?
   # https://github.com/dequelabs/axe-core-npm/blob/develop/packages/cli/README.md

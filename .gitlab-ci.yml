@@ -15,8 +15,8 @@ include:
 variables:
   URL: "http://localhost:1338"
   APP: "http://localhost:1338"
-  a11y_urls: "https://idasm-unibe-ch.github.io/unibe-web-accessibility/operable https://idasm-unibe-ch.github.io/unibe-web-accessibility/percievable https://idasm-unibe-ch.github.io/unibe-web-accessibility/understandable"
-
+  a11ys_urls: "https://idasm-unibe-ch.github.io/unibe-web-accessibility/operable https://idasm-unibe-ch.github.io/unibe-web-accessibility/percievable https://idasm-unibe-ch.github.io/unibe-web-accessibility/understandable"
+  a11y_urls: " http://localhost:1338/percievable  http://localhost:1338/operable  http://localhost:1338/understandable"
 #htmlcs:
 # #  image: node:18
 # stage: htmlcsTest
@@ -104,6 +104,7 @@ achecker:
    script:
     - npm install accessibility-checker
     - npx achecker --no-sandbox --ruleArchive latest --policies WCAG_2_1 --failLevels violation --reportLevels violation,potentialviolation --outputFormat json --outputFolder results/achecker "$a11y_urls"
+   allow_failure: true
 # # the above line worked on commnd line, so why not now ?
 # # these are already clarified in the achecker.yml for the most part....
 

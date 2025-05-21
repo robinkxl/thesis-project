@@ -69,7 +69,9 @@ achecker:
     - npm start & npx wait-on $APP
   script:
     - npm install accessibility-checker
-    - npx achecker --no-sandbox $APP
+    - npx achecker --no-sandbox --ruleArchive latest --policies WCAG_2_1 --failLevels violation --reportLevels violation,potentialviolation --outputFormat json --outputFolder results/achecker $APP
+# the above line worked on commnd line, so why not now ?
+# these are already clarified in the achecker.yml for the most part....
 
 
 

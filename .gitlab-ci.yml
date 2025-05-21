@@ -59,7 +59,7 @@ axe:
     # it needs to be export i think, so that axe --chromedriver..etc below can use it
     # which chromedriver needs to change too because of the browser-driver-manager ?
     # chrome-path is either included or not in the second export line ...
-    - export CHROMEDRIVER_PATH=$(npx browser-driver-manager chrome-path)
+    - export CHROMEDRIVER_PATH=$(npx browser-driver-manager which chromedriver)
     - export CHROME_PATH=$(npx browser-driver-manager which chrome)
     - mkdir -p results/axe
     - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options disable-dev-shm-usage $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json

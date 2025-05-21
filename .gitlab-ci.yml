@@ -61,9 +61,7 @@ axe:
     # chrome-path is either included or not in the second export line ...
     - export CHROMEDRIVER_PATH=$(npx browser-driver-manager which chromedriver)
     - export CHROME_PATH=$(npx browser-driver-manager which chrome)
-    - echo "Chromium path $(which chromium)"
-    - echo "Chromedriver path $(which chromedriver)"
-    - echo "npxbrwoser manger path $(npx browser-driver-manager which chromedriver)"
+    - echo "npx manager path $(npx browser-driver-manager which chrome)"
     - mkdir -p results/axe
     - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options disable-dev-shm-usage $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
   artifacts:

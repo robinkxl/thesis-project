@@ -10,8 +10,8 @@ stages:
 
 include:
   - template: "Verify/Accessibility.gitlab-ci.yml"
-  - '.achecker.yml
-  - 'docker-compose.yml'
+#  - '.achecker.yml
+#  - 'docker-compose.yml'
 
 
 variables:

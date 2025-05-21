@@ -46,25 +46,22 @@ axe:
     path: results/axe/axe-results-$webpage.json
     APP: http://localhost:1338
   before_script:
-    - apt-get update && apt-get install -y curl unzip xvfb libxi6 libgconf-2-4
-    - curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb
-    - apt install -y ./chrome.deb
+    - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
+    - chromium --version
     - npm ci
     - npm run build --if-present
     - npm start & npx wait-on $APP
-    - npm install -g browser-driver-manager
-    - npx browser-driver-manager install chrome
-    - npm install -g @axe-core/cli
   script:
-    # it needs to be export i think, so that axe --chromedriver..etc below can use it
-    # which chromedriver needs to change too because of the browser-driver-manager ?
-    # chrome-path is either included or not in the second export line ...
-    - export CHROMEDRIVER_PATH=$(npx browser-driver-manager which chromedriver)
-    - export CHROME_PATH=$(npx browser-driver-manager which chrome)
-    - mkdir -p results/axe
-    - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options disable-dev-shm-usage $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
-  artifacts:
-    name: Axe-core-$webpage
+    - npm install -g @axe-core/cli
+    - npm install -g chromedriver@124
+    - echo "Chromium path: $(which chromium)"
+    - echo "Chromedriver path: $(which chromedriver)"
+    - axe --browser chromium --chromedriver-path $(which chromedriver) $APP --exit
+  artifact:
+    - $path
+  only:
+    - master
+
 
   # chrome options only looking for it directly?
   # https://github.com/dequelabs/axe-core-npm/blob/develop/packages/cli/README.md

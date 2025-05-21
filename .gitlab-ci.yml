@@ -26,15 +26,15 @@ lighthouse:
   before_script:
     - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
     - chromium --version
-    - npm i @axe-core/cli
-    - npm install chromedriver
+    - npm install -g pa11y
+    - npm install pa11y-reporter-html --save
   script:
     - npm ci
   #   - mkdir -p results/lighthouse/
     - curl -I http://localhost:1338 || echo "App not responding"
-    - npx axe $APP
     - npx lhci autorun  # testing without docker because of the "priviledge mode" errors
     # something to archive artifacts or just handle it through link?
+    - pa11y http://localhost:1338/perceivable
   only:
     - master
   # artifacts:

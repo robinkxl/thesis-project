@@ -13,6 +13,7 @@ include:
 
 
 variables:
+  URL: "http://localhost:1338"
   APP: "http://localhost:1338"
   a11y_urls: "http://localhost:1338/perceivable"
 
@@ -29,8 +30,8 @@ htmlcs:
     - npm install
     - cd ../..
     - npm i puppeteer # the js file has it set so puppeteer has no sandbox on launch
-    - cp html_cs.js node_modules/html_codesniffer/html_cs.js
-    - node node_modules/html_codesniffer/html_cs.js $URL
+    - cp html_cs.js node_modules/html_codesniffer/HTMLCS.js
+    - node node_modules/html_codesniffer/HTMLCS.js $APP
   only:
     - master
 

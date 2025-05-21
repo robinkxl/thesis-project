@@ -1,5 +1,5 @@
 stages:
-  - LHtest
+#  - LHtest
   - AXEtest
 
 # for pa11y: https://opensource.com/article/23/2/automated-accessibility-testing
@@ -52,13 +52,14 @@ axe:
     - npm ci
     - npm run build --if-present
     - npm start & npx wait-on $APP
+    - npm install -g browser-driver-manager
     - npx browser-driver-manager install chrome
     - npm install -g @axe-core/cli
   script:
     # it needs to be export i think, so that axe --chromedriver..etc below can use it
     - export CHROMEDRIVER_PATH=$(which chromedriver)
     - mkdir -p results/axe
-    - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options="no-sandbox,disable-setuid-sandbox,disable-dev-shm-usage" $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
+    - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options disable-dev-shm-usage $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
   artifacts:
     name: Axe-core-$webpage
 

@@ -57,14 +57,11 @@ axe:
   script:
     # it needs to be export i think, so that axe --chromedriver..etc below can use it
     - export CHROMEDRIVER_PATH=$(which chromedriver)
+    - export CHROME_FLAGS="--no-sandbox --disable-dev-shm-usage --disable-gpu --headless=new"
     - mkdir -p results/axe
-    - xvfb-run axe --chromedriver-path $CHROMEDRIVER_PATH $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
+    - axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options "$CHROME_FLAGS" $APP/$webpage --dir ./results/axe/ --save axe-results-$webpage.json
   artifacts:
     name: Axe-core-$webpage
-
-  # "Xvfb(1x) command which simplifies the task of running commands (typically an X client,
-  # or a script containing a list of clients to be run) within a virtual X server environment.""
-
 
 # https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md
 # ref : https://gitlab.com/gitlab-ci-utils/lighthouse
@@ -74,7 +71,6 @@ axe:
 #  - build
 #  - test
 #  - archive
-
 
 # needing setup
 #before_script:

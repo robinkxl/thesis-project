@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base id="base" href="">
+    <link rel="icon" type="image/x-icon" href="images/p-favicon.png">
     <link rel="stylesheet" type="text/css" href="style/perceivable.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,7 @@
         <nav>
             <ul class="nav-links">
                 <li><a id="home" class="nav-link" href="/">Home</a></li>
-                <li><span aria-current="page"><a class="nav-link current" href="perceivable">Perceivable</a></span></li>
+                <li><span class="current" aria-current="page"><a href="perceivable">Perceivable</a></span></li>
                 <li><a class="nav-link" href="operable">Operable</a></li>
                 <li><a class="nav-link" href="understandable">Understandable</a></li>
             </ul>
@@ -235,7 +236,7 @@
                         <h3>Correct</h3>
                         <p>The video has a caption track!</p>
                         <div class="gl-1-2-2">
-                            <video autoplay="off" controls>
+                            <video controls>
                                 <source src="videos/perspective-video/perspective-video.mp4" type="video/mp4">
                                 <track
                                     label="English"
@@ -250,7 +251,7 @@
                         <h3>Wrong</h3>
                         <p>This is an example of a video with no caption track!</p>
                         <div class="gl-1-2-2">
-                            <video autoplay="off" controls>
+                            <video controls>
                                 <source src="videos/perspective-video/perspective-video.mp4" type="video/mp4">
 	                        </video>
                         </div>

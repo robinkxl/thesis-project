@@ -1,5 +1,6 @@
 stages:
-  - LHtest
+  - htmlcsTest
+#  - LHtest
 #  - acheckerTest
   - a11yTest
 #  - AXEtest
@@ -15,28 +16,52 @@ variables:
   APP: "http://localhost:1338"
   a11y_urls: "http://localhost:1338/perceivable"
 
+htmlcs:
+  image: node:18
+  stage: htmlcsTest
+  before_script:
+    - npm ci
+    - npm run build --if-present
+    - npm start & npx wait-on $APP
+  script:
+    - npm i --save html_codesniffer
+    - cd node_modules/html_codesniffer
+    - npm install
+    - cd ../..
+    - npm i puppeteer # the js file has it set so puppeteer has no sandbox on launch
+    - cp html_cs.js node_modules/html_codesniffer/html_cs.js
+    - node node_modules/html_codesniffer/html_cs.js $URL
+  only:
+    - master
+
+
+
+
+
 # needing a build stage for download of chrome / reducing time for npm and other installations ?
 # archiving?
 # see commented code at end of file
 # reducing dependencies for lighthouse since it wasnt all needed, just precautionary testing ..v
 # wget curl ca-certificates fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatk1.0-0 libcups2 libdbus-1-3 libgdk-pixbuf2.0-0 libnspr4 libnss3 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 xdg-utils libu2f-udev
-lighthouse:
-  image: node:18
-  stage: LHtest
-  before_script:
-    - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
-    - chromium --version
-    - npm install -g pa11y
-    - npm install pa11y-reporter-html --save
-  script:
-    - npm ci
+#lighthouse:
+#  image: node:18
+#  stage: LHtest
+#  before_script:
+#    - apt-get update && apt-get install -y chromium libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 libasound2
+#    - chromium --version
+    # - npm install -g pa11y
+    # - npm install pa11y-reporter-html --save
+#  script:
+#    - npm ci
   #   - mkdir -p results/lighthouse/
-    - curl -I http://localhost:1338 || echo "App not responding"
-    - npx lhci autorun  # testing without docker because of the "priviledge mode" errors
+##    - npm run build --if-present
+#    - npm start & npx wait-on $APP
+#    - curl -I http://localhost:1338 || echo "App not responding"
+#    - npx lhci autorun  # testing without docker because of the "priviledge mode" errors
     # something to archive artifacts or just handle it through link?
-    - pa11y http://localhost:1338/perceivable
-  only:
-    - master
+    # - pa11y http://localhost:1338/perceivable
+#  only:
+#    - master
   # artifacts:
     # paths:
       # - results/lighthouse/

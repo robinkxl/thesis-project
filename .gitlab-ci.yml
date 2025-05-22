@@ -29,7 +29,7 @@ lighthouse:
     - wave
   artifacts:
     paths:
-    - results/lighthouse/
+      - results/lighthouse/
   allow_failure: true
 
 # trying axe in a different way
@@ -100,8 +100,7 @@ lighthouse:
 pages:
   stage: deploy
   script:
-    - mkdir dist
-    - cp -r * public/
+    - echo "Deploying to GitLab Pages..."
   artifacts:
     paths:
       - public

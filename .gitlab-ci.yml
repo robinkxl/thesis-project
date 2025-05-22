@@ -100,8 +100,8 @@ lighthouse:
 pages:
   stage: deploy
   script:
-    - mkdir public
-    - cp -r * public/
+    - mkdir dist
+    - cp -r * dist/
   artifacts:
     paths:
       - public

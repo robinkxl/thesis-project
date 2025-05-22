@@ -100,10 +100,10 @@ lighthouse:
 pages:
   stage: deploy
   script:
-    - echo 'Deploying to GitLab Pages...'
+    - mkdir public
+    - cp -r * public/
   artifacts:
     paths:
       - public
   rules:
-    - if: '$CI_COMMIT_BRANCH == "wave"'
-
+    - if: '$CI_COMMIT_REF_NAME == "wave"'

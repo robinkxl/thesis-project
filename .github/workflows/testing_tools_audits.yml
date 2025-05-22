@@ -91,7 +91,6 @@ jobs:
 
   lighthouse:
     runs-on: ubuntu-latest
-    needs: [axe, achecker, htmlcs]
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js 18

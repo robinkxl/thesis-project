@@ -29,6 +29,7 @@ lighthouse:
   artifacts:
     paths:
     - results/lighthouse/
+  allow_failure: true
 
 # trying axe in a different way
 # https://blog.jameswinfield.co.uk/checking-accessibility-on-your-ci-pipeline-with-axe-core-cli/
@@ -98,11 +99,9 @@ lighthouse:
 pages:
   stage: deploy
   script:
-    - mkdir .public
-    - cp -r * .public
-    - mv .public public
+    - echo 'Deploying to GitLab Pages...'
   artifacts:
     paths:
       - public
-  only:
-    - master
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"

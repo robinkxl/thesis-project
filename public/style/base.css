@@ -175,22 +175,6 @@ button {
     font-size: 1.15rem;
 }
 
-.touch-target {
-    display: flex;
-    align-items: center;
-    gap: 0px;
-    padding: 1px;
-    margin: 2px 0;
-    cursor: pointer;
-}
-
-input[type="checkbox"],
-label {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-}
-
 /** FOOTER **/
 footer {
     text-align: center;

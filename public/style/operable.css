@@ -33,6 +33,12 @@
     margin: 0 auto;
 }
 
+/* touch target setting */
+#gl-2-2-2-pause {
+    min-width: 24px;
+    min-height: 24px;
+}
+
 /* gl-2-4-6 Fake Heading */
 fake-heading {
     font-family: "Open Sans", sans-serif;
@@ -107,22 +113,6 @@ fake-heading {
 }
 
 #gl-2-5-8-checkbox-w {
-    min-width: 10px;
-    min-height: 10px;
+    min-width: 1px;
+    min-height: 1px;
 }
-
-/*
-.touch-target input[type="checkbox"] {
-    min-width: 17px;
-    min-height: 17px;
-}
-
-.insufficient-touch-target {
-    display: flex;
-    align-items: center;
-    gap: 0px;
-    padding-bottom:2px;
-    margin: 0px 0 5px 0;
-    cursor: pointer;
-}
-*/

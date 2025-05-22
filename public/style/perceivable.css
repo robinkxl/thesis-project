@@ -274,3 +274,8 @@ label {
 .gl-1-4-8-short-line-height p{
     line-height:1;
 }
+
+#fox-c {
+    min-width: 24px;
+    min-height: 24px;
+}

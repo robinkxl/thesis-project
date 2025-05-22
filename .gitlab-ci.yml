@@ -1,5 +1,6 @@
 stages:
   - LHtest
+  - deploy
 # - AXEtest
 
 # for pa11y: https://opensource.com/article/23/2/automated-accessibility-testing

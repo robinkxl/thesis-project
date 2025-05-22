@@ -105,4 +105,5 @@ pages:
     paths:
       - public
   rules:
-    - if: $CI_COMMIT_BRANCH == "master"
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+

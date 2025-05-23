@@ -114,7 +114,7 @@ function asq-results-summary {
 }
 
 function lighthouse-results-summary {
-    lighthouse_directory="results/lighthouse"
+    lighthouse_directory="results/Lighthouse"
 
     if [ ! -d "$lighthouse_directory" ]; then
         echo "The '$lighthouse_directory' directory does not exist."
@@ -123,7 +123,7 @@ function lighthouse-results-summary {
 
     for file in "$lighthouse_directory"/*.report.json; do
         if [ -f "$file" ]; then
-            node "$JS_FILE" "lighthouse" "$file"
+            node "$JS_FILE" "Lighthouse" "$file"
         fi
     done
 

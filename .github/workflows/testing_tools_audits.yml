@@ -102,9 +102,11 @@ jobs:
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
       - name: Run Lighthouse CI
-        run: npx lhci autorun --config=./.lighthouserc.js
-      - name: List Lighthouse output files
-        run: ls -l results/lighthouse
+        run: npx lhci autorun
+      - name: Debug: list output directory
+        run: ls -la results || true
+      - name: Debug: list inside lighthouse folder
+        run: ls -la results/lighthouse || true
       - name: Archive Lighthouse CI results
         if: success() || failure()
         uses: actions/upload-artifact@v4

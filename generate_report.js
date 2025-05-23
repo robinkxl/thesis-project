@@ -220,16 +220,16 @@ function generateLighthouseReport(filePath) {
 function generateWAVEReport(filePath) {
     const results = require(filePath);
     const toolFullName = "WAVE";
-    const urlPath = results?.statistics?.pageurl || "unknown";
-    const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2)?.replace(':', '_') || "home";
-    const fails = results?.categories?.error?.count || 0;
+    const urlPath = results.statistics.pageurl || "unknown";
+    const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2).replace(':', '_') || "home";
+    const fails = results.categories.error.count || 0;
 
-    if (fails > 0 && results.categories?.error?.items) {
+    if (fails > 0 && results.categories.error.items) {
         const items = results.categories.error.items;
 
         for (const key in items) {
             const entry = items[key];
-            const selectors = entry.selectors?.selector || [];
+            const selectors = entry.selectors.selector || [];
 
             selectors.forEach((selector) => {
                 const violation = createViolationObject(toolFullName, urlPath);
@@ -244,7 +244,12 @@ function generateWAVEReport(filePath) {
     }
 
     updateSummary(webpage, toolFullName, fails);
-    updateReport(jsonData);
+
+    // Write pretty-formatted JSON only for WAVE
+    const fs = require("fs");
+    const outputFilePath = "results/report.json";
+    const jsonString = JSON.stringify(jsonData, null, 2);
+    fs.writeFileSync(outputFilePath, jsonString, 'utf-8');
 }
 
 

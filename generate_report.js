@@ -188,6 +188,71 @@ function generateAsqatasunReport(filePath) {
     
 }
 
+function generateLighthouseReport(filePath) {
+    const results = require(filePath);
+    const toolFullName = "Lighthouse";
+    const urlPath = results.finalUrl;
+    const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2).replace(':','_');
+    let fails = 0;
+
+    // Check accessibility audit entries
+    const auditEntries = results.audits;
+    for (const key in auditEntries) {
+        const audit = auditEntries[key];
+
+        if (audit.score !== null && audit.score < 1 && audit.scoreDisplayMode !== 'notApplicable') {
+            const violation = createViolationObject(toolFullName, urlPath);
+            violation.error_name = audit.id;
+            violation.error_description = audit.title;
+            violation.error_position = audit.description || '';
+            violation.error_help = audit.documentation || audit.details.explanation || '';
+            fails++;
+            jsonData.report.push(violation);
+        }
+    }
+
+    // Update summary
+    updateSummary(webpage, toolFullName, fails);
+    updateReport(jsonData);
+
+}
+
+function generateWAVEReport(filePath) {
+    const results = require(filePath);
+    const toolFullName = "WAVE";
+    const urlPath = results.statistics.pageurl || "unknown";
+    const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2).replace(':', '_') || "home";
+    const fails = results.categories.error.count || 0;
+
+    if (fails > 0 && results.categories.error.items) {
+        const items = results.categories.error.items;
+
+        for (const key in items) {
+            const entry = items[key];
+            const selectors = entry.selectors.selector || [];
+
+            selectors.forEach((selector) => {
+                const violation = createViolationObject(toolFullName, urlPath);
+                violation.error_name = key;
+                violation.error_description = entry.description || "No description provided";
+                violation.error_position = selector.replace(/\s+/g, ' ').trim();
+                violation.error_help = `https://wave.webaim.org/help?${key}`;
+
+                jsonData.report.push(violation);
+            });
+        }
+    }
+
+    updateSummary(webpage, toolFullName, fails);
+
+    // Write pretty-formatted JSON only for WAVE
+    const fs = require("fs");
+    const outputFilePath = "results/report.json";
+    const jsonString = JSON.stringify(jsonData, null, 2);
+    fs.writeFileSync(outputFilePath, jsonString, 'utf-8');
+}
+
+
 if (toolAbbreviation == "achecker") {
     generateAcheckerReport(path);
 } else if (toolAbbreviation == "htmlcs") {
@@ -196,6 +261,10 @@ if (toolAbbreviation == "achecker") {
     generateAxeReport(path);
 } else if (toolAbbreviation === "asq") {
     generateAsqatasunReport(path);
+} else if (toolAbbreviation === "lighthouse") {
+    generateLighthouseReport(path);
+} else if (toolAbbreviation === "wave") {
+    generateWAVEReport(path);
 } else {
     process.exit(1);
 }

@@ -99,6 +99,30 @@ jobs:
           name: HTML_CodeSniffer
           path: results/HTML_CodeSniffer/*
 
+  wave:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install curl and jq
+        run: sudo apt-get install -y curl jq
+      - name: Run WAVE API on All Pages
+        env:
+          APP: https://robinkxl.github.io/thesis-project
+          WAVE_API_KEY: ${{ secrets.WAVE_API_KEY }}
+        run: |
+          mkdir -p results/wave
+          PAGES=("perceivable" "operable" "understandable")
+          for PAGE in "${PAGES[@]}"; do
+            echo "Scanning $APP/$PAGE"
+            curl -s "https://wave.webaim.org/api/request?key=$WAVE_API_KEY&reporttype=4&url=$APP/$PAGE" \
+              -o "results/wave/wave-${PAGE}.json"
+          done
+      - name: Archive WAVE API results
+        uses: actions/upload-artifact@v4
+        with:
+          name: WAVE-All
+          path: results/wave/*.json
+
   lighthouse:
     runs-on: ubuntu-latest
     steps:

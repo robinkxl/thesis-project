@@ -113,6 +113,42 @@ function asq-results-summary {
 
 }
 
+function lighthouse-results-summary {
+    lighthouse_directory="results/Lighthouse"
+
+    if [ ! -d "$lighthouse_directory" ]; then
+        echo "The '$lighthouse_directory' directory does not exist."
+        exit 1
+    fi
+
+    for file in "$lighthouse_directory"/*.report.json; do
+        if [ -f "$file" ]; then
+            node "$JS_FILE" "Lighthouse" "$file"
+        fi
+    done
+
+    echo "Lighthouse results report is done."
+
+}
+
+function wave-results-summary {
+    wave_directory="results/wave"
+
+    if [ ! -d "$wave_directory" ]; then
+        echo "The '$wave_directory' directory does not exist."
+        exit 1
+    fi
+
+    for file in "$wave_directory"/*; do
+        if [ -f "$file" ]; then
+            node generate_report.js "wave" "$file"
+        fi
+    done
+
+    echo "WAVE results report is done."
+}
+
+
 function main {
     # Create output file to write to
     echo '{"summary": {}, "report": []}' > $OUTPUT_FILE
@@ -120,6 +156,8 @@ function main {
     axe-results-summary
     htmlcs-results-summary
     asq-results-summary
+    lighthouse-results-summary
+    wave-results-summary
     # echo "Generating analysis overviews..."
     # node generate_analysis.js # File created for facilitating analysis
     echo "Done ✅"

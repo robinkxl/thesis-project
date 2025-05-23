@@ -10,6 +10,7 @@ env:
   # Url for the running web app
   APP: http://localhost:1338
 
+# issues with chromedrivers mixmatch: https://github.com/browser-actions/setup-chrome
 jobs:
   axe:
     runs-on: ubuntu-latest

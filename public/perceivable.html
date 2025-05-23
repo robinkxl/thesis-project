@@ -49,7 +49,7 @@
 
                 <h3>1.1.1: Non-text Content (Level A)</h3>
                 <p>
-                    Non-text contents is explained by w3c as: any content that is not a sequence of characters that can
+                    Non-text contents is explained by W3C as: any content that is not a sequence of characters that can
                     be programmatically determined or where the sequence is not expressing something in human language.
                     This includes ASCII Art (which is a pattern of characters), emoticons, leetspeak (which uses
                     character substitution), and images representing text
@@ -433,25 +433,24 @@
                         <p> Forms with checkboxes need to be programmatically determinable with proper labels. </p>
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
-                            <div>
-                                <input class="touch-target" id="fox-c" type="checkbox" name="animal" value="fox">
+                            <div class="touch-target">
+                                <input id="fox-c" type="checkbox" name="animal" value="fox">
                                 <label for="fox-c">Fox</label>
                             </div>
-
-                            <div>
-                                <input class="touch-target" id="bird-c" type="checkbox" name="animal" value="bird">
+                            <div class="touch-target">
+                                <input id="bird-c" type="checkbox" name="animal" value="bird">
                                 <label for="bird-c">Bird</label>
                             </div>
-                            <div>
-                                <input class="touch-target" id="frog-c" type="checkbox" name="animal" value="frog">
+                            <div class="touch-target">
+                                <input id="frog-c" type="checkbox" name="animal" value="frog">
                                 <label for="frog-c">Frog</label>
                             </div>
-                            <div>
-                                <input class="touch-target" id="snake-c" type="checkbox" name="animal" value="snake">
+                            <div class="touch-target">
+                                <input id="snake-c" type="checkbox" name="animal" value="snake">
                                 <label for="snake-c">Snake</label>
                             </div>
-                            <div>
-                                <input class="touch-target" id="snail-c" type="checkbox" name="animal" value="snail">
+                            <div class="touch-target">
+                                <input id="snail-c" type="checkbox" name="animal" value="snail">
                                 <label for="snail-c">Snail</label>
                             </div>                            
                         </fieldset>
@@ -461,20 +460,25 @@
                         <p> These form checkboxes lack labels to be able to be programmatically determined. </p>
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
-                            <div>
-                                <input class="touch-target" id="fox-w" type="checkbox" name="animal" value="fox">Fox
+                            <div class="touch-target">
+                                <input id="fox-w" type="checkbox" name="animal" value="fox">
+                                <span>Fox</span>
                             </div>
-                            <div>
-                                <input class="touch-target" id="bird-w" type="checkbox" name="animal" value="bird">Bird
+                            <div class="touch-target">
+                                <input id="bird-w" type="checkbox" name="animal" value="bird">
+                                <span>Bird</span>
                             </div>
-                            <div>
-                                <input class="touch-target" id="frog-w" type="checkbox" name="animal" value="frog">Frog
+                            <div class="touch-target">
+                                <input id="frog-w" type="checkbox" name="animal" value="frog">
+                                <span>Frog</span>
                             </div>
-                            <div>
-                                <input class="touch-target" id="snake-w" type="checkbox" name="animal" value="snake">Snake
+                            <div class="touch-target">
+                                <input id="snake-w" type="checkbox" name="animal" value="snake">
+                                <span>Snake</span>
                             </div>
-                            <div>
-                                <input class="touch-target" id="snail-w" type="checkbox" name="animal" value="snail">Snail
+                            <div class="touch-target">
+                                <input id="snail-w" type="checkbox" name="animal" value="snail">
+                                <span>Snail</span>
                             </div>
                         </fieldset>
                     </div>

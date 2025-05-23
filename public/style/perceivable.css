@@ -25,22 +25,6 @@ label {
   vertical-align: top;
 }
 
-.touch-target {
-    display: flex;
-    align-items: center;
-    gap: 0px;
-    cursor: pointer;
-    min-height: 24px;
-    min-width: 24px;
-}
-
-input[type="checkbox"],
-label {
-  display: inline-block;
-  vertical-align: middle;
-  padding-top:2px;
-}
-
 .required {
   color: rgb(185, 0, 0);
 }
@@ -289,4 +273,18 @@ label {
 
 .gl-1-4-8-short-line-height p{
     line-height:1;
+}
+
+/* included for showing checkbox without labebls */
+.touch-target [type="checkbox"]:not(:checked)+span:before,
+.touch-target [type="checkbox"]:checked+span:before {
+  content: '';
+  position: absolute;
+  margin-left: -1.70em;
+  margin-top: -0.20em;
+
+  min-width: 24px;
+  min-height: 24px;
+  border: 1px dotted red;
+  background: transparent;
 }

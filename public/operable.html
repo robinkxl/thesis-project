@@ -438,7 +438,8 @@
                     <h3>2.5.8: Target Size (Minimum) (Level AA)</h3>
                     <!-- touch sizes need to be 24 x 24 CSS pixels this AA not AAA(which is 44x44)  -->
                     <p>
-                        The size of the target for pointer inputs is at least 24 by 24 CSS pixels, except where:
+                        The size of the target for pointer inputs is at least 24 by 24 CSS pixels, with also proper margin spacing between
+                        multiple touch targets, except where:
                     </p>
                     <ul>
                         <li>
@@ -462,25 +463,33 @@
                     <div class="example-box">
                         <div class="correct">
                             <h3>Correct</h3>
-                            <p>The touch target for this checkbox is of reasonable minimum size for level AA.</p>
-                            <div>
-                                <input class="touch-target" id="gl-2-5-8-checkbox-c" type="checkbox" name="checkboxExample" value="checkbox-c">
-                                <label for="checkbox-c">Correct Size</label>
+                            <p>The touch target for this checkbox is of reasonable minimum size for level AA as displayed by the red outline to show
+                                all touchable areas to check the box. The spacing between the checkboxes is also of proper size to avoid misclicks.
+                            </p>
+                            <div class="touch-target">
+                              <input type="checkbox" name="checkboxExample" value="checkbox-c1">
+                              <label for="checkbox-c1">Correct Example</label>
                             </div>
-                            <p>The touch target for this button is of reasonable minimum size for level AA.</p>
-                            <input id="gl-2-5-8-button-c" type="button" name="buttonExample" value="Reveal the hidden text">
-                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
+                            <div class="touch-target">
+                              <input type="checkbox" name="checkboxExample" value="checkbox-c2">
+                              <label for="checkbox-c2">Correct Example</label>
+                            </div>
                         </div>
                         <div class="wrong">
                             <h3>Wrong</h3>
-                            <p>The touch target for this checkbox is too small for level AA and can make it difficult for users to click.</p>
-                            <div>
-                                <input class="touch-target" id="gl-2-5-8-checkbox-w" type="checkbox" value="checkbox-w">
-                                <label for="checkbox-w">Wrong Size</label>
+                            <p>The touch target below do not have any other formatting to resize the touch target, meaning the small checkbox itself
+                                must be clicked. There is also not enough spacing between the two touch target checkboxes, which can create 
+                                difficulties for users to avoid misclicks.
+                            </p>
+
+                            <div class="insufficient-touch-target">
+                              <input type="checkbox" name="checkboxExample" value="checkbox-w1">
+                              <label for="checkbox-w1">Wrong Example</label>
                             </div>
-                            <p>The touch target for this button is too small for level AA and can make it difficult for users to click.</p>
-                            <input id="gl-2-5-8-button-w" type="button" name="buttonExample" value="Reveal the hidden text">
-                            <h4 class="toggle-hidden hidden">You successfully revealed the hidden text.</h4>
+                            <div class="insufficient-touch-target">
+                              <input type="checkbox" name="checkboxExample" value="checkbox-w2">
+                              <label for="checkbox-w2">Wrong Example</label>
+                            </div>
                         </div>
                     </div>
 

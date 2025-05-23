@@ -103,12 +103,14 @@ jobs:
         uses: browser-actions/setup-chrome@v1
       - name: Run Lighthouse CI
         run: npx lhci autorun --config=./.lighthouserc.js
+      - name: List Lighthouse output files
+        run: ls -l results/lighthouse
       - name: Archive Lighthouse CI results
         if: success() || failure()
         uses: actions/upload-artifact@v4
         with:
           name: Lighthouse
-          path: results/lighthouseci/*
+          path: results/lighthouse/*.html
   
   # pa11y:
   #   runs-on: ubuntu-latest

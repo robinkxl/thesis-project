@@ -220,33 +220,33 @@ function generateLighthouseReport(filePath) {
 function generateWAVEReport(filePath) {
     const results = require(filePath);
     const toolFullName = "WAVE";
-    const urlPath = results.statistics.url;
-    const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2).replace(':','_');
-    
-    // Count total violations
+    const urlPath = results?.statistics?.pageurl || "unknown";
+    const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2)?.replace(':', '_') || "home";
     const fails = results?.categories?.error?.count || 0;
 
-    if (fails > 0) {
+    if (fails > 0 && results.categories?.error?.items) {
         const items = results.categories.error.items;
-        
+
         for (const key in items) {
             const entry = items[key];
             const selectors = entry.selectors?.selector || [];
 
-            for (const selector of selectors) {
+            selectors.forEach((selector) => {
                 const violation = createViolationObject(toolFullName, urlPath);
-                violation['error_name'] = key;
-                violation['error_description'] = entry.description || "No description";
-                violation['error_position'] = selector;
-                violation['error_help'] = `https://wave.webaim.org/help?${key}`;
+                violation.error_name = key;
+                violation.error_description = entry.description || "No description provided";
+                violation.error_position = selector.replace(/\s+/g, ' ').trim();
+                violation.error_help = `https://wave.webaim.org/help?${key}`;
+
                 jsonData.report.push(violation);
-            }
+            });
         }
     }
 
     updateSummary(webpage, toolFullName, fails);
     updateReport(jsonData);
 }
+
 
 if (toolAbbreviation == "achecker") {
     generateAcheckerReport(path);

@@ -13,7 +13,6 @@ module.exports = {
         preset: "desktop", // if we take this away it will evaluate the website as mobile view, so we could also do multiple tests for some particular criteria.
         chromeFlags: ['--no-sandbox'], // bypass the sandbox error
       },
-      output: ['html'], // Tell Lighthouse to generate HTML reports
       outputPath: './.lighthouseci', // Where to put them
     },
     upload: {

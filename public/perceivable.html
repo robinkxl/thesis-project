@@ -47,11 +47,10 @@
                     such as large print, braille, speech, symbols or simpler language.
                 </p>
 
-                <h3>1.1.1: non-text content (Level A)</h3>
+                <h3>1.1.1: Non-text Content (Level A)</h3>
                 <p>
-                    non-text contents is explained by w3c as: any content that is not a sequence of characters that can
-                    be
-                    programmatically determined or where the sequence is not expressing something in human language.
+                    Non-text contents is explained by W3C as: any content that is not a sequence of characters that can
+                    be programmatically determined or where the sequence is not expressing something in human language.
                     This includes ASCII Art (which is a pattern of characters), emoticons, leetspeak (which uses
                     character substitution), and images representing text
                 </p>
@@ -172,7 +171,7 @@
 
                 <!--- new addition: 1.1.1 using aria-labeling for ASCII art in HTML.
                 https://stackoverflow.com/questions/33929647/alt-attribute-for-ascii-art-in-html  -->
-                <h4>6. Providing alternative text for ASCII elements.</h4>
+                <h4>6. Providing alternative text for ASCII content.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
@@ -407,13 +406,13 @@
                     </div>
                     <div class="wrong">
                         <h3>Wrong</h3>
-                        <p> Below is a form with required fields marked without an asterisks, leaving the user unaware. There is also
-                            a missing aria-describedby attribute to clarify for screen readers. Providing no solutions for color-blindness
-                            or assistive technologies. </p>
+                        <p> Below is a form with required fields marked with an asterisks but no clarification as to what it means,
+                            leaving the user unaware. There is also a missing aria-describedby attribute to clarify for screen readers.
+                            Providing no solutions for assistive technologies. </p>
                         <div class="color-example">
                         <form>
                           <div class="control">
-                        <label for="name-w" class="required">Full name</label><input id="name-w" type="text" required>
+                        <label for="name-w">Full name<span class="required">*</span></label><input id="name-w" type="text" required>
                           </div>
                           <div class="control">
                             <label for="biography-w">Biography</label><textarea id="biography-w"></textarea>
@@ -434,24 +433,24 @@
                         <p> Forms with checkboxes need to be programmatically determinable with proper labels. </p>
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
-                            <div>
-                                <input class="touch-target" id="fox-c" type="checkbox" name="animal" value="fox">
+                            <div class="touch-target">
+                                <input id="fox-c" type="checkbox" name="animal" value="fox">
                                 <label for="fox-c">Fox</label>
                             </div>
-                            <div>
-                                <input class="touch-target" id="bird-c" type="checkbox" name="animal" value="bird">
+                            <div class="touch-target">
+                                <input id="bird-c" type="checkbox" name="animal" value="bird">
                                 <label for="bird-c">Bird</label>
                             </div>
-                            <div>
-                                <input class="touch-target" id="frog-c" type="checkbox" name="animal" value="frog">
+                            <div class="touch-target">
+                                <input id="frog-c" type="checkbox" name="animal" value="frog">
                                 <label for="frog-c">Frog</label>
                             </div>
-                            <div>
-                                <input class="touch-target" id="snake-c" type="checkbox" name="animal" value="snake">
+                            <div class="touch-target">
+                                <input id="snake-c" type="checkbox" name="animal" value="snake">
                                 <label for="snake-c">Snake</label>
                             </div>
-                            <div>
-                                <input class="touch-target" id="snail-c" type="checkbox" name="animal" value="snail">
+                            <div class="touch-target">
+                                <input id="snail-c" type="checkbox" name="animal" value="snail">
                                 <label for="snail-c">Snail</label>
                             </div>                            
                         </fieldset>
@@ -461,31 +460,36 @@
                         <p> These form checkboxes lack labels to be able to be programmatically determined. </p>
                         <fieldset>
                             <legend>Select your favorite animal:</legend>
-                            <div>
-                                <input class="touch-target" id="fox-w" type="checkbox" name="animal" value="fox">Fox
+                            <div class="touch-target">
+                                <input id="fox-w" type="checkbox" name="animal" value="fox">
+                                <span>Fox</span>
                             </div>
-                            <div>
-                                <input class="touch-target" id="bird-w" type="checkbox" name="animal" value="bird">Bird
+                            <div class="touch-target">
+                                <input id="bird-w" type="checkbox" name="animal" value="bird">
+                                <span>Bird</span>
                             </div>
-                            <div>
-                                <input class="touch-target" id="frog-w" type="checkbox" name="animal" value="frog">Frog
+                            <div class="touch-target">
+                                <input id="frog-w" type="checkbox" name="animal" value="frog">
+                                <span>Frog</span>
                             </div>
-                            <div>
-                                <input class="touch-target" id="snake-w" type="checkbox" name="animal" value="snake">Snake
+                            <div class="touch-target">
+                                <input id="snake-w" type="checkbox" name="animal" value="snake">
+                                <span>Snake</span>
                             </div>
-                            <div>
-                                <input class="touch-target" id="snail-w" type="checkbox" name="animal" value="snail">Snail
+                            <div class="touch-target">
+                                <input id="snail-w" type="checkbox" name="animal" value="snail">
+                                <span>Snail</span>
                             </div>
                         </fieldset>
                     </div>
                 </div>
 
                 <!-- https://www.w3.org/TR/WCAG20-TECHS/H65.html  -->
-                <h4>6. Applying title elements instead of labels.</h4>
+                <h4>6. Applying title attribute instead of labels.</h4>
                 <div class="example-box">
                     <div class="correct">
                         <h3>Correct</h3>
-                        <p> The below input fields have a title element to describe their 
+                        <p> The below input fields have title attributes to describe their 
                             purpose that will aid assistive technologies where labels may not be applicable.
                         </p>
                         <div class="color-example">
@@ -906,7 +910,7 @@
 
                 <h3 id="guideline-1-4-4">1.4.4: Resize Text (AA) </h3>
                 <p>
-                    This guideline ensures dynamic resizing for font sizes and having css measurements of the font size that align and are relative to
+                    This criteria ensures dynamic resizing for font sizes and having css measurements of the font size that align and are relative to
                     the other measurements such as viewport or container. Below represents appropriate techniques of fontsizing
                     with percentages, em units, and named font sizes.
                 </p>

@@ -175,22 +175,6 @@ button {
     font-size: 1.15rem;
 }
 
-.touch-target {
-    display: flex;
-    align-items: center;
-    gap: 0px;
-    padding: 1px;
-    margin: 2px 0;
-    cursor: pointer;
-}
-
-input[type="checkbox"],
-label {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-}
-
 /** FOOTER **/
 footer {
     text-align: center;
@@ -229,4 +213,27 @@ footer {
     .example-box {
         flex-direction: column;
     }
+}
+
+.touch-target{
+  width:90%;
+  margin: 10px;
+}
+
+.touch-target [type="checkbox"]:not(:checked)+label:before,
+.touch-target [type="checkbox"]:checked+label:before {
+  content: '';
+  position: absolute;
+  margin-left: -1.70em;
+  margin-top: -0.20em;
+
+  min-width: 24px;
+  min-height: 24px;
+  border: 1px dotted red;
+  background: transparent;
+}
+
+.insufficient-touch-target{
+  width:90%;
+  margin: 0 auto;
 }

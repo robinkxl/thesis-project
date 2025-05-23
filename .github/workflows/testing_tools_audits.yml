@@ -97,7 +97,7 @@ jobs:
         run: sudo apt-get install -y curl jq
       - name: Run WAVE API on All Pages
         env:
-          APP: http://localhost:1338
+          APP: https://robinkxl.github.io/thesis-project
           WAVE_API_KEY: ${{ secrets.WAVE_API_KEY }}
         run: |
           mkdir -p results/wave

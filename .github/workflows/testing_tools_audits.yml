@@ -121,5 +121,11 @@ jobs:
           path: results/Lighthouse/*  # Be specific about file extension
           if-no-files-found: warn
   
-  # pa11y:
-  #   runs-on: ubuntu-latest
+  pa11y:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pa11y-ci
+        run: npm install -g pa11y-ci
+      - name: Run pa11y-ci
+        run: pa11y-ci $APP

@@ -103,14 +103,12 @@ jobs:
         uses: browser-actions/setup-chrome@v1
       - name: Run Lighthouse CI
         run: npx lhci autorun --config=./.lighthouserc.js
-      - name: List results directory for debugging
-        run: ls -l results/lighthouse/
       - name: Archive Lighthouse CI results
         if: success() || failure()
         uses: actions/upload-artifact@v4
         with:
           name: Lighthouse
-          path: results/lighthouse/*.html  # Be specific about file extension
+          path: results/Lighthouse/*.html  # Be specific about file extension
           if-no-files-found: warn
   
   # pa11y:

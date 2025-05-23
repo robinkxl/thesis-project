@@ -18,7 +18,7 @@ module.exports = {
       target: 'temporary-public-storage', // instead of making a server 
     },
     report: {
-      outputPath: 'results/lighthouse', // Match accessibility-checker's output style
+      outputPath: 'results/Lighthouse', // Match accessibility-checker's output style
     },
   },
 };

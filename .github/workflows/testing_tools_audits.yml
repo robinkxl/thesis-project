@@ -38,7 +38,7 @@ jobs:
         run: |
           npm install -g @axe-core/cli
           CHROMEDRIVER_PATH=$(which chromedriver)
-          axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options="--user-data-dir=/tmp/session-$(date +%s) --no-sandbox --disable-dev-shm-usage --headless=new" $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
+          axe --chromedriver-path $CHROMEDRIVER_PATH --chrome-options='["--user-data-dir=/tmp/session-'"$(date +%s)"'", "--no-sandbox", "--disable-dev-shm-usage", "--headless=new"]' $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
       - name: Archive axe-core test results
         uses: actions/upload-artifact@v4
         with:

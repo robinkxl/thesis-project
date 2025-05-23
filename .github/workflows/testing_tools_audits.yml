@@ -88,6 +88,28 @@ jobs:
         with:
           name: HTML_CodeSniffer
           path: results/HTML_CodeSniffer/*
-  
-  pa11y:
+
+  lighthouse:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+      - name: Run Lighthouse CI
+        run: npx lhci autorun --config=./.lighthouserc.js
+      - name: Archive Lighthouse CI results
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lighthouse
+          path: results/Lighthouse/*  # Be specific about file extension
+          if-no-files-found: warn
+  
+  # pa11y:
+  #   runs-on: ubuntu-latest

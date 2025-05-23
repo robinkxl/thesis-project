@@ -29,7 +29,7 @@ jobs:
       - run: npm start & npx wait-on $APP
       - name: Installing chromedriver
         run: |
-          npm install -g chromedriver@124
+          npx browser-driver-manager install chrome
       - name: Run axe-core
         run: |
           npm install -g @axe-core/cli

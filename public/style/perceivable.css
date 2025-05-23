@@ -275,9 +275,9 @@ label {
     line-height:1;
 }
 
-/* included for showing checkbox without labebls */
-.touch-target [type="checkbox"]:not(:checked)+span:before,
-.touch-target [type="checkbox"]:checked+span:before {
+/* making outline invisible for this page */
+.touch-target [type="checkbox"]:not(:checked)+label:before,
+.touch-target [type="checkbox"]:checked+label:before {
   content: '';
   position: absolute;
   margin-left: -1.70em;
@@ -285,6 +285,6 @@ label {
 
   min-width: 24px;
   min-height: 24px;
-  border: 1px dotted red;
   background: transparent;
+  border: transparent;
 }

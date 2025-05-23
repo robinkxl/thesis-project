@@ -10,6 +10,7 @@ env:
   # Url for the running web app
   APP: http://localhost:1338
 
+# issues with chromedrivers mixmatch: https://github.com/browser-actions/setup-chrome
 jobs:
   axe:
     runs-on: ubuntu-latest
@@ -24,17 +25,26 @@ jobs:
           node-version: 18.x
       - name: Chrome browser-action
         uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 124
+          install-chromedriver: true
+          install-dependencies: true
       - run: npm ci
       - run: npm run build --if-present
       - run: npm start & npx wait-on $APP
-      - name: Installing chromedriver
+      - name: Debug running Chrome
         run: |
-          npm install -g chromedriver@124
+          echo "running chrome here: "
+          ps aux | grep -i chrome || true
+          chromedriver --version
+          chrome --version
+          echo "Chromedriver path: ${{ steps.setup-chrome.outputs.chromedriver-path }}"
       - name: Run axe-core
         run: |
           npm install -g @axe-core/cli
-          CHROMEDRIVER_PATH=$(which chromedriver)
-          axe --chromedriver-path $CHROMEDRIVER_PATH $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
+          CHROMEDRIVER_PATH="${{ steps.setup-chrome.outputs.chromedriver-path }}"
+          echo "$CHROMEDRIVER_PATH"
+          axe --chromedriver-path="$CHROMEDRIVER_PATH" --chrome-options='["--user-data-dir=/tmp/session-'"$(date +%s)"'", "--no-sandbox", "--disable-dev-shm-usage", "--headless=new"]' $APP/${{ matrix.webpage }} --dir ./results/axe/ --save axe-results-${{ matrix.webpage }}.json
       - name: Archive axe-core test results
         uses: actions/upload-artifact@v4
         with:

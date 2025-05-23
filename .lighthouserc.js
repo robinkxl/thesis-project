@@ -19,7 +19,7 @@ module.exports = {
     },
     report: {
       output: ['html'],               // Important: generates .report.html files
-      outputPath: 'results/lighthouse', // Match accessibility-checker's output style
+      outputPath: 'results/lighthouse/*.html', // Match accessibility-checker's output style
     },
   },
 };

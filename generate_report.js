@@ -217,6 +217,26 @@ function generateLighthouseReport(filePath) {
 
 }
 
+function generateWAVEReport(filePath) {
+    const results = require(filePath);
+    const toolFullName = "WAVE";
+    const urlPath = results.statistics.url;
+    const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2).replace(':','_');
+    let fails = 0;
+
+    results.categories.error.items.forEach((item) => {
+        const violation = createViolationObject(toolFullName, urlPath);
+        violation.error_name = item.description;
+        violation.error_description = item.message;
+        violation.error_position = item.selector || item.xpath || "";
+        violation.error_help = item.helpUrl || "";
+        jsonData.report.push(violation);
+        fails++;
+    });
+
+    updateSummary(webpage, toolFullName, fails);
+    updateReport(jsonData);
+}
 
 if (toolAbbreviation == "achecker") {
     generateAcheckerReport(path);
@@ -228,6 +248,8 @@ if (toolAbbreviation == "achecker") {
     generateAsqatasunReport(path);
 } else if (toolAbbreviation === "lighthouse") {
     generateLighthouseReport(path);
+} else if (toolAbbreviation === "wave") {
+    generateWAVEReport(path);
 } else {
     process.exit(1);
 }

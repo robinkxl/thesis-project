@@ -89,6 +89,29 @@ jobs:
           name: HTML_CodeSniffer
           path: results/HTML_CodeSniffer/*
 
+  wave:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        webpage: [perceivable, operable, understandable]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install curl and jq
+        run: sudo apt-get install -y curl jq
+      - name: Run WAVE API on ${{ matrix.webpage }}
+        env:
+          WAVE_API_KEY: ${{ secrets.WAVE_API_KEY }}
+          APP: ${{ env.APP }}
+        run: |
+          URL="$APP/${{ matrix.webpage }}"
+          curl -s "https://wave.webaim.org/api/request?key=$WAVE_API_KEY&reporttype=4&url=$URL" \
+            -o "results/wave/wave-${{ matrix.webpage }}.json"
+      - name: Archive WAVE API results
+        uses: actions/upload-artifact@v4
+        with:
+          name: WAVE-${{ matrix.webpage }}
+          path: results/wave/wave-${{ matrix.webpage }}.json
+
   lighthouse:
     runs-on: ubuntu-latest
     steps:

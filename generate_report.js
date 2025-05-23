@@ -205,7 +205,7 @@ function generateLighthouseReport(filePath) {
             violation.error_name = audit.id;
             violation.error_description = audit.title;
             violation.error_position = audit.description || '';
-            violation.error_help = audit.documentation || audit.details?.explanation || '';
+            violation.error_help = audit.documentation || audit.details.explanation || '';
             fails++;
             jsonData.report.push(violation);
         }
@@ -222,17 +222,27 @@ function generateWAVEReport(filePath) {
     const toolFullName = "WAVE";
     const urlPath = results.statistics.url;
     const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2).replace(':','_');
-    let fails = 0;
+    
+    // Count total violations
+    const fails = results?.categories?.error?.count || 0;
 
-    results.categories.error.items.forEach((item) => {
-        const violation = createViolationObject(toolFullName, urlPath);
-        violation.error_name = item.description;
-        violation.error_description = item.message;
-        violation.error_position = item.selector || item.xpath || "";
-        violation.error_help = item.helpUrl || "";
-        jsonData.report.push(violation);
-        fails++;
-    });
+    if (fails > 0) {
+        const items = results.categories.error.items;
+        
+        for (const key in items) {
+            const entry = items[key];
+            const selectors = entry.selectors?.selector || [];
+
+            for (const selector of selectors) {
+                const violation = createViolationObject(toolFullName, urlPath);
+                violation['error_name'] = key;
+                violation['error_description'] = entry.description || "No description";
+                violation['error_position'] = selector;
+                violation['error_help'] = `https://wave.webaim.org/help?${key}`;
+                jsonData.report.push(violation);
+            }
+        }
+    }
 
     updateSummary(webpage, toolFullName, fails);
     updateReport(jsonData);

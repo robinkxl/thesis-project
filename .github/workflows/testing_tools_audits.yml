@@ -136,7 +136,7 @@ jobs:
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
       - name: Run Lighthouse CI
-        run: npx lhci autorun --config=./.lighthouserc.js
+        run: npx lhci autorun --config=./.lighthouserc.js   # change to just lighthouse
       - name: Archive Lighthouse CI results
         if: success() || failure()
         uses: actions/upload-artifact@v4
@@ -166,7 +166,14 @@ jobs:
         run: npm install -g pa11y-ci
       - name: Install pa11y reporter
         run: npm install -g pa11y-ci-reporter-html
-      - name: run pa11y results in the console
+      - name: Run pa11y ci in console
         run: pa11y-ci $APP
       - name: Run pa11y-ci with reporter 
-        run: pa11y-ci --reporter=pa11y-ci-reporter-html $APP --ignore exit-code-2
+        run: pa11y-ci --reporter=pa11y-ci-reporter-html $APP
+      - name: Archive pa11y results
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Pa11y
+          path: results/Pa11y/*  # Be specific about file extension
+          if-no-files-found: warn

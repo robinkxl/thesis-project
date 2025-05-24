@@ -164,5 +164,7 @@ jobs:
       - run: npm start & npx wait-on $APP
       - name: Install pa11y-ci
         run: npm install -g pa11y-ci
+      - name: Install pa11y reporter
+        run: > npm install -g pa11y-ci-reporter-html
       - name: Run pa11y-ci
         run: pa11y-ci $APP

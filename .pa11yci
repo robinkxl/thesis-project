@@ -2,7 +2,11 @@
     "defaults": {
          "chromeLaunchConfig": {
             "args": ["--no-sandbox"]
-        }
+        },
+          "reporters": [
+            "pa11y-reporter-html",
+            { "destination": "./reports", "includeZeroIssues": true }
+        ]
     },
     "urls": [
         "http://localhost:1338/perceivable",

@@ -169,12 +169,8 @@ function run-wave {
     mkdir -p results/wave
     API_KEY="$WAVE_API_KEY"
     REPORT_TYPE=3  # Get detailed JSON
-    curl -s "https://wave.webaim.org/api/request?key=$API_KEY&reporttype=$REPORT_TYPE&url=$1/perceivable" \
-        -o "results/wave/wave-$(basename $1)-perceivable.json"
-    curl -s "https://wave.webaim.org/api/request?key=$API_KEY&reporttype=$REPORT_TYPE&url=$1/operable" \
-        -o "results/wave/wave-$(basename $1)-operable.json"
-    curl -s "https://wave.webaim.org/api/request?key=$API_KEY&reporttype=$REPORT_TYPE&url=$1/understandable" \
-        -o "results/wave/wave-$(basename $1)-understandable.json"
+    curl -s "https://wave.webaim.org/api/request?key=$API_KEY&reporttype=$REPORT_TYPE&url=$1" \
+        -o "results/wave/wave-$(basename $1).json"
     echo "WAVE audit for $1 saved in results/wave."
 }
 

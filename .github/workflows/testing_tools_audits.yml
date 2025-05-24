@@ -114,7 +114,7 @@ jobs:
           PAGES=("perceivable" "operable" "understandable")
           for PAGE in "${PAGES[@]}"; do
             echo "Scanning $APP/$PAGE"
-            curl -s "https://wave.webaim.org/api/request?key=$WAVE_API_KEY&reporttype=4&url=$APP/$PAGE" \
+            curl -s "https://wave.webaim.org/api/request?key=$WAVE_API_KEY&reporttype=3&url=$APP/$PAGE" \
               -o "results/wave/wave-${PAGE}.json"
           done
       - name: Archive WAVE API results

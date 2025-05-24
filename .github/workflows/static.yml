@@ -5,7 +5,7 @@ on:
   # Runs on pushes targeting the default branch
   # and changes to the code of the website
   push:
-    branches: ["main"]
+    branches: ["perceivable"]
     paths:
       - 'public/**'
 

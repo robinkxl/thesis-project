@@ -163,21 +163,20 @@ jobs:
       - run: npm run build --if-present
       - run: npm start & npx wait-on $APP
       - name: Install pa11y-ci
-        run: |
-          npm install -g pa11y-ci
-          npm install -g pa11y
+        run: npm install -g pa11y-ci
       - name: Install pa11y reporter
         run: npm install -g pa11y-ci-reporter-html
-      - name: make result dir
-        run: mkdir -p "results/pa11y"
+      # - name: make result dir
+      #   run: mkdir -p "results/pa11y"
       - name: Run pa11y ci in console
-        run: pa11y $APP
-      - name: Run pa11y-ci with reporter 
-        run: pa11y-ci --reporter=pa11y-ci-reporter-html $APP
-      - name: Archive pa11y results
-        if: success() || failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: Pa11y
-          path: results/pa11y/*  # Be specific about file extension
-          if-no-files-found: warn
+        run: pa11y-ci $APP
+      # below does not work properly as a job because pa11y will fail at exit code 2 without producing artifacts.
+      #- name: Run pa11y-ci with reporter 
+      #  run: pa11y-ci --reporter=pa11y-ci-reporter-html $APP
+      #- name: Archive pa11y results
+      #  if: success() || failure()
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: Pa11y
+      #    path: results/pa11y/*  # Be specific about file extension
+      #    if-no-files-found: warn

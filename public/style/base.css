@@ -233,7 +233,24 @@ footer {
   background: transparent;
 }
 
-.insufficient-touch-target{
+.insufficient-touch-target label {
   width:90%;
   margin: 0 auto;
+  pointer-events: none;
+  cursor: default;
+}
+
+.insufficient-touch-target [type="checkbox"]:not(:checked)+label:before,
+.insufficient-touch-target [type="checkbox"]:checked+label:before {
+  content: '';
+  position: absolute;
+  margin-left: -1em;
+  margin-top: 0.5em;
+
+  min-width: 4px;
+  min-height: 4px;
+  border: transparent;
+  background: transparent;
+  pointer-events: none;
+  cursor: default;
 }

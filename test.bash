@@ -26,14 +26,7 @@ function set-up-lighthouse {
 
 function run-lighthouse {
     mkdir -p results/lighthouse
-   # echo "Webpages: ${WEBPAGES[@]}"
-    echo "--url="$1""
-
-    # this is giving a set of reports but its going to the wrong dir. atm. needs to be fixed
-    lhci collect --url="$1" --dir ./results/lighthouse/
-
-   # echo "on: $1/"
-   # it runs 3 times on each page which can be a little time consuming
+    lighthouse "http://localhost:1338$1" --output html --output-path ./results/lighthouse$1-report.html
 }
 
 function clean-up-lighthouse {
@@ -41,67 +34,19 @@ function clean-up-lighthouse {
 }
 
 function set-up-pa11y {
-    npm install -g pa11y
-    npm install pa11y-reporter-html --save
+    npm install -g pa11y-ci
+    npm install pa11y-ci-reporter-html --save
 }
 
 function run-pa11y {
-    mkdir -p "results/pa11y"
-# it works fine again but dir needs to be adjusted so we can get html for each diff page
-# TODO: its also not in the yml yet!
-    pa11y --reporter html "$1" > report.html
-    echo "Pa11y audit generated and saved at report.html."
+    pa11y-ci --reporter=pa11y-ci-reporter-html $1
+    echo "pa11y generated with reports"
 }
 
 function clean-up-pa11y {
-    npm uninstall -g pa11y
+    npm uninstall -g pa11y-ci
+    npm uninstall pa11y-ci-reporter-html
 }
-
-# another option: https://www.totalvalidator.com/products/ci.html but it has a small fee
-
-# not fully implemented qualWeb is just 2.1
-function set-up-qualweb {
-    npm i -g @qualweb/cli
-}
-
-# not fully implemented since qualWeb is just 2.1
-function run-qualweb {
-    qw -u https://act-rules.github.io/pages/about/ -r earl
-}
-
-# not implemented fully
-function set-up-skynet {
-    python -m ensurepip --upgrade
-    pip install selenium
-    pip install webdriver-manager
-}
-# not implemented fully
-function run-skynet {
-    #https://freeaccessibilitychecker.skynettechnologies.com/
-    #https://freeaccessibilitychecker.skynettechnologies.com/?website=https://idasm-unibe-ch.github.io/unibe-web-accessibility/
-    #https://freeaccessibilitychecker.skynettechnologies.com/?website=https://idasm-unibe-ch.github.io/unibe-web-accessibility/perceivable
-    CHECKER_URL="https://www.skynettechnologies.com/accessibility-checker"
-
-    # will change this but want to keep simple for testing purposs
-    TARGET_URL="https://idasm-unibe-ch.github.io/unibe-web-accessibility/perceivable"
-
-    echo " "$CHECKER_URL" + "$TARGET_URL""
-
-    # Send the request using curl --- info about user agent helps curl req. to get through as automated interaction
-    response=$(curl -s -X POST "$CHECKER_URL" \
-    -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" \
-    -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" \
-    -H "Accept-Encoding: gzip, deflate, br" \
-    -H "Connection: keep-alive" \
-    -d "url=$TARGET_URL")
-
-   #  python download_report.py "$TARGET_URL" using python to try and click thru the elements of the page and download it
-   # couldnt get it to work fully, downloads require email and everything.. it was just something i wanted to try
-
-    #curl -o response.html "https://freeaccessibilitychecker.skynettechnologies.com/?website=https://idasm-unibe-ch.github.io/unibe-web-accessibility/perceivable"
-}
-# not implemented
-# function clear-skynet {}
 
 function set-up-axe {
     # axe core

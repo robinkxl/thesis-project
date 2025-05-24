@@ -136,7 +136,7 @@ jobs:
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
       - name: Run Lighthouse CI
-        run: npx lhci autorun --config=./.lighthouserc.js
+        run: npx lhci autorun --config=./.lighthouserc.js   # change to just lighthouse
       - name: Archive Lighthouse CI results
         if: success() || failure()
         uses: actions/upload-artifact@v4
@@ -145,5 +145,38 @@ jobs:
           path: results/Lighthouse/*  # Be specific about file extension
           if-no-files-found: warn
   
-  # pa11y:
-  #   runs-on: ubuntu-latest
+  pa11y:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - name: Chrome browser-action
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 124
+          install-chromedriver: true
+          install-dependencies: true
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm start & npx wait-on $APP
+      - name: Install pa11y-ci
+        run: npm install -g pa11y-ci
+      - name: Install pa11y reporter
+        run: npm install -g pa11y-ci-reporter-html
+      # - name: make result dir
+      #   run: mkdir -p "results/pa11y"
+      - name: Run pa11y ci in console
+        run: pa11y-ci $APP
+      # below does not work properly as a job because pa11y will fail at exit code 2 without producing artifacts.
+      #- name: Run pa11y-ci with reporter 
+      #  run: pa11y-ci --reporter=pa11y-ci-reporter-html $APP
+      #- name: Archive pa11y results
+      #  if: success() || failure()
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: Pa11y
+      #    path: results/pa11y/*  # Be specific about file extension
+      #    if-no-files-found: warn

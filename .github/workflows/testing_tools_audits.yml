@@ -166,7 +166,7 @@ jobs:
         run: npm install -g pa11y-ci
       - name: Install pa11y reporter
         run: npm install -g pa11y-ci-reporter-html
-      - name: cwd
-        run: echo $PWD
-      - name: Run pa11y-ci
-        run: pa11y-ci --reporter=pa11y-ci-reporter-html $APP --ignore issue-code-2
+      - name: run pa11y results in the console
+        run: pa11y-ci $APP
+      - name: Run pa11y-ci with reporter 
+        run: pa11y-ci --reporter=pa11y-ci-reporter-html $APP --ignore exit-code-2

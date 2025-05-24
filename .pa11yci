@@ -5,7 +5,11 @@
         },
           "reporters": [
             "pa11y-ci-reporter-html",
-            { "destination": "./reports", "includeZeroIssues": true }
+            { "destination": "..", "includeZeroIssues": true }
+        ],
+        "runners": [
+            "axe",
+            "htmlcs"
         ]
     },
     "urls": [

@@ -4,7 +4,7 @@
             "args": ["--no-sandbox"]
         },
           "reporters": [
-            "pa11y-reporter-html",
+            "pa11y-ci-reporter-html",
             { "destination": "./reports", "includeZeroIssues": true }
         ]
     },

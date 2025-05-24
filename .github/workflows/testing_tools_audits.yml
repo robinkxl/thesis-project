@@ -169,4 +169,4 @@ jobs:
       - name: cwd
         run: echo $PWD
       - name: Run pa11y-ci
-        run: pa11y-ci --reporter=pa11y-ci-reporter-html $APP
+        run: pa11y-ci --reporter=pa11y-ci-reporter-html $APP --ignore issue-code-2

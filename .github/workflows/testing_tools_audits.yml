@@ -149,6 +149,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - name: Chrome browser-action
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 124
+          install-chromedriver: true
+          install-dependencies: true
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm start & npx wait-on $APP
       - name: Install pa11y-ci
         run: npm install -g pa11y-ci
       - name: Run pa11y-ci

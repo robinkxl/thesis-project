@@ -3,10 +3,6 @@
          "chromeLaunchConfig": {
             "args": ["--no-sandbox"]
         },
-          "reporters": [
-            "pa11y-ci-reporter-html",
-            { "destination": "results/pa11y", "includeZeroIssues": true }
-        ],
         "runners": [
             "axe",
             "htmlcs"

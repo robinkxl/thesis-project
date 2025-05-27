@@ -166,4 +166,4 @@ jobs:
       - name: Install pa11y-ci
         run: npm install -g pa11y-ci
       - name: Run pa11y-ci
-        run: pa11y-ci $APP
+        run: bash test.bash run pa11y $APP

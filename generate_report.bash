@@ -148,6 +148,22 @@ function wave-results-summary {
     echo "WAVE results report is done."
 }
 
+function pa11y-results-summary {
+    pa11y_directory="results/pa11y"
+
+    if [ ! -d "$pa11y_directory" ]; then
+        echo "The '$pa11y_directory' directory does not exist."
+        exit 1
+    fi
+
+    for file in "$pa11y_directory"/*; do
+        if [ -f "$file" ]; then
+            node "$JS_FILE" "pa11y" "$file"
+        fi
+    done
+
+    echo "Pa11y results report is done."
+}
 
 function main {
     # Create output file to write to
@@ -158,6 +174,7 @@ function main {
     asq-results-summary
     lighthouse-results-summary
     wave-results-summary
+    pa11y-results-summary
     # echo "Generating analysis overviews..."
     # node generate_analysis.js # File created for facilitating analysis
     echo "Done ✅"

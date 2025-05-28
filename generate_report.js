@@ -252,6 +252,29 @@ function generateWAVEReport(filePath) {
     fs.writeFileSync(outputFilePath, jsonString, 'utf-8');
 }
 
+function generatePa11yReport(filePath) {
+    const results = require(filePath);
+    const toolFullName = "Pa11y";
+    const urlPath = results.documentTitle || results.url || "unknown";
+    const webpage = urlPath.split('/').at(-1) || urlPath.split('/').at(-2).replace(':', '_');
+    let fails = 0;
+
+    if (results.issues && results.issues.length > 0) {
+        results.issues.forEach(issue => {
+            const violation = createViolationObject(toolFullName, urlPath);
+            violation.error_name = issue.code;
+            violation.error_description = issue.message;
+            violation.error_position = issue.selector || issue.context || "unknown";
+            violation.error_help = issue.helpUrl || "";
+            fails++;
+            jsonData.report.push(violation);
+        });
+    }
+
+    updateSummary(webpage, toolFullName, fails);
+    updateReport(jsonData);
+}
+
 
 if (toolAbbreviation == "achecker") {
     generateAcheckerReport(path);
@@ -265,6 +288,8 @@ if (toolAbbreviation == "achecker") {
     generateLighthouseReport(path);
 } else if (toolAbbreviation === "wave") {
     generateWAVEReport(path);
+} else if (toolAbbreviation === "pa11y") {
+    generatePa11yReport(path);
 } else {
     process.exit(1);
 }

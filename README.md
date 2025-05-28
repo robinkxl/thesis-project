@@ -100,7 +100,11 @@ asqatasun-docker/asqatasun_audit.bash cleanup
 ```
 
 Given our project deadlines, we haven't had the chance to fully automate the process of running each tool on every web page of the test website just yet.
-It is however possible to download the audit results for each tool as artifacts by going to the respective GitHub Actions workflows, i.e. [*.github/workflows/testing_tools_audits.yml*](https://github.com/robinkxl/thesis-project/actions/workflows/testing_tools_audits.yml) and [*.github/workflows/asqatasun_audits.yml*](https://github.com/idasm-unibe-ch/unibe-web-accessibility/actions/workflows/asqatasun_audits.yml).
+It is however possible to download the audit results for each tool as artifacts by going to the respective GitHub Actions workflows, i.e. [*.github/workflows/testing_tools_audits.yml*](https://github.com/robinkxl/thesis-project/actions/workflows/testing_tools_audits.yml) and for Aquatasun from [*.github/workflows/asqatasun_audits.yml*](https://github.com/idasm-unibe-ch/unibe-web-accessibility/actions/workflows/asqatasun_audits.yml).
+
+We were not able to set up Lighthouse and Pa11y to print the results into GitHub Actions' Artifacts, so that remains a task for future work. They results for Lighthouse can be found under the "Run Lighthouse CI" step as HTML pages stored on Google Cloud Storage. Pa11y's results are printed in the workflow's logs under the "Run pa11y-ci" step.
+
+WAVE API ended up being incompatible with our implementation of a CI pipeline since it does not assess localhost websites, so we run it on the already deployed version of the test website.
 
 ### Integration of tool into CI pipeline 
 

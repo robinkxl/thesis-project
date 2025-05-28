@@ -35,17 +35,17 @@ function clean-up-lighthouse {
 
 function set-up-pa11y {
     npm install -g pa11y-ci
-    npm install pa11y-ci-reporter-html --save
+    #npm install pa11y-ci-reporter-html --save
 }
 
 function run-pa11y {
-    pa11y-ci --reporter=pa11y-ci-reporter-html $1
+    pa11y-ci $@
     echo "pa11y generated with reports"
 }
 
 function clean-up-pa11y {
     npm uninstall -g pa11y-ci
-    npm uninstall pa11y-ci-reporter-html
+    #npm uninstall pa11y-ci-reporter-html
 }
 
 function set-up-axe {

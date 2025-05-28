@@ -9,8 +9,5 @@
         ]
     },
     "urls": [
-        "http://localhost:1338/perceivable",
-        "http://localhost:1338/operable",
-        "http://localhost:1338/understandable"
     ]
 }
